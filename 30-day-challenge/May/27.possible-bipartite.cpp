@@ -1,6 +1,5 @@
 #include <iostream>
-#include <map>
-#include <set>
+#include <unordered_map>
 #include <vector>
 using namespace std;
 
@@ -8,39 +7,39 @@ class Solution {
     /**
      * dfs checks if i'th node has c'th bool value. If such is the case, then mark all its neighbor !c and continue to their neighbors.
      * 
-     * @param i node whose color has to be checked and set.
-     * @param c color to be set.
+     * @param node node whose color has to be checked and set.
+     * @param val value to be set(either true or false)
      * @return true if all neighbors are colored appropriately.
      * @return false if there is some neighbor not colored appropriately.
      */
-    bool dfs(int i, bool c) {
-        if (hash.find(i) != hash.end())
-            return hash[i] == c;
-        hash[i] = c;
-        for (auto n : neighbors[i]) {
-            if (!dfs(n, !c)) // flip the bit for next neighbors.
+    bool dfs(int node, bool val) {
+        if (hash.find(node) != hash.end())
+            return hash[node] == val;
+        hash[node] = val;
+        for (auto n : neighbors[node]) {
+            if (!dfs(n, !val)) // flip the bit for next neighbors.
                 return false;
         }
         return true;
     }
 
-    map<int, bool> hash;           // This will map each node with a color.
+    unordered_map<int, bool> hash; // This will map each node with a color.
     vector<vector<int>> neighbors; // This is an adjacency list of the given graph.
 
    public:
     bool possibleBipartition(int n, vector<vector<int>> &dislikes) {
         neighbors.clear();
-        neighbors = vector<vector<int>>(n + 1); // The nodes in the given dislikes starts from 1.
+        hash.clear();
+        neighbors.resize(n + 1); // The nodes in the given dislikes starts from 1.
         for (auto p : dislikes) {
             // Create the adjacency graph.
             neighbors[p[0]].push_back(p[1]);
             neighbors[p[1]].push_back(p[0]);
         }
-        hash.clear();
-        for (int i = 1; i <= n; ++i) {
-            // If we can find this 'i' in hash, that means during dfs, we would have processed this node and it should have been set appropriately.
-            // dfs traverses neighbor by neighbor searching for false/true for i'th node alternatively, if it is present in the hash, ie, it is seen somewhere before.
-            if (hash.find(i) == hash.end() && !dfs(i, false)) {
+        for (int node = 1; node <= n; ++node) {
+            // If we can find this 'node' in hash, that means during dfs, we would have processed this node and it should have been set appropriately.
+            // dfs traverses neighbor by neighbor searching for false/true for node'th node alternatively, if it is present in the hash, ie, it is seen somewhere before.
+            if (hash.find(node) == hash.end() && !dfs(node, false)) {
                 return false;
             }
         }
