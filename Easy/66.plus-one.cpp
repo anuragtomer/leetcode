@@ -4,52 +4,39 @@
  * [66] Plus One
  */
 
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
+#include "../include/utility.h"
 using namespace std;
 
 // @lc code=start
 class Solution {
-public:
-    void swap(int &a, int &b) {
-        int temp = a;
-        a = b;
-        b = temp;
-    }
-
-    void reverse(vector<int> &output) {
-        int end = output.size() - 1;
-        for (int i=0; i < end; i++, end--)
-            swap(output[i], output[end]);
-    }
-
-    vector<int> plusOne(vector<int>& digits) {
-        vector<int> output;
-        int last = digits[digits.size() - 1] + 1;
-        output.push_back(last%10);
-        last = last/10;
-        for (int i = digits.size() - 2; i >= 0; --i) {
-            last = last + digits[i];
-            output.push_back(last%10);
-            last = last / 10;
+   public:
+    vector<int> plusOne(vector<int> &digits) {
+        int carry = 0;
+        for (auto it = digits.rbegin(); it != digits.rend(); it++) {
+            *it += 1;
+            if (*it > 9) {
+                carry = 1;
+                *it %= 10;
+            } else {
+                carry = 0;
+                break;
+            }
         }
-        if (last != 0)
-            output.push_back(last);
-        reverse(output);
-        return output;
+        if (carry == 1) {
+            digits.insert(digits.begin(), 1);
+        }
+        return digits;
     }
 };
 // @lc code=end
 
 int main() {
     Solution sol;
-    int n;
-    cin >> n;
-    vector<int> digits(n);
-    for (int i = 0; i < n; i++)
-        cin >> digits[i];
-    digits = sol.plusOne(digits);
-    for (auto i: digits)
-        cout << i << " ";
+    string n = "1,2,3";
+    vector<int> digits = createVector<int>(n);
+    vector<int> expected = {1, 2, 4}, output = sol.plusOne(digits);
+    assert(true == testResp(output, expected));
     return 0;
 }

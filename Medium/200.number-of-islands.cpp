@@ -1,54 +1,41 @@
 #include <iostream>
 #include <vector>
-#include <cassert>
 using namespace std;
 
-/*
- * @lc app=leetcode id=200 lang=cpp
- *
- * [200] Number of Islands
- */
-
-// @lc code=start
 class Solution {
-    void markvisited(vector< vector<char> > &grid, int i, int j) {
-        if (i >= 0 && j >= 0 && i < grid.size() && j < grid[i].size() && grid[i][j] == '1') {
-            grid[i][j] = '2';
-            markvisited(grid, i-1, j);
-            markvisited(grid, i, j-1);            
-            markvisited(grid, i+1, j);
-            markvisited(grid, i, j+1);
-        }
+    void setnearbyzero(vector<vector<char>> &grid, int i, int j, int isize, int jsize) {
+        if (i < 0 || i >= isize || j < 0 || j >= jsize || grid[i][j] == '0')
+            return;
+        grid[i][j] = '0';
+        setnearbyzero(grid, i + 1, j, isize, jsize);
+        setnearbyzero(grid, i, j + 1, isize, jsize);
+        setnearbyzero(grid, i - 1, j, isize, jsize);
+        setnearbyzero(grid, i, j - 1, isize, jsize);
     }
 
-public:
-    int numIslands(vector< vector<char> >& grid) {
-        int count = 0;
-        
-        for (int i = 0; i < grid.size(); ++i)
-            for (int j = 0; j < grid[i].size(); ++j)
+   public:
+    int numIslands(vector<vector<char>> &grid) {
+        int islands = 0;
+        int isize = grid.size();
+        for (int i = 0; i < isize; i++) {
+            int jsize = grid[i].size();
+            for (int j = 0; j < jsize; j++) {
                 if (grid[i][j] == '1') {
-                    markvisited(grid, i, j);
-                    count++;
+                    islands++;
+                    setnearbyzero(grid, i, j, isize, jsize);
                 }
-        return count;
+            }
+        }
+        return islands;
     }
 };
-// @lc code=end
-
 
 int main() {
     Solution sol;
-    vector< vector<char> > grid = {{'1', '1', '1', '1', '0'}, 
-                                   {'1', '1', '0', '1', '0'}, 
-                                   {'1', '1', '0', '0', '0'},
-                                   {'0', '0', '0', '0', '0'}};
-    assert(1 == sol.numIslands(grid));// << "\n";
-    grid = {{'1', '1', '0', '0', '0'}, 
-            {'1', '1', '0', '0', '0'}, 
-            {'0', '0', '1', '0', '0'},
-            {'0', '0', '0', '1', '1'}};
+    vector<vector<char>> grid = {
+        {'1', '1', '1', '1', '0'}, {'1', '1', '0', '1', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '0', '0', '0'}};
+    assert(1 == sol.numIslands(grid));
+    grid = {{'1', '1', '0', '0', '0'}, {'1', '1', '0', '0', '0'}, {'0', '0', '1', '0', '0'}, {'0', '0', '0', '1', '1'}};
     assert(3 == sol.numIslands(grid));
-    cout << "Test cases passed\n";
     return 0;
 }

@@ -271,3 +271,12 @@ void printVector(const T &input) {
     }
     cout << endl;
 }
+template <class T>
+vector<T> createVector(string input) {
+    vector<string> inputs = split(input, ',');
+    vector<T> output;
+    for (auto inp : inputs) {
+        output.push_back(inp[0] - '0');
+    }
+    return output;
+}
