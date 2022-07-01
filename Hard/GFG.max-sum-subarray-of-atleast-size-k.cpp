@@ -6,19 +6,35 @@ using namespace std;
 
 class Solution {
    public:
+    /*
+     * Idea is to use Kadane's algorithm.
+     * First find maxSum till each index using kadane's algo.
+     * Then get the sum of first k elements.
+     * Using sliding window of size k, add one next element to sum, and subtract first element from sum
+     * and see if this sum changes your result.
+     * Also, see if this result would be greater if you took the max sum till i-k elements.
+     */
     int maxSumSubArray(vector<int> arr, int k) {
-        vector<int> prefixSum(arr.size() + 1);
-        prefixSum[0] = 0;
-        int maxSum = INT_MIN;
-        for (int i = 0; i < arr.size(); ++i) {
-            prefixSum[i + 1] = arr[i] + prefixSum[i];
+        auto n = arr.size();
+        vector<int> maxSum = vector<int>(n, 0);
+        maxSum[0] = arr[0];
+        int currMax = arr[0];
+        for (int i = 1; i < n; ++i) {
+            currMax = max(arr[i], currMax + arr[i]);
+            maxSum[i] = currMax;
         }
-        for (int i = 0; i < arr.size(); ++i) {
-            for (int j = i + k; j <= arr.size(); ++j) {
-                maxSum = max(maxSum, prefixSum[j] - prefixSum[i]);
-            }
+
+        int sum = 0;
+        for (int i = 0; i < k; ++i)
+            sum += arr[i];
+
+        int result = sum;
+        for (int i = k; i < n; ++i) {
+            sum = sum + arr[i] - arr[i - k];
+            result = max(result, sum);
+            result = max(result, sum + maxSum[i - k]);
         }
-        return maxSum;
+        return result;
     }
 };
 
