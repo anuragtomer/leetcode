@@ -1,1 +1,1 @@
-60.permutation-sequence.cpp
+../../Medium/60.permutation-sequence.cpp

@@ -1,1 +1,1 @@
-380.insert-delete-getrandom-o1.cpp
+../../Medium/380.insert-delete-getrandom-o1.cpp

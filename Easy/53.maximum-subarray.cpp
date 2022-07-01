@@ -1,33 +1,27 @@
-/*
- * @lc app=leetcode id=53 lang=cpp
- *
- * [53] Maximum Subarray
+/**
+ * Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest
+ * sum and return its sum.
  */
-#include <vector>
 #include <iostream>
+#include <vector>
 using namespace std;
 
-// @lc code=start
 class Solution {
-public:
-    int maxSubArray(vector<int>& nums) {
-        int ans = nums[0], i, currMax = nums[0];
-        for (i = 1; i < nums.size(); ++i) {
-            currMax = max(nums[i], currMax+nums[i]);
-            ans = max(ans, currMax);
+   public:
+    int maxSubArray(vector<int> &nums) {
+        int sum = nums[0];
+        int result = nums[0];
+        for (auto i = 1; i < nums.size(); ++i) {
+            sum = max(nums[i], sum + nums[i]);
+            result = max(result, sum);
         }
-        return ans;
+        return result;
     }
 };
-// @lc code=end
 
 int main() {
     Solution sol;
-    int n;
-    cin >> n;
-    vector<int> nums(n);
-    for (int i = 0; i < n; i++) 
-        cin >> nums[i];
+    vector<int> nums{-2, 1, -3, 4, -1, 2, 1, -5, 4};
     cout << sol.maxSubArray(nums);
     return 0;
 }

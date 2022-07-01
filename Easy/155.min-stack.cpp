@@ -1,72 +1,57 @@
-/*
- * @lc app=leetcode id=155 lang=cpp
- *
- * [155] Min Stack
- */
-
 #include <iostream>
 #include <stack>
-#include <cassert>
 using namespace std;
 
-// @lc code=start
 class MinStack {
-    stack<int> normalSt;
-    stack<int> minSt;
-public:
-    
+    stack<int> st;
+    stack<int> min;
+
+   public:
     /** initialize your data structure here. */
     MinStack() {
+        st = stack<int>();
+        min = stack<int>();
     }
-    
+
     void push(int x) {
-        normalSt.push(x);
-        if (minSt.empty() == true)
-            minSt.push(x);
-        else
-            if (x <= minSt.top())
-                minSt.push(x);
+        st.push(x);
+        if (min.empty() || x <= min.top())
+            min.push(x);
     }
-    
+
     void pop() {
-        if (normalSt.empty() == true || minSt.empty() == true)
-            cout << "Empty Stack";
-        if (normalSt.top() == minSt.top())
-            minSt.pop();
-        normalSt.pop();
+        if (!st.empty()) {
+            if (st.top() == min.top()) {
+                min.pop();
+            }
+            st.pop();
+        } else
+            cout << "No element in stack.";
     }
-    
+
     int top() {
-        if (normalSt.empty() == true)
-            return INT_MIN;
-        return normalSt.top();
+        if (!st.empty())
+            return st.top();
+        cout << "No element in stack.";
+        return -1;
     }
-    
+
     int getMin() {
-        if (minSt.empty() == true)
-            return INT_MIN;
-        return minSt.top();
+        if (!min.empty())
+            return min.top();
+        cout << "No element in stack.";
+        return -1;
     }
 };
 
-/**
- * Your MinStack object will be instantiated and called as such:
- * MinStack* obj = new MinStack();
- * obj->push(x);
- * obj->pop();
- * int param_3 = obj->top();
- * int param_4 = obj->getMin();
- */
-// @lc code=end
-
 int main() {
-    MinStack minStack = MinStack();
+    MinStack minStack;
     minStack.push(-2);
     minStack.push(0);
     minStack.push(-3);
-    assert(-3 == minStack.getMin());//   --> Returns -3.
+    assert(-3 == minStack.getMin());
     minStack.pop();
-    assert(0 == minStack.top());//      --> Returns 0.
-    assert(-2 == minStack.getMin());//   --> Returns -2.
+    assert(0 == minStack.top());
+    assert(-2 == minStack.getMin());
     return 0;
 }

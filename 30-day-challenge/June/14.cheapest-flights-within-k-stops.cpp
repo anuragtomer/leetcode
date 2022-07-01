@@ -1,1 +1,1 @@
-787.cheapest-flights-within-k-stops.cpp
+../../Medium/787.cheapest-flights-within-k-stops.cpp
