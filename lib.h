@@ -4,6 +4,7 @@
 #include <sstream>
 #include <stack>
 #include <list>
+#include <climits>
 
 using namespace std;
 
