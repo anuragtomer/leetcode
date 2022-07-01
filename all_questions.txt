@@ -4,6 +4,8 @@ https://leetcode.com/problems/avoid-flood-in-the-city/
 https://leetcode.com/problems/backspace-string-compare/
 https://leetcode.com/problems/beautiful-arrangement-ii/
 https://leetcode.com/problems/beautiful-array/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
@@ -11,6 +13,7 @@ https://leetcode.com/problems/binary-tree-level-order-traversal/
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
 https://leetcode.com/problems/binary-tree-right-side-view/
 https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+https://leetcode.com/problems/bulls-and-cows/
 https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 https://leetcode.com/problems/car-pooling/
 https://leetcode.com/problems/check-if-n-and-its-double-exist/
@@ -57,6 +60,7 @@ https://leetcode.com/problems/find-largest-value-in-each-tree-row/
 https://leetcode.com/problems/find-median-from-data-stream/
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 https://leetcode.com/problems/find-pivot-index/
+https://leetcode.com/problems/find-positive-integer-solution-for-a-given-equation/
 https://leetcode.com/problems/find-the-difference/
 https://leetcode.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k/
 https://leetcode.com/problems/first-missing-positive/
@@ -82,6 +86,7 @@ https://leetcode.com/problems/intersection-of-two-arrays/
 https://leetcode.com/problems/invert-binary-tree/
 https://leetcode.com/problems/is-subsequence/
 https://leetcode.com/problems/island-perimeter/
+https://leetcode.com/problems/isomorphic-strings/
 https://leetcode.com/problems/jump-game-ii/
 https://leetcode.com/problems/jump-game-iii/
 https://leetcode.com/problems/jump-game-iv/
@@ -97,6 +102,7 @@ https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
 https://leetcode.com/problems/largest-rectangle-in-histogram/
 https://leetcode.com/problems/largest-time-for-given-digits/
 https://leetcode.com/problems/letter-combinations-of-a-phone-number/
+https://leetcode.com/problems/logger-rate-limiter/
 https://leetcode.com/problems/longest-consecutive-sequence/
 https://leetcode.com/problems/longest-increasing-subsequence/
 https://leetcode.com/problems/longest-mountain-in-array/
@@ -246,6 +252,7 @@ https://www.lintcode.com/problem/595/
 https://www.lintcode.com/problem/614/
 https://www.lintcode.com/problem/634
 https://www.lintcode.com/problem/641/
+https://www.lintcode.com/problem/642/
 https://www.lintcode.com/problem/650/
 https://www.lintcode.com/problem/659/
 https://www.lintcode.com/problem/663/
@@ -260,3 +267,4 @@ https://www.lintcode.com/problem/906/
 https://www.lintcode.com/problem/918/
 https://www.lintcode.com/problem/919/
 https://www.lintcode.com/problem/920/
+https://www.lintcode.com/problem/924/
