@@ -56,8 +56,6 @@ class Solution {
                     zeroInDegree.push(neigh);
             }
         }
-        // for (auto it: inDegree)
-        // cout << it.first << " " << it.second << endl;
         for (auto it : inDegree)
             if (it.second > 0)
                 return "";

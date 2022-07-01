@@ -3,17 +3,24 @@ https://leetcode.com/problems/avoid-flood-in-the-city/
 https://leetcode.com/problems/backspace-string-compare/
 https://leetcode.com/problems/beautiful-arrangement-ii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+https://leetcode.com/problems/binary-tree-maximum-path-sum/
+https://leetcode.com/problems/binary-tree-right-side-view/
 https://leetcode.com/problems/coin-change/
 https://leetcode.com/problems/combination-sum/
 https://leetcode.com/problems/container-with-most-water/
 https://leetcode.com/problems/contains-duplicate-iii/
 https://leetcode.com/problems/continuous-subarray-sum/
+https://leetcode.com/problems/course-schedule-ii/
 https://leetcode.com/problems/course-schedule/
+https://leetcode.com/problems/decode-ways/
 https://leetcode.com/problems/delete-operation-for-two-strings/
 https://leetcode.com/problems/design-add-and-search-words-data-structure/
+https://leetcode.com/problems/edit-distance/
 https://leetcode.com/problems/find-median-from-data-stream/
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 https://leetcode.com/problems/find-pivot-index/
+https://leetcode.com/problems/find-the-difference/
+https://leetcode.com/problems/first-missing-positive/
 https://leetcode.com/problems/flood-fill/
 https://leetcode.com/problems/fruit-into-baskets/
 https://leetcode.com/problems/furthest-building-you-can-reach/
@@ -25,6 +32,7 @@ https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/
 https://leetcode.com/problems/insert-interval/
 https://leetcode.com/problems/jump-game-ii/
 https://leetcode.com/problems/jump-game/
+https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
 https://leetcode.com/problems/largest-rectangle-in-histogram/
 https://leetcode.com/problems/largest-time-for-given-digits/
 https://leetcode.com/problems/longest-consecutive-sequence/
@@ -37,6 +45,7 @@ https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 https://leetcode.com/problems/max-area-of-island/
 https://leetcode.com/problems/maximal-rectangle/
 https://leetcode.com/problems/maximum-binary-tree/
+https://leetcode.com/problems/maximum-depth-of-n-ary-tree/
 https://leetcode.com/problems/maximum-product-subarray/
 https://leetcode.com/problems/maximum-subarray/
 https://leetcode.com/problems/merge-k-sorted-lists/
@@ -54,6 +63,7 @@ https://leetcode.com/problems/non-decreasing-array/
 https://leetcode.com/problems/number-of-1-bits/
 https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
 https://leetcode.com/problems/number-of-good-ways-to-split-a-string/
+https://leetcode.com/problems/number-of-islands/
 https://leetcode.com/problems/ones-and-zeroes/
 https://leetcode.com/problems/online-stock-span/
 https://leetcode.com/problems/pacific-atlantic-water-flow/
@@ -79,6 +89,7 @@ https://leetcode.com/problems/subtree-of-another-tree/
 https://leetcode.com/problems/sum-of-two-integers/
 https://leetcode.com/problems/text-justification/
 https://leetcode.com/problems/two-sum/
+https://leetcode.com/problems/unique-binary-search-trees/
 https://leetcode.com/problems/valid-parentheses/
 https://leetcode.com/problems/valid-parenthesis-string/
 https://leetcode.com/problems/validate-binary-search-tree/
