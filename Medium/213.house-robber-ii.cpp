@@ -29,6 +29,28 @@ class Solution {
                    robber(vector<int>(nums.begin() + 1, nums.end())));
     }
 };
+class Solution {
+  int robber(vector<int> nums) {
+    int n = nums.size();
+    int IRobbed = nums[0], IDidNotRob = 0;
+    for (int i = 1; i < n; ++i) {
+      int lastRobbery = IRobbed;
+      IRobbed = max(IRobbed, IDidNotRob + nums[i]);
+      IDidNotRob = lastRobbery;
+    }
+    return max(IRobbed, IDidNotRob);
+  }
+public:
+  int rob(vector<int>& nums) {
+    int size = nums.size();
+    if (size == 0)
+      return 0;
+    if (size == 1)
+      return nums[0];
+    return max(robber(vector<int>(nums.begin(), nums.begin() + size - 1)), 
+               robber(vector<int>(nums.begin() + 1, nums.end())));
+  }
+};
 
 int main() {
     Solution sol;

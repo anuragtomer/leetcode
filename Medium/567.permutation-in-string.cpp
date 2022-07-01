@@ -86,6 +86,32 @@ class Solution {
     }
     return false;
   }
+  // Similar to above but with lesser putting into map and popping back
+    bool checkInclusion(string s1, string s2) {
+    if (s2.size() < s1.size())
+      return false;
+    if (s1.empty())
+      return true;
+    int pendingMatches = s1.size();
+    vector<int> counts1(128, 0), counts2(128, 0);
+    for (auto &ch: s1)
+      counts1[ch]++;
+    for (int i = 0, n = s1.size(); i < s2.size(); ++i) {
+      if (i >= n && counts1[s2[i - n]] > 0) {
+        --counts2[s2[i - n]];
+        if (counts2[s2[i - n]] < counts1[s2[i - n]])
+          ++pendingMatches;
+      }
+      if (counts1[s2[i]] > 0) {
+        counts2[s2[i]]++;
+        if (counts2[s2[i]] <= counts1[s2[i]])
+          --pendingMatches;
+      }
+      if (pendingMatches == 0)
+        return true;
+    }
+    return false;
+  }
 };
 // @lc code=end
 
