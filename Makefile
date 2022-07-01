@@ -9,5 +9,4 @@ main.exe: $(OBJ_FILES)
 		g++ $(CPPFLAGS) -c -o $@ $<
 
 clean:
-	    rm *.exe
-	    rm *.o
+	    rm *.exe >> /dev/null 2> /dev/null; rm *.o >> /dev/null 2> /dev/null; rm *.out >> /dev/null 2> /dev/null
