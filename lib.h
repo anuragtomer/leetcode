@@ -3,8 +3,10 @@
 #include <vector>
 #include <sstream>
 #include <stack>
+#include <list>
 
 using namespace std;
+
 struct TreeNode {
 	int val;
 	TreeNode * left;
@@ -20,6 +22,7 @@ struct ListNode {
 	}
 };
 
+// Given a space separated string of integers, return a tree with the same level order traversal.
 TreeNode * createTree() {
 	string input;
 	getline(cin, input);
@@ -54,6 +57,7 @@ ListNode * createList() {
     return NULL;
 }
 
+// Given a root, prints the tree.
 void printTree(TreeNode * head) {
 	TreeNode * temp = head;
 	stack<TreeNode *> st;
@@ -76,6 +80,8 @@ void printTree(TreeNode * head) {
 		if (temp->left) st.push(temp->left);
 	}
 }
+
+// Takes in space separated integers and returns a vector of integers.
 vector <int> createVector() {
 	string str;
 	getline(cin, str);
@@ -88,4 +94,10 @@ vector <int> createVector() {
 		input.push_back(i);
 	}
     return input;
+}
+
+// Prints vector of integers.
+void printVector(vector<int> vec) {
+    for (int i: vec)
+        cout << i << " ";
 }
