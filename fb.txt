@@ -12,6 +12,7 @@ https://leetcode.com/problems/goat-latin/
 https://leetcode.com/problems/hamming-distance/
 https://leetcode.com/problems/increasing-order-search-tree/
 https://leetcode.com/problems/increasing-triplet-subsequence/
+https://leetcode.com/problems/insert-delete-getrandom-o1/
 https://leetcode.com/problems/intersection-of-two-arrays-ii/
 https://leetcode.com/problems/intersection-of-two-arrays/
 https://leetcode.com/problems/koko-eating-bananas/
@@ -21,14 +22,17 @@ https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 https://leetcode.com/problems/monotonic-array/
 https://leetcode.com/problems/move-zeroes/
+https://leetcode.com/problems/multiply-strings/
 https://leetcode.com/problems/path-sum-iii/
 https://leetcode.com/problems/product-of-array-except-self/
+https://leetcode.com/problems/recover-binary-search-tree/
 https://leetcode.com/problems/simplify-path/
 https://leetcode.com/problems/subarray-sum-equals-k/
 https://leetcode.com/problems/subtree-of-another-tree/
 https://leetcode.com/problems/sum-of-left-leaves/
 https://leetcode.com/problems/third-maximum-number/
 https://leetcode.com/problems/total-hamming-distance/
+https://leetcode.com/problems/two-sum-iv-input-is-a-bst/
 https://leetcode.com/problems/verifying-an-alien-dictionary/
 https://www.lintcode.com/problem/1396/
 https://www.lintcode.com/problem/1397/
@@ -54,7 +58,11 @@ https://www.lintcode.com/problem/521
 https://www.lintcode.com/problem/586/
 https://www.lintcode.com/problem/599/
 https://www.lintcode.com/problem/60
+https://www.lintcode.com/problem/620/
 https://www.lintcode.com/problem/640/
+https://www.lintcode.com/problem/651/
+https://www.lintcode.com/problem/689/
+https://www.lintcode.com/problem/719/
 https://www.lintcode.com/problem/720/
 https://www.lintcode.com/problem/846
 https://www.lintcode.com/problem/895/
