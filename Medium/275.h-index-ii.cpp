@@ -6,17 +6,19 @@ using namespace std;
 class Solution {
    public:
     int hIndex(vector<int> &citations) {
-        int size = citations.size(), first = 0, mid, count = size, step;
-        while (count > 0) {
-            step = count / 2;
-            mid = first + step;
-            if (citations[mid] < size - mid) {
-                first = mid + 1;
-                count -= (step + 1);
+        int n = citations.size();
+        if (n == 0)
+            return 0;
+        int low = 0, high = n - 1, ans = 0;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (citations[mid] >= n - mid) {
+                ans = n - mid;
+                high = mid - 1;
             } else
-                count = step;
+                low = mid + 1;
         }
-        return size - first;
+        return ans;
     }
 };
 
