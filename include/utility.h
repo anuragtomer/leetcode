@@ -43,7 +43,7 @@ vector<int> split(const string &s) {
  * @param input given input using which tree has to be formed.
  * @return ListNode * head of list formed by input.
  **/
-ListNode *createList(string input) {
+ListNode *stringToList(string input) {
     vector<int> inputs = split(input);
     ListNode *head = nullptr;
     ListNode *temp = nullptr;
