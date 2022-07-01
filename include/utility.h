@@ -194,3 +194,9 @@ void printLevelTree(TreeNode *root) {
         }
     }
 }
+template <class T>
+void testResp(T output, T resp) {
+    assert(output.size() == resp.size());
+    for (int i = 0; i < output.size(); ++i)
+        assert(output[i] == resp[i]);
+}
