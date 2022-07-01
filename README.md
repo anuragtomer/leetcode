@@ -21,5 +21,7 @@
 
 <h2> Hard </h2>
 
+[Median of two sorted arrays](Hard/4.median-of-two-sorted-arrays.cpp) - https://leetcode.com/problems/median-of-two-sorted-arrays/
+
 [Ballon bursting problem](Hard/312.burst-balloons.cpp) - https://leetcode.com/problems/burst-balloons/  
 
