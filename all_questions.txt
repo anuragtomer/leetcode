@@ -30,6 +30,7 @@ https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
 https://leetcode.com/problems/divide-two-integers/
 https://leetcode.com/problems/edit-distance/
 https://leetcode.com/problems/eliminate-maximum-number-of-monsters/
+https://leetcode.com/problems/employee-importance/
 https://leetcode.com/problems/evaluate-division/
 https://leetcode.com/problems/evaluate-reverse-polish-notation/
 https://leetcode.com/problems/exclusive-time-of-functions/
@@ -46,6 +47,7 @@ https://leetcode.com/problems/find-pivot-index/
 https://leetcode.com/problems/find-the-difference/
 https://leetcode.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k/
 https://leetcode.com/problems/first-missing-positive/
+https://leetcode.com/problems/flip-equivalent-binary-trees/
 https://leetcode.com/problems/flip-string-to-monotone-increasing/
 https://leetcode.com/problems/flood-fill/
 https://leetcode.com/problems/fruit-into-baskets/
@@ -141,6 +143,7 @@ https://leetcode.com/problems/predict-the-winner/
 https://leetcode.com/problems/product-of-array-except-self/
 https://leetcode.com/problems/push-dominoes/
 https://leetcode.com/problems/range-addition-ii/
+https://leetcode.com/problems/range-sum-of-bst/
 https://leetcode.com/problems/rearrange-words-in-a-sentence/
 https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix/
 https://leetcode.com/problems/rectangle-overlap/
