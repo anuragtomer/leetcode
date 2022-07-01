@@ -5,21 +5,20 @@
 using namespace std;
 
 class Solution {
-   public:
-    int hammingWeight(uint32_t n) {
-        int count = 0;
-        while (n) {
-            ++count;
-            n = n & (n - 1);
-        }
-        return count;
+ public:
+  int hammingWeight(uint32_t n) {
+    int count = 0;
+    while (n) {
+      ++count;
+      n = n & (n - 1);
     }
+    return count;
+  }
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    assert(3 == sol.hammingWeight(11));
-    return 0;
+  assert(3 == sol.hammingWeight(11));
+  return 0;
 }
-
