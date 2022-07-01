@@ -5,7 +5,7 @@ using namespace std;
 
 class Solution {
    public:
-    bool canJump(vector<int> &nums) {
+    /* bool canJump(vector<int> &nums) {
         vector<bool> reach(nums.size(), false);
         reach[0] = true;
         for (auto i = 0; i < nums.size(); i++) {
@@ -18,6 +18,16 @@ class Solution {
             }
         }
         return reach[nums.size() - 1] == true;
+    } */
+    bool canJump(vector<int> &nums) {
+        int reach = 0;
+        int n = nums.size() - 1;
+        for (int i = 0; i <= reach; i++) {
+            reach = max(reach, i + nums[i]);
+            if (reach >= n)
+                return true;
+        }
+        return false;
     }
 };
 
