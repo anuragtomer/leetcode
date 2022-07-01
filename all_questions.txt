@@ -1,9 +1,11 @@
+https://leetcode.com/problems/3sum/
 https://leetcode.com/problems/avoid-flood-in-the-city/
 https://leetcode.com/problems/backspace-string-compare/
 https://leetcode.com/problems/beautiful-arrangement-ii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://leetcode.com/problems/coin-change/
 https://leetcode.com/problems/combination-sum/
+https://leetcode.com/problems/container-with-most-water/
 https://leetcode.com/problems/contains-duplicate-iii/
 https://leetcode.com/problems/continuous-subarray-sum/
 https://leetcode.com/problems/course-schedule/
@@ -83,10 +85,10 @@ https://leetcode.com/problems/validate-binary-search-tree/
 https://leetcode.com/problems/verifying-an-alien-dictionary/
 https://leetcode.com/problems/wildcard-matching/
 https://leetcode.com/problems/word-search/
+https://www.lintcode.com/problem/178/
 https://www.lintcode.com/problem/659/
 https://www.lintcode.com/problem/878/
+https://www.lintcode.com/problem/892/
 https://www.lintcode.com/problem/898/
-https://www.lintcode.com/problem/920/
-https://leetcode.com/problems/3sum/
-https://leetcode.com/problems/container-with-most-water/
 https://www.lintcode.com/problem/919/
+https://www.lintcode.com/problem/920/
