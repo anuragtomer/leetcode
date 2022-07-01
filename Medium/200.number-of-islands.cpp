@@ -24,7 +24,6 @@ class Solution {
 public:
     int numIslands(vector< vector<char> >& grid) {
         int count = 0;
-        int n = grid.size();
         
         for (int i = 0; i < grid.size(); ++i)
             for (int j = 0; j < grid[i].size(); ++j)

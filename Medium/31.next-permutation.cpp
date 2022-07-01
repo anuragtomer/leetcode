@@ -12,9 +12,9 @@ using namespace std;
 class Solution {
 public:
     void swap(int &a, int &b) {
-        int temp = a; // = a + b; // a + b
-        a = b; //b = a - b; // a + b - b = a
-        b = temp; //a - b; // a + b - a = b
+        int temp = a;
+        a = b;
+        b = temp;
     }
 
     void reverse(vector<int> &nums, int beg, int end) {

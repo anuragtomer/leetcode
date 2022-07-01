@@ -3,10 +3,10 @@
  *
  * [53] Maximum Subarray
  */
-/* #include <vector>
+#include <vector>
 #include <iostream>
 using namespace std;
- */
+
 // @lc code=start
 class Solution {
 public:
@@ -20,7 +20,7 @@ public:
     }
 };
 // @lc code=end
-/* 
+
 int main() {
     Solution sol;
     int n;
@@ -30,4 +30,4 @@ int main() {
         cin >> nums[i];
     cout << sol.maxSubArray(nums);
     return 0;
-} */
+}

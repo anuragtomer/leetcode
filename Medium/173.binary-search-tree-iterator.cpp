@@ -20,10 +20,8 @@ struct TreeNode {
 class BSTIterator {
     stack<TreeNode *> st;
     void populateStack(TreeNode * root) {
-        if (root != nullptr)
+        while(root != nullptr) {
             st.push(root);
-        while(root != nullptr && root->left != nullptr) {
-            st.push(root->left);
             root = root->left;
         }
     }

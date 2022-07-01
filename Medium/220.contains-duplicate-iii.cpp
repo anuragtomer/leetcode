@@ -17,10 +17,10 @@ public:
         set<long>record;
         int nLen = nums.size();
         for (int i = 0; i < nLen; ++i) {
-            if (i > k)
-                record.erase(nums[i - k - 1]);         
-            set<long>::iterator lower = record.lower_bound((long)nums[i] - t);
-            if (lower != record.end() && abs(nums[i] - *lower) <= t)
+            if (i > k) // If no of we have crossed the boundary of allowed index, start deleting elements in set from begining.
+                record.erase(nums[i - k - 1]); // Delete the first element in record
+            set<long>::iterator justGreater = record.lower_bound((long)nums[i] - t);
+            if (justGreater != record.end() && abs(nums[i] - *justGreater) <= t)
                 return true;
             record.insert(nums[i]);
         }

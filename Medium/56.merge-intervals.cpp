@@ -31,6 +31,24 @@ public:
                 outputSz++;
             }
         }
+        /* Alternatively:
+        vector<vector<int>> output;
+        vector<int> temp(2, 0);
+        temp[0] = intervals[0][0];
+        temp[1] = intervals[0][1];
+        for (unsigned int i = 1; i < intervals.size(); ++i) {
+            if (temp[1] >= interval[i][0]) {
+                // Keep updating the end of the interval. 
+                temp[1] = max(intervals[i][1], temp[1]);
+            } else {
+                // Add temp to output, Start new interval.
+                output.push_back(temp);
+                temp[0] = intervals[i][0];
+                temp[1] = intervals[i][1];
+            }
+        }
+        output.push_back(temp);
+        */
         return output;
     }
 };

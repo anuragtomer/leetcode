@@ -6,6 +6,7 @@ class Solution {
 
     int searchRecursiveLower(vector<int> nums, int lb, int ub, int target) {
         if (lb+1 >= ub) {
+            // Stop when there are two elements. Give preference to lb.
             if (nums[lb] == target)
                 return lb;
             else 
@@ -20,6 +21,7 @@ class Solution {
 
     int searchRecursiveHigher(vector<int> nums, int lb, int ub, int target) {
         if (lb+1 >= ub) {
+            // Stop when there are two elements. Give preference to ub.
             if (nums[ub] == target)
                 return ub;
             else 
@@ -67,7 +69,7 @@ public:
 int main(void)
 {
     Solution sol;
-    int count = 0, total = 3;
+    int count = 0, total = 4;
     vector<int> output;
     std::vector<int> nums;
     nums = {1, 5, 5, 7, 7, 10};
@@ -80,6 +82,10 @@ int main(void)
     nums = {1,2,3,3,3,3,4,5,9};
     output = sol.searchRange(nums, 3);
     if (output[0] == 2 && output[1] == 5)
+        count++;
+    nums = {1};
+    output = sol.searchRange(nums, 1);
+    if (output[0] == 0 && output[1] == 0)
         count++;
     cout << count << "/"<< total << " test cases passed.\n";
     return 0;

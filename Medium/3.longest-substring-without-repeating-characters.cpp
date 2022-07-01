@@ -31,16 +31,33 @@ public:
         }
         return max(maxSize, currSize);
     } */
+    /* Idea:
+     * We are trying to maintain a sliding window.
+     * Sliding window slides from i to j, where i and j increments one by one. 
+     * i is incremented if str[i] is already a part of current substring. j is incremented if str[j]
+     * is not part of current substring. Ultimately, we return the max substring length we saw
+     * during our traversal over str. This is O(n) algo.
+     * 
+     * The following implementation is a minor modification of that. Lets say we save index of each 
+     * char seen till now in hash. Now, if str[j] is already seen before, we should update our i to 
+     * str[j] and save the new index. This is because :
+     * Lets say we were traversing 'abccbcbb'. When we reach index 3 c, we know that we have already
+     * seen this c before at index 2. Now, any substring starting at index before 2, ending at index
+     * 3 would have 2 occurances of c. So, we should skip all those. So, we update our i to 
+     * hash[str[j]]+1, and save hash[str[j]] = j; So our algo will be even faster. It would still be
+     * O(n) but still better.
+     * 
+     */
     int lengthOfLongestSubstring(string s) {
         int hash[256];
         memset(hash, -1, 256 * sizeof(int));
-        int m = 0;
+        int i = 0;
         int len = 0;
         int stringsize = s.size();
-        for (int i = 0; i < stringsize; i++) {
-            m = max(hash[s[i]] + 1, m);
-            len = max(len, i - m + 1);
-            hash[s[i]] = i;
+        for (int j = 0; j < stringsize; j++) {
+            i = max(hash[s[j]] + 1, i);
+            len = max(len, j - i + 1);
+            hash[s[j]] = j;
         }
         return len;
     }
