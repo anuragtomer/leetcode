@@ -142,6 +142,7 @@ https://leetcode.com/problems/minimum-operations-to-make-a-subsequence/
 https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
 https://leetcode.com/problems/minimum-sideway-jumps/
 https://leetcode.com/problems/minimum-size-subarray-sum/
+https://leetcode.com/problems/missing-element-in-sorted-array/
 https://leetcode.com/problems/missing-number/
 https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
 https://leetcode.com/problems/multiply-strings/
@@ -154,6 +155,7 @@ https://leetcode.com/problems/next-permutation/
 https://leetcode.com/problems/non-decreasing-array/
 https://leetcode.com/problems/non-overlapping-intervals/
 https://leetcode.com/problems/number-of-1-bits/
+https://leetcode.com/problems/number-of-boomerangs/
 https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
 https://leetcode.com/problems/number-of-equivalent-domino-pairs/
 https://leetcode.com/problems/number-of-good-ways-to-split-a-string/
@@ -215,6 +217,7 @@ https://leetcode.com/problems/sum-of-subarray-minimums/
 https://leetcode.com/problems/sum-of-two-integers/
 https://leetcode.com/problems/summary-ranges/
 https://leetcode.com/problems/super-ugly-number/
+https://leetcode.com/problems/swap-adjacent-in-lr-string/
 https://leetcode.com/problems/swim-in-rising-water/
 https://leetcode.com/problems/target-sum/
 https://leetcode.com/problems/text-justification/
@@ -236,6 +239,8 @@ https://leetcode.com/problems/wildcard-matching/
 https://leetcode.com/problems/word-ladder/
 https://leetcode.com/problems/word-search/
 https://leetcode.com/problems/zigzag-conversion/
+https://www.lintcode.com/problem/1534/
+https://www.lintcode.com/problem/1579/
 https://www.lintcode.com/problem/178/
 https://www.lintcode.com/problem/1832/
 https://www.lintcode.com/problem/1862/
@@ -269,3 +274,4 @@ https://www.lintcode.com/problem/918/
 https://www.lintcode.com/problem/919/
 https://www.lintcode.com/problem/920/
 https://www.lintcode.com/problem/924/
+https://www.lintcode.com/problem/928/
