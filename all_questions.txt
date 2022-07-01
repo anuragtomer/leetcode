@@ -7,8 +7,11 @@ https://leetcode.com/problems/beautiful-array/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
+https://leetcode.com/problems/binary-tree-level-order-traversal/
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
 https://leetcode.com/problems/binary-tree-right-side-view/
+https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/
 https://leetcode.com/problems/car-pooling/
 https://leetcode.com/problems/check-if-n-and-its-double-exist/
 https://leetcode.com/problems/coin-change/
@@ -20,6 +23,8 @@ https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-tr
 https://leetcode.com/problems/container-with-most-water/
 https://leetcode.com/problems/contains-duplicate-iii/
 https://leetcode.com/problems/continuous-subarray-sum/
+https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/
+https://leetcode.com/problems/copy-list-with-random-pointer/
 https://leetcode.com/problems/corporate-flight-bookings/
 https://leetcode.com/problems/count-good-numbers/
 https://leetcode.com/problems/count-square-submatrices-with-all-ones/
@@ -41,6 +46,7 @@ https://leetcode.com/problems/evaluate-reverse-polish-notation/
 https://leetcode.com/problems/exclusive-time-of-functions/
 https://leetcode.com/problems/expressive-words/
 https://leetcode.com/problems/find-all-duplicates-in-an-array/
+https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
 https://leetcode.com/problems/find-and-replace-in-string/
 https://leetcode.com/problems/find-and-replace-pattern/
 https://leetcode.com/problems/find-duplicate-subtrees/
@@ -52,6 +58,7 @@ https://leetcode.com/problems/find-pivot-index/
 https://leetcode.com/problems/find-the-difference/
 https://leetcode.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k/
 https://leetcode.com/problems/first-missing-positive/
+https://leetcode.com/problems/flatten-binary-tree-to-linked-list/
 https://leetcode.com/problems/flip-equivalent-binary-trees/
 https://leetcode.com/problems/flip-string-to-monotone-increasing/
 https://leetcode.com/problems/flood-fill/
@@ -71,6 +78,7 @@ https://leetcode.com/problems/insert-interval/
 https://leetcode.com/problems/insert-into-a-binary-search-tree/
 https://leetcode.com/problems/intersection-of-two-arrays/
 https://leetcode.com/problems/invert-binary-tree/
+https://leetcode.com/problems/is-subsequence/
 https://leetcode.com/problems/jump-game-ii/
 https://leetcode.com/problems/jump-game/
 https://leetcode.com/problems/knight-dialer/
@@ -96,6 +104,7 @@ https://leetcode.com/problems/max-consecutive-ones-iii/
 https://leetcode.com/problems/max-consecutive-ones/
 https://leetcode.com/problems/maximal-rectangle/
 https://leetcode.com/problems/maximum-binary-tree/
+https://leetcode.com/problems/maximum-depth-of-binary-tree/
 https://leetcode.com/problems/maximum-depth-of-n-ary-tree/
 https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
 https://leetcode.com/problems/maximum-product-subarray/
@@ -103,8 +112,10 @@ https://leetcode.com/problems/maximum-subarray/
 https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/
 https://leetcode.com/problems/merge-intervals/
 https://leetcode.com/problems/merge-k-sorted-lists/
+https://leetcode.com/problems/merge-two-binary-trees/
 https://leetcode.com/problems/merge-two-sorted-lists/
 https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/
+https://leetcode.com/problems/minimum-depth-of-binary-tree/
 https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/
 https://leetcode.com/problems/minimum-falling-path-sum/
 https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
@@ -141,7 +152,9 @@ https://leetcode.com/problems/palindrome-linked-list/
 https://leetcode.com/problems/palindromic-substrings/
 https://leetcode.com/problems/partition-equal-subset-sum/
 https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
+https://leetcode.com/problems/path-sum/
 https://leetcode.com/problems/perfect-squares/
+https://leetcode.com/problems/permutations/
 https://leetcode.com/problems/plus-one/
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
 https://leetcode.com/problems/positions-of-large-groups/
@@ -155,10 +168,12 @@ https://leetcode.com/problems/range-sum-of-bst/
 https://leetcode.com/problems/rearrange-words-in-a-sentence/
 https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix/
 https://leetcode.com/problems/rectangle-overlap/
+https://leetcode.com/problems/remove-duplicate-letters/
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 https://leetcode.com/problems/reorganize-string/
 https://leetcode.com/problems/reshape-the-matrix/
 https://leetcode.com/problems/reverse-linked-list/
+https://leetcode.com/problems/rotate-array/
 https://leetcode.com/problems/rotting-oranges/
 https://leetcode.com/problems/score-of-parentheses/
 https://leetcode.com/problems/search-a-2d-matrix-ii/
@@ -209,9 +224,12 @@ https://www.lintcode.com/problem/444/
 https://www.lintcode.com/problem/448/
 https://www.lintcode.com/problem/474/
 https://www.lintcode.com/problem/508/
+https://www.lintcode.com/problem/595/
+https://www.lintcode.com/problem/614/
 https://www.lintcode.com/problem/641/
 https://www.lintcode.com/problem/650/
 https://www.lintcode.com/problem/659/
+https://www.lintcode.com/problem/663/
 https://www.lintcode.com/problem/878/
 https://www.lintcode.com/problem/883/
 https://www.lintcode.com/problem/892/
