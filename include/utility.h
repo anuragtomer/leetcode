@@ -5,6 +5,94 @@
 #include <sstream>
 #include <vector>
 using namespace std;
+
+/*
+ * List related functions
+ */
+
+/**
+ * Definition of linked list node.
+ */
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr){};
+    ListNode(int x) : val(x), next(nullptr){};
+    ListNode(int x, ListNode *next) : val(x), next(next){};
+};
+
+/**
+ * Splits the given string by delimiter.
+ * 
+ * @param s input string to be split.
+ * @param delimiter char that defines the delimiter in the string.
+ * @return vector<string> containing the splitted strings from given input string.
+ */
+vector<int> split(const string &s) {
+    vector<int> tokens;
+    string token;
+    istringstream tokenStream(s);
+    while (getline(tokenStream, token, ',')) {
+        tokens.push_back(stoi(token));
+    }
+    return tokens;
+}
+
+/**
+ * Given a space separated string of integers, return a list with those elements.
+ * @param input given input using which tree has to be formed.
+ * @return ListNode * head of list formed by input.
+ **/
+ListNode *createList(string input) {
+    vector<int> inputs = split(input);
+    ListNode *head = nullptr;
+    ListNode *temp = nullptr;
+    for (auto num : inputs) {
+        if (!head) {
+            head = new ListNode(num);
+            temp = head;
+        } else {
+            temp->next = new ListNode(num);
+            temp = temp->next;
+        }
+    }
+    return head;
+}
+
+/**
+ * Converts given list headed at "head" to a comma separated string.
+ * 
+ * @param head head of linked list.
+ * @return string Corresponding string equivalent of list.
+ */
+string stringFromList(ListNode *head) {
+    string str;
+    while (head) {
+        str.append(to_string(head->val));
+        str.push_back(',');
+        head = head->next;
+    }
+    str.pop_back();
+    return str;
+}
+
+/**
+ * Frees the memory allocated for the list headed at "head"
+ * 
+ * @param head head of the list to be freed.
+ */
+void deleteList(ListNode *head) {
+    ListNode *temp;
+    while (head) {
+        temp = head;
+        head = head->next;
+        delete temp;
+    }
+}
+/*
+ * Tree Related functions.
+ */
+
 /**
  * Definition for a binary tree node.
  */
