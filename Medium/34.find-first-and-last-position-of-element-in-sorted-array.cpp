@@ -3,13 +3,13 @@
 using namespace std;
 
 class Solution {
-
+    /*
     int searchRecursiveLower(vector<int> nums, int lb, int ub, int target) {
         if (lb+1 >= ub) {
             // Stop when there are two elements. Give preference to lb.
             if (nums[lb] == target)
                 return lb;
-            else 
+            else
                 return ub;
         }
         int mid = lb + (ub - lb)/2;
@@ -24,7 +24,7 @@ class Solution {
             // Stop when there are two elements. Give preference to ub.
             if (nums[ub] == target)
                 return ub;
-            else 
+            else
                 return lb;
         }
         int mid = lb + (ub - lb)/2;
@@ -46,13 +46,40 @@ class Solution {
             return output;
         } else if (nums[mid] < target)
             return searchRecursive(nums, mid+1, ub, target);
-        else 
+        else
             return searchRecursive(nums, lb, mid-1, target);
     }
 
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
         return searchRecursive(nums, 0, nums.size() - 1, target);
+    }
+    */
+    // Another solution using binary_search
+    int first_pos(vector<int> &nums, int target) {
+        int n = nums.size();
+        int first = n;
+        int start = 0, end = n - 1;
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] >= target) {
+                first = mid;
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return first;
+    }
+
+   public:
+    vector<int> searchRange(vector<int> &nums, int target) {
+        int lower = first_pos(nums, target);
+        int higher = first_pos(nums, target + 1) - 1;
+        if (higher >= lower)
+            return {lower, higher};
+        else
+            return {-1, -1};
     }
     // Another cool solution:
     /*vector<int> searchRange(vector<int>& ns, int t) {
@@ -63,11 +90,9 @@ public:
             return {-1,-1};
         }
     }*/
-    
 };
 
-int main(void)
-{
+int main(void) {
     Solution sol;
     int count = 0, total = 4;
     vector<int> output;
@@ -79,7 +104,7 @@ int main(void)
     output = sol.searchRange(nums, 6);
     if (output[0] == -1 && output[1] == -1)
         count++;
-    nums = {1,2,3,3,3,3,4,5,9};
+    nums = {1, 2, 3, 3, 3, 3, 4, 5, 9};
     output = sol.searchRange(nums, 3);
     if (output[0] == 2 && output[1] == 5)
         count++;
@@ -87,6 +112,6 @@ int main(void)
     output = sol.searchRange(nums, 1);
     if (output[0] == 0 && output[1] == 0)
         count++;
-    cout << count << "/"<< total << " test cases passed.\n";
+    cout << count << "/" << total << " test cases passed.\n";
     return 0;
 }
