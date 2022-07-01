@@ -1,8 +1,13 @@
 https://leetcode.com/problems/average-of-levels-in-binary-tree/
 https://leetcode.com/problems/binary-tree-paths/
+https://leetcode.com/problems/combination-sum-iv/
 https://leetcode.com/problems/count-and-say/
+https://leetcode.com/problems/course-schedule-ii/
+https://leetcode.com/problems/decode-string/
+https://leetcode.com/problems/design-add-and-search-words-data-structure/
 https://leetcode.com/problems/diameter-of-binary-tree/
 https://leetcode.com/problems/excel-sheet-column-title/
+https://leetcode.com/problems/flatten-nested-list-iterator/
 https://leetcode.com/problems/goat-latin/
 https://leetcode.com/problems/hamming-distance/
 https://leetcode.com/problems/increasing-order-search-tree/
@@ -13,10 +18,12 @@ https://leetcode.com/problems/koko-eating-bananas/
 https://leetcode.com/problems/leaf-similar-trees/
 https://leetcode.com/problems/longest-continuous-increasing-subsequence/
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
 https://leetcode.com/problems/monotonic-array/
 https://leetcode.com/problems/move-zeroes/
 https://leetcode.com/problems/path-sum-iii/
 https://leetcode.com/problems/product-of-array-except-self/
+https://leetcode.com/problems/simplify-path/
 https://leetcode.com/problems/subarray-sum-equals-k/
 https://leetcode.com/problems/subtree-of-another-tree/
 https://leetcode.com/problems/sum-of-left-leaves/
@@ -44,7 +51,10 @@ https://www.lintcode.com/problem/408/
 https://www.lintcode.com/problem/415/
 https://www.lintcode.com/problem/469
 https://www.lintcode.com/problem/521
+https://www.lintcode.com/problem/586/
+https://www.lintcode.com/problem/599/
 https://www.lintcode.com/problem/60
+https://www.lintcode.com/problem/640/
 https://www.lintcode.com/problem/720/
 https://www.lintcode.com/problem/846
 https://www.lintcode.com/problem/895/
