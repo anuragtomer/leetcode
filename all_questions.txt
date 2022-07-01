@@ -99,6 +99,7 @@ https://leetcode.com/problems/number-of-islands-ii/
 https://leetcode.com/problems/number-of-islands/
 https://leetcode.com/problems/number-of-provinces/
 https://leetcode.com/problems/number-of-substrings-with-only-1s/
+https://leetcode.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps/
 https://leetcode.com/problems/ones-and-zeroes/
 https://leetcode.com/problems/online-stock-span/
 https://leetcode.com/problems/open-the-lock/
@@ -148,6 +149,8 @@ https://leetcode.com/problems/verifying-an-alien-dictionary/
 https://leetcode.com/problems/wildcard-matching/
 https://leetcode.com/problems/word-search/
 https://www.lintcode.com/problem/178/
+https://www.lintcode.com/problem/1832/
+https://www.lintcode.com/problem/1862/
 https://www.lintcode.com/problem/199/
 https://www.lintcode.com/problem/209/
 https://www.lintcode.com/problem/293/
