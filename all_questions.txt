@@ -16,6 +16,7 @@ https://leetcode.com/problems/course-schedule-ii/
 https://leetcode.com/problems/course-schedule/
 https://leetcode.com/problems/decode-string/
 https://leetcode.com/problems/decode-ways/
+https://leetcode.com/problems/delete-nodes-and-return-forest/
 https://leetcode.com/problems/delete-operation-for-two-strings/
 https://leetcode.com/problems/design-add-and-search-words-data-structure/
 https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
@@ -63,6 +64,7 @@ https://leetcode.com/problems/maximum-depth-of-n-ary-tree/
 https://leetcode.com/problems/maximum-points-you-can-obtain-from-cards/
 https://leetcode.com/problems/maximum-product-subarray/
 https://leetcode.com/problems/maximum-subarray/
+https://leetcode.com/problems/maximum-sum-of-two-non-overlapping-subarrays/
 https://leetcode.com/problems/merge-k-sorted-lists/
 https://leetcode.com/problems/merge-two-sorted-lists/
 https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/
