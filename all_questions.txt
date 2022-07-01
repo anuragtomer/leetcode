@@ -34,6 +34,7 @@ https://leetcode.com/problems/evaluate-division/
 https://leetcode.com/problems/evaluate-reverse-polish-notation/
 https://leetcode.com/problems/exclusive-time-of-functions/
 https://leetcode.com/problems/expressive-words/
+https://leetcode.com/problems/find-all-duplicates-in-an-array/
 https://leetcode.com/problems/find-and-replace-in-string/
 https://leetcode.com/problems/find-and-replace-pattern/
 https://leetcode.com/problems/find-duplicate-subtrees/
@@ -54,6 +55,7 @@ https://leetcode.com/problems/gray-code/
 https://leetcode.com/problems/h-index/
 https://leetcode.com/problems/heaters/
 https://leetcode.com/problems/house-robber-ii/
+https://leetcode.com/problems/house-robber-iii/
 https://leetcode.com/problems/house-robber/
 https://leetcode.com/problems/implement-trie-prefix-tree/
 https://leetcode.com/problems/increasing-triplet-subsequence/
@@ -75,6 +77,7 @@ https://leetcode.com/problems/longest-consecutive-sequence/
 https://leetcode.com/problems/longest-increasing-subsequence/
 https://leetcode.com/problems/longest-mountain-in-array/
 https://leetcode.com/problems/longest-palindromic-substring/
+https://leetcode.com/problems/longest-repeating-character-replacement/
 https://leetcode.com/problems/longest-string-chain/
 https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
 https://leetcode.com/problems/longest-substring-without-repeating-characters/
@@ -191,6 +194,7 @@ https://www.lintcode.com/problem/209/
 https://www.lintcode.com/problem/293/
 https://www.lintcode.com/problem/331/
 https://www.lintcode.com/problem/391/
+https://www.lintcode.com/problem/444/
 https://www.lintcode.com/problem/448/
 https://www.lintcode.com/problem/474/
 https://www.lintcode.com/problem/508/
