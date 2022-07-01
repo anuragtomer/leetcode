@@ -1,3 +1,33 @@
+/*
+ * Aim: Given a list of first-come-first orders, return an order list of how orders should be
+ * delivered.
+ * Each order is of the following form:
+ * 1. Each order would have a unique identifier to begin with.
+ * 2. For a prime order, there would be strings of alphabetic identifiers post the unique identifier. This
+ *    string of identifier need not be unique.
+ * 3. For a non-prime order, there would be a strings of numeric identifiers post the unique identifier.
+ *
+ * Following would be the constraints:
+ * 1. We cater to prime orders first, then non-prime orders.
+ * 2. We sort prime orders by name-identifier of the orders.
+ * 3. Only in case of clash, we stick to unique identifier to break the draw.
+ * 4. For non-prime orders, we order them first-come-first-serve.
+ *
+ * Example:
+ * Input:
+ *   OrderList:
+ *   mi2 jog mid pet
+ *   wz3 34 54 398
+ *   a1 alps cow bar
+ *   x4 45 21 7
+ *
+ * Output:
+ *  a1 alps cow bar (Since this is prime order and a(lps) comes before j(ogs))
+ *  mi2 jog mid pet
+ *  wz3 34 54 398 (Since non-prime order. FIFO)
+ *  x4 45 21 7
+ */
+
 #include "lib.h"
 #include <algorithm>
 class Solution{
