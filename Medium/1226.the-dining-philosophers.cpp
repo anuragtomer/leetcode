@@ -6,6 +6,7 @@
 #include <vector>
 using namespace std;
 // Using defer_lock
+/*
 class DiningPhilosophers {
   int n;
   vector<mutex> fork_locks;
@@ -34,6 +35,7 @@ class DiningPhilosophers {
     putRightFork(philosopher, coutLock);
   }
 };
+*/
 /*
 // Using scoped_lock
 class DiningPhilosophers {
@@ -63,9 +65,9 @@ class DiningPhilosophers {
   }
 };
 */
-/*
- // Using conditional variable, but here no interleaving.
- class DiningPhilosophers {
+
+// Using conditional variable, but here no interleaving.
+class DiningPhilosophers {
   mutex m;
   condition_variable cv;
   vector<bool> available;
@@ -92,7 +94,7 @@ class DiningPhilosophers {
     available[left] = true;
     cv.notify_all();
   }
-};*/
+};
 void pickRightFork(int id, mutex &coutLock) {
   coutLock.lock();
   cout << id << " picked right fork.\n";
@@ -117,6 +119,7 @@ void eat(int id, mutex &coutLock) {
   coutLock.lock();
   cout << id << " is eating.\n";
   coutLock.unlock();
+  this_thread::sleep_for(chrono::milliseconds(2000));
 }
 int main() {
   vector<future<void>> threads;

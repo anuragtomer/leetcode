@@ -102,15 +102,17 @@ struct TopicHandler {
 struct Queue {
  private:
   int currentIDNumber;
-
+  mutex m;
  public:
   unordered_map<string, TopicHandler *> topicProcessors;
 
   Queue() { currentIDNumber = 0; }
 
   Topic *createTopic(string topicName) {
+    m.lock();
     Topic *topic = new Topic(topicName, to_string(currentIDNumber));
     ++currentIDNumber;
+    m.unlock();
     TopicHandler *topicHandler = new TopicHandler(topic);
     topicProcessors[topic->topicID] = topicHandler;
     cout << "Created topic: " + topic->topicName << endl;
