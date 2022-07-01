@@ -6,6 +6,7 @@ https://leetcode.com/problems/beautiful-arrangement-ii/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
 https://leetcode.com/problems/binary-tree-right-side-view/
+https://leetcode.com/problems/check-if-n-and-its-double-exist/
 https://leetcode.com/problems/coin-change/
 https://leetcode.com/problems/combination-sum/
 https://leetcode.com/problems/container-with-most-water/
@@ -18,10 +19,12 @@ https://leetcode.com/problems/decode-ways/
 https://leetcode.com/problems/delete-operation-for-two-strings/
 https://leetcode.com/problems/design-add-and-search-words-data-structure/
 https://leetcode.com/problems/divide-array-in-sets-of-k-consecutive-numbers/
+https://leetcode.com/problems/divide-two-integers/
 https://leetcode.com/problems/edit-distance/
 https://leetcode.com/problems/evaluate-reverse-polish-notation/
 https://leetcode.com/problems/find-and-replace-in-string/
 https://leetcode.com/problems/find-duplicate-subtrees/
+https://leetcode.com/problems/find-largest-value-in-each-tree-row/
 https://leetcode.com/problems/find-median-from-data-stream/
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 https://leetcode.com/problems/find-pivot-index/
@@ -105,6 +108,7 @@ https://leetcode.com/problems/simplify-path/
 https://leetcode.com/problems/single-threaded-cpu/
 https://leetcode.com/problems/spiral-matrix/
 https://leetcode.com/problems/squares-of-a-sorted-array/
+https://leetcode.com/problems/stone-game-ii/
 https://leetcode.com/problems/string-to-integer-atoi/
 https://leetcode.com/problems/subarray-product-less-than-k/
 https://leetcode.com/problems/subarray-sum-equals-k/
@@ -124,6 +128,10 @@ https://leetcode.com/problems/verifying-an-alien-dictionary/
 https://leetcode.com/problems/wildcard-matching/
 https://leetcode.com/problems/word-search/
 https://www.lintcode.com/problem/178/
+https://www.lintcode.com/problem/199/
+https://www.lintcode.com/problem/209/
+https://www.lintcode.com/problem/293/
+https://www.lintcode.com/problem/331/
 https://www.lintcode.com/problem/474/
 https://www.lintcode.com/problem/659/
 https://www.lintcode.com/problem/878/
