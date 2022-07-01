@@ -171,13 +171,14 @@ void deleteTree(TreeNode *root) {
 
 /**
  * Not yet refined. Might not work as expected.
- * Print the tree rooted at root. If some child is null, prints 'n' for it.
+ * Print the tree rooted at root. If some child is null, prints ' ' for it.
  * 
  * @param root root of the tree.
  */
 void printLevelTree(TreeNode *root) {
     queue<TreeNode *> q1, q2;
     q1.push(root);
+    // int diameter = diameterOfTree(root); // TODO: Try to see if we can make it print like a tree.
     while (!q1.empty()) {
         TreeNode *curr = q1.front();
         q1.pop();
@@ -186,7 +187,7 @@ void printLevelTree(TreeNode *root) {
             q2.push(curr->left);
             q2.push(curr->right);
         } else {
-            cout << "n ";
+            cout << "  ";
         }
         if (q1.empty() && !q2.empty()) {
             cout << "\n";
