@@ -124,8 +124,8 @@ def addQuestion():
         cur.execute('''INSERT INTO questions(NAME, LINK, DUEDATE, TODAY, DIFFICULTY, COMPANY) VALUES (?, ?, datetime('now', '+3 days'), datetime('now'), ?, ?)''', (name, link, difficulty.upper(), company.upper()))
         con.commit()
     except sqlite3.IntegrityError as err:
-        print("Link already present, updating due date.")
-        cur.execute("UPDATE questions SET duedate = datetime('now', '+3 days') WHERE link='"+link+"'")
+        days = input("Link already present. When should this be reminded again? ")
+        cur.execute("UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days') WHERE link='"+link+"'")
         con.commit()
     con.close()
 
