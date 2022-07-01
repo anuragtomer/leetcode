@@ -21,4 +21,5 @@
 
 <h2> Hard </h2>
 
-[Ballon bursting problem](Hard/maxCoins.cpp) - 
+[Ballon bursting problem](Hard/312.burst-balloons.cpp) - https://leetcode.com/problems/burst-balloons/  
+
