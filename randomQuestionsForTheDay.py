@@ -38,7 +38,7 @@ def questionsDoneToday():
     print("No of questions done today: ", end='')
     for row in cur.execute('''SELECT COUNT(*) FROM questions where TODAY > datetime('now', 'start of day')'''):
         print(row[0])
-    print('\n               Name                     |                Link')
+    print('\n               Name                              |                Link')
     i=1
     for row in cur.execute('''SELECT * FROM questions WHERE TODAY > datetime('now', 'start of day')'''):
         print(str(i) +'. ' + f'{row[0]:<45}' + "  | " + row[1])
