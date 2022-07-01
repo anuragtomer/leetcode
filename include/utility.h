@@ -285,3 +285,48 @@ vector<T> createVector(string input) {
     }
     return output;
 }
+/*
+ * String related functions.
+ */
+/*
+ * @brief Joins the vector of strings by provided ch.
+ * @param str: input vector to be joined.
+ * @param ch: character to be joined with.
+ */
+string join(vector<string> str, char ch) {
+    string S;
+    for (auto s : str) {
+        S.append(s);
+        S.push_back(ch);
+    }
+    S.pop_back();
+    return S;
+}
+
+/*
+ * @brief: Returns if the char is a vowel.
+ */
+bool isvowel(char ch) {
+    return (ch == 'a') || (ch == 'e') || (ch == 'i') || (ch == 'o') || (ch == 'u') || (ch == 'A') || (ch == 'E') ||
+           (ch == 'I') || (ch == 'O') || (ch == 'U');
+}
+
+/*
+ * @brief splits the string by provided ch.
+ * @param str: input string to be splitted.
+ * @param ch: character to be splitted on.
+ */
+vector<string> tokenize(string S, char ch) {
+    vector<string> str;
+    string temp;
+    for (auto s : S) {
+        if (s == ch) {
+            str.push_back(temp);
+            temp = "";
+        } else
+            temp.push_back(s);
+    }
+    if (!temp.empty())
+        str.push_back(temp);
+    return str;
+}
