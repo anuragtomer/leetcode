@@ -23,7 +23,7 @@ struct ListNode {
 
 /**
  * Splits the given string by delimiter.
- * 
+ *
  * @param s input string to be split.
  * @param delimiter char that defines the delimiter in the string.
  * @return vector<string> containing the splitted strings from given input string.
@@ -61,7 +61,7 @@ ListNode *stringToList(string input) {
 
 /**
  * Converts given list headed at "head" to a comma separated string.
- * 
+ *
  * @param head head of linked list.
  * @return string Corresponding string equivalent of list.
  */
@@ -78,7 +78,7 @@ string stringFromList(ListNode *head) {
 
 /**
  * Frees the memory allocated for the list headed at "head"
- * 
+ *
  * @param head head of the list to be freed.
  */
 void deleteList(ListNode *head) {
@@ -107,7 +107,7 @@ struct TreeNode {
 
 /**
  * Splits the given string by delimiter.
- * 
+ *
  * @param s input string to be split.
  * @param delimiter char that defines the delimiter in the string.
  * @return vector<string> containing the splitted strings from given input string.
@@ -172,7 +172,7 @@ void deleteTree(TreeNode *root) {
 /**
  * Not yet refined. Might not work as expected.
  * Print the tree rooted at root. If some child is null, prints ' ' for it.
- * 
+ *
  * @param root root of the tree.
  */
 void printLevelTree(TreeNode *root) {
@@ -200,12 +200,17 @@ void printLevelTree(TreeNode *root) {
  * @brief: asserts output is equal to resp
  */
 template <class T>
-bool testResp(const T &output, const T &resp) {
-    if (output.size() != resp.size())
+bool testResp(const T &output, const T &resp, bool ordered = true) {
+    T output_copy = output;
+    T resp_copy = resp;
+    if (output_copy.size() != resp_copy.size())
         return false;
-
-    for (int i = 0; i < output.size(); ++i)
-        if (output[i] != resp[i])
+    if (!ordered) {
+        sort(output_copy.begin(), output_copy.end());
+        sort(resp_copy.begin(), resp_copy.end());
+    }
+    for (int i = 0; i < output_copy.size(); ++i)
+        if (output_copy[i] != resp_copy[i])
             return false;
     return true;
 }
