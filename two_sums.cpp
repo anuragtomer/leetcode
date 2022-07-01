@@ -29,7 +29,7 @@ public:
         unordered_map <int, int> hashmap;
         for (int i = 0; i < nums.size(); i++) {
             unordered_map<int, int>::iterator got = hashmap.find(target - nums[i]);
-            if (got == hashmap.end()i)
+            if (got == hashmap.end())
                 hashmap.insert({nums[i], i});
             else {
                 vector <int> output = {got->second, i};
