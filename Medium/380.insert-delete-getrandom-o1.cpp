@@ -1,5 +1,6 @@
 #include <iostream>
 #include <list>
+#include <random>
 #include <unordered_map>
 #include <vector>
 using namespace std;
@@ -7,6 +8,7 @@ using namespace std;
 class RandomizedSet {
     unordered_map<int, int> hash;
     vector<int> nums;
+    default_random_engine generator;
 
    public:
     /** Initialize your data structure here. */
@@ -28,11 +30,12 @@ class RandomizedSet {
     /** Removes a value from the set. Returns true if the set contained the specified element. */
     bool remove(int val) {
         if (hash.find(val) != hash.end()) {
-            int last = nums.back();
-            hash[last] = hash[val];
-            nums[hash[val]] = last;
-            nums.pop_back();
-            hash.erase(val);
+            int last = nums.back(); // Value at the end of vector.
+            hash[last] =
+                hash[val]; // Put new index for last element as the index of the element we are going to remove.
+            nums[hash[val]] = last; // Put last element at position of the element being removed.
+            nums.pop_back();        // Either remove the last element, or reduce the size of array by 1.
+            hash.erase(val);        // Remove val from hash also.
             return true;
         }
         return false;
@@ -40,8 +43,8 @@ class RandomizedSet {
 
     /** Get a random element from the set. */
     int getRandom() {
-        int random = rand() % nums.size();
-        return nums[random];
+        uniform_int_distribution<int> distribution(0, nums.size() - 1);
+        return nums[distribution(generator)];
     }
 };
 
