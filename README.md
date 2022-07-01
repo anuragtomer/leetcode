@@ -5,7 +5,7 @@
 
 [Max depth in a binary tree](Easy/maxDepth.cpp) - https://leetcode.com/problems/maximum-depth-of-binary-tree/  
 [Merge Two binary trees](Easy/mergeTrees.cpp) - https://leetcode.com/problems/merge-two-binary-trees/  
-
+[Single Num in a double repetition array](Easy/singleNum.cpp) - https://leetcode.com/problems/single-number/  
 
 <h2> Medium </h2>
 
