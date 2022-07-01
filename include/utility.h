@@ -128,7 +128,7 @@ vector<string> split(const string &s, char delimiter) {
  * @param delimiter delimiter with which the given string has to be split.
  * @return TreeNode * root formed using the given input string.
  **/
-TreeNode *createTree(string input, char delimiter) {
+TreeNode *createTree(const string &input, const char &delimiter) {
     vector<string> inputs = split(input, delimiter);
     vector<TreeNode *> listOfNodes;
     for (auto word : inputs) {
@@ -200,8 +200,60 @@ void printLevelTree(TreeNode *root) {
  * @brief: asserts output is equal to resp
  */
 template <class T>
-void testResp(T output, T resp) {
-    assert(output.size() == resp.size());
+bool testResp(const T &output, const T &resp) {
+    if (output.size() != resp.size())
+        return false;
+
     for (int i = 0; i < output.size(); ++i)
-        assert(output[i] == resp[i]);
+        if (output[i] != resp[i])
+            return false;
+    return true;
+}
+
+/*
+ * @brief: Compares 2 trees by values.
+ */
+bool compareTrees(TreeNode *root1, TreeNode *root2) {
+    queue<TreeNode *> q1_1, q1_2, q2_1, q2_2;
+    q1_1.push(root1);
+    q2_1.push(root2);
+    // int diameter = diameterOfTree(root); // TODO: Try to see if we can make it print like a tree.
+    while (!q1_1.empty() && !q2_1.empty()) {
+        TreeNode *curr1 = q1_1.front(), *curr2 = q2_1.front();
+        q1_1.pop();
+        q2_1.pop();
+        if ((curr1 == nullptr && curr2 != nullptr) || (curr1 != nullptr && curr2 == nullptr))
+            return false;
+
+        if (curr1 && curr2 && (curr1->val != curr2->val))
+            return false;
+        if (curr1 != nullptr) {
+            q1_2.push(curr1->left);
+            q1_2.push(curr1->right);
+        }
+        if (q1_1.empty() && !q1_2.empty()) {
+            q1_1.swap(q1_2);
+        }
+        if (curr2 != nullptr) {
+            q2_2.push(curr2->left);
+            q2_2.push(curr2->right);
+        }
+        if (q2_1.empty() && !q2_2.empty()) {
+            q2_1.swap(q2_2);
+        }
+    }
+    if ((q1_1.empty() && !q2_1.empty()) || (!q1_1.empty() && q2_1.empty()))
+        return false;
+    return true;
+}
+
+/*
+ * @brief: Prints the given vector.
+ */
+template <class T>
+void printVector(const T &input) {
+    for (auto inp : input) {
+        cout << inp << " ";
+    }
+    cout << endl;
 }
