@@ -16,7 +16,7 @@ public:
 			x = x / 10;
 			if (x == reverse_x_new)
 				return true;
-			reverse_x_new = reverse_x_new * pow(10, i > 1? 1: 0) + remainder;
+			reverse_x_new = reverse_x_new * pow(10, i >= 1? 1: 0) + remainder;
 			if (reverse_x_new < reverse_x_old)
 				return false;
 			reverse_x_old = reverse_x_new;
