@@ -24,6 +24,7 @@ class Solution {
 
 int main() {
     Solution sol;
-    sol.findComplement(5);
+    assert(2 == sol.findComplement(5));
+    assert(0 == sol.findComplement(1));
     return 0;
 }
