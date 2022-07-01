@@ -3,17 +3,17 @@
  *
  * [169] Majority Element
  */
-#include <vector>
 #include <iostream>
+#include <vector>
 using namespace std;
 
 // @lc code=start
 class Solution {
-public:
-    int majorityElement(vector<int>& nums) {
+   public:
+    int majorityElement(vector<int> &nums) {
         int major = INT_MIN;
         int count = 0;
-        for (int num: nums) {
+        for (int num : nums) {
             if (num == major)
                 count++;
             else
