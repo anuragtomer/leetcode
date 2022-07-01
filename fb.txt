@@ -1,5 +1,11 @@
+https://leetcode.com/problems/diameter-of-binary-tree/
+https://leetcode.com/problems/excel-sheet-column-title/
+https://leetcode.com/problems/goat-latin/
 https://leetcode.com/problems/increasing-order-search-tree/
 https://leetcode.com/problems/leaf-similar-trees/
+https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 https://leetcode.com/problems/monotonic-array/
 https://leetcode.com/problems/sum-of-left-leaves/
+https://leetcode.com/problems/third-maximum-number/
 https://leetcode.com/problems/verifying-an-alien-dictionary/
+https://www.lintcode.com/problem/39/
