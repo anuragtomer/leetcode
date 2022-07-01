@@ -9,6 +9,7 @@ https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-f
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
 https://leetcode.com/problems/binary-tree-right-side-view/
+https://leetcode.com/problems/car-pooling/
 https://leetcode.com/problems/check-if-n-and-its-double-exist/
 https://leetcode.com/problems/coin-change/
 https://leetcode.com/problems/combination-sum-ii/
@@ -19,6 +20,7 @@ https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-tr
 https://leetcode.com/problems/container-with-most-water/
 https://leetcode.com/problems/contains-duplicate-iii/
 https://leetcode.com/problems/continuous-subarray-sum/
+https://leetcode.com/problems/corporate-flight-bookings/
 https://leetcode.com/problems/count-good-numbers/
 https://leetcode.com/problems/count-square-submatrices-with-all-ones/
 https://leetcode.com/problems/course-schedule-ii/
@@ -115,6 +117,8 @@ https://leetcode.com/problems/missing-number/
 https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
 https://leetcode.com/problems/multiply-strings/
 https://leetcode.com/problems/my-calendar-i/
+https://leetcode.com/problems/my-calendar-ii/
+https://leetcode.com/problems/my-calendar-iii/
 https://leetcode.com/problems/next-greater-element-i/
 https://leetcode.com/problems/next-greater-element-ii/
 https://leetcode.com/problems/next-permutation/
