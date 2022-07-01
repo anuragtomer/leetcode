@@ -72,8 +72,40 @@ TreeNode * createTree() {
     return root;
 }
 
+/* Read input from console and convert it into linked list. */
 ListNode * createList() {
-    return NULL;
+    string str;
+    getline(cin, str);
+    stringstream S(str);
+    string word;
+    ListNode * input = NULL;
+    ListNode * temp = NULL;
+    while(S >> word) {
+        try {
+            int i = stoi(word);
+            if (!input) {
+                input = new ListNode(i);
+                temp = input;
+            } else
+            {
+                temp->next = new ListNode(i);
+                temp = temp->next;
+            }
+        } catch(exception e) {
+            cout << "Error occurred while reading input.";
+            return NULL;
+        }
+    }
+    return input;
+}
+
+/* Given head of the linkedlist, print the list. */
+void printListNode(ListNode * lst) {
+    ListNode * temp = lst;
+    while(temp) {
+        cout << temp->val << " ";
+        temp = temp->next;
+    }
 }
 
 /* Given a root, prints the tree. */
@@ -119,6 +151,7 @@ vector <int> createVector() {
 void printVector(vector <int> vec) {
     for (int i: vec)
         cout << i << " ";
+    cout << endl;
 }
 
 /* Given a space separated string of integers, return a node-tree with the same level order traversal. */
