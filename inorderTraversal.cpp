@@ -15,7 +15,7 @@ using namespace std;
 
 class Solution{
     public:
-    #if 0
+#if 0
     vector<int> inorderTraversal(TreeNode* root) {
         vector<int> tsl;
         TreeNode *current_node;
@@ -26,20 +26,20 @@ class Solution{
         current_node = root;
         while(!stk.empty() && current_node) {
             if (current_node->left) {
-                stk.push(current_node->left);                
-            } else {                
+                stk.push(current_node->left);
+            } else {
                 tsl.push_back(current_node->val);
                 stk.pop();
                 if (current_node->right) {
-                    stk.push(current_node->right);                    
+                    stk.push(current_node->right);
                 }
             }
             current_node = stk.top();
         }
         return tsl;
     }
-    #endif
-    #if 0
+#endif
+#if 0
     Recursive:
     void inorder(TreeNode * root, vector<int> &tsl) {
         if (root) {
@@ -57,37 +57,26 @@ class Solution{
     }
 #endif
     vector<int> inorderTraversal(TreeNode* root) {
-        vector<int> tsl;
-        TreeNode *current_node;
-        tsl.clear();
-        stack<TreeNode *> stk;
-        if (root) {
-            stk.push(root);
-
+        stack<TreeNode* > st;
+        std::vector<int> res;
+        res.clear();
+        TreeNode* temp = root;
+        while(temp || !st.empty()) {
+            if (!temp) {
+                temp = st.top()->right;
+                res.push_back(st.top()->val);
+                st.pop();
+            }
+            if (temp) {
+                while(temp->left) {
+                    st.push(temp);
+                    temp = temp->left;
+                }
+                res.push_back(temp->val);
+                temp = temp->right;
+            }
         }
-        current_node = root;
-        do {
-            while(current_node) {
-                if (current_node->left) {
-                    stk.push(current_node->left);
-                    current_node = current_node->left;
-                } else {
-                    current_node = NULL;
-                }
-            }
-            if (current_node == NULL && !stk.empty()) {
-                current_node = stk.top();
-                stk.pop();
-                tsl.push_back(current_node->val);
-                if (current_node->right) {
-                    stk.push(current_node->right);
-                    current_node = current_node->right;
-                } else {
-                    current_node = NULL;
-                }
-            }
-        } while(stk.empty() == NULL);
-        return tsl;
+        return res;
     }
 };
 int main() {
@@ -125,5 +114,3 @@ int main() {
         cout << i << " ";
     return 0;
 }
-
-
