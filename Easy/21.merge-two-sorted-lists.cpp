@@ -4,15 +4,15 @@
 
 using namespace std;
 struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
+  int val;
+  ListNode *next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 class Solution {
-   public:
-    ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
+ public:
+  /* ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
         ListNode *head = nullptr, *temp = nullptr;
         while (l1 != nullptr && l2 != nullptr) {
             if (l1->val < l2->val) {
@@ -52,12 +52,42 @@ class Solution {
             }
         }
         return head;
+    }*/
+
+  ListNode *mergeTwoLists(ListNode *list1, ListNode *list2) {
+    ListNode *head = nullptr, *temp = nullptr;
+    while (list1 || list2) {
+      if (list1 && list2) {
+        if (list1->val < list2->val) {
+          append(head, temp, list1);
+        } else {
+          append(head, temp, list2);
+        }
+      } else if (list1) {
+        append(head, temp, list1);
+      } else if (list2) {
+        append(head, temp, list2);
+      }
     }
+    return head;
+  }
+
+ private:
+  void append(ListNode *&head, ListNode *&temp, ListNode *&node) {
+    if (!head) {
+      head = node;
+      temp = head;
+    } else {
+      temp->next = node;
+      temp = temp->next;
+    }
+    node = node->next;
+  }
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
 
