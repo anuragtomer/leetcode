@@ -6,8 +6,8 @@
 using namespace std;
 
 class Solution {
-   public:
-    vector<int> findClosestElements(vector<int> &A, int k, int x) {
+ public:
+  /*    vector<int> findClosestElements(vector<int> &A, int k, int x) {
         auto comp = [&](int &a, int &b) {
             if (abs(a - x) == abs(b - x))
                 return a > b;
@@ -25,12 +25,24 @@ class Solution {
         }
         sort(result.begin(), result.end());
         return result;
+    }*/
+  vector<int> findClosestElements(vector<int> &arr, int k, int x) {
+    if (k >= arr.size())
+      return arr;
+    int left = 0, right = arr.size() - 1;
+    while (right - left + 1 > k) {
+      if (abs(arr[left] - x) > abs(arr[right] - x))
+        ++left;
+      else
+        --right;
     }
+    return vector<int>(arr.begin() + left, arr.begin() + left + k);
+  }
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
 
