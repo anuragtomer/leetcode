@@ -33,6 +33,7 @@ https://leetcode.com/problems/implement-trie-prefix-tree/
 https://leetcode.com/problems/increasing-triplet-subsequence/
 https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/
 https://leetcode.com/problems/insert-interval/
+https://leetcode.com/problems/insert-into-a-binary-search-tree/
 https://leetcode.com/problems/jump-game-ii/
 https://leetcode.com/problems/jump-game/
 https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
@@ -76,8 +77,10 @@ https://leetcode.com/problems/palindromic-substrings/
 https://leetcode.com/problems/partition-to-k-equal-sum-subsets/
 https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/
 https://leetcode.com/problems/positions-of-large-groups/
+https://leetcode.com/problems/possible-bipartition/
 https://leetcode.com/problems/predict-the-winner/
 https://leetcode.com/problems/product-of-array-except-self/
+https://leetcode.com/problems/rearrange-words-in-a-sentence/
 https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix/
 https://leetcode.com/problems/rectangle-overlap/
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
@@ -92,6 +95,7 @@ https://leetcode.com/problems/string-to-integer-atoi/
 https://leetcode.com/problems/subarray-product-less-than-k/
 https://leetcode.com/problems/subarray-sum-equals-k/
 https://leetcode.com/problems/subtree-of-another-tree/
+https://leetcode.com/problems/sum-of-subarray-minimums/
 https://leetcode.com/problems/sum-of-two-integers/
 https://leetcode.com/problems/text-justification/
 https://leetcode.com/problems/two-sum/
@@ -104,6 +108,7 @@ https://leetcode.com/problems/verifying-an-alien-dictionary/
 https://leetcode.com/problems/wildcard-matching/
 https://leetcode.com/problems/word-search/
 https://www.lintcode.com/problem/178/
+https://www.lintcode.com/problem/474/
 https://www.lintcode.com/problem/659/
 https://www.lintcode.com/problem/878/
 https://www.lintcode.com/problem/892/
