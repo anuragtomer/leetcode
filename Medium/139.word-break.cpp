@@ -17,15 +17,15 @@ public:
             return true;
         vector<bool> dp(s.size()+1, false);
         dp[0] = true;
-        unordered_set<string> map;
+        unordered_set<string> set;
         for (int i = 0; i < wordDict.size(); i++)
-            map.insert(wordDict[i]);
+            set.insert(wordDict[i]);
 
         for (int i = 1; i <= s.size(); ++i) {
             for (int j = i-1; j >= 0; j--) {
                 if (dp[j] == true) {
                     string str = s.substr(j, i-j);
-                    if (map.find(str) != map.end()) {
+                    if (set.find(str) != set.end()) {
                         dp[i] = true;
                         break;
                     }

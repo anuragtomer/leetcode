@@ -46,7 +46,7 @@ struct List{
         delete temp;
     }
 
-    void moveToTail(Node * node) {
+    void touch(Node * node) {
         if (head == nullptr || node == tail) // No elements or already tail element.
             return;
         if (node == head) {
@@ -62,7 +62,7 @@ struct List{
         tail = node;
     }
 
-    Node * addToList(int key, int val) {
+    Node * add(int key, int val) {
         // add to tail of list.
         Node * temp = new Node(key, val);
         if (head == nullptr && tail == nullptr) {
@@ -90,7 +90,7 @@ public:
         if (hash.find(key) == hash.end())
             return -1;
         int value =  hash[key]->val;
-        list->moveToTail(hash[key]);
+        list->touch(hash[key]);
         return value;
     }
     
@@ -104,11 +104,11 @@ public:
                 list->deleteHead();
             }
             // cache have space now. Add to the hash.
-            hash[key] = list->addToList(key, value);
+            hash[key] = list->add(key, value);
         } else {
             // key already exists. Update the value and lru list.
             hash[key]->val = value;
-            list->moveToTail(hash[key]);
+            list->touch(hash[key]);
         }
     }
 };
