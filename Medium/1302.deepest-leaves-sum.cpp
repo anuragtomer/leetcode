@@ -1,21 +1,22 @@
+#include <unordered_map>
 
 #include "../include/utility.h"
 using namespace std;
 
 class Solution {
-    void deepestLeavesSum(TreeNode *root, int level, map<int, int> &levelsum) {
-        if (!root)
-            return;
-        if (level >= levelsum.rbegin()->first) {
-            levelsum[level] += root->val;
-        }
-        if (root->left)
-            deepestLeavesSum(root->left, level + 1, levelsum);
-        if (root->right)
-            deepestLeavesSum(root->right, level + 1, levelsum);
-    }
+    /* void deepestLeavesSum(TreeNode *root, int level, map<int, int> &levelsum) {
+         if (!root)
+             return;
+         if (level >= levelsum.rbegin()->first) {
+             levelsum[level] += root->val;
+         }
+         if (root->left)
+             deepestLeavesSum(root->left, level + 1, levelsum);
+         if (root->right)
+             deepestLeavesSum(root->right, level + 1, levelsum);
+     }
 
-   public:
+    public:*/
     /* One way of doing this.
     int deepestLeavesSum(TreeNode *root) {
         int sum = 0;
@@ -40,13 +41,31 @@ class Solution {
         return sum;
     } */
     // Another way of doing the same things.
-    int deepestLeavesSum(TreeNode *root) {
+    /*
+     int deepestLeavesSum(TreeNode *root) {
         if (!root)
             return 0;
         map<int, int> levelsum;
         levelsum[-1] = 0;
         deepestLeavesSum(root, 0, levelsum);
         return levelsum.rbegin()->second;
+    }*/
+    // Another way of doing the same thing:
+    int helper(TreeNode *root, unordered_map<int, int> &sums, int level) {
+        if (!root)
+            return level;
+        if (root->left == nullptr && root->right == nullptr) {
+            sums[level] += root->val;
+            return level;
+        }
+        return max(helper(root->left, sums, level + 1), helper(root->right, sums, level + 1));
+    }
+
+   public:
+    int deepestLeavesSum(TreeNode *root) {
+        unordered_map<int, int> sums;
+        int level = helper(root, sums, 0);
+        return sums[level];
     }
 };
 
