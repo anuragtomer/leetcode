@@ -3,8 +3,8 @@
  *
  * [230] Kth Smallest Element in a BST
  */
-#include <iostream>
 #include <cassert>
+#include <iostream>
 using namespace std;
 
 /**
@@ -20,8 +20,8 @@ struct TreeNode {
 // @lc code=start
 
 class Solution {
-public:
-    int inorderTraversal(TreeNode * root, int &k) {
+   public:
+    int inorderTraversal(TreeNode *root, int &k) {
         int temp = INT_MIN;
         if (root != nullptr) {
             temp = inorderTraversal(root->left, k);
@@ -37,16 +37,13 @@ public:
         return temp;
     }
 
-    int kthSmallest(TreeNode* root, int k) {
-        return inorderTraversal(root, k);
-    }
+    int kthSmallest(TreeNode *root, int k) { return inorderTraversal(root, k); }
 };
 // @lc code=end
 
-int main(void)
-{
+int main(void) {
     Solution sol;
-    TreeNode * root = new TreeNode(5);
+    TreeNode *root = new TreeNode(5);
     root->left = new TreeNode(3);
     root->right = new TreeNode(6);
     root->left->left = new TreeNode(2);
@@ -54,10 +51,10 @@ int main(void)
     root->left->left->left = new TreeNode(1);
     int count = 0;
     int total = 6;
-    for(int i = 1; i <= 6; ++i)
+    for (int i = 1; i <= 6; ++i)
         if (i == sol.kthSmallest(root, i)) {
             count++;
         }
-    cout << count << "/"<< total << " test cases passed.\n";
+    cout << count << "/" << total << " test cases passed.\n";
     return 0;
 }

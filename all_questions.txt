@@ -12,6 +12,7 @@ https://leetcode.com/problems/combination-sum-ii/
 https://leetcode.com/problems/combination-sum-iii/
 https://leetcode.com/problems/combination-sum/
 https://leetcode.com/problems/concatenation-of-array/
+https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 https://leetcode.com/problems/container-with-most-water/
 https://leetcode.com/problems/contains-duplicate-iii/
 https://leetcode.com/problems/continuous-subarray-sum/
@@ -53,16 +54,19 @@ https://leetcode.com/problems/gray-code/
 https://leetcode.com/problems/h-index/
 https://leetcode.com/problems/heaters/
 https://leetcode.com/problems/house-robber-ii/
+https://leetcode.com/problems/house-robber/
 https://leetcode.com/problems/implement-trie-prefix-tree/
 https://leetcode.com/problems/increasing-triplet-subsequence/
 https://leetcode.com/problems/insert-delete-getrandom-o1-duplicates-allowed/
 https://leetcode.com/problems/insert-interval/
 https://leetcode.com/problems/insert-into-a-binary-search-tree/
 https://leetcode.com/problems/intersection-of-two-arrays/
+https://leetcode.com/problems/invert-binary-tree/
 https://leetcode.com/problems/jump-game-ii/
 https://leetcode.com/problems/jump-game/
 https://leetcode.com/problems/knight-dialer/
 https://leetcode.com/problems/knight-probability-in-chessboard/
+https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/
 https://leetcode.com/problems/largest-rectangle-in-histogram/
 https://leetcode.com/problems/largest-time-for-given-digits/
@@ -140,6 +144,7 @@ https://leetcode.com/problems/rectangle-overlap/
 https://leetcode.com/problems/remove-nth-node-from-end-of-list/
 https://leetcode.com/problems/reorganize-string/
 https://leetcode.com/problems/reshape-the-matrix/
+https://leetcode.com/problems/reverse-linked-list/
 https://leetcode.com/problems/rotting-oranges/
 https://leetcode.com/problems/score-of-parentheses/
 https://leetcode.com/problems/search-a-2d-matrix-ii/
@@ -149,6 +154,7 @@ https://leetcode.com/problems/shortest-bridge/
 https://leetcode.com/problems/simplify-path/
 https://leetcode.com/problems/single-threaded-cpu/
 https://leetcode.com/problems/spiral-matrix/
+https://leetcode.com/problems/split-array-largest-sum/
 https://leetcode.com/problems/squares-of-a-sorted-array/
 https://leetcode.com/problems/stone-game-ii/
 https://leetcode.com/problems/string-to-integer-atoi/
