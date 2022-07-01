@@ -39,7 +39,7 @@ class Solution {
  */
     // A bit faster code.
     int findMaxForm(vector<string> &strs, int m, int n) {
-        vector<vector<int>> dp = vector<vector<int>>(m, vector<int>(n, 0));
+        vector<vector<int>> dp = vector<vector<int>>(m + 1, vector<int>(n + 1, 0));
         for (auto &s : strs) {
             int ones = count(s.begin(), s.end(), '1');
             int zeros = s.size() - ones;
