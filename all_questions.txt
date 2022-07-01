@@ -8,6 +8,8 @@ https://leetcode.com/problems/binary-tree-maximum-path-sum/
 https://leetcode.com/problems/binary-tree-right-side-view/
 https://leetcode.com/problems/check-if-n-and-its-double-exist/
 https://leetcode.com/problems/coin-change/
+https://leetcode.com/problems/combination-sum-ii/
+https://leetcode.com/problems/combination-sum-iii/
 https://leetcode.com/problems/combination-sum/
 https://leetcode.com/problems/concatenation-of-array/
 https://leetcode.com/problems/container-with-most-water/
@@ -182,6 +184,8 @@ https://www.lintcode.com/problem/199/
 https://www.lintcode.com/problem/209/
 https://www.lintcode.com/problem/293/
 https://www.lintcode.com/problem/331/
+https://www.lintcode.com/problem/391/
+https://www.lintcode.com/problem/448/
 https://www.lintcode.com/problem/474/
 https://www.lintcode.com/problem/508/
 https://www.lintcode.com/problem/641/
