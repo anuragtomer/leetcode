@@ -15,6 +15,7 @@ https://leetcode.com/problems/longest-continuous-increasing-subsequence/
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 https://leetcode.com/problems/monotonic-array/
 https://leetcode.com/problems/move-zeroes/
+https://leetcode.com/problems/path-sum-iii/
 https://leetcode.com/problems/product-of-array-except-self/
 https://leetcode.com/problems/subarray-sum-equals-k/
 https://leetcode.com/problems/subtree-of-another-tree/
@@ -28,14 +29,19 @@ https://www.lintcode.com/problem/1398/
 https://www.lintcode.com/problem/1463/
 https://www.lintcode.com/problem/1480/
 https://www.lintcode.com/problem/1563/
+https://www.lintcode.com/problem/1575/
+https://www.lintcode.com/problem/1649/
 https://www.lintcode.com/problem/1650/
 https://www.lintcode.com/problem/1654
 https://www.lintcode.com/problem/1704/
 https://www.lintcode.com/problem/1721/
 https://www.lintcode.com/problem/1874/
+https://www.lintcode.com/problem/228
 https://www.lintcode.com/problem/39/
 https://www.lintcode.com/problem/397/
+https://www.lintcode.com/problem/402/
 https://www.lintcode.com/problem/408/
+https://www.lintcode.com/problem/415/
 https://www.lintcode.com/problem/469
 https://www.lintcode.com/problem/521
 https://www.lintcode.com/problem/60
