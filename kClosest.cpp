@@ -17,32 +17,32 @@ class Solution{
             heap[node2] = one;
         }
         void heapify(vector<elements *>&heap, int current_node) {
-            bool change = true;
+            int parent = (current_node - 1) / 2;
+            int left = (2 * parent) + 1;
+            int right = (2 * parent) + 2;
+            elements *left_e = heap[left];
+            elements *right_e = NULL;
+            if (right <= current_node) {
+                right_e = heap[right];
+            }
+            elements *parent_e = heap[parent];
+            if (left_e->distance <= right_e->distance) {
+                if (left_e->distance < parent_e->distance) {
+                    swap(heap, left, parent);
+                    current_node = parent;
+                    change = true;
+                }
+            } else {
+                if (right_e->distance < parent_e->distance) {
+                    swap(heap, right, parent);
+                    current_node = parent;
+                    change = true;
+                }
+            }                        
+
             while (current_node > 0 && change == true) {
                 change = false;
-                int parent = (current_node - 1) / 2;
-                int left = (2 * parent) + 1;
-                int right = (2 * parent) + 2;
-                elements *left_e = heap[left];
-                elements *right_e = NULL;
                 if (right <= current_node) {
-                    right_e = heap[right];
-                }
-                elements *parent_e = heap[parent];
-                if (right <= current_node) {
-                    if (left_e->distance <= right_e->distance) {
-                        if (left_e->distance < parent_e->distance) {
-                            swap(heap, left, parent);
-                            current_node = parent;
-                            change = true;
-                        }
-                    } else {
-                        if (right_e->distance < parent_e->distance) {
-                            swap(heap, right, parent);
-                            current_node = parent;
-                            change = true;
-                        }
-                    }                        
                 } else if (left_e->distance < parent_e->distance) {
                     swap(heap, left, parent);
                     current_node = parent;
