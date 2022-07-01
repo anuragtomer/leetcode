@@ -51,6 +51,7 @@ https://leetcode.com/problems/find-and-replace-in-string/
 https://leetcode.com/problems/find-and-replace-pattern/
 https://leetcode.com/problems/find-duplicate-subtrees/
 https://leetcode.com/problems/find-k-closest-elements/
+https://leetcode.com/problems/find-k-pairs-with-smallest-sums/
 https://leetcode.com/problems/find-largest-value-in-each-tree-row/
 https://leetcode.com/problems/find-median-from-data-stream/
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
@@ -81,6 +82,7 @@ https://leetcode.com/problems/invert-binary-tree/
 https://leetcode.com/problems/is-subsequence/
 https://leetcode.com/problems/jump-game-ii/
 https://leetcode.com/problems/jump-game/
+https://leetcode.com/problems/k-th-symbol-in-grammar/
 https://leetcode.com/problems/knight-dialer/
 https://leetcode.com/problems/knight-probability-in-chessboard/
 https://leetcode.com/problems/kth-smallest-element-in-a-bst/
@@ -96,6 +98,7 @@ https://leetcode.com/problems/longest-repeating-character-replacement/
 https://leetcode.com/problems/longest-string-chain/
 https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/
 https://leetcode.com/problems/longest-substring-without-repeating-characters/
+https://leetcode.com/problems/longest-valid-parentheses/
 https://leetcode.com/problems/longest-word-in-dictionary-through-deleting/
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
 https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/
@@ -182,13 +185,16 @@ https://leetcode.com/problems/serialize-and-deserialize-bst/
 https://leetcode.com/problems/shortest-bridge/
 https://leetcode.com/problems/simplify-path/
 https://leetcode.com/problems/single-threaded-cpu/
+https://leetcode.com/problems/sort-list/
 https://leetcode.com/problems/spiral-matrix/
 https://leetcode.com/problems/split-array-largest-sum/
+https://leetcode.com/problems/split-bst/
 https://leetcode.com/problems/squares-of-a-sorted-array/
 https://leetcode.com/problems/stone-game-ii/
 https://leetcode.com/problems/string-to-integer-atoi/
 https://leetcode.com/problems/subarray-product-less-than-k/
 https://leetcode.com/problems/subarray-sum-equals-k/
+https://leetcode.com/problems/subsets/
 https://leetcode.com/problems/subtree-of-another-tree/
 https://leetcode.com/problems/sum-of-subarray-minimums/
 https://leetcode.com/problems/sum-of-two-integers/
@@ -206,12 +212,15 @@ https://leetcode.com/problems/unique-length-3-palindromic-subsequences/
 https://leetcode.com/problems/unique-paths-ii/
 https://leetcode.com/problems/valid-parentheses/
 https://leetcode.com/problems/valid-parenthesis-string/
+https://leetcode.com/problems/valid-sudoku/
 https://leetcode.com/problems/validate-binary-search-tree/
 https://leetcode.com/problems/validate-stack-sequences/
 https://leetcode.com/problems/verifying-an-alien-dictionary/
 https://leetcode.com/problems/wiggle-sort-ii/
 https://leetcode.com/problems/wildcard-matching/
+https://leetcode.com/problems/word-ladder/
 https://leetcode.com/problems/word-search/
+https://leetcode.com/problems/zigzag-conversion/
 https://www.lintcode.com/problem/178/
 https://www.lintcode.com/problem/1832/
 https://www.lintcode.com/problem/1862/
@@ -234,6 +243,7 @@ https://www.lintcode.com/problem/878/
 https://www.lintcode.com/problem/883/
 https://www.lintcode.com/problem/892/
 https://www.lintcode.com/problem/898/
+https://www.lintcode.com/problem/900/
 https://www.lintcode.com/problem/903/
 https://www.lintcode.com/problem/906/
 https://www.lintcode.com/problem/918/

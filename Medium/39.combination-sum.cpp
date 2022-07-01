@@ -6,28 +6,28 @@
 using namespace std;
 
 class Solution {
-    void helper(const vector<int> &candidates, const int target, int currentSum, vector<int> runningResult,
-                set<vector<int>> &result) {
-        if (currentSum == target) {
-            sort(runningResult.begin(), runningResult.end());
-            result.insert(runningResult);
+    void helper(vector<int> &candidates, int targetSum, vector<int> &current, vector<vector<int>> &result, int i,
+                int currentSum) {
+        if (currentSum == targetSum) {
+            result.push_back(current);
             return;
         }
-        for (auto num : candidates) {
-            if (currentSum + num <= target) {
-                runningResult.push_back(num);
-                helper(candidates, target, currentSum + num, runningResult, result);
-                runningResult.pop_back();
+        for (; i < candidates.size(); ++i) {
+            if (candidates[i] + currentSum <= targetSum) {
+                current.push_back(candidates[i]);
+                helper(candidates, targetSum, current, result, i, currentSum + candidates[i]);
+                current.pop_back();
             }
         }
     }
 
    public:
-    vector<vector<int>> combinationSum(vector<int> &candidates, int target) {
-        set<vector<int>> result;
-        vector<int> runningResult;
-        helper(candidates, target, 0, runningResult, result);
-        return vector<vector<int>>(result.begin(), result.end());
+    vector<vector<int>> combinationSum(vector<int> &candidates, int targetSum) {
+        vector<vector<int>> result;
+        vector<int> current;
+        sort(candidates.begin(), candidates.end());
+        helper(candidates, targetSum, current, result, 0, 0);
+        return result;
     }
 };
 

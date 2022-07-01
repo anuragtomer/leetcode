@@ -3,40 +3,38 @@
  *
  * [22] Generate Parentheses
  */
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
 
 // @lc code=start
 class Solution {
-public:
-    void generateRecursive(int ol, int cl, string str, vector<string> &output) {
-        if (ol == 0 && cl == 0) {
-            output.push_back(str);
+    void helper(int n, int openCount, string &current, vector<string> &result) {
+        if (openCount == 0 && n == 0) {
+            result.push_back(current);
             return;
         }
+        if (n > 0) {
+            current.push_back('(');
+            helper(n - 1, openCount + 1, current, result);
+            current.pop_back();
+        }
+        if (openCount > 0) {
+            current.push_back(')');
+            helper(n, openCount - 1, current, result);
+            current.pop_back();
+        }
+    }
 
-        if (ol > 0) {
-            str.push_back('(');
-            generateRecursive(ol-1, cl+1, str, output);
-            str.pop_back();
-        }
-        if (cl > 0) {
-            str.push_back(')');
-            generateRecursive(ol, cl-1, str, output);
-            str.pop_back();
-        }
-    }
+   public:
     vector<string> generateParenthesis(int n) {
-        if (n <= 0)
-            return {};
-        string str;
-        vector<string> output;
-        generateRecursive(n, 0, str, output);
-        return output;
+        int openCount = 0;
+        vector<string> result;
+        string current;
+        helper(n, openCount, current, result);
+        return result;
     }
-};
-// @lc code=end
+}; // @lc code=end
 
 int main() {
     int n;
@@ -45,6 +43,6 @@ int main() {
     vector<string> parentheses = sol.generateParenthesis(n);
     for (auto &parenthesis : parentheses)
         cout << parenthesis << "\t";
-    
+
     return 0;
 }
