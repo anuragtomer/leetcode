@@ -30,6 +30,7 @@ https://leetcode.com/problems/evaluate-reverse-polish-notation/
 https://leetcode.com/problems/exclusive-time-of-functions/
 https://leetcode.com/problems/expressive-words/
 https://leetcode.com/problems/find-and-replace-in-string/
+https://leetcode.com/problems/find-and-replace-pattern/
 https://leetcode.com/problems/find-duplicate-subtrees/
 https://leetcode.com/problems/find-k-closest-elements/
 https://leetcode.com/problems/find-largest-value-in-each-tree-row/
@@ -82,6 +83,7 @@ https://leetcode.com/problems/merge-k-sorted-lists/
 https://leetcode.com/problems/merge-two-sorted-lists/
 https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/
 https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/
+https://leetcode.com/problems/minimum-falling-path-sum/
 https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
 https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
 https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
@@ -98,6 +100,7 @@ https://leetcode.com/problems/non-decreasing-array/
 https://leetcode.com/problems/non-overlapping-intervals/
 https://leetcode.com/problems/number-of-1-bits/
 https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/
+https://leetcode.com/problems/number-of-equivalent-domino-pairs/
 https://leetcode.com/problems/number-of-good-ways-to-split-a-string/
 https://leetcode.com/problems/number-of-islands-ii/
 https://leetcode.com/problems/number-of-islands/
@@ -118,6 +121,7 @@ https://leetcode.com/problems/possible-bipartition/
 https://leetcode.com/problems/powx-n/
 https://leetcode.com/problems/predict-the-winner/
 https://leetcode.com/problems/product-of-array-except-self/
+https://leetcode.com/problems/push-dominoes/
 https://leetcode.com/problems/rearrange-words-in-a-sentence/
 https://leetcode.com/problems/reconstruct-a-2-row-binary-matrix/
 https://leetcode.com/problems/rectangle-overlap/
@@ -140,6 +144,7 @@ https://leetcode.com/problems/subtree-of-another-tree/
 https://leetcode.com/problems/sum-of-subarray-minimums/
 https://leetcode.com/problems/sum-of-two-integers/
 https://leetcode.com/problems/super-ugly-number/
+https://leetcode.com/problems/swim-in-rising-water/
 https://leetcode.com/problems/text-justification/
 https://leetcode.com/problems/time-needed-to-inform-all-employees/
 https://leetcode.com/problems/trapping-rain-water/

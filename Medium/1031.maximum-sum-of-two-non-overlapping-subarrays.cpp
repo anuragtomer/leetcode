@@ -5,17 +5,28 @@
 using namespace std;
 
 class Solution {
+    int helper(vector<int> &nums, int firstLen, int secondLen, int n) {
+        vector<int> leftSum(n + 1), rightSum(n + 1);
+        int sumL = 0, sumR = 0;
+        for (int i = 0, j = n - 1; i < n; ++i, --j) {
+            sumL += nums[i];
+            sumR += nums[j];
+            leftSum[i + 1] = max(leftSum[i], sumL);
+            rightSum[j] = max(rightSum[j + 1], sumR);
+            if (i + 1 >= firstLen)
+                sumL -= nums[i + 1 - firstLen];
+            if (i + 1 >= secondLen)
+                sumR -= nums[j - 1 + secondLen];
+        }
+        int result = 0;
+        for (int i = 0; i < n; ++i)
+            result = max(result, leftSum[i] + rightSum[i]);
+        return result;
+    }
+
    public:
     int maxSumTwoNoOverlap(vector<int> &nums, int firstLen, int secondLen) {
-        for (int i = 1; i < nums.size(); ++i)
-            nums[i] += nums[i - 1];
-        int res = nums[firstLen + secondLen - 1], Lmax = nums[firstLen - 1], Mmax = nums[secondLen - 1];
-        for (int i = firstLen + secondLen; i < nums.size(); ++i) {
-            Lmax = max(Lmax, nums[i - secondLen] - nums[i - firstLen - secondLen]);
-            Mmax = max(Mmax, nums[i - firstLen] - nums[i - firstLen - secondLen]);
-            res = max(res, max(Lmax + nums[i] - nums[i - secondLen], Mmax + nums[i] - nums[i - firstLen]));
-        }
-        return res;
+        return max(helper(nums, firstLen, secondLen, nums.size()), helper(nums, secondLen, firstLen, nums.size()));
     }
 };
 
