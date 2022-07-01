@@ -3,6 +3,9 @@ https://leetcode.com/problems/add-binary/
 https://leetcode.com/problems/avoid-flood-in-the-city/
 https://leetcode.com/problems/backspace-string-compare/
 https://leetcode.com/problems/beautiful-arrangement-ii/
+https://leetcode.com/problems/beautiful-array/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
 https://leetcode.com/problems/binary-tree-maximum-path-sum/
 https://leetcode.com/problems/binary-tree-right-side-view/
@@ -104,6 +107,7 @@ https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-va
 https://leetcode.com/problems/minimum-falling-path-sum/
 https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
 https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
+https://leetcode.com/problems/minimum-operations-to-make-a-subsequence/
 https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
 https://leetcode.com/problems/minimum-sideway-jumps/
 https://leetcode.com/problems/minimum-size-subarray-sum/
