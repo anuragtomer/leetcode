@@ -2,6 +2,7 @@
 #include <iostream>
 #include <map>
 #include <queue>
+#include <set>
 #include <vector>
 
 using namespace std;
@@ -25,26 +26,26 @@ class Solution {
     * @return: the vertical order traversal
     */
   vector<vector<int>> verticalOrder(TreeNode *root) {
-    map<int, vector<int>> hash;
-    queue<pair<TreeNode *, int>> level;
-    level.push({root, 0});
-    while (!level.empty()) {
-      TreeNode *current = level.front().first;
-      int lev = level.front().second;
-      level.pop();
-      if (current) {
-        hash[lev].push_back(current->val);
-        if (current->left) {
-          level.push({current->left, lev - 1});
-        }
-        if (current->right) {
-          level.push({current->right, lev + 1});
-        }
-      }
+    map<int, map<int, multiset<int>>> levels;
+    queue<pair<TreeNode *, pair<int, int>>> bfs;
+    if (root)
+      bfs.push({root, {0, 0}});
+    while (!bfs.empty()) {
+      auto node = bfs.front().first;
+      auto [lev, height] = bfs.front().second;
+      bfs.pop();
+      levels[lev][height].insert(node->val);
+      if (node->left)
+        bfs.push({node->left, {lev - 1, height + 1}});
+      if (node->right)
+        bfs.push({node->right, {lev + 1, height + 1}});
     }
     vector<vector<int>> result;
-    for (auto it : hash) {
-      result.push_back(it.second);
+    for (auto it : levels) {
+      vector<int> column;
+      for (auto c : it.second)
+        copy(c.second.begin(), c.second.end(), back_inserter(column));
+      result.push_back(column);
     }
     return result;
   }
