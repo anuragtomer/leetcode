@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class Solution {
+/*class Solution {
     void dfs(vector<vector<int>> &graph, vector<bool> &visited, vector<vector<int>> &result, vector<int> currentRun,
              int currentNode) {
         if (currentNode == graph.size() - 1) {
@@ -37,19 +37,46 @@ class Solution {
         }
         return result;
     }
-};
-
-int main() {
-    Solution sol;
-    vector<vector<int>> graph = {{1, 2}, {3}, {3}, {}};
-    vector<vector<int>> output = {{0, 1, 3}, {0, 2, 3}};
-    vector<vector<int>> result = sol.allPathsSourceTarget(graph);
-    assert(output.size() == result.size());
-    for (int i = 0; i < output.size(); ++i) {
-        assert(output[i].size() == result[i].size());
-        for (int j = 0; j < output[i].size(); ++j)
-            assert(output[i][j] == result[i][j]);
+};*/
+// Another solution. No need of visited, since graph is acyclic.
+class Solution {
+  void dfs(int source, int target, vector<vector<int>> &graph, vector<int> &currentPath,
+           vector<vector<int>> &allPaths) {
+    currentPath.push_back(source);
+    if (source == target) {
+      allPaths.push_back(currentPath);
+      currentPath.pop_back();
+      return;
     }
-    return 0;
+    for (auto neigh : graph[source]) {
+      dfs(neigh, target, graph, currentPath, allPaths);
+    }
+    currentPath.pop_back();
+  }
+
+ public:
+  vector<vector<int>> allPathsSourceTarget(vector<vector<int>> &graph) {
+    vector<vector<int>> allPaths;
+    vector<int> currentPath;
+    currentPath.push_back(0);
+    int target = graph.size() - 1;
+    for (auto neigh : graph[0]) {
+      dfs(neigh, target, graph, currentPath, allPaths);
+    }
+    return allPaths;
+  }
+};
+int main() {
+  Solution sol;
+  vector<vector<int>> graph = {{1, 2}, {3}, {3}, {}};
+  vector<vector<int>> output = {{0, 1, 3}, {0, 2, 3}};
+  vector<vector<int>> result = sol.allPathsSourceTarget(graph);
+  assert(output.size() == result.size());
+  for (int i = 0; i < output.size(); ++i) {
+    assert(output[i].size() == result[i].size());
+    for (int j = 0; j < output[i].size(); ++j)
+      assert(output[i][j] == result[i][j]);
+  }
+  return 0;
 }
 
