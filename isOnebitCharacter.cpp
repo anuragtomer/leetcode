@@ -4,19 +4,35 @@ using namespace std;
 
 class Solution{
     public:
+        bool ending(vector<int> & bits, int index) {
+            if (index == bits.size() - 1 && bits[index] == 0)
+                return true;
+            else 
+                return false;
+            if (bits[index] == 1)
+                if (ending(bits, index+2))
+                    return true;
+                else
+                    return false;
+            else
+                if (ending(bits, index + 1))
+                    return true;
+                else
+                    return false;
 
+        }
         bool isOneBitCharacter(vector<int>& bits) {
-            bool ending = false;
-            for (int i = 0; i < bits.size(); i++) {
-                if (bits[i] == 0 && ending == false) {
-                    ending = true;
-                    bits.erase(bits.begin() + i);
-                    if (bits.size() % 2 == 0)
-                        return true;
-                }
-
+            while(bits.size() > 1) {
+                if (bits[0] == 0) 
+                    bits.erase(bits.begin());
+                else
+                    bits.erase(bits.begin(), bits.begin() + 2);
             }
-            return false;
+            if (bits.size() == 1)
+                return true;
+            else
+                return false;
+            // return ending(bits, 0);
         }
 };
 int main() {
