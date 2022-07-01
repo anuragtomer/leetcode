@@ -133,7 +133,7 @@ TreeNode *createTree(string input, char delimiter) {
     vector<TreeNode *> listOfNodes;
     for (auto word : inputs) {
         if (word.compare("null") == 0) {
-            listOfNodes.push_back(NULL);
+            listOfNodes.push_back(nullptr);
         } else {
             int val = stoi(word);
             TreeNode *node = new TreeNode(val);
