@@ -7,6 +7,7 @@ public:
 /*
    // Recursive Approach:
         void postorderRecursive(TreeNode * root, vector<int> &res) {
+        // Go to left first, then go to right, once done with both children, print the root.
             if (root) {
                 postorderRecursive(root->left, res);
                 postorderRecursive(root->right, res);
@@ -23,24 +24,27 @@ public:
  /*
  Two Stack solution:
 vector<int> postorderTwoStack(TreeNode * root) {
-    vector<TreeNode *> stack1;
-    vector<int> res;
-    res.clear();
+    // Idea is to keep root in stack2 while keeping left right children in stack1.
+    // If we do so, we will have reverse of postorder in stack2. We shall then revert the stack2
+    // and return result.
+    stack<TreeNode *> stack1;
+    stack<int> stack2;
     vector<int> output;
     output.clear();
-    stack1.push_back(root);
+    stack1.push(root);
     while(!stack1.empty()) {
-        TreeNode * temp = stack1.back();
-        stack1.pop_back();
+        TreeNode * temp = stack1.top(); // Take out the current root.
+        stack1.pop();
         if (temp) {
-            res.push_back(temp->val);
-            stack1.push_back(temp->left);
-            stack1.push_back(temp->right);
+            // push the root's children in the first stack, root into the second stack.
+            stack2.push(temp->val);
+            stack1.push(temp->left);
+            stack1.push(temp->right);
         }
     }
-    while(res.size()) {
-        output.push_back(res.back());
-        res.pop_back();
+    while(!stack2.empty()) {
+        output.push_back(stack2.top());
+        stack2.pop();
     }
     return output;
 }
@@ -54,24 +58,34 @@ vector<int> postorderOneStack(TreeNode * root) {
     vector<int> res;
     res.clear();
     do {
+        // Keep pushing right and then root until you are in the left corner of the tree headed by
+        // root.
         while(root) {
             st.push(root->right);
             st.push(root);
             root = root->left;
         }
+        // Now you are in the left corner of the tree headed by root. Pop an element from the stack.
         root = st.top();
         st.pop();
+        // Now, we need to check if this root has been already processed. If this root is processed,
+        // its right should not be there in the stack. If such is not the case, then we need to
+        // process the right subtree first. So we push right subtree into the stack.
         if (root && !st.empty() && root->right && root->right == st.top()) {
             TreeNode * temp = st.top();
             st.pop();
             st.push(root);
             root= temp;
         } else {
+            // We did not find root->right in the stack top. So, we have indeed processed both the
+            // lower children for this root. Now we can push this root into result.
+            // We set root = NULL to indicate we have processed tree rooted at this root. Pop new
+            // element from stack next time for further processing.
             if (root)
                 res.push_back(root->val);
             root = NULL;
         }
-    }while(!st.empty());
+    } while(!st.empty());
     return res;
 }
 vector <int> postorderTraversal(TreeNode *root) {
