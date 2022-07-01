@@ -23,6 +23,7 @@ class BoundedBlockingQueue {
     unique_lock<mutex> lock(q_mutex);
     data_cond.wait(lock, [this] { return q.size() < cap; });
     q.push(element);
+    data_cond.notify_all();
   }
 
   // Get the data in the queue head
@@ -32,6 +33,7 @@ class BoundedBlockingQueue {
     data_cond.wait(lock, [this] { return q.empty() == false; });
     int value = q.front();
     q.pop();
+    data_cond.notify_all();
     return value;
   }
 
