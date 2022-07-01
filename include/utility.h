@@ -55,19 +55,19 @@ void deleteTree(TreeNode *root) {
  * Not yet refined. Might not work as expected.
  */
 void printLevelTree(TreeNode *root) {
-    queue<TreeNode *> q;
-    q.push(root);
-    while (!q.empty()) {
-        TreeNode *curr = q.front();
-        q.pop();
-        if (curr == nullptr)
+    queue<TreeNode *> q1, q2;
+    q1.push(root);
+    while (!q1.empty()) {
+        TreeNode *curr = q1.front();
+        q1.pop();
+        cout << curr->val << " ";
+        if (curr->left)
+            q2.push(curr->left);
+        if (curr->right)
+            q2.push(curr->right);
+        if (q1.empty()) {
             cout << "\n";
-        else {
-            if (curr->left)
-                q.push(curr->left);
-            if (curr->right)
-                q.push(curr->right);
-            q.push(nullptr);
+            q1.swap(q2);
         }
     }
 }
