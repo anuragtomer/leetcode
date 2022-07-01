@@ -41,31 +41,26 @@ using namespace std;
 // @lc code=start
 class Solution {
 
-    bool binary_search(vector<int> matrix, int beg, int end, const int &target) {
-        if (beg > end)
-            return false;
-        int mid = beg + (end - beg) / 2;
-        if (matrix[mid] == target)
-            return true;
-        else if (matrix[mid] > target)
-            return binary_search(matrix, beg, mid - 1, target);
-        else
-            return binary_search(matrix, mid + 1, end, target);
+    bool binary_search(vector<int>::iterator start, vector<int>::iterator end, int target) {
+        while (start != end) {
+            auto mid = start + (end - start) / 2;
+            if (*mid == target)
+                return true;
+            else if (*mid < target)
+                start = next(mid);
+            else
+                end = mid;
+        }
+        return false;
     }
 
    public:
     bool searchMatrix(vector<vector<int>> &matrix, int target) {
-        int R = matrix.size();
-        int C = 0;
-        if (R > 0)
-            C = matrix[0].size();
-        else
-            return false;
-        for (int i = 0; i < R && C > 0; i++) {
-            if (matrix[i][C - 1] > target)
-                return binary_search(matrix[i], 0, matrix[i].size() - 1, target);
-            else if (matrix[i][C - 1] == target)
+        for (int i = 0, j = matrix[0].size() - 1; i < matrix.size(); ++i) {
+            if (target == matrix[i][j])
                 return true;
+            else if (target < matrix[i][j])
+                return binary_search(matrix[i].begin(), matrix[i].end(), target);
         }
         return false;
     }
