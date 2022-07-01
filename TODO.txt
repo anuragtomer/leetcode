@@ -1,3 +1,1 @@
 1. Change autocompletion.
-2. Change commenting color if done with #if 0
-3. Change comment continuation.

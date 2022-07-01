@@ -1,4 +1,4 @@
-// Code to support input parsing in desired data structure.
+/* Code to support input parsing in desired data structure. */
 #include <iostream>
 #include <vector>
 #include <sstream>
@@ -8,96 +8,189 @@
 using namespace std;
 
 struct TreeNode {
-	int val;
-	TreeNode * left;
-	TreeNode * right;
-	TreeNode(int x) : val(x), left(NULL), right(NULL) {
-	}
+    int val;
+    TreeNode * left;
+    TreeNode * right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {
+    }
 };
 
 struct ListNode {
-	int val;
-	ListNode * next;
-	ListNode(int x) : val(x), next(NULL) {
-	}
+    int val;
+    ListNode * next;
+    ListNode(int x) : val(x), next(NULL) {
+    }
 };
 
-// Given a space separated string of integers, return a tree with the same level order traversal.
+struct Node {
+    int val;
+    Node * left;
+    Node * right;
+    Node * next;
+    Node (int _val) {
+        val = _val;
+        left = NULL;
+        right = NULL;
+        next = NULL;
+    }
+    Node (int _val, Node * _left, Node *_right, Node * _next) {
+        val = _val;
+        left = _left;
+        right = _right;
+        next = _next;
+    }
+};
+
+/* Given a space separated string of integers, return a tree with the same level order traversal. */
 TreeNode * createTree() {
-	string input;
-	getline(cin, input);
-	stringstream s(input);
-	string word;
-	vector<TreeNode*> listOfNodes;
-	listOfNodes.clear();
-	while(s >> word) {
-		if (word.compare("null") == 0) {
-			listOfNodes.push_back(NULL);
-		} else {
-			int val = stoi(word);
-			TreeNode * node = new TreeNode(val);
-			listOfNodes.push_back(node);
-		}
-	}
-	TreeNode * root = listOfNodes[0];
-	TreeNode * node = root;
-	for (unsigned int i = 1, x = 1; x < listOfNodes.size(); i++) {
-		node->left = listOfNodes[x];
-		node->right = listOfNodes[x+1];
-		node = listOfNodes[i];
-		while(!node) {
-			node = listOfNodes[++i];
-		}
-		x = x + 2;
-	}
-	return root;
+    string input;
+    getline(cin, input);
+    stringstream s(input);
+    string word;
+    vector <TreeNode *> listOfNodes;
+    listOfNodes.clear();
+    while(s >> word) {
+        if (word.compare("null") == 0) {
+            listOfNodes.push_back(NULL);
+        } else {
+            int val = stoi(word);
+            TreeNode * node = new TreeNode(val);
+            listOfNodes.push_back(node);
+        }
+    }
+    TreeNode * root = listOfNodes[0];
+    TreeNode * node = root;
+    for (unsigned int i = 1, x = 1; x < listOfNodes.size(); i++) {
+        node->left = listOfNodes[x];
+        node->right = listOfNodes[x + 1];
+        node = listOfNodes[i];
+        while(!node) {
+            node = listOfNodes[++i];
+        }
+        x = x + 2;
+    }
+    return root;
 }
 
 ListNode * createList() {
     return NULL;
 }
 
-// Given a root, prints the tree.
+/* Given a root, prints the tree. */
 void printTree(TreeNode * head) {
-	TreeNode * temp = head;
-	stack<TreeNode *> st;
-	st.push(head);
-	while (!st.empty()) {
-		temp = st.top();
-		st.pop();
-		cout << "\nNode: " << temp->val;
-		cout << " Left: ";
-		if (temp->left)
-			cout << temp->left->val;
-		else
-			cout << "NULL";
-		cout << " Right: ";
-		if (temp->right)
-			cout << temp->right->val;
-		else
-			cout << "NULL";
-		if (temp->right) st.push(temp->right);
-		if (temp->left) st.push(temp->left);
-	}
+    TreeNode * temp = head;
+    stack <TreeNode *> st;
+    st.push(head);
+    while (!st.empty()) {
+        temp = st.top();
+        st.pop();
+        cout << "\nNode: " << temp->val;
+        cout << " Left: ";
+        if (temp->left)
+            cout << temp->left->val;
+        else
+            cout << "NULL";
+        cout << " Right: ";
+        if (temp->right)
+            cout << temp->right->val;
+        else
+            cout << "NULL";
+        if (temp->right) st.push(temp->right);
+        if (temp->left) st.push(temp->left);
+    }
 }
 
-// Takes in space separated integers and returns a vector of integers.
+/* Takes in space separated integers and returns a vector of integers. */
 vector <int> createVector() {
-	string str;
-	getline(cin, str);
-	stringstream S(str);
-	string word;
-	vector <int> input;
-	input.clear();
-	while(S>> word) {
-		int i = stoi(word);
-		input.push_back(i);
-	}
+    string str;
+    getline(cin, str);
+    stringstream S(str);
+    string word;
+    vector <int> input;
+    input.clear();
+    while(S >> word) {
+        int i = stoi(word);
+        input.push_back(i);
+    }
     return input;
 }
 
-// Prints vector of integers.
-void printVector(vector<int> vec) {
+/* Prints vector of integers. */
+void printVector(vector <int> vec) {
     for (int i: vec)
         cout << i << " ";
 }
+
+/* Given a space separated string of integers, return a node-tree with the same level order traversal. */
+Node * createNodeTree() {
+    string input;
+    getline(cin, input);
+    stringstream s(input);
+    string word;
+    vector <Node *> listOfNodes;
+    listOfNodes.clear();
+    while(s >> word) {
+        if (word.compare("null") == 0) {
+            listOfNodes.push_back(NULL);
+        } else {
+            int val = stoi(word);
+            Node * node = new Node(val);
+            listOfNodes.push_back(node);
+        }
+    }
+    Node * root = listOfNodes[0];
+    Node * node = root;
+    for (unsigned int i = 1, x = 1; x < listOfNodes.size(); i++) {
+        node->left = listOfNodes[x];
+        node->right = listOfNodes[x + 1];
+        node = listOfNodes[i];
+        while(!node) {
+            node = listOfNodes[++i];
+        }
+        x = x + 2;
+    }
+    return root;
+}
+
+/* Prints tree having node structure.(left, right, next) */
+void printNodeTree(Node *root) {
+    Node * temp = root;
+    stack <Node *> st;
+    st.push(root);
+    while (!st.empty()) {
+        temp = st.top();
+        st.pop();
+        cout << "\nNode: " << temp->val;
+        cout << " Left: ";
+        if (temp->left)
+            cout << temp->left->val;
+        else
+            cout << "NULL";
+        cout << " Right: ";
+        if (temp->right)
+            cout << temp->right->val;
+        else
+            cout << "NULL";
+        cout << " Next: ";
+        if (temp->next)
+            cout << temp->next->val;
+        else
+            cout << "NULL";
+        if (temp->right) st.push(temp->right);
+        if (temp->left) st.push(temp->left);
+    }
+}
+/* Read vector of vector of ints. */
+/*vector <vector <int> > readVecVecInt() {
+ *   vector <vector <int> > input;
+ *   input.clear();
+ *   getline(cin, str);
+ *   stringstream s(str);
+ *   string temp;
+ *   while(getline(s, temp, ',')) {
+ *       vector <int> curr;
+ *       curr.clear();
+ *
+ *   }
+ *  }
+ */
