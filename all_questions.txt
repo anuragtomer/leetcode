@@ -83,6 +83,11 @@ https://leetcode.com/problems/invert-binary-tree/
 https://leetcode.com/problems/is-subsequence/
 https://leetcode.com/problems/island-perimeter/
 https://leetcode.com/problems/jump-game-ii/
+https://leetcode.com/problems/jump-game-iii/
+https://leetcode.com/problems/jump-game-iv/
+https://leetcode.com/problems/jump-game-v/
+https://leetcode.com/problems/jump-game-vi/
+https://leetcode.com/problems/jump-game-vii/
 https://leetcode.com/problems/jump-game/
 https://leetcode.com/problems/k-th-symbol-in-grammar/
 https://leetcode.com/problems/knight-dialer/
@@ -239,6 +244,7 @@ https://www.lintcode.com/problem/474/
 https://www.lintcode.com/problem/508/
 https://www.lintcode.com/problem/595/
 https://www.lintcode.com/problem/614/
+https://www.lintcode.com/problem/634
 https://www.lintcode.com/problem/641/
 https://www.lintcode.com/problem/650/
 https://www.lintcode.com/problem/659/
