@@ -1,3 +1,8 @@
+/*
+ * @lc app=leetcode id=230 lang=cpp
+ *
+ * [230] Kth Smallest Element in a BST
+ */
 #include <iostream>
 #include <cassert>
 using namespace std;
@@ -11,6 +16,8 @@ struct TreeNode {
     TreeNode *right;
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
+
+// @lc code=start
 
 class Solution {
 public:
@@ -34,6 +41,7 @@ public:
         return inorderTraversal(root, k);
     }
 };
+// @lc code=end
 
 int main(void)
 {

@@ -3,6 +3,13 @@
 #include <cassert>
 using namespace std;
 
+/*
+ * @lc app=leetcode id=200 lang=cpp
+ *
+ * [200] Number of Islands
+ */
+
+// @lc code=start
 class Solution {
     void markvisited(vector< vector<char> > &grid, int i, int j) {
         if (i >= 0 && j >= 0 && i < grid.size() && j < grid[i].size() && grid[i][j] == '1') {
@@ -28,6 +35,8 @@ public:
         return count;
     }
 };
+// @lc code=end
+
 
 int main() {
     Solution sol;
