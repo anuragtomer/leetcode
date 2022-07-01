@@ -194,6 +194,10 @@ void printLevelTree(TreeNode *root) {
         }
     }
 }
+
+/*
+ * @brief: asserts output is equal to resp
+ */
 template <class T>
 void testResp(T output, T resp) {
     assert(output.size() == resp.size());
