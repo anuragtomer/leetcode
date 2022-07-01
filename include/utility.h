@@ -211,6 +211,20 @@ bool testResp(const T &output, const T &resp) {
 }
 
 /*
+ * @brief: asserts output is equal to resp
+ */
+template <class T>
+bool testDoubleVector(const T &output, const T &resp) {
+    if (output.size() != resp.size())
+        return false;
+
+    for (int i = 0; i < output.size(); ++i)
+        if (!testResp(output[i], resp[i]))
+            return false;
+    return true;
+}
+
+/*
  * @brief: Compares 2 trees by values.
  */
 bool compareTrees(TreeNode *root1, TreeNode *root2) {
