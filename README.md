@@ -3,6 +3,7 @@
 
 <h2> Easy </h2>
 
+[Max depth in a binary tree](Easy/maxDepth.cpp) - https://leetcode.com/problems/maximum-depth-of-binary-tree/  
 [Merge Two binary trees](Easy/mergeTrees.cpp) - https://leetcode.com/problems/merge-two-binary-trees/  
 
 
@@ -14,6 +15,7 @@
 [Count the no of set bits in numbers](medium/countBits.cpp) - https://leetcode.com/problems/counting-bits/  
 [maxIncreaseKeepingSkyline](medium/maxIncreaseKeepingSkyline.cpp) - https://leetcode.com/problems/max-increase-to-keep-city-skyline/  
 [letter permutations](medium/numTilePossibilities.cpp) - https://leetcode.com/problems/letter-tile-possibilities  
+[Given height and no of people with equal or greater height in front queue, reconstruct queue](medium/reconstructQueue.cpp) - https://leetcode.com/problems/queue-reconstruction-by-height/  
 [tinyURL](medium/tinyURL.cpp) - https://leetcode.com/problems/encode-and-decode-tinyurl  
 
 
