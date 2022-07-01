@@ -54,6 +54,7 @@ https://leetcode.com/problems/maximum-product-subarray/
 https://leetcode.com/problems/maximum-subarray/
 https://leetcode.com/problems/merge-k-sorted-lists/
 https://leetcode.com/problems/merge-two-sorted-lists/
+https://leetcode.com/problems/minimum-cost-tree-from-leaf-values/
 https://leetcode.com/problems/minimum-difference-between-largest-and-smallest-value-in-three-moves/
 https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/
 https://leetcode.com/problems/minimum-number-of-steps-to-make-two-strings-anagram/
@@ -62,6 +63,7 @@ https://leetcode.com/problems/minimum-size-subarray-sum/
 https://leetcode.com/problems/missing-number/
 https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/
 https://leetcode.com/problems/multiply-strings/
+https://leetcode.com/problems/next-greater-element-i/
 https://leetcode.com/problems/next-permutation/
 https://leetcode.com/problems/non-decreasing-array/
 https://leetcode.com/problems/non-overlapping-intervals/
