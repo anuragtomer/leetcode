@@ -62,7 +62,8 @@ TreeNode * createTree() {
     TreeNode * node = root;
     for (unsigned int i = 1, x = 1; x < listOfNodes.size(); i++) {
         node->left = listOfNodes[x];
-        node->right = listOfNodes[x + 1];
+        if (x + 1 < listOfNodes.size())
+            node->right = listOfNodes[x + 1];
         node = listOfNodes[i];
         while(!node) {
             node = listOfNodes[++i];
@@ -130,6 +131,7 @@ void printTree(TreeNode * head) {
         if (temp->right) st.push(temp->right);
         if (temp->left) st.push(temp->left);
     }
+    cout << endl;
 }
 
 /* Takes in space separated integers and returns a vector of integers. */
