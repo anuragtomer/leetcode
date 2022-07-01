@@ -29,13 +29,14 @@ using namespace std;
 // @lc code=start
 class Solution {
     bool allZero(vector<int> num) {
-        for (auto elem: num) {
+        for (auto elem : num) {
             if (elem != 0)
                 return false;
         }
         return true;
     }
-public:
+
+   public:
     /*
      * Algo:
      * 1. First make an array stating which chars appeared how many times in s1.
@@ -47,16 +48,19 @@ public:
         if (s1.size() > s2.size())
             return false;
         vector<int> num(26, 0);
+        vector<int> zeros(26, 0);
         int i = 0;
         for (; i < s1.size(); i++) {
             num[s1[i] - 'a']++;
             num[s2[i] - 'a']--;
         }
-        if (allZero(num)) return true;
+        if (equal(num.begin(), num.end(), zeros.begin()))
+            return true;
         for (; i < s2.size(); i++) {
             num[s2[i] - 'a']--;
             num[s2[i - s1.size()] - 'a']++;
-            if (allZero(num)) return true;
+            if (equal(num.begin(), num.end(), zeros.begin()))
+                return true;
         }
         return false;
     }
@@ -65,10 +69,19 @@ public:
 
 int main() {
     Solution sol;
+    string s1 = "ab", s2 = "eidbaooo";
+    assert(true == sol.checkInclusion(s1, s2));
+    s1 = "ab", s2 = "eidboaoo";
+    assert(false == sol.checkInclusion(s1, s2));
+    return 0;
+}
+/*
+int main() {
+    Solution sol;
     string s1, s2;
     cin >> s1;
     cin.ignore();
     cin >> s2;
     cout << boolalpha << sol.checkInclusion(s1, s2) << "\n";
     return 0;
-}
+}*/
