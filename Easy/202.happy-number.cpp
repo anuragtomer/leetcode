@@ -9,28 +9,28 @@
 using namespace std;
 
 class Solution {
-   public:
-    bool isHappy(int n) {
-        unordered_map<int, int> mp;
-        while (n > 1) {
-            int sum = 0;
-            while (n > 0) {
-                int rem = n % 10;
-                sum += (rem * rem);
-                n /= 10;
-            }
-            if (mp.find(sum) == mp.end())
-                mp[sum] = 1;
-            else
-                return false;
-            n = sum;
-        }
-        return n == 1;
+ public:
+  bool isHappy(int n) {
+    unordered_map<int, int> mp;
+    while (n > 1) {
+      int sum = 0;
+      while (n > 0) {
+        int rem = n % 10;
+        sum += (rem * rem);
+        n /= 10;
+      }
+      if (mp.find(sum) == mp.end())
+        mp[sum] = 1;
+      else
+        return false;
+      n = sum;
     }
+    return n == 1;
+  }
 };
 
 int main() {
-    Solution sol;
-    cout << boolalpha << sol.isHappy(15);
-    return 0;
+  Solution sol;
+  cout << boolalpha << sol.isHappy(15);
+  return 0;
 }
