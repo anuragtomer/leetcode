@@ -1,31 +1,20 @@
-#include <algorithm>
-#include <iostream>
-#include <unordered_map>
-#include <vector>
-
-using namespace std;
-
 class Solution {
  public:
-  vector<int> intersection(vector<int> &nums1, vector<int> &nums2) {
-    unordered_map<int, int> hash;
-    for (auto num : nums1)
-      hash[num]++;
+  vector<int> intersect(vector<int> &nums1, vector<int> &nums2) {
+    sort(nums1.begin(), nums1.end());
+    sort(nums2.begin(), nums2.end());
     vector<int> result;
-    for (auto num : nums2)
-      if (hash.count(num)) {
-        hash[num]--;
-        if (hash[num] == 0)
-          hash.erase(num);
-        result.push_back(num);
-      }
+    for (int i = 0, j = 0, n = nums1.size(), m = nums2.size();
+         i < n && j < m;) {
+      if (nums1[i] == nums2[j]) {
+        result.push_back(nums1[i]);
+        ++i;
+        ++j;
+      } else if (nums1[i] < nums2[j])
+        ++i;
+      else
+        ++j;
+    }
     return result;
   }
 };
-
-int main() {
-  Solution sol;
-
-  return 0;
-}
-

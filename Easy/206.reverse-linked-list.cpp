@@ -9,16 +9,16 @@ using namespace std;
 
 // Definition for singly-linked list.
 struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode(int x) : val(x), next(NULL) {}
+  int val;
+  ListNode *next;
+  ListNode(int x) : val(x), next(NULL) {}
 };
 
 // @lc code=start
 class Solution {
-   public:
-    /* Recursive */
-    /*
+ public:
+  /* Recursive */
+  /*
  ListNode *reverseList(ListNode *head) {
      if (head == nullptr || head->next == nullptr)
          return head;
@@ -29,39 +29,39 @@ class Solution {
      head->next = nullptr;    // Make head the last element of the list.
      return temp;
  }*/
-    /*
+  /*
         Iterative Approach*/
-    ListNode *reverseList(ListNode *head) {
-        if (head == nullptr || head->next == nullptr)
-            return head;
-        ListNode *prev = nullptr, *current = head, *next = nullptr;
-        while (current) {
-            next = current->next;
-            current->next = prev;
-            prev = current;
-            current = next;
-        }
-        return prev;
+  ListNode *reverseList(ListNode *head) {
+    if (head == nullptr || head->next == nullptr)
+      return head;
+    ListNode *prev = nullptr, *current = head, *next = nullptr;
+    while (current) {
+      next = current->next;
+      current->next = prev;
+      prev = current;
+      current = next;
     }
+    return prev;
+  }
 };
 // @lc code=end
 
 void printList(ListNode *head) {
-    while (head != nullptr) {
-        cout << head->val << " ";
-        head = head->next;
-    }
-    cout << "\n";
+  while (head != nullptr) {
+    cout << head->val << " ";
+    head = head->next;
+  }
+  cout << "\n";
 }
 int main() {
-    Solution sol;
-    ListNode *head = new ListNode(5);
-    head->next = new ListNode(4);
-    head->next->next = new ListNode(3);
-    head->next->next->next = new ListNode(2);
-    head->next->next->next->next = new ListNode(1);
-    printList(head);
-    head = sol.reverseList(head);
-    printList(head);
-    return 0;
+  Solution sol;
+  ListNode *head = new ListNode(5);
+  head->next = new ListNode(4);
+  head->next->next = new ListNode(3);
+  head->next->next->next = new ListNode(2);
+  head->next->next->next->next = new ListNode(1);
+  printList(head);
+  head = sol.reverseList(head);
+  printList(head);
+  return 0;
 }
