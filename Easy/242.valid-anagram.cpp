@@ -6,23 +6,22 @@
 using namespace std;
 
 class Solution {
-   public:
-    bool isAnagram(string s, string t) {
-        unordered_map<char, int> hash;
-        for (auto ch : s)
-            hash[ch]++;
-        for (auto ch : t) {
-            hash[ch]--;
-            if (hash[ch] == 0)
-                hash.erase(ch);
-        }
-        return hash.empty();
+ public:
+  bool isAnagram(string s, string t) {
+    unordered_map<char, int> hash;
+    for (auto ch : s)
+      hash[ch]++;
+    for (auto ch : t) {
+      hash[ch]--;
+      if (hash[ch] == 0)
+        hash.erase(ch);
     }
+    return hash.empty();
+  }
 };
 
 int main() {
-    Solution sol;
-    assert(sol.isAnagram("anagram", "nagaram"));
-    return 0;
+  Solution sol;
+  assert(sol.isAnagram("anagram", "nagaram"));
+  return 0;
 }
-
