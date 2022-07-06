@@ -9,8 +9,8 @@ using namespace std;
 
 // @lc code=start
 class Solution {
-public:
-/*  
+ public:
+  /*  
     Working but O(n^2) solution.
     Takes 28ms to complete (better than 40% runtimes, 96.02% space usage)
 
@@ -31,7 +31,7 @@ public:
         }
         return max(maxSize, currSize);
     } */
-    /* Idea:
+  /* Idea:
      * We are trying to maintain a sliding window.
      * Sliding window slides from i to j, where i and j increments one by one. 
      * i is incremented if str[i] is already a part of current substring. j is incremented if str[j]
@@ -48,26 +48,26 @@ public:
      * O(n) but still better.
      * 
      */
-    int lengthOfLongestSubstring(string s) {
-        int hash[256];
-        memset(hash, -1, 256 * sizeof(int));
-        int i = 0;
-        int len = 0;
-        int stringsize = s.size();
-        for (int j = 0; j < stringsize; j++) {
-            i = max(hash[s[j]] + 1, i);
-            len = max(len, j - i + 1);
-            hash[s[j]] = j;
-        }
-        return len;
+  int lengthOfLongestSubstring(string s) {
+    int hash[256];
+    memset(hash, -1, 256 * sizeof(int));
+    int i = 0;
+    int len = 0;
+    int stringsize = s.size();
+    for (int j = 0; j < stringsize; j++) {
+      i = max(hash[s[j]] + 1, i);
+      len = max(len, j - i + 1);
+      hash[s[j]] = j;
     }
+    return len;
+  }
 };
 // @lc code=end
 
 int main() {
-    string s;
-    cin >> s;
-    Solution sol;
-    cout << sol.lengthOfLongestSubstring(s);
-    return 0;
+  string s;
+  cin >> s;
+  Solution sol;
+  cout << sol.lengthOfLongestSubstring(s);
+  return 0;
 }
