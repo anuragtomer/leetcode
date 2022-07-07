@@ -5,8 +5,8 @@
 using namespace std;
 
 class Solution {
-   public:
-    /* With extra space
+ public:
+  /* With extra space
  vector<int> spiralOrder(vector<vector<int>> &matrix) {
      vector<int> result;
      vector<vector<int>> visited = vector<vector<int>>(matrix.size(), vector<int>(matrix[0].size(), false));
@@ -47,57 +47,56 @@ class Solution {
      return result;
  }
  */
-    // Without extra space
-    vector<int> spiralOrder(vector<vector<int>> &matrix) {
-        vector<int> result;
-        int ilb = 1, iub = matrix.size() - 1, jlb = 0, jub = matrix[0].size() - 1;
-        bool left = false, right = true, up = false, down = false;
-        int i = 0, j = 0;
-        int mn = matrix.size() * matrix[0].size();
-        result.reserve(mn);
-        while (result.size() != mn) {
-            result.push_back(matrix[i][j]);
-            if (right) {
-                if (j == jub) {
-                    down = true;
-                    right = false;
-                    jub--;
-                }
-            } else if (down) {
-                if (i == iub) {
-                    left = true;
-                    down = false;
-                    iub--;
-                }
-            } else if (left) {
-                if (j == jlb) {
-                    up = true;
-                    left = false;
-                    jlb++;
-                }
-            } else if (up) {
-                if (i == ilb) {
-                    up = false;
-                    right = true;
-                    ilb++;
-                }
-            }
-            if (right)
-                j++;
-            if (down)
-                i++;
-            if (left)
-                j--;
-            if (up)
-                i--;
+  // Without extra space
+  vector<int> spiralOrder(vector<vector<int>> &matrix) {
+    vector<int> result;
+    int ilb = 1, iub = matrix.size() - 1, jlb = 0, jub = matrix[0].size() - 1;
+    bool left = false, right = true, up = false, down = false;
+    int i = 0, j = 0;
+    int mn = matrix.size() * matrix[0].size();
+    result.reserve(mn);
+    while (result.size() != mn) {
+      result.push_back(matrix[i][j]);
+      if (right) {
+        if (j == jub) {
+          down = true;
+          right = false;
+          jub--;
         }
-        return result;
+      } else if (down) {
+        if (i == iub) {
+          left = true;
+          down = false;
+          iub--;
+        }
+      } else if (left) {
+        if (j == jlb) {
+          up = true;
+          left = false;
+          jlb++;
+        }
+      } else if (up) {
+        if (i == ilb) {
+          up = false;
+          right = true;
+          ilb++;
+        }
+      }
+      if (right)
+        j++;
+      if (down)
+        i++;
+      if (left)
+        j--;
+      if (up)
+        i--;
     }
+    return result;
+  }
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-
