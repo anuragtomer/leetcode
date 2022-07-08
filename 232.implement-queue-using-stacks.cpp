@@ -39,4 +39,3 @@ class MyQueue {
 };
 
 int main() { return 0; }
-
