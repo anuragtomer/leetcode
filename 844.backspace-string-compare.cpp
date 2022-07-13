@@ -2,40 +2,30 @@
 using namespace std;
 
 class Solution {
-   public:
-    bool backspaceCompare(string S, string T) {
-        int j = 0;
-        for (auto i = 0; i < S.size(); i++) {
-            if (S[i] == '#') {
-                j--;
-                if (j < 0)
-                    j = 0;
-            } else {
-                S[j] = S[i];
-                j++;
-            }
-        }
-        S.resize(j);
-        j = 0;
-        for (auto i = 0; i < T.size(); i++) {
-            if (T[i] == '#') {
-                j--;
-                if (j < 0)
-                    j = 0;
-            } else {
-                T[j] = T[i];
-                j++;
-            }
-        }
-        T.resize(j);
-        return S == T;
+  void normalize(string &str) {
+    int j = -1;
+    for (int i = 0; i < str.size(); ++i) {
+      if (str[i] != '#') {
+        str[++j] = str[i];
+      } else {
+        if (j >= 0)
+          --j;
+      }
     }
-};
+    str.resize(j + 1);
+  }
 
+ public:
+  bool backspaceCompare(string s, string t) {
+    normalize(s);
+    normalize(t);
+    return s == t;
+  }
+};
 int main() {
-    Solution sol;
-    string S{"a#b#c#######abc#"};
-    string T{"abc###abc#"};
-    cout << boolalpha << sol.backspaceCompare(S, T);
-    return 0;
+  Solution sol;
+  string S{"a#b#c#######abc#"};
+  string T{"abc###abc#"};
+  cout << boolalpha << sol.backspaceCompare(S, T);
+  return 0;
 }

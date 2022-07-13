@@ -6,52 +6,52 @@
 using namespace std;
 
 class Solution {
-    int getCounts(string &s, int &i) {
-        int num = 0;
-        while (i < s.size() && s[i] >= '0' && s[i] <= '9') {
-            num = num * 10 + (s[i] - '0');
-            ++i;
-        }
-        return num;
+  bool isNum(char ch) { return ch >= '0' && ch <= '9'; }
+  bool isChar(char ch) { return ch >= 'a' && ch <= 'z'; }
+  int getInt(string s, int &i) {
+    int num = 0;
+    while (i < s.size() && isNum(s[i])) {
+      num = num * 10 + (s[i] - '0');
+      ++i;
     }
+    --i;
+    return num;
+  }
 
-   public:
-    string decodeString(string s) {
-        int n = s.size();
-        stack<string> partialResult;
-        stack<int> count;
-        string currentCollection;
-        int i = 0;
-        while (i < n) {
-            if (s[i] >= '0' && s[i] <= '9') {
-                count.push(getCounts(s, i));
-            } else if (s[i] == '[') {
-                partialResult.push(currentCollection);
-                currentCollection.clear();
-                ++i;
-            } else if (s[i] == ']') {
-                string temp = partialResult.top();
-                partialResult.pop();
-                int repeatCount = count.top();
-                count.pop();
-                while (repeatCount) {
-                    temp.append(currentCollection);
-                    --repeatCount;
-                }
-                currentCollection = temp;
-                ++i;
-            } else if (s[i] >= 'a' && s[i] <= 'z') {
-                currentCollection.push_back(s[i]);
-                ++i;
-            }
+ public:
+  string decodeString(string s) {
+    stack<string> str_stack;
+    stack<int> num_stack;
+    string decoded;
+    int i = 0;
+    while (i < s.size()) {
+      if (isNum(s[i])) {
+        num_stack.push(getInt(s, i));
+      } else if (isChar(s[i])) {
+        decoded.push_back(s[i]);
+      } else if (s[i] == '[') {
+        str_stack.push(decoded);
+        decoded.clear();
+      } else if (s[i] == ']') {
+        string last_str = str_stack.top();
+        str_stack.pop();
+        int repeat_count = num_stack.top();
+        num_stack.pop();
+        while (repeat_count) {
+          last_str.append(decoded);
+          --repeat_count;
         }
-        return currentCollection;
+        decoded = last_str;
+        last_str.clear();
+      }
+      ++i;
     }
+    return decoded;
+  }
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-

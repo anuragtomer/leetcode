@@ -6,9 +6,9 @@
 using namespace std;
 
 class Solution {
-   public:
-    string getHint(string secret, string guess) {
-        /*
+ public:
+  string getHint(string secret, string guess) {
+    /*
         unordered_map<char, int> hash;
         for (auto ch: secret) {
           hash[ch]++;
@@ -29,28 +29,27 @@ class Solution {
         return to_string(A) + "A" + to_string(B) + "B";
         */
 
-        int bulls = 0;
-        int cows = 0;
-        vector<int> numbers(10, 0);
-        for (int i = 0; i < secret.length(); i++) {
-            if (secret[i] == guess[i])
-                bulls++;
-            else {
-                if (numbers[secret[i] - '0'] < 0)
-                    cows++;
-                numbers[secret[i] - '0']++;
-                if (numbers[guess[i] - '0'] > 0)
-                    cows++;
-                numbers[guess[i] - '0']--;
-            }
-        }
-        return to_string(bulls) + "A" + to_string(cows) + "B";
+    int bulls = 0;
+    int cows = 0;
+    vector<int> numbers(10, 0);
+    for (int i = 0; i < secret.length(); i++) {
+      if (secret[i] == guess[i])
+        bulls++;
+      else {
+        if (numbers[secret[i] - '0'] < 0)
+          cows++;
+        numbers[secret[i] - '0']++;
+        if (numbers[guess[i] - '0'] > 0)
+          cows++;
+        numbers[guess[i] - '0']--;
+      }
     }
+    return to_string(bulls) + "A" + to_string(cows) + "B";
+  }
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-
