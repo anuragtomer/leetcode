@@ -1,6 +1,6 @@
 import random
 import sqlite3
-
+DBFILE = '/data/data/com.termux/files/home/leetcode/questions.db'
 def main():
     val = 1 
     while val != 0:
@@ -12,7 +12,7 @@ def main():
         print('5. Total number of questions')
         print('6. Search question')
         print('7. Questions done today')
-        val = int(input("Your choice: "))
+        val = int(input("Your choice: ") or "2")
         if val == 0:
             exit(0)
         elif val == 1:
@@ -30,10 +30,10 @@ def main():
         elif val == 7:
             questionsDoneToday()
         else:
-            print('Please give proper input.')
+            print('Choose wisely!!')
 
 def questionsDoneToday():
-    con = sqlite3.connect('/Volumes/GoogleDrive/My Drive/questions.db')
+    con = sqlite3.connect(
     cur = con.cursor()
     print("No of questions done today: ", end='')
     for row in cur.execute('''SELECT COUNT(*) FROM questions where TODAY > datetime('now', 'start of day')'''):
@@ -46,7 +46,7 @@ def questionsDoneToday():
     con.close()
 
 def searchQuestion():
-    con = sqlite3.connect('/Volumes/GoogleDrive/My Drive/questions.db')
+    con = sqlite3.connect(DBFILE)
     cur = con.cursor()
     print('Search By?')
     print('1. Name')
@@ -83,7 +83,7 @@ def searchQuestion():
     con.close()
 
 def printQuestionCounts():
-    con = sqlite3.connect('/Volumes/GoogleDrive/My Drive/questions.db')
+    con = sqlite3.connect(DBFILE)
     cur = con.cursor()
     print("No of questions in DB: ", end='')
     for row in cur.execute('''SELECT COUNT(*) FROM questions'''):
@@ -91,7 +91,7 @@ def printQuestionCounts():
     con.close()
 
 def printQuestions():
-    con = sqlite3.connect('/Volumes/GoogleDrive/My Drive/questions.db')
+    con = sqlite3.connect(DBFILE)
     cur = con.cursor()
     print("\nAll questions in DB: ")
     i = 1;
@@ -101,7 +101,7 @@ def printQuestions():
     con.close()
 
 def deleteQuestion():
-    con = sqlite3.connect('/Volumes/GoogleDrive/My Drive/questions.db')
+    con = sqlite3.connect(DBFILE)
     cur = con.cursor()
     link = input('Link: ')
     deletequery = "DELETE FROM questions WHERE link='" + link + "'"
@@ -114,7 +114,7 @@ def deleteQuestion():
     con.close()
 
 def addQuestion():
-    con = sqlite3.connect('/Volumes/GoogleDrive/My Drive/questions.db')
+    con = sqlite3.connect(DBFILE)
     cur = con.cursor()
     name = input('Name: ')
     link = input('Link: ')
@@ -131,7 +131,7 @@ def addQuestion():
 
 def pickQuestionPastDue():
     dueQuestions = []
-    con = sqlite3.connect('/Volumes/GoogleDrive/My Drive/questions.db')
+    con = sqlite3.connect(DBFILE)
     cur = con.cursor()
     for row in cur.execute('''SELECT * FROM questions WHERE duedate < datetime('now')'''):
         dueQuestions.append(row)
