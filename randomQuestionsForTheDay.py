@@ -29,11 +29,29 @@ def main():
             searchQuestion()
         elif val == 7:
             questionsDoneToday()
+        elif val == 8:
+            print("Oh.. You know secret option. Fine, go ahead and change due.")
+            changeDueDate()
         else:
             print('Choose wisely!!')
 
+def changeDueDate():
+    con = sqlite3.connect(DBFILE)
+    cur = con.cursor()
+    link = input('Link? ')
+    query = "SELECT COUNT(*) FROM questions where link='" + link + "'"
+    found = False
+    print('Questions found with Link = ' + link + ': ')
+    for row in cur.execute(query):
+        found = True
+        print(row[0] + ' | ' + row[1] + ' | ' + row[2] + ' | ' + row[3] + ' | ' + row[4] + ' | ' + row[5])
+    if found:
+        days = int(input('When should this be reminded next? ') or '0')
+        cur.execute("UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days') WHERE link='"+link+"'")
+    cur.close()
+
 def questionsDoneToday():
-    con = sqlite3.connect(
+    con = sqlite3.connect(DBFILE)
     cur = con.cursor()
     print("No of questions done today: ", end='')
     for row in cur.execute('''SELECT COUNT(*) FROM questions where TODAY > datetime('now', 'start of day')'''):
@@ -54,30 +72,31 @@ def searchQuestion():
     print('3. Company')
     print('4. Difficulty')
     val = int(input('?: '))
+    print('Name | Link | Due Date | Enter Date | Difficulty | Company')
     if val == 1:
         name = input('Name: ')
         query = "Select * FROM questions where name='" + name + "'"
         print('Questions found with Name = ' + name + ': ')
         for row in cur.execute(query):
-            print(f'{row[0]:<45}' + ' | ' + row[1])
+            print(f'{row[0]:<45}' + ' | ' + row[1] + ' | ' + row[2] + ' | ' + row[3] + ' | ' + row[4] + ' | ' + row[5])
     elif val == 2:
         link = input('Link: ')
         query = "SELECT * FROM questions where link='" + link + "'"
         print('Questions found with Link = ' + link + ': ')
         for row in cur.execute(query):
-            print(f'{row[0]:<45}' + ' | ' + row[1])
+            print(f'{row[0]:<45}' + ' | ' + row[1] + ' | ' + row[2] + ' | ' + row[3] + ' | ' + row[4] + ' | ' + row[5])
     elif val == 3:
         company = input('Company: ')
         query = "SELECT * FROM questions where company like '%" + company.upper() + "%'"
         print('Questions found with company = ' + company.upper() + ': ')
         for row in cur.execute(query):
-            print(f'{row[0]:<45}' + ' | ' + row[1])
+            print(f'{row[0]:<45}' + ' | ' + row[1] + ' | ' + row[2] + ' | ' + row[3] + ' | ' + row[4] + ' | ' + row[5])
     elif val == 4:
         difficulty = input('Difficulty: ')
         query = "SELECT * FROM questions where difficulty='" + difficulty.upper() + "'"
         print('Questions found with difficulty = ' + difficulty.upper() + ': ')
         for row in cur.execute(query):
-            print(f'{row[0]:<45}' + ' | ' + row[1])
+            print(f'{row[0]:<45}' + ' | ' + row[1] + ' | ' + row[2] + ' | ' + row[3] + ' | ' + row[4] + ' | ' + row[5])
     else:
         print('Wrong input.')
     con.close()
