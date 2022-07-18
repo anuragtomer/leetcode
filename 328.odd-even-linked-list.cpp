@@ -16,7 +16,8 @@ class Solution {
   ListNode *oddEvenList(ListNode *head) {
     if (!head || !head->next)
       return head;
-    ListNode *evenHead = head->next, *even = head->next, *oddHead = head, *odd = head;
+    ListNode *evenHead = head->next, *even = head->next, *oddHead = head,
+             *odd = head;
     while (even && odd) {
       odd->next = even->next;
       if (odd->next)
@@ -33,4 +34,3 @@ int main() {
 
   return 0;
 }
-

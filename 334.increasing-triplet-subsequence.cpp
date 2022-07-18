@@ -22,28 +22,27 @@ class Solution {
 */
 /* Another rediculous solution: */
 class Solution {
-   public:
-    bool increasingTriplet(vector<int> &nums) {
-        int low = INT_MAX, med = INT_MAX;
-        for (auto num : nums) {
-            if (num <= low)
-                low = num;
-            else if (num <= med)
-                med = num;
-            else
-                return true;
-        }
-        return false;
+ public:
+  bool increasingTriplet(vector<int> &nums) {
+    int low = INT_MAX, med = INT_MAX;
+    for (auto num : nums) {
+      if (num <= low)
+        low = num;
+      else if (num <= med)
+        med = num;
+      else
+        return true;
     }
+    return false;
+  }
 };
 int main() {
-    Solution sol;
-    vector<int> nums = {1, 2, 3, 4, 5};
-    assert(sol.increasingTriplet(nums));
-    nums = {5, 4, 3, 2, 1};
-    assert(!sol.increasingTriplet(nums));
-    nums = {2, 1, 5, 0, 4, 6};
-    assert(sol.increasingTriplet(nums));
-    return 0;
+  Solution sol;
+  vector<int> nums = {1, 2, 3, 4, 5};
+  assert(sol.increasingTriplet(nums));
+  nums = {5, 4, 3, 2, 1};
+  assert(!sol.increasingTriplet(nums));
+  nums = {2, 1, 5, 0, 4, 6};
+  assert(sol.increasingTriplet(nums));
+  return 0;
 }
-
