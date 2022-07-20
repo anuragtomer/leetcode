@@ -17,8 +17,7 @@ class Solution {
         sTot[s[i]] = t[i];
         tTos[t[i]] = s[i];
       } else {
-        if (tTos.find(t[i]) == tTos.end() ||
-            sTot[s[i]] != t[i] ||
+        if (tTos.find(t[i]) == tTos.end() || sTot[s[i]] != t[i] ||
             tTos[t[i]] != s[i])
           return false;
       }
