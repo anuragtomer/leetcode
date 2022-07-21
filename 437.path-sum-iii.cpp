@@ -13,10 +13,12 @@ struct TreeNode {
   TreeNode *right;
   TreeNode() : val(0), left(nullptr), right(nullptr) {}
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right)
+    : val(x), left(left), right(right) {}
 };
 class Solution {
-  void helper(TreeNode *root, int targetSum, int currentSum, int &count, unordered_map<int, int> &hash) {
+  void helper(TreeNode *root, int targetSum, long long currentSum, int &count,
+              unordered_map<long long, int> &hash) {
     if (!root)
       return;
     currentSum += root->val;
@@ -32,7 +34,7 @@ class Solution {
  public:
   int pathSum(TreeNode *root, int targetSum) {
     int count = 0;
-    unordered_map<int, int> hash;
+    unordered_map<long long, int> hash;
     hash[0] = 1;
     helper(root, targetSum, 0, count, hash);
     return count;
@@ -43,4 +45,3 @@ int main() {
 
   return 0;
 }
-
