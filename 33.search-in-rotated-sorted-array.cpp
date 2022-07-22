@@ -1,24 +1,28 @@
+#include <cassert>
 #include <iostream>
 #include <vector>
 using namespace std;
 class Solution {
- public:
-  int search(vector<int> &nums, int target) {
-    int lb = 0, ub = nums.size() - 1, mid, pivot;
+  int findPivot(vector<int> &nums) {
+    int lb = 0, ub = nums.size() - 1, mid;
     while (lb < ub) {
-      mid = (ub + lb) / 2;
+      mid = lb + (ub - lb) / 2;
       if (nums[mid] > nums[ub])
         lb = mid + 1;
       else
         ub = mid;
     }
-    pivot = lb;
-    lb = 0;
-    ub = nums.size() - 1;
-    int realmid;
+    return lb;
+  }
+
+ public:
+  int search(vector<int> &nums, int target) {
+    int pivot = findPivot(nums);
+    int N = nums.size();
+    int lb = 0, ub = N - 1, mid, realmid;
     while (lb <= ub) {
-      mid = (lb + ub) / 2;
-      realmid = (mid + pivot) % nums.size();
+      mid = lb + (ub - lb) / 2;
+      realmid = (mid + pivot) % N;
       if (nums[realmid] == target)
         return realmid;
       else if (nums[realmid] < target) {

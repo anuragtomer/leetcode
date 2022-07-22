@@ -14,9 +14,9 @@
  *
  * Input:
  * matrix = [
- * ⁠ [1,   3,  5,  7],
- * ⁠ [10, 11, 16, 20],
- * ⁠ [23, 30, 34, 50]
+ * [1,   3,  5,  7],
+ * [10, 11, 16, 20],
+ * [23, 30, 34, 50]
  * ]
  * target = 3
  * Output: true
@@ -25,9 +25,9 @@
  *
  * Input:
  * matrix = [
- * ⁠ [1,   3,  5,  7],
- * ⁠ [10, 11, 16, 20],
- * ⁠ [23, 30, 34, 50]
+ * [1,   3,  5,  7],
+ * [10, 11, 16, 20],
+ * [23, 30, 34, 50]
  * ]
  * target = 13
  * Output: false
@@ -38,7 +38,7 @@
 #include <vector>
 using namespace std;
 
-// @lc code=start
+/*
 class Solution {
 
   bool binary_search(vector<int>::iterator start, vector<int>::iterator end,
@@ -65,9 +65,36 @@ class Solution {
     }
     return false;
   }
+};*/
+class Solution {
+ public:
+  bool searchMatrix(vector<vector<int>> &matrix, int target) {
+    int lb = 0, ub = matrix.size();
+    while (lb < ub) {
+      int mid = lb + (ub - lb) / 2;
+      if (matrix[mid][0] == target)
+        return true;
+      else if (matrix[mid][0] < target)
+        lb = mid + 1;
+      else
+        ub = mid;
+    }
+    if (lb == 0)
+      return false;
+    int i = lb - 1;
+    lb = 0, ub = matrix[i].size();
+    while (lb < ub) {
+      int mid = lb + (ub - lb) / 2;
+      if (matrix[i][mid] == target)
+        return true;
+      else if (matrix[i][mid] < target)
+        lb = mid + 1;
+      else
+        ub = mid;
+    }
+    return false;
+  }
 };
-// @lc code=end
-
 int main() {
   Solution sol;
   vector<vector<int>> matrix = {
