@@ -15,7 +15,30 @@ class Solution {
     return dp[0][0];
   }
 };
-
+// Another Solution
+class Solution {
+ public:
+  int uniquePaths(int m, int n) {
+    vector<vector<int>> grid(m, vector<int>(n, 0));
+    grid[0][0] = 1;
+    queue<pair<int, int>> queue;
+    queue.push({0, 0});
+    vector<vector<int>> direction = {{0, 1}, {1, 0}};
+    while (!queue.empty()) {
+      auto [i, j] = queue.front();
+      queue.pop();
+      for (auto &dir : direction) {
+        int x = i + dir[0], y = j + dir[1];
+        if (x >= m || y >= n)
+          continue;
+        if (grid[x][y] == 0)
+          queue.push({x, y});
+        grid[x][y] += grid[i][j];
+      }
+    }
+    return grid[m - 1][n - 1];
+  }
+};
 int main() {
   Solution sol;
   assert(28 == sol.uniquePaths(7, 3));
