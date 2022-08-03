@@ -1,4 +1,5 @@
 import random
+import os
 import sqlite3
 DBFILE = '/data/data/com.termux/files/home/leetcode/questions.db'
 def main():
@@ -14,6 +15,7 @@ def main():
         print('7. Questions done today')
         val = int(input("Your choice: ") or "2")
         if val == 0:
+            os.system("git add questions.db")
             exit(0)
         elif val == 1:
             pickQuestionPastDue()
@@ -135,18 +137,32 @@ def deleteQuestion():
 def addQuestion():
     con = sqlite3.connect(DBFILE)
     cur = con.cursor()
-    name = input('Name: ')
     link = input('Link: ')
-    difficulty = input('Difficulty: ')
-    company = input('Company: ') or 'NA'
-    try:
-        cur.execute('''INSERT INTO questions(NAME, LINK, DUEDATE, TODAY, DIFFICULTY, COMPANY) VALUES (?, ?, datetime('now', '+3 days'), datetime('now'), ?, ?)''', (name, link, difficulty.upper(), company.upper()))
-        con.commit()
-    except sqlite3.IntegrityError as err:
-        days = input("Link already present. When should this be reminded again? ")
+    if link[-1] != '/':
+        link = link + '/'
+
+    query = "SELECT COUNT(*) FROM questions where link='" + link + "'"
+    found = False
+    for row in cur.execute(query):
+        if row[0] > 0:
+            found = True
+    if found:
+        days = int(input('When should this be reminded next? ') or '0')
         cur.execute("UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days') WHERE link='"+link+"'")
         con.commit()
-    con.close()
+        con.close()
+    else:
+        name = input('Name: ')
+        difficulty = input('Difficulty: ')
+        company = input('Company: ') or 'NA'
+        try:
+            cur.execute('''INSERT INTO questions(NAME, LINK, DUEDATE, TODAY, DIFFICULTY, COMPANY) VALUES (?, ?, datetime('now', '+3 days'), datetime('now'), ?, ?)''', (name, link, difficulty.upper(), company.upper()))
+            con.commit()
+        except sqlite3.IntegrityError as err:
+            days = input("Link already present. When should this be reminded again? ")
+            cur.execute("UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days') WHERE link='"+link+"'")
+            con.commit()
+        con.close()
 
 def pickQuestionPastDue():
     dueQuestions = []

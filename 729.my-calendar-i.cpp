@@ -6,18 +6,18 @@
 using namespace std;
 
 class MyCalendar {
-    map<int, int> bookedIntervals;
+  map<int, int> bookedIntervals;
 
-   public:
-    MyCalendar() { bookedIntervals.clear(); }
+ public:
+  MyCalendar() { bookedIntervals.clear(); }
 
-    bool book(int start, int end) {
-        auto intersection = bookedIntervals.upper_bound(start);
-        if (intersection != bookedIntervals.end() && (*intersection).second < end)
-            return false;
-        bookedIntervals.insert({end, start});
-        return true;
-    }
+  bool book(int start, int end) {
+    auto intersection = bookedIntervals.upper_bound(start);
+    if (intersection != bookedIntervals.end() && (*intersection).second < end)
+      return false;
+    bookedIntervals.insert({end, start});
+    return true;
+  }
 };
 /*
 class MyCalendar {
@@ -47,8 +47,7 @@ public:
 
  */
 int main() {
-    MyCalendar sol;
+  MyCalendar sol;
 
-    return 0;
+  return 0;
 }
-

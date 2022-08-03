@@ -1,8 +1,8 @@
 class Solution {
- public:
-  int findJudge(int n, vector<vector<int>> &trust) {
+public:
+  int findJudge(int n, vector<vector<int>>& trust) {
     vector<int> trusted(n + 1, 0), truster(n + 1, 0);
-    for (auto &t : trust) {
+    for (auto &t: trust) {
       trusted[t[1]]++;
       truster[t[0]]++;
     }

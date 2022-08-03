@@ -5,9 +5,9 @@
 using namespace std;
 
 class Solution {
-   public:
-    /* Iterative */
-    /*
+ public:
+  /* Iterative */
+  /*
     bool isSameTree(TreeNode *p, TreeNode *q) {
         queue<TreeNode *> q1, q2;
         q1.push(p);
@@ -34,29 +34,29 @@ class Solution {
         }
         return true;
     }*/
-    /* Recursive */
-    bool isSameTree(TreeNode *p, TreeNode *q) {
-        if ((p == nullptr && q != nullptr) || (p != nullptr && q == nullptr))
-            return false;
-        if (p == nullptr && q == nullptr)
-            return true;
-        if (p->val != q->val)
-            return false;
-        return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
-    }
+  /* Recursive */
+  bool isSameTree(TreeNode *p, TreeNode *q) {
+    if ((p == nullptr && q != nullptr) || (p != nullptr && q == nullptr))
+      return false;
+    if (p == nullptr && q == nullptr)
+      return true;
+    if (p->val != q->val)
+      return false;
+    return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
+  }
 };
 
 int main() {
-    Solution sol;
-    TreeNode *p = createTree("1,2,3", ',');
-    TreeNode *q = createTree("1,2,3", ',');
-    assert(true == sol.isSameTree(p, q));
-    deleteTree(p);
-    deleteTree(q);
-    p = createTree("1,2", ',');
-    q = createTree("1,null,2", ',');
-    assert(false == sol.isSameTree(p, q));
-    deleteTree(p);
-    deleteTree(q);
-    return 0;
+  Solution sol;
+  TreeNode *p = createTree("1,2,3", ',');
+  TreeNode *q = createTree("1,2,3", ',');
+  assert(true == sol.isSameTree(p, q));
+  deleteTree(p);
+  deleteTree(q);
+  p = createTree("1,2", ',');
+  q = createTree("1,null,2", ',');
+  assert(false == sol.isSameTree(p, q));
+  deleteTree(p);
+  deleteTree(q);
+  return 0;
 }

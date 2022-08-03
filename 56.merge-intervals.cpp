@@ -72,6 +72,28 @@ class Solution {
     return output;
   }
 };
+class Solution {
+ public:
+  vector<vector<int>> merge(vector<vector<int>> &intervals) {
+    if (intervals.empty() || intervals.size() == 1)
+      return intervals;
+    auto comp = [](vector<int> &a, vector<int> &b) {
+      return a[0] == b[0] ? a[1] < b[1] : a[0] < b[0];
+    };
+    sort(intervals.begin(), intervals.end(), comp);
+    int merged = 0;
+    for (int i = 1; i < intervals.size(); ++i) {
+      if (intervals[merged][1] >= intervals[i][0]) {
+        intervals[merged][1] = max(intervals[merged][1], intervals[i][1]);
+      } else {
+        ++merged;
+        intervals[merged] = intervals[i];
+      }
+    }
+    intervals.resize(merged + 1);
+    return intervals;
+  }
+};
 
 // @lc code=end
 
