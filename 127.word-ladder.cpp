@@ -8,7 +8,7 @@
 using namespace std;
 
 class Solution {
-    /*
+  /*
     int countMismatches(string word1, string word2) {
       int mismatches = 0;
       for (int i = 0; i < word1.size(); ++i) {
@@ -54,7 +54,6 @@ class Solution {
       }
       return minHops == INT_MAX? 0: minHops+1;
     }
-    */
     bool countMismatches(string word1, string word2) {
         int mismatches = 0;
         for (int i = 0; i < word1.size(); ++i) {
@@ -65,39 +64,39 @@ class Solution {
         return mismatches == 1;
     }
 
-   public:
-    int ladderLength(string beginWord, string endWord, vector<string> &wordList) {
-        queue<string> bfsQueue;
-        unordered_set<string> words(wordList.begin(), wordList.end());
-        bfsQueue.push(beginWord);
-        int hops = 0;
-        while (!bfsQueue.empty()) {
-            int len = bfsQueue.size();
-            ++hops;
-            while (len) {
-                --len;
-                string top = bfsQueue.front();
-                if (top == endWord)
-                    return hops;
-                bfsQueue.pop();
-                words.erase(top);
-                for (int i = 0; i < top.size(); ++i) {
-                    auto ch = top[i];
-                    for (int j = 0; j < 26; ++j) {
-                        top[i] = 'a' + j;
-                        if (words.find(top) != words.end())
-                            bfsQueue.push(top);
-                    }
-                    top[i] = ch;
-                }
-            }
+    */
+ public:
+  int ladderLength(string beginWord, string endWord, vector<string> &wordList) {
+    queue<string> bfsQueue;
+    unordered_set<string> words(wordList.begin(), wordList.end());
+    bfsQueue.push(beginWord);
+    int hops = 0;
+    while (!bfsQueue.empty()) {
+      int len = bfsQueue.size();
+      ++hops;
+      while (len) {
+        --len;
+        string top = bfsQueue.front();
+        if (top == endWord)
+          return hops;
+        bfsQueue.pop();
+        words.erase(top);
+        for (int i = 0; i < top.size(); ++i) {
+          auto ch = top[i];
+          for (int j = 0; j < 26; ++j) {
+            top[i] = 'a' + j;
+            if (words.find(top) != words.end())
+              bfsQueue.push(top);
+          }
+          top[i] = ch;
         }
-        return 0;
+      }
     }
+    return 0;
+  }
 };
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-
