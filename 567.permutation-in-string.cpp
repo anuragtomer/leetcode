@@ -72,29 +72,32 @@ class Solution {
       ++map[c - 'a']; // Initialize the map with s1 characters
     int left = 0, count_chars = s1.size();
     for (int right = 0; right < s2.size(); ++right) {
-      --map[s2[right] - 'a'];              // Account for this char from s2.
-      if (map[s2[right] - 'a'] >= 0)       // Was above accounting valid? Were there enough s1 character?
-        --count_chars;                     // Yes it was a valid match.
-      if (count_chars == 0)                // Have I matched all chars of s1?
-        return true;                       // Yes I have.
-      if (right - left + 1 == s1.size()) { // Have I accounted for more characters than in s1?
-        if (map[s2[left] - 'a'] >= 0)      // Did I match all chars of leftmost char?
+      --map[s2[right] - 'a']; // Account for this char from s2.
+      if (map[s2[right] - 'a'] >=
+          0) // Was above accounting valid? Were there enough s1 character?
+        --count_chars;      // Yes it was a valid match.
+      if (count_chars == 0) // Have I matched all chars of s1?
+        return true;        // Yes I have.
+      if (right - left + 1 ==
+          s1.size()) { // Have I accounted for more characters than in s1?
+        if (map[s2[left] - 'a'] >= 0) // Did I match all chars of leftmost char?
           ++count_chars;
-        ++map[s2[left] - 'a']; // Sliding window. Put char back in map from left.
-        ++left;                // Increase left.
+        ++map[s2[left] -
+              'a']; // Sliding window. Put char back in map from left.
+        ++left;     // Increase left.
       }
     }
     return false;
   }
   // Similar to above but with lesser putting into map and popping back
-    bool checkInclusion(string s1, string s2) {
+  bool checkInclusion(string s1, string s2) {
     if (s2.size() < s1.size())
       return false;
     if (s1.empty())
       return true;
     int pendingMatches = s1.size();
     vector<int> counts1(128, 0), counts2(128, 0);
-    for (auto &ch: s1)
+    for (auto &ch : s1)
       counts1[ch]++;
     for (int i = 0, n = s1.size(); i < s2.size(); ++i) {
       if (i >= n && counts1[s2[i - n]] > 0) {
@@ -123,13 +126,3 @@ int main() {
   assert(false == sol.checkInclusion(s1, s2));
   return 0;
 }
-/*
-int main() {
-    Solution sol;
-    string s1, s2;
-    cin >> s1;
-    cin.ignore();
-    cin >> s2;
-    cout << boolalpha << sol.checkInclusion(s1, s2) << "\n";
-    return 0;
-}*/
