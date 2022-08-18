@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Solution {
+/*class Solution {
   bool match(string word, string &pattern) {
     if (word.size() != pattern.size())
       return false;
@@ -30,6 +30,34 @@ class Solution {
     vector<string> result;
     for (auto word : words) {
       if (match(word, pattern))
+        result.push_back(word);
+    }
+    return result;
+  }
+};*/
+// Another solution
+class Solution {
+  string normalize(const string &word) {
+    string replacedString;
+    replacedString.reserve(word.size());
+    char current = 'a';
+    unordered_map<char, char> seen;
+    for (auto &ch : word) {
+      if (seen.find(ch) == seen.end()) {
+        seen[ch] = current++;
+      }
+      replacedString.push_back(seen[ch]);
+    }
+    return replacedString;
+  }
+
+ public:
+  vector<string> findAndReplacePattern(vector<string> &words, string pattern) {
+    vector<string> result;
+    pattern = normalize(pattern);
+    for (auto &word : words) {
+      string replaced = normalize(word);
+      if (replaced == pattern)
         result.push_back(word);
     }
     return result;
