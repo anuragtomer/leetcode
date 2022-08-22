@@ -4,7 +4,7 @@
 #include <mutex>
 #include <thread>
 using namespace std;
-class ZeroEvenOdd {
+/*class ZeroEvenOdd {
  private:
   int n;
   condition_variable cv;
@@ -53,6 +53,56 @@ class ZeroEvenOdd {
       }
       current = 0;
       ++next;
+      cv.notify_all();
+    }
+  }
+};*/
+class ZeroEvenOdd {
+ private:
+  int n;
+  int next;
+  bool zeroTurn;
+  mutex m;
+  condition_variable cv;
+
+ public:
+  ZeroEvenOdd(int n) {
+    this->n = n;
+    next = 0;
+    zeroTurn = true;
+  }
+
+  // printNumber(x) outputs "x", where x is an integer.
+  void zero(function<void(int)> printNumber) {
+    while (next <= n) {
+      unique_lock<mutex> l(m);
+      cv.wait(l, [&]() { return next > n || zeroTurn; });
+      if (next < n)
+        printNumber(0);
+      zeroTurn = false;
+      ++next;
+      cv.notify_all();
+    }
+  }
+
+  void even(function<void(int)> printNumber) {
+    while (next <= n) {
+      unique_lock<mutex> l(m);
+      cv.wait(l, [&]() { return next > n || (not zeroTurn && next % 2 == 0); });
+      if (next <= n)
+        printNumber(next);
+      zeroTurn = true;
+      cv.notify_all();
+    }
+  }
+
+  void odd(function<void(int)> printNumber) {
+    while (next <= n) {
+      unique_lock<mutex> l(m);
+      cv.wait(l, [&]() { return next > n || (not zeroTurn && next % 2 == 1); });
+      if (next <= n)
+        printNumber(next);
+      zeroTurn = true;
       cv.notify_all();
     }
   }
