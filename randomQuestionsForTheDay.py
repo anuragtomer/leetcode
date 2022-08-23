@@ -1,9 +1,9 @@
 import random
 import os
 import sqlite3
-DBFILE = '/data/data/com.termux/files/home/leetcode/questions.db'
+DBFILE = '/Users/anurag/leetcode/questions.db'
 def main():
-    val = 1 
+    val = 1
     while val != 0:
         print('\n0. Exit')
         print('1. Next due question for today')

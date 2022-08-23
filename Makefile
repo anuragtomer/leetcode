@@ -23,6 +23,6 @@ last: $(notdir $(LAST_MODIFIED_CXX_FILE))
 # Use this makefile for cleanup only. Others might not work as expected.
 
 clean:
-	rm -rf $(GARBAGE)
+	rm -rfi $(GARBAGE) 2> /dev/null
 
 

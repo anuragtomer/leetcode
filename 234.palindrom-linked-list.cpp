@@ -14,17 +14,19 @@ struct ListNode {
 
 class Solution {
   ListNode *getMidPoint(ListNode *head) {
-    ListNode *slow = head;
-    ListNode *fast = head;
+    ListNode *slow = head, *fast = head;
     if (fast)
       fast = fast->next;
     while (fast) {
-      slow = slow->next;
       fast = fast->next;
-      if (fast)
+      if (fast) {
         fast = fast->next;
+        slow = slow->next;
+      }
     }
-    return slow;
+    ListNode *mid = slow->next;
+    slow->next = nullptr;
+    return mid;
   }
 
   ListNode *reverse(ListNode *head) {
@@ -56,8 +58,33 @@ class Solution {
   }
 };
 
+void append(ListNode *&last, int val) {
+  if (last == nullptr)
+    last = new ListNode(val);
+  else
+    last->next = new ListNode(val);
+}
+
+void freeMem(ListNode *&head) {
+  while (head) {
+    ListNode *toBeDeleted = head;
+    head = head->next;
+    delete toBeDeleted;
+  }
+}
+
 int main() {
   Solution sol;
-
+  ListNode *head = new ListNode(1);
+  head->next = new ListNode(2);
+  head->next->next = new ListNode(2);
+  head->next->next->next = new ListNode(1);
+  assert(sol.isPalindrom(head));
+  freeMem(head);
+  head = nullptr;
+  head = new ListNode(1);
+  head->next = new ListNode(2);
+  assert(not sol.isPalindrom(head));
+  freeMem(head);
   return 0;
 }
