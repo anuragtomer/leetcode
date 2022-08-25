@@ -8,23 +8,22 @@ class Solution {
  public:
   bool canConstruct(string ransomNote, string magazine) {
     int count[26];
-    memset(count, 0, sizeof(int) * 26);
-    int noteChars = ransomNote.size();
-    for (auto &ch : ransomNote)
-      count[ch - 'a']++;
-    for (auto &ch : magazine) {
-      count[ch - 'a']--;
-      if (count[ch - 'a'] >= 0)
-        --noteChars;
-      if (noteChars == 0)
-        return true;
+    fill_n(count, 26, 0);
+    for (auto &ch : magazine)
+      ++count[ch - 'a'];
+    for (auto &ch : ransomNote) {
+      if (count[ch - 'a'] <= 0)
+        return false;
+      --count[ch - 'a'];
     }
-    return false;
+    return true;
   }
 };
 
 int main() {
   Solution sol;
-
+  assert(sol.canConstruct("a", "a"));
+  assert(sol.canConstruct("aa", "aab"));
+  assert(not sol.canConstruct("abc", "acd"));
   return 0;
 }

@@ -5,20 +5,19 @@
 using namespace std;
 
 class Solution {
-   public:
-    vector<int> getConcatenation(vector<int> &nums) {
-        int i = 0;
-        int n = nums.size();
-        while (i < n) {
-            nums.push_back(nums[i]);
-            ++i;
-        }
-        return nums;
+ public:
+  vector<int> getConcatenation(vector<int> &nums) {
+    int i = 0;
+    int n = nums.size();
+    while (i < n) {
+      nums.push_back(nums[i]);
+      ++i;
     }
+    return nums;
+  }
 };
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-
