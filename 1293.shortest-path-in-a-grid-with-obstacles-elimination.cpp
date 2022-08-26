@@ -1,5 +1,10 @@
+#include <queue>
+#include <vector>
+using namespace std;
 class Solution {
-  void traverse(vector<vector<int>> &grid, int i, int j, int k, vector<vector<int>> &visited, int steps, const int &H, const int &W) {
+  void traverse(vector<vector<int>> &grid, int i, int j, int k,
+                vector<vector<int>> &visited, int steps, const int &H,
+                const int &W) {
     if (visited[i][j] < steps)
       return;
     visited[i][j] = steps;
@@ -17,8 +22,8 @@ class Solution {
         traverse(grid, x, y, k, visited, steps + 1, H, W);
     }
   }
-  
-  int bfs(vector<vector<int>>& grid, int k) {
+
+  int bfs(vector<vector<int>> &grid, int k) {
     int H = grid.size();
     if (H == 0)
       return 0;
@@ -28,30 +33,24 @@ class Solution {
       int i, j, steps, k;
     };
     queue<point> bfsq;
-
     bfsq.push({0, 0, 0, k});
-    while (!bfsq.empty()){
+
+    while (!bfsq.empty()) {
       auto [x, y, steps, k] = bfsq.front();
       bfsq.pop();
-
-      if (x < 0 || y < 0 || x >= H || y >= W) {
+      if (x < 0 || y < 0 || x >= H || y >= W)
         continue;
-      }
-
       if (x == H - 1 && y == W - 1)
         return steps;
-
-      if (grid[x][y] == 1){
+      if (grid[x][y] == 1) {
         if (k > 0)
           k--;
         else
           continue;
       }
-
       if (visited[x][y] != -1 && visited[x][y] >= k)
         continue;
       visited[x][y] = k;
-
       bfsq.push({x + 1, y, steps + 1, k});
       bfsq.push({x, y + 1, steps + 1, k});
       bfsq.push({x - 1, y, steps + 1, k});
@@ -59,14 +58,26 @@ class Solution {
     }
     return -1;
   }
-public:
-  int shortestPath(vector<vector<int>>& grid, int k) {
-    int H = grid.size();
-    if (H == 0)
-      return 0;
-    int W = grid[0].size();
-    vector<vector<int>> visited(H, vector<int>(W, -1));
+
+ public:
+  int shortestPath(vector<vector<int>> &grid, int k) {
+    // int H = grid.size();
+    // if (H == 0)
+    //   return 0;
+    // int W = grid[0].size();
+    // vector<vector<int>> visited(H, vector<int>(W, -1));
     // traverse(grid, 0, 0, k, visited, 0, H, W);
     return bfs(grid, k);
   }
 };
+int main() {
+  Solution sol;
+  vector<vector<int>> grid = {
+    {0, 0, 0}, {1, 1, 0}, {0, 0, 0}, {0, 1, 1}, {0, 0, 0}};
+  int k = 1;
+  assert(6 == sol.shortestPath(grid, k));
+  grid = {{0, 1, 1}, {1, 1, 1}, {1, 0, 0}};
+  k = 1;
+  assert(-1 == sol.shortestPath(grid, k));
+  return 0;
+}
