@@ -1,5 +1,5 @@
-package main
-import "fmt"
+// package main
+// import "fmt"
 func isPalindrome(x int) bool {
   if (x < 0) {
     return false
@@ -12,7 +12,7 @@ func isPalindrome(x int) bool {
   }
   return origx == y
 }
-func main() {
-    fmt.Println(isPalindrome(121))
-    fmt.Println(isPalindrome(-121))
-}
+// func main() {
+//     fmt.Println(isPalindrome(121))
+//     fmt.Println(isPalindrome(-121))
+// }
