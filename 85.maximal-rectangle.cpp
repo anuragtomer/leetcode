@@ -5,20 +5,18 @@
 
 using namespace std;
 class Solution {
-  int findMaxArea(vector<int> &nums) {
+  void findMaxArea(int H, vector<int> &heights, int &area) {
     stack<int> st;
-    int maxArea = 0;
-    for (int i = 0; i < nums.size(); ++i) {
-      while (!st.empty() && nums[st.top()] >= nums[i]) {
+    for (int i = 0; i < H; ++i) {
+      while (!st.empty() && heights[st.top()] >= heights[i]) {
         // There is a dip
-        auto height = nums[st.top()];
+        auto height = heights[st.top()];
         st.pop();
-        auto len = st.empty() ? -1 : st.top();
-        maxArea = max(maxArea, (i - len - 1) * height);
+        auto start = st.empty() ? -1 : st.top();
+        area = max(area, (i - start - 1) * height);
       }
       st.push(i);
     }
-    return maxArea;
   }
 
  public:
@@ -28,24 +26,25 @@ class Solution {
       return 0;
     int n = matrix[0].size();
     vector<int> height(n + 1, 0);
-    int maxArea = 0;
-    for (int i = 0; i < m; ++i) {
-      for (int j = 0; j < n; ++j) {
-        if (matrix[i][j] == '1')
-          height[j]++;
+    int area = 0;
+    for (auto &row : matrix) {
+      for (int j = 0; j < n; ++j)
+        if (row[j] == '1')
+          ++height[j];
         else
           height[j] = 0;
-      }
-      maxArea = max(maxArea, findMaxArea(height));
+      findMaxArea(n + 1, height, area);
     }
-    return maxArea;
+    return area;
   }
 };
 
 int main() {
   Solution sol;
-  vector<vector<char>> matrix = {
-    {'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
+  vector<vector<char>> matrix = {{'1', '0', '1', '0', '0'},
+                                 {'1', '0', '1', '1', '1'},
+                                 {'1', '1', '1', '1', '1'},
+                                 {'1', '0', '0', '1', '0'}};
   assert(6 == sol.maximalRectangle(matrix));
   return 0;
 }
