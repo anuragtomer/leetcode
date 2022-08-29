@@ -8,16 +8,16 @@
  * Given two strings s1 and s2, write a function to return true if s2 contains
  * the permutation of s1. In other words, one of the first string's
  * permutations is the substring of the second string.
- * 
+ *
  * Example 1:
  * Input: s1 = "ab" s2 = "eidbaooo"
  * Output: True
  * Explanation: s2 contains one permutation of s1 ("ba").
- * 
+ *
  * Example 2:
  * Input:s1= "ab" s2 = "eidboaoo"
  * Output: False
- * 
+ *
  * Note:
  * The input strings only contain lower case letters.
  * The length of both given strings is in range [1, 10,000].
@@ -40,7 +40,7 @@ class Solution {
   /*
      * Algo:
      * 1. First make an array stating which chars appeared how many times in s1.
-     * 2. Maintain a sliding window over the s2 which decrements the count in array 
+     * 2. Maintain a sliding window over the s2 which decrements the count in array
      *    made in step 1. Also increment the count of elements which are going out of window.
      * 3. Keep checking if the array is all zero at any point of time. If so, return true.
      */
@@ -67,30 +67,31 @@ class Solution {
   /* Better approach*/
   bool checkInclusion(string s1, string s2) {
     int map[26];
-    memset(map, 0, sizeof(int) * 26);
+    fill_n(map, 26, 0);
     for (char &c : s1)
       ++map[c - 'a']; // Initialize the map with s1 characters
-    int left = 0, count_chars = s1.size();
+    int left = 0, unmatched = s1.size();
     for (int right = 0; right < s2.size(); ++right) {
       --map[s2[right] - 'a']; // Account for this char from s2.
-      if (map[s2[right] - 'a'] >=
-          0) // Was above accounting valid? Were there enough s1 character?
-        --count_chars;      // Yes it was a valid match.
-      if (count_chars == 0) // Have I matched all chars of s1?
-        return true;        // Yes I have.
-      if (right - left + 1 ==
-          s1.size()) { // Have I accounted for more characters than in s1?
-        if (map[s2[left] - 'a'] >= 0) // Did I match all chars of leftmost char?
-          ++count_chars;
-        ++map[s2[left] -
-              'a']; // Sliding window. Put char back in map from left.
-        ++left;     // Increase left.
+      if (map[s2[right] - 'a'] >= 0)
+        // Was above accounting valid? Were there enough s1 character?
+        --unmatched;      // Yes it was a valid match.
+      if (unmatched == 0) // Have I matched all chars of s1?
+        return true;      // Yes I have.
+      if (right - left + 1 == s1.size()) {
+        // Have I accounted for more characters than in s1?
+        if (map[s2[left] - 'a'] >= 0)
+          // Did I match all chars of leftmost char?
+          ++unmatched;
+        ++map[s2[left] - 'a'];
+        ++left;
+        // Sliding window. Put char back in map from left.
       }
     }
     return false;
   }
   // Similar to above but with lesser putting into map and popping back
-  bool checkInclusion(string s1, string s2) {
+  bool checkInclusion2(string s1, string s2) {
     if (s2.size() < s1.size())
       return false;
     if (s1.empty())
@@ -121,8 +122,8 @@ class Solution {
 int main() {
   Solution sol;
   string s1 = "ab", s2 = "eidbaooo";
-  assert(true == sol.checkInclusion(s1, s2));
+  assert(sol.checkInclusion(s1, s2));
   s1 = "ab", s2 = "eidboaoo";
-  assert(false == sol.checkInclusion(s1, s2));
+  assert(not sol.checkInclusion(s1, s2));
   return 0;
 }
