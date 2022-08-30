@@ -37,7 +37,21 @@ class Solution {
 };
 int main() {
   Solution sol;
-
+  auto lmatch = [](vector<string> &a, vector<string> &b) -> bool {
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+    if (a.size() != b.size())
+      return false;
+    for (int i = 0; i < a.size(); ++i) {
+      if (a[i] != b[i])
+        return false;
+    }
+    return true;
+  };
+  vector<string> expected = {"a1b1", "A1b1", "a1B1", "A1B1"};
+  string s = "a1B1";
+  vector<string> output = sol.letterCasePermutation(s);
+  assert(lmatch(output, expected));
   return 0;
 }
 
