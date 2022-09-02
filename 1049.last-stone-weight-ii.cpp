@@ -1,22 +1,22 @@
-#include <algorithm>
-#include <iostream>
+#include <bitset>
 #include <vector>
 
 using namespace std;
 
 class Solution {
-   public:
-    int lastStoneWeightII(vector<int> &stones) {
-        bitset<1501> possible_sums = {1};
-        int totalSum = 0;
-        for (auto stone : stones) {
-            totalSum += stone;
-            for (int i = 1500; i >= stone; --i) {
-                possible_sums[i] = possible_sums[i] + possible_sums[i - stone];
-            }
-        }
-        // By now, I've marked all the possible sums using the input stones vector.
-        /*
+ public:
+  int lastStoneWeightII(vector<int> &stones) {
+    bitset<1501> possible_sums = {1};
+    int totalSum = 0;
+    for (auto stone : stones) {
+      totalSum += stone;
+      for (int i = 1500; i >= stone; --i) {
+        possible_sums[i] = possible_sums[i] + possible_sums[i - stone];
+      }
+    }
+    // By now, I've marked all the possible sums using the input stones
+    // vector.
+    /*
             (1) S1 + S2  = S
             (2) S1 - S2 = diff
             => 2 * S2 = S - diff
@@ -25,20 +25,21 @@ class Solution {
         // One way to minimize result.
         int result = INT_MAX;
         for (int i = 0; i < 1500; ++i)
-            result = min(result, abs(totalSum - 2 * possible_sums[i] * i));
+            result = min(result,
+                         abs(totalSum - 2 * possible_sums[i] * i));
         return result;
         */
-        /*
+    /*
             Another way:
                 To find min(diff), we should do max(S2);
                 So check which highest possible_sum is set.
         */
-        for (int i = totalSum / 2; i >= 0; --i) {
-            if (possible_sums[i])
-                return totalSum - 2 * i;
-        }
-        return 0;
+    for (int i = totalSum / 2; i >= 0; --i) {
+      if (possible_sums[i])
+        return totalSum - 2 * i;
     }
+    return 0;
+  }
 };
 
 /*
@@ -83,9 +84,11 @@ dp[23] = 1
 */
 
 int main() {
-    Solution sol;
-    vector<int> stones = {2, 7, 4, 1, 8, 1};
-    assert(1 == sol.lastStoneWeightII(stones));
-    return 0;
+  Solution sol;
+  vector<int> stones = {2, 7, 4, 1, 8, 1};
+  assert(1 == sol.lastStoneWeightII(stones));
+  stones = {31, 26, 33, 21, 40};
+  assert(5 == sol.lastStoneWeightII(stones));
+  return 0;
 }
 
