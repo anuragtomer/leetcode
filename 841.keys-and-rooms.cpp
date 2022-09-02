@@ -1,3 +1,6 @@
+#include <queue>
+#include <vector>
+using namespace std;
 class Solution {
  public:
   bool canVisitAllRooms(vector<vector<int>> &rooms) {
@@ -23,3 +26,12 @@ class Solution {
     return true;
   }
 };
+int main() {
+  Solution sol;
+  vector<vector<int>> rooms = {{1}, {2}, {3}, {}};
+  assert(sol.canVisitAllRooms(rooms));
+  rooms = {{1, 3}, {3, 0, 1}, {2}, {0}};
+  assert(not sol.canVisitAllRooms(rooms));
+  return 0;
+}
+

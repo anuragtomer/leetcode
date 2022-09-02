@@ -5,18 +5,18 @@
 using namespace std;
 
 class Solution {
-   public:
-    int findMinFibonacciNumbers(int k) {
-        if (k < 2)
-            return k;
-        int a = 1, b = 1;
-        while (b <= k) {
-            swap(a, b);
-            b += a;
-        }
-        return 1 + findMinFibonacciNumbers(k - a);
+ public:
+  int findMinFibonacciNumbers(int k) {
+    if (k < 2)
+      return k;
+    int a = 1, b = 1;
+    while (b <= k) {
+      swap(a, b);
+      b += a;
     }
-    /*
+    return 1 + findMinFibonacciNumbers(k - a);
+  }
+  /*
     int findMinFibonacciNumbers(int k) {
     array<int, 45> fib;
     int count = 0;
@@ -35,8 +35,8 @@ class Solution {
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
 
