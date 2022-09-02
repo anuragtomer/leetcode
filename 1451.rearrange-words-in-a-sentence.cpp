@@ -1,5 +1,3 @@
-#include <algorithm>
-#include <iostream>
 #include <map>
 #include <sstream>
 #include <vector>
@@ -28,7 +26,7 @@ class Solution {
         text.push_back(' ');
       }
     }
-    if (text.size() > 1)
+    if (not text.empty())
       text.pop_back();
     return text;
   }

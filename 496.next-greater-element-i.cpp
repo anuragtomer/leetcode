@@ -1,5 +1,3 @@
-#include <algorithm>
-#include <iostream>
 #include <stack>
 #include <unordered_map>
 #include <vector>
@@ -31,6 +29,20 @@ class Solution {
 };
 int main() {
   Solution sol;
-
+  auto lmatch = [](vector<int> &exp, vector<int> &out) {
+    if (exp.size() != out.size())
+      return false;
+    for (int i = 0; i < exp.size(); ++i)
+      if (exp[i] != out[i])
+        return false;
+    return true;
+  };
+  vector<int> nums1 = {4, 1, 2}, nums2 = {1, 3, 4, 2};
+  vector<int> expected = {-1, 3, -1};
+  vector<int> output = sol.nextGreaterElement(nums1, nums2);
+  assert(lmatch(expected, output));
+  nums1 = {2, 4}, nums2 = {1, 2, 3, 4}, expected = {3, -1};
+  output = sol.nextGreaterElement(nums1, nums2);
+  assert(lmatch(expected, output));
   return 0;
 }
