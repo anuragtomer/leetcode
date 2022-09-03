@@ -1,4 +1,3 @@
-#include <iostream>
 #include <list>
 #include <vector>
 using namespace std;
@@ -33,11 +32,28 @@ class Solution {
 
 int main() {
   Solution sol;
+  auto lmatch = [](vector<int> &exp, vector<int> &out) -> bool {
+    if (exp.size() != out.size())
+      return false;
+    for (int i = 0; i < exp.size(); ++i)
+      if (exp[i] != out[i])
+        return false;
+    return true;
+  };
+  function<void(Node *)> deleteTree = [&](Node *root) {
+    if (root) {
+      for (auto child : root->children)
+        deleteTree(child);
+      delete root;
+      root = nullptr;
+    }
+  };
   Node *root = new Node(1);
   root->children = {new Node(3), new Node(2), new Node(4)};
   root->children[0]->children = {new Node(5), new Node(6)};
   vector<int> result = sol.preorder(root);
-  for (auto &num : result)
-    cout << num << " ";
+  vector<int> expected = {1, 3, 5, 6, 2, 4};
+  assert(lmatch(expected, result));
+  deleteTree(root);
   return 0;
 }
