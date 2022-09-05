@@ -37,32 +37,87 @@ def main():
         else:
             print('Choose wisely!!')
 
-def changeDueDate():
+def pickQuestionPastDue():
+    dueQuestions = []
     con = sqlite3.connect(DBFILE)
     cur = con.cursor()
-    link = input('Link? ')
+    for row in cur.execute('''SELECT * FROM questions WHERE duedate < datetime('now')'''):
+        dueQuestions.append(row)
+    if len(dueQuestions) == 0:
+        print('No questions due for today. Enjoy')
+        con.close()
+        return
+    print("Number of questions past due: " + str(len(dueQuestions)))
+    line = random.choice(dueQuestions)
+    print("Question: " + line[1])
+    days = input('When should this be reminded again? ')
+    updatequery = "UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days'), practice_count = '"+str(int(line[6]) + 1)+"', last_revision = datetime('now') WHERE link='"+line[1]+"'"
+    try:
+        cur.execute(updatequery)
+        con.commit()
+    except:
+        print('Something wrong in updating next due date')
+    con.close()
+
+def addQuestion():
+    con = sqlite3.connect(DBFILE)
+    cur = con.cursor()
+    link = input('Link: ')
+    if link[-1] != '/':
+        link = link + '/'
+
     query = "SELECT COUNT(*) FROM questions where link='" + link + "'"
     found = False
-    print('Questions found with Link = ' + link + ': ')
     for row in cur.execute(query):
-        found = True
-        print(row[0] + ' | ' + row[1] + ' | ' + row[2] + ' | ' + row[3] + ' | ' + row[4] + ' | ' + row[5])
+        if row[0] > 0:
+            found = True
     if found:
         days = int(input('When should this be reminded next? ') or '0')
         cur.execute("UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days') WHERE link='"+link+"'")
-    cur.close()
+        con.commit()
+        con.close()
+    else:
+        name = input('Name: ')
+        difficulty = input('Difficulty: ')
+        company = input('Company: ') or 'NA'
+        try:
+            cur.execute('''INSERT INTO questions(NAME, LINK, DUEDATE, TODAY, DIFFICULTY, COMPANY) VALUES (?, ?, datetime('now', '+3 days'), datetime('now'), ?, ?)''', (name, link, difficulty.upper(), company.upper()))
+            con.commit()
+        except sqlite3.IntegrityError as err:
+            days = input("Link already present. When should this be reminded again? ")
+            cur.execute("UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days') WHERE link='"+link+"'")
+            con.commit()
+        con.close()
 
-def questionsDoneToday():
+def deleteQuestion():
     con = sqlite3.connect(DBFILE)
     cur = con.cursor()
-    print("No of questions done today: ", end='')
-    for row in cur.execute('''SELECT COUNT(*) FROM questions where TODAY > datetime('now', 'start of day')'''):
+    link = input('Link: ')
+    deletequery = "DELETE FROM questions WHERE link='" + link + "'"
+    print(deletequery)
+    try:
+        cur.execute(deletequery)
+        con.commit()
+    except:
+       print("No such link in db")
+    con.close()
+
+def printQuestions():
+    con = sqlite3.connect(DBFILE)
+    cur = con.cursor()
+    print("\nAll questions in DB: ")
+    i = 1;
+    for row in cur.execute('''SELECT * FROM questions'''):
+        print(str(i) +'. ' + f'{row[0]:<45}' + " | " + row[1])
+        i = i + 1
+    con.close()
+
+def printQuestionCounts():
+    con = sqlite3.connect(DBFILE)
+    cur = con.cursor()
+    print("No of questions in DB: ", end='')
+    for row in cur.execute('''SELECT COUNT(*) FROM questions'''):
         print(row[0])
-    print('\n               Name                               |                Link')
-    i=1
-    for row in cur.execute('''SELECT * FROM questions WHERE TODAY > datetime('now', 'start of day')'''):
-        print(str(i) +'. ' + f'{row[0]:<45}' + "  | " + row[1])
-        i=i+1
     con.close()
 
 def searchQuestion():
@@ -103,88 +158,36 @@ def searchQuestion():
         print('Wrong input.')
     con.close()
 
-def printQuestionCounts():
+def questionsDoneToday():
     con = sqlite3.connect(DBFILE)
     cur = con.cursor()
-    print("No of questions in DB: ", end='')
-    for row in cur.execute('''SELECT COUNT(*) FROM questions'''):
+    print("No of questions done today: ", end='')
+    for row in cur.execute('''SELECT COUNT(*) FROM questions where TODAY > datetime('now', 'start of day')'''):
         print(row[0])
+    print('\n               Name                               |                Link')
+    i=1
+    for row in cur.execute('''SELECT * FROM questions WHERE TODAY > datetime('now', 'start of day')'''):
+        print(str(i) +'. ' + f'{row[0]:<45}' + "  | " + row[1])
+        i=i+1
+    for row in cur.execute('''SELECT * FROM questions WHERE LAST_REVISION > datetime('now', 'start of day')'''):
+        print(str(i) +'. ' + f'{row[0]:<45}' + "  | " + row[1])
+        i=i+1
     con.close()
 
-def printQuestions():
+def changeDueDate():
     con = sqlite3.connect(DBFILE)
     cur = con.cursor()
-    print("\nAll questions in DB: ")
-    i = 1;
-    for row in cur.execute('''SELECT * FROM questions'''):
-        print(str(i) +'. ' + f'{row[0]:<45}' + " | " + row[1])
-        i = i + 1
-    con.close()
-
-def deleteQuestion():
-    con = sqlite3.connect(DBFILE)
-    cur = con.cursor()
-    link = input('Link: ')
-    deletequery = "DELETE FROM questions WHERE link='" + link + "'"
-    print(deletequery)
-    try:
-        cur.execute(deletequery)
-        con.commit()
-    except:
-       print("No such link in db")
-    con.close()
-
-def addQuestion():
-    con = sqlite3.connect(DBFILE)
-    cur = con.cursor()
-    link = input('Link: ')
-    if link[-1] != '/':
-        link = link + '/'
-
+    link = input('Link? ')
     query = "SELECT COUNT(*) FROM questions where link='" + link + "'"
     found = False
+    print('Questions found with Link = ' + link + ': ')
     for row in cur.execute(query):
-        if row[0] > 0:
-            found = True
+        found = True
+        print(row[0] + ' | ' + row[1] + ' | ' + row[2] + ' | ' + row[3] + ' | ' + row[4] + ' | ' + row[5])
     if found:
         days = int(input('When should this be reminded next? ') or '0')
         cur.execute("UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days') WHERE link='"+link+"'")
-        con.commit()
-        con.close()
-    else:
-        name = input('Name: ')
-        difficulty = input('Difficulty: ')
-        company = input('Company: ') or 'NA'
-        try:
-            cur.execute('''INSERT INTO questions(NAME, LINK, DUEDATE, TODAY, DIFFICULTY, COMPANY) VALUES (?, ?, datetime('now', '+3 days'), datetime('now'), ?, ?)''', (name, link, difficulty.upper(), company.upper()))
-            con.commit()
-        except sqlite3.IntegrityError as err:
-            days = input("Link already present. When should this be reminded again? ")
-            cur.execute("UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days') WHERE link='"+link+"'")
-            con.commit()
-        con.close()
-
-def pickQuestionPastDue():
-    dueQuestions = []
-    con = sqlite3.connect(DBFILE)
-    cur = con.cursor()
-    for row in cur.execute('''SELECT * FROM questions WHERE duedate < datetime('now')'''):
-        dueQuestions.append(row)
-    if len(dueQuestions) == 0:
-        print('No questions due for today. Enjoy')
-        con.close()
-        return
-    print("Number of questions past due: " + str(len(dueQuestions)))
-    line = random.choice(dueQuestions)
-    print("Question: " + line[1])
-    days = input('When should this be reminded again? ')
-    updatequery = "UPDATE questions SET duedate = datetime('now', '+"+str(days)+" days') WHERE link='"+line[1]+"'"
-    try:
-        cur.execute(updatequery)
-        con.commit()
-    except:
-        print('Something wrong in updating next due date')
-    con.close()
+    cur.close()
 
 if __name__ == '__main__':
     main()
