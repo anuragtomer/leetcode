@@ -2,3 +2,4 @@
 .vscode
 *.o
 rust/target/**
+.swp
