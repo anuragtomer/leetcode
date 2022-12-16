@@ -29,7 +29,7 @@ impl MyCircularQueue {
     }
 
     fn de_queue(&mut self) -> bool {
-        if (self.is_empty()) {
+        if self.is_empty() {
             false
         } else {
             self.len -= 1;
@@ -63,12 +63,22 @@ impl MyCircularQueue {
     }
 }
 
-fn main() {
-    let obj = MyCircularQueue::new(k);
-    let ret_1: bool = obj.en_queue(value);
-    let ret_2: bool = obj.de_queue();
-    let ret_3: i32 = obj.front();
-    let ret_4: i32 = obj.rear();
-    let ret_5: bool = obj.is_empty();
-    let ret_6: bool = obj.is_full();
+#[cfg(test)]
+mod tests {
+
+    use super::*;
+    #[test]
+    fn test_circular_queue() {
+        let mut obj = MyCircularQueue::new(3);
+        assert!(obj.en_queue(1));
+        assert!(obj.en_queue(2));
+        assert!(obj.en_queue(3));
+        assert!(!obj.en_queue(4));
+        assert_eq!(3, obj.rear());
+        assert!(obj.is_full());
+        assert!(obj.de_queue());
+        assert_eq!(2, obj.front());
+        assert!(obj.en_queue(4));
+        assert_eq!(4, obj.rear());
+    }
 }

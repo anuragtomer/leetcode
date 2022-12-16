@@ -28,3 +28,31 @@ impl Solution {
         -1
     }
 }
+
+struct Solution {}
+
+#[cfg(test)]
+mod tests {
+
+    use super::*;
+    #[test]
+    fn test_() {
+        assert_eq!(
+            Solution::shortest_path(
+                vec![
+                    vec![0, 0, 0],
+                    vec![1, 1, 0],
+                    vec![0, 0, 0],
+                    vec![0, 1, 1],
+                    vec![0, 0, 0]
+                ],
+                1
+            ),
+            6
+        );
+        assert_eq!(
+            Solution::shortest_path(vec![vec![0, 1, 1], vec![1, 1, 1], vec![1, 0, 0]], 1),
+            -1
+        );
+    }
+}
