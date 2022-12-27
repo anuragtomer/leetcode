@@ -27,7 +27,7 @@ impl Solution {
         result.chars().rev().collect::<String>()
     }
 }
-pub struct Solution {}
+struct Solution {}
 
 #[cfg(test)]
 mod tests {

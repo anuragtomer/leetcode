@@ -7,7 +7,7 @@ impl Solution {
         refined.clone().eq(refined.rev())
     }
 }
-pub struct Solution {}
+struct Solution {}
 
 #[cfg(test)]
 mod tests {

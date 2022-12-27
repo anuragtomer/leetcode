@@ -18,7 +18,7 @@ impl Solution {
         major_element
     }
 }
-pub struct Solution {}
+struct Solution {}
 
 #[cfg(test)]
 mod tests {

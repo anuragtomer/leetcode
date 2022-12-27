@@ -24,7 +24,7 @@ impl Solution {
         image_clone
     }
 }
-pub struct Solution {}
+struct Solution {}
 
 #[cfg(test)]
 mod tests {

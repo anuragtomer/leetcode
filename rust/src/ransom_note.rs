@@ -19,7 +19,7 @@ impl Solution {
         true
     }
 }
-pub struct Solution {}
+struct Solution {}
 
 #[cfg(test)]
 mod tests {

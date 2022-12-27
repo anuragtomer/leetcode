@@ -6,7 +6,7 @@ impl Solution {
         map.into_values().all(|v| v == 0)
     }
 }
-pub struct Solution {}
+struct Solution {}
 
 #[cfg(test)]
 mod tests {

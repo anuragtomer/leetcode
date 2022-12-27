@@ -25,7 +25,7 @@ impl Solution {
         return st.len() == 0;
     }
 }
-pub struct Solution {}
+struct Solution {}
 
 #[cfg(test)]
 mod tests {
