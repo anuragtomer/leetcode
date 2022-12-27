@@ -78,7 +78,6 @@ namespace Lists {
   struct ListNode {
     int val;
     ListNode *next;
-    ListNode(int x) : val(x), next(nullptr) {}
     ListNode() : val(0), next(nullptr) {}
     ListNode(int _val) : val(_val), next(nullptr) {}
     ListNode(int _val, ListNode *_next) : val(_val), next(_next) {}
