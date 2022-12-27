@@ -261,4 +261,16 @@ namespace Vectors {
       cout << i << " ";
     cout << endl;
   }
+
+  template <typename T>
+  bool match_sorted_vecs(vector<T> vec1, vector<T> vec2) {
+    int n1 = vec1.size(), n2 = vec2.size();
+    if (n1 != n2)
+      return false;
+    for (int i = 0; i < n1; ++i) {
+      if (vec1[i] != vec2[i])
+        return false;
+    }
+    return true;
+  }
 } // namespace Vectors
