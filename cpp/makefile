@@ -66,11 +66,44 @@ $(BUILD_DIR)/270.closest-binary-search-tree-value: $(SRC_DIR)/270.closest-binary
 .PHONY: 270.closest-binary-search-tree-value
 
 
+# 270.palindrome-permutation.cpp
+
+$(BUILD_DIR)/266.palindrome-permutation: $(SRC_DIR)/266.palindrome-permutation.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+266.palindrome-permutation: $(BUILD_DIR)/266.palindrome-permutation
+	$<
+
+.PHONY: 266.palindrome-permutation
+
+
+# 252.meeting-rooms.cpp
+
+$(BUILD_DIR)/252.meeting-rooms: $(SRC_DIR)/252.meeting-rooms.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+252.meeting-rooms: $(BUILD_DIR)/252.meeting-rooms
+	$<
+
+.PHONY: 252.meeting-rooms
+
+
+# 243.shortest-word-distance.cpp
+
+$(BUILD_DIR)/243.shortest-word-distance: $(SRC_DIR)/243.shortest-word-distance.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+243.shortest-word-distance: $(BUILD_DIR)/243.shortest-word-distance
+	$<
+
+.PHONY: 243.shortest-word-distance
+
+
 all: \
     $(BUILD_DIR)/422.valid-word-square \
 	$(BUILD_DIR)/359.logger-rate-limiter \
 	$(BUILD_DIR)/346.moving-average-from-data-stream \
-	$(BUILD_DIR)/270.closest-binary-search-tree-value
+	$(BUILD_DIR)/270.closest-binary-search-tree-value \
+	$(BUILD_DIR)/266.palindrome-permutation \
+	$(BUILD_DIR)/252.meeting-rooms \
+	$(BUILD_DIR)/243.shortest-word-distance
 
 
 clean:

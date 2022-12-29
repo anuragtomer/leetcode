@@ -18,12 +18,12 @@ namespace trees {
   };
   /* Given a space separated string of integers, return a tree with the same level
  * order traversal. */
-  TreeNode *create_tree(string input, char delim = ' ') {
-    stringstream s(input, delim);
+  TreeNode *create_tree(string input, char delim = ',') {
+    stringstream s(input);
     string word;
     vector<TreeNode *> listOfNodes;
     listOfNodes.clear();
-    while (s >> word) {
+    while (getline(s, word, delim)) {
       if (word.compare("null") == 0) {
         listOfNodes.push_back(nullptr);
       } else {

@@ -1,50 +1,42 @@
-#include <algorithm>
-#include <iostream>
-#include <vector>
+#include <cmath>
 
+#include "lib.hpp"
 using namespace std;
-
-/**
- * Definition of TreeNode:*/
-class TreeNode {
- public:
-  int val;
-  TreeNode *left, *right;
-  TreeNode(int val) {
-    this->val = val;
-    this->left = this->right = NULL;
-  }
-};
-
+using namespace trees;
 class Solution {
  public:
-  /**
-     * @param root: the given BST
-     * @param target: the given target
-     * @return: the value in the BST that is closest to the target
-     */
-  pair<int, double> helper(TreeNode *root, double target) {
-    if (!root)
-      return {0, INT_MAX};
-    pair<int, double> child;
-    if (root->val == target)
-      return {root->val, 0};
-    else if (target > root->val)
-      child = helper(root->right, target);
-    else
-      child = helper(root->left, target);
-    pair<int, double> current = {root->val, abs(root->val - target)};
-    return (child.second < current.second) ? child : current;
-  }
   int closestValue(TreeNode *root, double target) {
-    if (!root)
+    auto delta = [&](int val) -> double {
+      return fabs(target - static_cast<double>(val));
+    };
+    if (!root) {
       return INT_MAX;
-    return helper(root, target).first;
+    }
+    if (root->val == target) {
+      return root->val;
+    } else if (target < root->val) {
+      int left_ans = closestValue(root->left, target);
+      if (delta(root->val) < delta(left_ans))
+        return root->val;
+      else
+        return left_ans;
+    } else {
+      int right_ans = closestValue(root->right, target);
+      if (delta(root->val) < delta(right_ans))
+        return root->val;
+      else
+        return right_ans;
+    }
   }
 };
+
 int main() {
   Solution sol;
-
+  auto root = trees::create_tree("5,4,9,2,null,8,10");
+  assert(sol.closestValue(root, 6.12478) == 5);
+  trees::delete_tree(root);
+  root = trees::create_tree("3,2,4,1");
+  assert(sol.closestValue(root, 4.142857) == 4);
+  trees::delete_tree(root);
   return 0;
 }
-
