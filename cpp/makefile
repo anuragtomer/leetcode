@@ -96,6 +96,36 @@ $(BUILD_DIR)/243.shortest-word-distance: $(SRC_DIR)/243.shortest-word-distance.c
 .PHONY: 243.shortest-word-distance
 
 
+# 170.two-sum-iii-data-structure-design.cpp
+
+$(BUILD_DIR)/170.two-sum-iii-data-structure-design: $(SRC_DIR)/170.two-sum-iii-data-structure-design.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+170.two-sum-iii-data-structure-design: $(BUILD_DIR)/170.two-sum-iii-data-structure-design
+	$<
+
+.PHONY: 170.two-sum-iii-data-structure-design
+
+
+# 163.missing-ranges.cpp
+
+$(BUILD_DIR)/163.missing-ranges: $(SRC_DIR)/163.missing-ranges.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+163.missing-ranges: $(BUILD_DIR)/163.missing-ranges
+	$<
+
+.PHONY: 163.missing-ranges
+
+
+# 157.read-n-characters-given-read4.cpp
+
+$(BUILD_DIR)/157.read-n-characters-given-read4: $(SRC_DIR)/157.read-n-characters-given-read4.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+157.read-n-characters-given-read4: $(BUILD_DIR)/157.read-n-characters-given-read4
+	$<
+
+.PHONY: 157.read-n-characters-given-read4
+
+
 all: \
     $(BUILD_DIR)/422.valid-word-square \
 	$(BUILD_DIR)/359.logger-rate-limiter \
@@ -103,7 +133,10 @@ all: \
 	$(BUILD_DIR)/270.closest-binary-search-tree-value \
 	$(BUILD_DIR)/266.palindrome-permutation \
 	$(BUILD_DIR)/252.meeting-rooms \
-	$(BUILD_DIR)/243.shortest-word-distance
+	$(BUILD_DIR)/243.shortest-word-distance \
+	$(BUILD_DIR)/170.two-sum-iii-data-structure-design \
+	$(BUILD_DIR)/163.missing-ranges \
+	$(BUILD_DIR)/157.read-n-characters-given-read4
 
 
 clean:
