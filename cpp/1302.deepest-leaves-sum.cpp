@@ -1,10 +1,11 @@
 #include <unordered_map>
 
-#include "../include/utility.h"
+#include "lib.hpp"
 using namespace std;
+using namespace trees;
 
 class Solution {
-    /* void deepestLeavesSum(TreeNode *root, int level, map<int, int> &levelsum) {
+  /* void deepestLeavesSum(TreeNode *root, int level, map<int, int> &levelsum) {
          if (!root)
              return;
          if (level >= levelsum.rbegin()->first) {
@@ -17,7 +18,7 @@ class Solution {
      }
 
     public:*/
-    /* One way of doing this.
+  /* One way of doing this.
     int deepestLeavesSum(TreeNode *root) {
         int sum = 0;
         list<TreeNode *> q1, q2, lastSwapped;
@@ -40,8 +41,8 @@ class Solution {
             sum += q->val;
         return sum;
     } */
-    // Another way of doing the same things.
-    /*
+  // Another way of doing the same things.
+  /*
      int deepestLeavesSum(TreeNode *root) {
         if (!root)
             return 0;
@@ -50,37 +51,39 @@ class Solution {
         deepestLeavesSum(root, 0, levelsum);
         return levelsum.rbegin()->second;
     }*/
-    // Another way of doing the same thing:
-    int helper(TreeNode *root, unordered_map<int, int> &sums, int level) {
-        if (!root)
-            return level;
-        if (root->left == nullptr && root->right == nullptr) {
-            sums[level] += root->val;
-            return level;
-        }
-        return max(helper(root->left, sums, level + 1), helper(root->right, sums, level + 1));
+  // Another way of doing the same thing:
+  int helper(TreeNode *root, unordered_map<int, int> &sums, int level) {
+    if (!root)
+      return level;
+    if (root->left == nullptr && root->right == nullptr) {
+      sums[level] += root->val;
+      return level;
     }
+    return max(helper(root->left, sums, level + 1),
+               helper(root->right, sums, level + 1));
+  }
 
-   public:
-    int deepestLeavesSum(TreeNode *root) {
-        unordered_map<int, int> sums;
-        int level = helper(root, sums, 0);
-        return sums[level];
-    }
+ public:
+  int deepestLeavesSum(TreeNode *root) {
+    unordered_map<int, int> sums;
+    int level = helper(root, sums, 0);
+    return sums[level];
+  }
 };
 
 int main() {
-    Solution sol;
-    string input = "1,2,3,4,5,null,6,7,null,null,null,null,8";
-    TreeNode *root = createTree(input, ',');
-    assert(15 == sol.deepestLeavesSum(root));
-    deleteTree(root);
-    input = "1,2,3,4,5,null,6,null,null,null,null,null,8";
-    root = createTree(input, ',');
-    assert(8 == sol.deepestLeavesSum(root));
-    deleteTree(root);
-    input = "1,2,3,4,null,null,6";
-    root = createTree(input, ',');
-    assert(10 == sol.deepestLeavesSum(root));
-    return 0;
+  Solution sol;
+  string input = "1,2,3,4,5,null,6,7,null,null,null,null,8";
+  TreeNode *root = create_tree(input, ',');
+  assert(15 == sol.deepestLeavesSum(root));
+  delete_tree(root);
+  input = "1,2,3,4,5,null,6,null,null,null,null,null,8";
+  root = create_tree(input, ',');
+  assert(8 == sol.deepestLeavesSum(root));
+  delete_tree(root);
+  input = "1,2,3,4,null,null,6";
+  root = create_tree(input, ',');
+  assert(10 == sol.deepestLeavesSum(root));
+  delete_tree(root);
+  return 0;
 }

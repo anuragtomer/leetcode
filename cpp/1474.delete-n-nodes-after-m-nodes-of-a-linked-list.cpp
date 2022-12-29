@@ -1,7 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
-#include "lib.h"
+#include "lib.hpp"
 
 using namespace std;
 

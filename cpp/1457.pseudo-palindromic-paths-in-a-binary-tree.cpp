@@ -1,17 +1,8 @@
 #include <bitset>
 #include <cassert>
-
+#include "lib.hpp"
 using namespace std;
-
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
-    : val(x), left(left), right(right) {}
-};
+using namespace trees;
 
 class Solution {
   int paths(TreeNode *root, bitset<10> &seen) {
@@ -36,35 +27,16 @@ class Solution {
     return paths(root, seen);
   }
 };
-void deleteTree(TreeNode *root) {
-  if (root) {
-    deleteTree(root->left);
-    deleteTree(root->right);
-    delete root;
-    root = nullptr;
-  }
-}
 int main() {
   Solution sol;
-  TreeNode *root = new TreeNode(2);
-  root->left = new TreeNode(3);
-  root->right = new TreeNode(1);
-  root->left->left = new TreeNode(3);
-  root->left->right = new TreeNode(1);
-  root->right->right = new TreeNode(1);
+  auto root = trees::create_tree("2,3,1,3,1,null,1");
   assert(2 == sol.pseudoPalindromicPaths(root));
-  deleteTree(root);
-  root = new TreeNode(2);
-  root->left = new TreeNode(1);
-  root->right = new TreeNode(1);
-  root->left->left = new TreeNode(1);
-  root->left->right = new TreeNode(3);
-  root->left->right->right = new TreeNode(1);
+  delete_tree(root);
+  root = trees::create_tree("2,1,1,1,3,null,null,null,null,null,1");
   assert(1 == sol.pseudoPalindromicPaths(root));
-  deleteTree(root);
-  root = new TreeNode(9);
+  delete_tree(root);
+  root = trees::create_tree("9");
   assert(1 == sol.pseudoPalindromicPaths(root));
-  deleteTree(root);
+  delete_tree(root);
   return 0;
 }
-

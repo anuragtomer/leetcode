@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
-#include "../include/utility.h"
+#include "lib.hpp"
 using namespace std;
 
 class Solution {
-    /* 
+  /* 
     int _n;
     string convertToNumber(const vector<int> &number) {
         string str;
@@ -46,39 +46,39 @@ class Solution {
         return output;
     } 
     */
-   public:
-    string getPermutation(int n, int k) {
-        vector<char> nums;
-        int factorial = 1;
-        for (int i = 1; i <= n; ++i) {
-            factorial *= i;
-            nums.push_back(i + '0');
-        }
-        k--;
-        string res;
-        while (n) {
-            factorial /= n;
-            int digit = k / factorial;
-            res.push_back(nums[digit]);
-            nums.erase(nums.begin() + digit);
-            n--;
-            k %= factorial;
-        }
-        return res;
+ public:
+  string getPermutation(int n, int k) {
+    vector<char> nums;
+    int factorial = 1;
+    for (int i = 1; i <= n; ++i) {
+      factorial *= i;
+      nums.push_back(i + '0');
     }
+    k--;
+    string res;
+    while (n) {
+      factorial /= n;
+      int digit = k / factorial;
+      res.push_back(nums[digit]);
+      nums.erase(nums.begin() + digit);
+      n--;
+      k %= factorial;
+    }
+    return res;
+  }
 };
 
 int main() {
-    Solution sol;
-    int n = 3, k = 2;
-    assert("132" == sol.getPermutation(n, k));
-    k = 3;
-    assert("213" == sol.getPermutation(n, k));
-    k = 4;
-    assert("231" == sol.getPermutation(n, k));
-    k = 5;
-    assert("312" == sol.getPermutation(n, k));
-    k = 6;
-    assert("321" == sol.getPermutation(n, k));
-    return 0;
+  Solution sol;
+  int n = 3, k = 2;
+  assert("132" == sol.getPermutation(n, k));
+  k = 3;
+  assert("213" == sol.getPermutation(n, k));
+  k = 4;
+  assert("231" == sol.getPermutation(n, k));
+  k = 5;
+  assert("312" == sol.getPermutation(n, k));
+  k = 6;
+  assert("321" == sol.getPermutation(n, k));
+  return 0;
 }

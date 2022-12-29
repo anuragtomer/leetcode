@@ -1,27 +1,12 @@
 #include <queue>
 #include <unordered_map>
 #include <vector>
-
+#include "lib.hpp"
 using namespace std;
-
-/**
- * Definition of TreeNode:*/
-class TreeNode {
- public:
-  int val;
-  TreeNode *left, *right;
-  TreeNode(int val) {
-    this->val = val;
-    this->left = this->right = nullptr;
-  }
-};
+using namespace trees;
 
 class Solution {
  public:
-  /**
-    * @param root: the binary tree of the  root
-    * @return: return a list of double
-    */
   vector<double> averageOfLevels(TreeNode *root) {
     unordered_map<int, pair<int, int>> hash;
     if (!root)
@@ -75,14 +60,7 @@ class Solution {
     return result;
   }
 };
-void deleteTree(TreeNode *root) {
-  if (root) {
-    deleteTree(root->left);
-    deleteTree(root->right);
-    delete root;
-    root = nullptr;
-  }
-}
+
 int main() {
   auto lmatch = [](vector<double> &exp, vector<double> &res) -> bool {
     if (exp.size() != res.size())
@@ -93,17 +71,13 @@ int main() {
     return true;
   };
   Solution sol;
-  TreeNode *root = new TreeNode(3);
-  root->left = new TreeNode(9);
-  root->right = new TreeNode(20);
-  root->right->left = new TreeNode(15);
-  root->right->right = new TreeNode(7);
+  TreeNode *root;
+  root = create_tree("3,9,20,null,null,15,7", ',');
   vector<double> expected = {3.0, 14.5, 11.0};
   vector<double> result = sol.averageOfLevels(root);
-  assert(lmatch(expected, result));
+  assert(vectors::match_unsorted_vecs(expected, result));
   result = sol.averageOfLevels2(root);
-  assert(lmatch(expected, result));
-  deleteTree(root);
+  assert(vectors::match_unsorted_vecs(expected, result));
+  delete_tree(root);
   return 0;
 }
-

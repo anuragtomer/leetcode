@@ -1,27 +1,8 @@
 #include <iostream>
 #include <vector>
+#include "lib.hpp"
 using namespace std;
-
-struct ListNode {
-  int data;
-  ListNode *next;
-  ListNode(int d) : data(d), next(nullptr){};
-  ListNode() : next(nullptr){};
-
-  ListNode *createList(vector<int> &num) {
-    ListNode *head = nullptr;
-    if (num.size() >= 1)
-      head = new ListNode(num[0]);
-    else
-      return nullptr;
-    ListNode *temp = head;
-    for (auto i = 1; i < num.size(); ++i) {
-      temp->next = new ListNode(num[i]);
-      temp = temp->next;
-    }
-    return head;
-  }
-};
+using namespace lists;
 
 class Solution {
  public:
@@ -39,12 +20,10 @@ class Solution {
 
 int main() {
   Solution sol;
-  ListNode ln;
-  vector<int> arr = {1, 2, 3, 4, 5, 6};
-  ListNode *head = ln.createList(arr);
+  ListNode *head = from_vec({1, 2, 3, 4, 5, 6});
   ListNode *middle = sol.middleNode(head);
   if (middle != nullptr)
-    cout << middle->data;
+    cout << middle->val;
   else
     cout << "Incorrect node";
   return 0;

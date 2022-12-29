@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "../../include/utility.h"
+#include "lib.hpp"
 using namespace std;
 
 class Solution {
@@ -30,6 +30,6 @@ int main() {
   vector<int> nums = {2, 0, 2, 1, 1, 0};
   vector<int> expected = {0, 0, 1, 1, 2, 2};
   sol.sortColors(nums);
-  testResp(nums, expected);
+  assert(vectors::match_unsorted_vecs(nums, expected));
   return 0;
 }

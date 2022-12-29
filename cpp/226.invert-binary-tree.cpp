@@ -1,15 +1,8 @@
 #include <iostream>
 #include <vector>
+#include "lib.hpp"
 using namespace std;
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
-    : val(x), left(left), right(right) {}
-};
+using namespace trees;
 class Solution {
  public:
   TreeNode *invertTree(TreeNode *root) {
@@ -26,11 +19,11 @@ class Solution {
 
 int main() {
   Solution sol;
-  string s = "4,2,7,1,3,6,9";
-  // TreeNode *root = createTree(s, ',');
-  // printLevelTree(root);
-  // root = sol.invertTree(root);
-  // cout << "\n";
-  // printLevelTree(root);
+  auto root = create_tree("4,2,7,1,3,6,9", ',');
+  root = sol.invertTree(root);
+  auto expected = create_tree("4,7,2,9,6,3,1", ',');
+  assert(match_trees(root, expected));
+  delete_tree(root);
+  delete_tree(expected);
   return 0;
 }

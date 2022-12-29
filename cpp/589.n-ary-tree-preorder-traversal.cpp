@@ -40,10 +40,10 @@ int main() {
         return false;
     return true;
   };
-  function<void(Node *)> deleteTree = [&](Node *root) {
+  function<void(Node *)> delete_tree = [&](Node *root) {
     if (root) {
       for (auto child : root->children)
-        deleteTree(child);
+        delete_tree(child);
       delete root;
       root = nullptr;
     }
@@ -54,6 +54,6 @@ int main() {
   vector<int> result = sol.preorder(root);
   vector<int> expected = {1, 3, 5, 6, 2, 4};
   assert(lmatch(expected, result));
-  deleteTree(root);
+  delete_tree(root);
   return 0;
 }

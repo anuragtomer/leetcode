@@ -2,7 +2,7 @@
 #include <cassert>
 #include <vector>
 
-#include "lib.h"
+#include "lib.hpp"
 using namespace std;
 
 class Solution {

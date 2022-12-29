@@ -1,9 +1,9 @@
 #include <iostream>
 #include <queue>
 #include <vector>
-#include "../include/utility.h"
+#include "lib.hpp"
 using namespace std;
-
+using namespace trees;
 class Solution {
  public:
   /* Iterative */
@@ -48,15 +48,15 @@ class Solution {
 
 int main() {
   Solution sol;
-  TreeNode *p = createTree("1,2,3", ',');
-  TreeNode *q = createTree("1,2,3", ',');
+  TreeNode *p = create_tree("1,2,3", ',');
+  TreeNode *q = create_tree("1,2,3", ',');
   assert(true == sol.isSameTree(p, q));
-  deleteTree(p);
-  deleteTree(q);
-  p = createTree("1,2", ',');
-  q = createTree("1,null,2", ',');
+  delete_tree(p);
+  delete_tree(q);
+  p = create_tree("1,2", ',');
+  q = create_tree("1,null,2", ',');
   assert(false == sol.isSameTree(p, q));
-  deleteTree(p);
-  deleteTree(q);
+  delete_tree(p);
+  delete_tree(q);
   return 0;
 }

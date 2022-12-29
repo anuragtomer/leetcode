@@ -41,10 +41,10 @@ class Solution {
   }
 };
 
-void deleteTree(Node *root) {
+void delete_tree(Node *root) {
   if (root) {
     for (auto child : root->children)
-      deleteTree(child);
+      delete_tree(child);
     delete root;
     root = nullptr;
   }
@@ -73,7 +73,7 @@ int main() {
   Solution sol;
   vector<vector<int>> output = sol.levelOrder(root);
   assert(lmatch(expected, output));
-  deleteTree(root);
+  delete_tree(root);
   root = new Node(1);
   root->children.push_back(new Node(2));
   root->children.push_back(new Node(3));
@@ -91,6 +91,6 @@ int main() {
   expected = {{1}, {2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13}, {14}};
   output = sol.levelOrder(root);
   assert(lmatch(expected, output));
-  deleteTree(root);
+  delete_tree(root);
   return 0;
 }

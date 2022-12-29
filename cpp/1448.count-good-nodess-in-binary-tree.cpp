@@ -1,17 +1,9 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
-
+#include "lib.hpp"
 using namespace std;
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int _val) : val(_val), left(nullptr), right(nullptr) {}
-  TreeNode(int _val, TreeNode *_left, TreeNode *_right)
-    : val(_val), left(_left), right(_right) {}
-};
+using namespace trees;
 class Solution {
   int goodNodes(TreeNode *node, int maxValue) {
     if (!node)
@@ -26,30 +18,17 @@ class Solution {
  public:
   int goodNodes(TreeNode *root) { return goodNodes(root, INT_MIN); }
 };
-void deleteTree(TreeNode *root) {
-  if (root) {
-    deleteTree(root->left);
-    deleteTree(root->right);
-    delete root;
-    root = nullptr;
-  }
-}
 int main() {
   Solution sol;
-  TreeNode *root = new TreeNode(3);
-  root->left = new TreeNode(1);
-  root->right = new TreeNode(4);
-  root->left->left = new TreeNode(3);
-  root->right->left = new TreeNode(1);
-  root->right->right = new TreeNode(5);
+  auto root = create_tree("3,1,4,3,null,1,5");
   assert(4 == sol.goodNodes(root));
-  deleteTree(root);
+  delete_tree(root);
   root = new TreeNode(3);
   root->left = new TreeNode(3);
   root->left->left = new TreeNode(4);
   root->left->right = new TreeNode(2);
+  auto root = create_tree("3,3,null,4,2");
   assert(3 == sol.goodNodes(root));
-  deleteTree(root);
+  delete_tree(root);
   return 0;
 }
-

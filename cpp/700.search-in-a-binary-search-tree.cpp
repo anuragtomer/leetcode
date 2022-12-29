@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
-#include "../include/utility.h"
+#include "lib.hpp"
 using namespace std;
+using namespace trees;
 
 class Solution {
  public:
@@ -29,11 +30,11 @@ class Solution {
 
 int main() {
   Solution sol;
-  string input = "4,2,7,1,3";
-  TreeNode *root = createTree(input, ',');
+  TreeNode *root = create_tree("4,2,7,1,3", ',');
+  TreeNode *expected = create_tree("2,1,3", ',');
   TreeNode *output = sol.searchBST(root, 2);
-  input = "2,1,3";
-  TreeNode *expected = createTree(input, ',');
-  compareTrees(output, expected);
+  assert(match_trees(output, expected));
+  delete_tree(root);
+  delete_tree(expected);
   return 0;
 }

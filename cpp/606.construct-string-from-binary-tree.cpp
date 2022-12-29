@@ -1,15 +1,8 @@
 #include <cassert>
 #include <string>
+#include "lib.hpp"
 using namespace std;
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
-    : val(x), left(left), right(right) {}
-};
+using namespace trees;
 class Solution {
  public:
   string tree2str(TreeNode *root) {
@@ -25,27 +18,14 @@ class Solution {
     return result;
   }
 };
-void deleteTree(TreeNode *root) {
-  if (root) {
-    deleteTree(root->left);
-    deleteTree(root->right);
-    delete root;
-    root = nullptr;
-  }
-}
+
 int main() {
   Solution sol;
-  TreeNode *root = new TreeNode(1);
-  root->left = new TreeNode(2);
-  root->right = new TreeNode(3);
-  root->left->left = new TreeNode(4);
+  TreeNode *root = create_tree("1,2,3,4", ',');
   assert("1(2(4))(3)" == sol.tree2str(root));
-  deleteTree(root);
-  root = new TreeNode(1);
-  root->left = new TreeNode(2);
-  root->right = new TreeNode(3);
-  root->left->right = new TreeNode(4);
+  delete_tree(root);
+  root = create_tree("1,2,3,null,4", ',');
   assert("1(2()(4))(3)" == sol.tree2str(root));
-  deleteTree(root);
+  delete_tree(root);
   return 0;
 }

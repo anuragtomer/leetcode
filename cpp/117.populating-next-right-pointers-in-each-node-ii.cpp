@@ -69,10 +69,10 @@ class Solution {
 };
 int main() {
   Solution sol;
-  std::function<void(Node *)> ldeleteTree = [&](Node *root) -> void {
+  std::function<void(Node *)> ldelete_tree = [&](Node *root) -> void {
     if (root) {
-      ldeleteTree(root->left);
-      ldeleteTree(root->right);
+      ldelete_tree(root->left);
+      ldelete_tree(root->right);
       delete root;
       root = nullptr;
     }
@@ -90,7 +90,6 @@ int main() {
   assert(root->left->left->next == root->left->right);
   assert(root->left->right->next == root->right->right);
   assert(root->right->right->next == nullptr);
-  ldeleteTree(root);
+  ldelete_tree(root);
   return 0;
 }
-

@@ -5,24 +5,25 @@
 using namespace std;
 
 class Solution {
-   public:
-    /**
-     * @param words: a list of string
-     * @return: a boolean
-     */
-    bool validWordSquare(vector<string> &words) {
-        for (int i = 0; i < words.size(); ++i) {
-            for (int j = i; j < words.size(); ++j) {
-                if (words[i][j] != words[j][i])
-                    return false;
-            }
+ public:
+  bool validWordSquare(vector<string> words) {
+    for (int i = 0, n = words.size(); i < n; ++i) {
+      if (words[i].size() != n) {
+        return false;
+      }
+      for (int j = i + 1; j < n; ++j) {
+        if (words[i][j] != words[j][i]) {
+          return false;
         }
-        return true;
+      }
     }
+    return true;
+  }
 };
 int main() {
-    Solution sol;
-
-    return 0;
+  Solution sol;
+  assert(sol.validWordSquare({"abcd", "bnrt", "crmy", "dtye"}));
+  assert(not sol.validWordSquare({"abcd", "bnrt", "crm", "dt"}));
+  assert(not sol.validWordSquare({"ball", "area", "read", "lady"}));
+  return 0;
 }
-

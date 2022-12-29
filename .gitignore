@@ -2,5 +2,6 @@
 .vscode
 *.o
 rust/target/**
-.swp
+*.swp
 *.dSYM
+cpp/cpp_build/**

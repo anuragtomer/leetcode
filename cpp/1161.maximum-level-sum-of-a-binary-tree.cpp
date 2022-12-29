@@ -1,17 +1,8 @@
 #include <queue>
 #include <vector>
-
+#include "lib.hpp"
 using namespace std;
-
-struct TreeNode {
-  int val;
-  TreeNode *left;
-  TreeNode *right;
-  TreeNode() : val(0), left(nullptr), right(nullptr) {}
-  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right)
-    : val(x), left(left), right(right) {}
-};
+using namespace trees;
 class Solution {
  public:
   int maxLevelSum(TreeNode *root) {
@@ -43,23 +34,10 @@ class Solution {
     return smallest;
   }
 };
-void deleteTree(TreeNode *root) {
-  if (root) {
-    deleteTree(root->left);
-    deleteTree(root->right);
-    delete root;
-    root = nullptr;
-  }
-}
 int main() {
   Solution sol;
-  TreeNode *root = new TreeNode(1);
-  root->left = new TreeNode(7);
-  root->right = new TreeNode(0);
-  root->left->left = new TreeNode(7);
-  root->left->right = new TreeNode(-8);
+  auto root = create_tree("1,7,0,7,8");
   assert(2 == sol.maxLevelSum(root));
-  deleteTree(root);
+  delete_tree(root);
   return 0;
 }
-

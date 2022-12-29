@@ -1,50 +1,31 @@
-#include <algorithm>
-#include <iostream>
-#include <list>
-#include <vector>
+#include <cassert>
+#include <deque>
 using namespace std;
 
 class MovingAverage {
-    int sz;
-    list<int> nums;
-    double sum;
+  deque<int> deq;
+  double sum;
+  int sz;
 
-   public:
-    /*
-     * @param size: An integer
-     */
-    MovingAverage(int size) {
-        sz = size;
-        sum = 0.0;
-    }
+ public:
+  MovingAverage(int size) : sz(size), sum(0.0) {}
 
-    /*
-     * @param val: An integer
-     * @return:
-     */
-    double next(int val) {
-        if (nums.size() < sz) {
-            nums.push_back(val);
-            sum += val;
-            return sum / nums.size();
-        } else {
-            sum -= nums.front();
-            nums.pop_front();
-            nums.push_back(val);
-            sum += val;
-            return sum / sz;
-        }
+  double next(int val) {
+    deq.push_back(val);
+    sum += val;
+    if (deq.size() > sz) {
+      sum -= deq.front();
+      deq.pop_front();
     }
+    return sum / deq.size();
+  }
 };
 
-/**
- * Your MovingAverage object will be instantiated and called as such:
- * MovingAverage obj = new MovingAverage(size);
- * double param = obj.next(val);
- */
 int main() {
-    Solution sol;
-
-    return 0;
+  MovingAverage *mv = new MovingAverage(3);
+  assert(mv->next(1) == 1.0);
+  assert(mv->next(10) == ((1 + 10) / 2.0));
+  assert(mv->next(3) == ((1 + 10 + 3) / 3.0));
+  assert(mv->next(5) == ((10 + 3 + 5) / 3.0));
+  return 0;
 }
-

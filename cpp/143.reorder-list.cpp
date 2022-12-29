@@ -1,9 +1,9 @@
 #include <cassert>
 #include <iostream>
 #include <vector>
-#include "../include/utility.h"
+#include "lib.hpp"
 using namespace std;
-
+using namespace lists;
 class Solution {
   pair<ListNode *, ListNode *> split(ListNode *head) {
     ListNode *oddH = head;
@@ -41,7 +41,7 @@ class Solution {
   }
 
  public:
-  void reorderList(ListNode *head) {
+  void reorderList(ListNode *&head) {
     auto [oddH, evenH] = split(head);
     evenH = reverse(evenH);
     merge(oddH, evenH, head);
@@ -49,17 +49,17 @@ class Solution {
 };
 int main() {
   Solution sol;
-  ListNode *head = stringToList("1,2,3,4");
-  ListNode *expected = stringToList("1,4,2,3");
-  sol.reorderList(&head);
-  assert(testList(head, expected));
-  deleteList(head);
-  deleteList(expected);
-  head = stringToList("1,2,3,4,5");
-  expected = stringToList("1,5,2,4,3");
-  sol.reorderList(&head);
-  assert(testList(head, expected));
-  deleteList(head);
-  deleteList(expected);
+  ListNode *head = create_list("1,2,3,4");
+  ListNode *expected = create_list("1,4,2,3");
+  sol.reorderList(head);
+  assert(match_lists(head, expected));
+  delete_list(head);
+  delete_list(expected);
+  head = create_list("1,2,3,4,5");
+  expected = create_list("1,5,2,4,3");
+  sol.reorderList(head);
+  assert(match_lists(head, expected));
+  delete_list(head);
+  delete_list(expected);
   return 0;
 }
