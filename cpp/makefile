@@ -86,6 +86,16 @@ $(BUILD_DIR)/252.meeting-rooms: $(SRC_DIR)/252.meeting-rooms.cpp | $(BUILD_DIR)
 .PHONY: 252.meeting-rooms
 
 
+# 244.shortest-word-distance-ii.cpp
+
+$(BUILD_DIR)/244.shortest-word-distance-ii: $(SRC_DIR)/244.shortest-word-distance-ii.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+244.shortest-word-distance-ii: $(BUILD_DIR)/244.shortest-word-distance-ii
+	$<
+
+.PHONY: 244.shortest-word-distance-ii
+
+
 # 243.shortest-word-distance.cpp
 
 $(BUILD_DIR)/243.shortest-word-distance: $(SRC_DIR)/243.shortest-word-distance.cpp | $(BUILD_DIR)
@@ -94,6 +104,16 @@ $(BUILD_DIR)/243.shortest-word-distance: $(SRC_DIR)/243.shortest-word-distance.c
 	$<
 
 .PHONY: 243.shortest-word-distance
+
+
+# 186.reverse-words-in-a-string-ii.cpp
+
+$(BUILD_DIR)/186.reverse-words-in-a-string-ii: $(SRC_DIR)/186.reverse-words-in-a-string-ii.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+186.reverse-words-in-a-string-ii: $(BUILD_DIR)/186.reverse-words-in-a-string-ii
+	$<
+
+.PHONY: 186.reverse-words-in-a-string-ii
 
 
 # 170.two-sum-iii-data-structure-design.cpp
@@ -116,6 +136,26 @@ $(BUILD_DIR)/163.missing-ranges: $(SRC_DIR)/163.missing-ranges.cpp | $(BUILD_DIR
 .PHONY: 163.missing-ranges
 
 
+# 161.one-edit-distance.cpp
+
+$(BUILD_DIR)/161.one-edit-distance: $(SRC_DIR)/161.one-edit-distance.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+161.one-edit-distance: $(BUILD_DIR)/161.one-edit-distance
+	$<
+
+.PHONY: 161.one-edit-distance
+
+
+# 159.longest-substring-with-at-most-two-distinct-characters.cpp
+
+$(BUILD_DIR)/159.longest-substring-with-at-most-two-distinct-characters: $(SRC_DIR)/159.longest-substring-with-at-most-two-distinct-characters.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+159.longest-substring-with-at-most-two-distinct-characters: $(BUILD_DIR)/159.longest-substring-with-at-most-two-distinct-characters
+	$<
+
+.PHONY: 159.longest-substring-with-at-most-two-distinct-characters
+
+
 # 157.read-n-characters-given-read4.cpp
 
 $(BUILD_DIR)/157.read-n-characters-given-read4: $(SRC_DIR)/157.read-n-characters-given-read4.cpp | $(BUILD_DIR)
@@ -126,6 +166,16 @@ $(BUILD_DIR)/157.read-n-characters-given-read4: $(SRC_DIR)/157.read-n-characters
 .PHONY: 157.read-n-characters-given-read4
 
 
+# name.cpp
+
+$(BUILD_DIR)/name: $(SRC_DIR)/name.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+name: $(BUILD_DIR)/name
+	$<
+
+.PHONY: name
+
+
 all: \
     $(BUILD_DIR)/422.valid-word-square \
 	$(BUILD_DIR)/359.logger-rate-limiter \
@@ -134,9 +184,14 @@ all: \
 	$(BUILD_DIR)/266.palindrome-permutation \
 	$(BUILD_DIR)/252.meeting-rooms \
 	$(BUILD_DIR)/243.shortest-word-distance \
+	$(BUILD_DIR)/244.shortest-word-distance-ii \
+	$(BUILD_DIR)/186.reverse-words-in-a-string-ii \
 	$(BUILD_DIR)/170.two-sum-iii-data-structure-design \
 	$(BUILD_DIR)/163.missing-ranges \
-	$(BUILD_DIR)/157.read-n-characters-given-read4
+	$(BUILD_DIR)/161.one-edit-distance \
+	$(BUILD_DIR)/159.longest-substring-with-at-most-two-distinct-characters \
+	$(BUILD_DIR)/157.read-n-characters-given-read4 \
+	$(BUILD_DIR)/name
 
 
 clean:

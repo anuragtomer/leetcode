@@ -7,29 +7,26 @@ using namespace std;
 
 class Solution {
  public:
-  /**
-     * @param s: a string
-     * @return: the length of the longest substring T that contains at most 2 distinct characters
-     */
-  int lengthOfLongestSubstringTwoDistinct(string &s) {
-    unordered_map<char, int> count;
-    int maxLen = 0;
-    for (int left = 0, right = 0, n = s.size(); right < n; ++right) {
-      count[s[right]]++;
-      while (left < right && count.size() > 2) {
-        count[s[left]]--;
-        if (count[s[left]] == 0)
-          count.erase(s[left]);
+  int lengthOfLongestSubstringTwoDistinct(string s) {
+    unordered_map<char, int> seen;
+    int max_len = 0;
+    for (int left = 0, right = 0; right < s.size(); ++right) {
+      seen[s[right]]++;
+      while (seen.size() > 2 && left < right) {
+        --seen[s[left]];
+        if (seen[s[left]] == 0) {
+          seen.erase(s[left]);
+        }
         ++left;
       }
-      maxLen = max(maxLen, right - left + 1);
+      max_len = max(max_len, right - left + 1);
     }
-    return maxLen;
+    return max_len;
   }
 };
 int main() {
   Solution sol;
-
+  assert(sol.lengthOfLongestSubstringTwoDistinct("eceba") == 3);
+  assert(sol.lengthOfLongestSubstringTwoDistinct("ccaabbb") == 5);
   return 0;
 }
-
