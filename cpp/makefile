@@ -76,6 +76,16 @@ $(BUILD_DIR)/266.palindrome-permutation: $(SRC_DIR)/266.palindrome-permutation.c
 .PHONY: 266.palindrome-permutation
 
 
+# 253.meeting-rooms-ii.cpp
+
+$(BUILD_DIR)/253.meeting-rooms-ii: $(SRC_DIR)/253.meeting-rooms-ii.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+253.meeting-rooms-ii: $(BUILD_DIR)/253.meeting-rooms-ii
+	$<
+
+.PHONY: 252.meeting-rooms-ii
+
+
 # 252.meeting-rooms.cpp
 
 $(BUILD_DIR)/252.meeting-rooms: $(SRC_DIR)/252.meeting-rooms.cpp | $(BUILD_DIR)
@@ -84,6 +94,26 @@ $(BUILD_DIR)/252.meeting-rooms: $(SRC_DIR)/252.meeting-rooms.cpp | $(BUILD_DIR)
 	$<
 
 .PHONY: 252.meeting-rooms
+
+
+# 251.flatten-2d-vector.cpp
+
+$(BUILD_DIR)/251.flatten-2d-vector: $(SRC_DIR)/251.flatten-2d-vector.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+251.flatten-2d-vector: $(BUILD_DIR)/251.flatten-2d-vector
+	$<
+
+.PHONY: 251.flatten-2d-vector
+
+
+# 250.count-univalue-subtrees.cpp
+
+$(BUILD_DIR)/250.count-univalue-subtrees: $(SRC_DIR)/250.count-univalue-subtrees.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+250.count-univalue-subtrees: $(BUILD_DIR)/250.count-univalue-subtrees
+	$<
+
+.PHONY: 250.count-univalue-subtrees
 
 
 # 249.group-shifted-strings.cpp
@@ -212,7 +242,10 @@ all: \
 	$(BUILD_DIR)/346.moving-average-from-data-stream \
 	$(BUILD_DIR)/270.closest-binary-search-tree-value \
 	$(BUILD_DIR)/266.palindrome-permutation \
+	$(BUILD_DIR)/253.meeting-rooms-ii \
 	$(BUILD_DIR)/252.meeting-rooms \
+	$(BUILD_DIR)/251.flatten-2d-vector \
+	$(BUILD_DIR)/250.count-univalue-subtrees \
 	$(BUILD_DIR)/249.group-shifted-strings \
 	$(BUILD_DIR)/247.strobogrammatic-number-ii \
 	$(BUILD_DIR)/245.shortest-word-distance-iii \
