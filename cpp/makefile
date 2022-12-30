@@ -86,6 +86,36 @@ $(BUILD_DIR)/252.meeting-rooms: $(SRC_DIR)/252.meeting-rooms.cpp | $(BUILD_DIR)
 .PHONY: 252.meeting-rooms
 
 
+# 249.group-shifted-strings.cpp
+
+$(BUILD_DIR)/249.group-shifted-strings: $(SRC_DIR)/249.group-shifted-strings.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+249.group-shifted-strings: $(BUILD_DIR)/249.group-shifted-strings
+	$<
+
+.PHONY: 249.group-shifted-strings
+
+
+# 247.strobogrammatic-number-ii.cpp
+
+$(BUILD_DIR)/247.strobogrammatic-number-ii: $(SRC_DIR)/247.strobogrammatic-number-ii.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+247.strobogrammatic-number-ii: $(BUILD_DIR)/247.strobogrammatic-number-ii
+	$<
+
+.PHONY: 247.strobogrammatic-number-ii
+
+
+# 245.shortest-word-distance-iii.cpp
+
+$(BUILD_DIR)/245.shortest-word-distance-iii: $(SRC_DIR)/245.shortest-word-distance-iii.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+245.shortest-word-distance-iii: $(BUILD_DIR)/245.shortest-word-distance-iii
+	$<
+
+.PHONY: 245.shortest-word-distance-iii
+
+
 # 244.shortest-word-distance-ii.cpp
 
 $(BUILD_DIR)/244.shortest-word-distance-ii: $(SRC_DIR)/244.shortest-word-distance-ii.cpp | $(BUILD_DIR)
@@ -183,8 +213,11 @@ all: \
 	$(BUILD_DIR)/270.closest-binary-search-tree-value \
 	$(BUILD_DIR)/266.palindrome-permutation \
 	$(BUILD_DIR)/252.meeting-rooms \
-	$(BUILD_DIR)/243.shortest-word-distance \
+	$(BUILD_DIR)/249.group-shifted-strings \
+	$(BUILD_DIR)/247.strobogrammatic-number-ii \
+	$(BUILD_DIR)/245.shortest-word-distance-iii \
 	$(BUILD_DIR)/244.shortest-word-distance-ii \
+	$(BUILD_DIR)/243.shortest-word-distance \
 	$(BUILD_DIR)/186.reverse-words-in-a-string-ii \
 	$(BUILD_DIR)/170.two-sum-iii-data-structure-design \
 	$(BUILD_DIR)/163.missing-ranges \

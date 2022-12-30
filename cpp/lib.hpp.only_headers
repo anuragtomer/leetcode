@@ -1,0 +1,107 @@
+/* Code to support input parsing in desired data structure. */
+#include <iostream>
+#include <list>
+#include <queue>
+#include <sstream>
+#include <stack>
+#include <string>
+#include <unordered_map>
+#include <vector>
+
+using namespace std;
+
+namespace trees {
+  struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  };
+
+  /* Given a space separated string of integers, return a tree with the same level
+ * order traversal. */
+  TreeNode *create_tree(string input, char delim = ',');
+
+  /* Given a root, prints the tree. */
+  void print_tree(TreeNode *head);
+
+  void delete_tree(TreeNode *root);
+
+  bool match_trees(TreeNode *left, TreeNode *right);
+} // namespace trees
+
+namespace lists {
+  struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int _val) : val(_val), next(nullptr) {}
+    ListNode(int _val, ListNode *_next) : val(_val), next(_next) {}
+  };
+
+  /* Read input from console and convert it into linked list. */
+  ListNode *create_list(string str, char delim = ',');
+
+  /* Given head of the linkedlist, print the list. */
+  void print_list_node(ListNode *lst);
+
+  /* Given a list of integers, creates a Linked List from it.*/
+  ListNode *from_vec(vector<int> input);
+
+  /* Matches values of 2 provided lists.*/
+  bool match_lists(ListNode *list1, ListNode *list2);
+
+  void delete_list(ListNode *head);
+} // namespace lists
+
+namespace sibling_trees {
+  struct Node {
+    int val;
+    Node *left;
+    Node *right;
+    Node *next;
+    Node(int _val) {
+      val = _val;
+      left = nullptr;
+      right = nullptr;
+      next = nullptr;
+    }
+    Node(int _val, Node *_left, Node *_right, Node *_next) {
+      val = _val;
+      left = _left;
+      right = _right;
+      next = _next;
+    }
+  };
+
+  /* Given a space separated string of integers, return a node-tree with the same
+ * level order traversal. */
+  Node *create_node_tree();
+
+  /* Prints tree having node structure.(left, right, next) */
+  void print_node_tree(Node *root);
+} // namespace sibling_trees
+
+namespace vectors {
+  /* Takes in space separated integers and returns a vector of integers. */
+  vector<int> create_vector(string str);
+
+  /* Prints vector of integers. */
+  template <typename T>
+  void print_vector(vector<T> vec);
+
+  template <typename T>
+  void print_vector(vector<vector<T>> vec);
+
+  template <typename T>
+  bool match_unsorted_vecs(vector<T> vec1, vector<T> vec2);
+
+  template <typename T>
+  bool match_sorted_vecs(vector<T> vec1, vector<T> vec2);
+
+  template <typename T>
+  bool match_unsorted_vecs(vector<vector<T>> vec1, vector<vector<T>> vec2);
+
+  template <typename T>
+  bool match_sorted_vecs(vector<vector<T>> vec1, vector<vector<T>> vec2);
+} // namespace vectors

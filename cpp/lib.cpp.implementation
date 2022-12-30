@@ -1,24 +1,9 @@
-/* Code to support input parsing in desired data structure. */
-#include <iostream>
-#include <list>
-#include <queue>
-#include <sstream>
-#include <stack>
-#include <string>
-#include <unordered_map>
-#include <vector>
-using namespace std;
+#include "lib.hpp.only_headers"
 
 namespace trees {
-  struct TreeNode {
-    int val;
-    TreeNode *left;
-    TreeNode *right;
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  };
   /* Given a space separated string of integers, return a tree with the same level
- * order traversal. */
-  TreeNode *create_tree(string input, char delim = ',') {
+  * order traversal. */
+  TreeNode *create_tree(string input, char delim) {
     stringstream s(input);
     string word;
     vector<TreeNode *> listOfNodes;
@@ -104,16 +89,8 @@ namespace trees {
 
 namespace lists {
 
-  struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int _val) : val(_val), next(nullptr) {}
-    ListNode(int _val, ListNode *_next) : val(_val), next(_next) {}
-  };
-
   /* Read input from console and convert it into linked list. */
-  ListNode *create_list(string str, char delim = ',') {
+  ListNode *create_list(string str, char delim) {
     stringstream S(str);
     string word;
     ListNode *input = nullptr;
@@ -192,27 +169,9 @@ namespace lists {
 } // namespace lists
 
 namespace sibling_trees {
-  struct Node {
-    int val;
-    Node *left;
-    Node *right;
-    Node *next;
-    Node(int _val) {
-      val = _val;
-      left = nullptr;
-      right = nullptr;
-      next = nullptr;
-    }
-    Node(int _val, Node *_left, Node *_right, Node *_next) {
-      val = _val;
-      left = _left;
-      right = _right;
-      next = _next;
-    }
-  };
 
   /* Given a space separated string of integers, return a node-tree with the same
- * level order traversal. */
+   * level order traversal. */
   Node *create_node_tree() {
     string input;
     getline(cin, input);
