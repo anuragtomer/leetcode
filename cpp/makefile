@@ -76,6 +76,46 @@ $(BUILD_DIR)/266.palindrome-permutation: $(SRC_DIR)/266.palindrome-permutation.c
 .PHONY: 266.palindrome-permutation
 
 
+# 259.3sum-smaller.cpp
+
+$(BUILD_DIR)/259.3sum-smaller: $(SRC_DIR)/259.3sum-smaller.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+259.3sum-smaller: $(BUILD_DIR)/259.3sum-smaller
+	$<
+
+.PHONY: 259.3sum-smaller
+
+
+# 256.paint-house.cpp
+
+$(BUILD_DIR)/256.paint-house: $(SRC_DIR)/256.paint-house.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+256.paint-house: $(BUILD_DIR)/256.paint-house
+	$<
+
+.PHONY: 256.paint-house
+
+
+# 255.verify-preorder-sequence-in-binary-search-tree.cpp
+
+$(BUILD_DIR)/255.verify-preorder-sequence-in-binary-search-tree: $(SRC_DIR)/255.verify-preorder-sequence-in-binary-search-tree.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+255.verify-preorder-sequence-in-binary-search-tree: $(BUILD_DIR)/255.verify-preorder-sequence-in-binary-search-tree
+	$<
+
+.PHONY: 255.verify-preorder-sequence-in-binary-search-tree
+
+
+# 254.factor-combinations.cpp
+
+$(BUILD_DIR)/254.factor-combinations: $(SRC_DIR)/254.factor-combinations.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+254.factor-combinations: $(BUILD_DIR)/254.factor-combinations
+	$<
+
+.PHONY: 254.factor-combinations
+
+
 # 253.meeting-rooms-ii.cpp
 
 $(BUILD_DIR)/253.meeting-rooms-ii: $(SRC_DIR)/253.meeting-rooms-ii.cpp | $(BUILD_DIR)
@@ -242,6 +282,10 @@ all: \
 	$(BUILD_DIR)/346.moving-average-from-data-stream \
 	$(BUILD_DIR)/270.closest-binary-search-tree-value \
 	$(BUILD_DIR)/266.palindrome-permutation \
+	$(BUILD_DIR)/259.3sum-smaller \
+	$(BUILD_DIR)/256.paint-house \
+	$(BUILD_DIR)/255.verify-preorder-sequence-in-binary-search-tree \
+	$(BUILD_DIR)/254.factor-combinations \
 	$(BUILD_DIR)/253.meeting-rooms-ii \
 	$(BUILD_DIR)/252.meeting-rooms \
 	$(BUILD_DIR)/251.flatten-2d-vector \

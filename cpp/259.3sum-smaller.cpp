@@ -5,29 +5,30 @@
 using namespace std;
 
 class Solution {
-   public:
-    int threeSumSmaller(vector<int> &nums, int target) {
-        if (nums.empty())
-            return 0;
-        sort(nums.begin(), nums.end());
-        int count = 0;
-        for (int i = 0; i < nums.size() - 2; ++i) {
-            int left = i + 1, right = nums.size() - 1;
-            while (left < right) {
-                if (nums[i] + nums[left] + nums[right] < target) {
-                    count += right - left;
-                    ++left;
-                } else
-                    --right;
-            }
+ public:
+  int threeSumSmaller(vector<int> nums, int target) {
+    sort(nums.begin(), nums.end());
+    int n = nums.size();
+    int result = 0, i = 0;
+    while (i < n) {
+      int j = i + 1, k = n - 1;
+      while (j < k) {
+        if (nums[i] + nums[j] + nums[k] < target) {
+          result += (k - j);
+          ++j;
+        } else {
+          --k;
         }
-        return count;
+      }
+      ++i;
     }
+    return result;
+  }
 };
 
 int main() {
-    Solution sol;
-
-    return 0;
+  Solution sol;
+  assert(sol.threeSumSmaller({-2, 0, 1, 3}, 2) == 2);
+  assert(sol.threeSumSmaller({-2, 0, -1, 3}, 2) == 3);
+  return 0;
 }
-

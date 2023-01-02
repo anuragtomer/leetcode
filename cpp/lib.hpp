@@ -291,17 +291,16 @@ namespace vectors {
 
   /* Prints vector of integers. */
   template <typename T>
-  void print_vector(vector<T> vec) {
+  void print_vector(vector<T> &vec) {
     for (auto i : vec)
       cout << i << " ";
     cout << endl;
   }
 
   template <typename T>
-  void print_vector(vector<vector<T>> vec) {
-    for (auto row : vec) {
-      for (auto val : row)
-        cout << val << " ";
+  void print_vector(vector<vector<T>> &vec) {
+    for (auto &row : vec) {
+      print_vector(row);
       cout << endl;
     }
     cout << endl;
@@ -321,14 +320,18 @@ namespace vectors {
 
   template <typename T>
   bool match_sorted_vecs(vector<T> vec1, vector<T> vec2) {
+    if (vec1.size() != vec2.size()) {
+      cout << "Internal sizes don't match: " << vec1.size() << " vs "
+           << vec2.size();
+      return false;
+    }
     sort(vec1.begin(), vec1.end());
     sort(vec2.begin(), vec2.end());
-    int n1 = vec1.size(), n2 = vec2.size();
-    if (n1 != n2)
-      return false;
-    for (int i = 0; i < n1; ++i) {
-      if (vec1[i] != vec2[i])
+    for (int j = 0; j < vec1.size(); ++j) {
+      if (vec1[j] != vec2[j]) {
+        cout << "Values don't match: " << vec1[j] << " vs " << vec2[j];
         return false;
+      }
     }
     return true;
   }
@@ -339,11 +342,8 @@ namespace vectors {
     if (n1 != n2)
       return false;
     for (int i = 0; i < n1; ++i) {
-      if (vec1[i].size() != vec2[i].size())
+      if (match_unsorted_vecs(vec1[i], vec2[i]))
         return false;
-      for (int j = 0; j < vec1[i].size(); ++j)
-        if (vec1[i][j] != vec2[i][j])
-          return false;
     }
     return true;
   }
@@ -353,17 +353,14 @@ namespace vectors {
     sort(vec1.begin(), vec1.end());
     sort(vec2.begin(), vec2.end());
     int n1 = vec1.size(), n2 = vec2.size();
-    if (n1 != n2)
+    if (n1 != n2) {
+      cout << "Sizes don't match: " << n1 << " vs " << n2;
       return false;
+    }
     for (int i = 0; i < n1; ++i) {
-      if (vec1[i].size() != vec2[i].size())
+      if (not match_sorted_vecs(vec1[i], vec2[i]))
         return false;
-      sort(vec1[i].begin(), vec1[i].end());
-      sort(vec2[i].begin(), vec2[i].end());
-      for (int j = 0; j < vec1[i].size(); ++j)
-        if (vec1[i][j] != vec2[i][j])
-          return false;
     }
     return true;
-  }
+  } // namespace vectors
 } // namespace vectors
