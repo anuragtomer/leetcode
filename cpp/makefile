@@ -25,7 +25,6 @@ last: $(notdir $(basename $(LAST_MODIFIED_CXX_FILE)))
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-
 # 2504.log-recording-with-multithreading_lintcode.cpp
 
 $(BUILD_DIR)/2504.log-recording-with-multithreading_lintcode: $(SRC_DIR)/2504.log-recording-with-multithreading_lintcode.cpp | $(BUILD_DIR)
@@ -646,6 +645,16 @@ $(BUILD_DIR)/1588.sum-of-all-odd-length-subarrays: $(SRC_DIR)/1588.sum-of-all-od
 .PHONY: 1588.sum-of-all-odd-length-subarrays
 
 
+# 1584.min-cost-to-connect-all-points.cpp
+
+$(BUILD_DIR)/1584.min-cost-to-connect-all-points: $(SRC_DIR)/1584.min-cost-to-connect-all-points.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+1584.min-cost-to-connect-all-points: $(BUILD_DIR)/1584.min-cost-to-connect-all-points
+	$<
+
+.PHONY: 1584.min-cost-to-connect-all-points
+
+
 # 1579.alphabetic-string-calculation_lintcode.cpp
 
 $(BUILD_DIR)/1579.alphabetic-string-calculation_lintcode: $(SRC_DIR)/1579.alphabetic-string-calculation_lintcode.cpp | $(BUILD_DIR)
@@ -674,7 +683,6 @@ $(BUILD_DIR)/1577.sum-of-leaf-nodes_lintcode: $(SRC_DIR)/1577.sum-of-leaf-nodes_
 	$<
 
 .PHONY: 1577.sum-of-leaf-nodes_lintcode
-
 
 # 1575.spring-tour_lintcode.cpp
 
@@ -2394,16 +2402,6 @@ $(BUILD_DIR)/918.maximum-sum-circular-array: $(SRC_DIR)/918.maximum-sum-circular
 	$<
 
 .PHONY: 918.maximum-sum-circular-array
-
-
-# 917.palindrome-permutation-ii.cpp
-
-$(BUILD_DIR)/917.palindrome-permutation-ii: $(SRC_DIR)/917.palindrome-permutation-ii.cpp | $(BUILD_DIR)
-	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
-917.palindrome-permutation-ii: $(BUILD_DIR)/917.palindrome-permutation-ii
-	$<
-
-.PHONY: 917.palindrome-permutation-ii
 
 
 # 916.word-subsets.cpp
@@ -5026,6 +5024,16 @@ $(BUILD_DIR)/268.missing-number: $(SRC_DIR)/268.missing-number.cpp | $(BUILD_DIR
 .PHONY: 268.missing-number
 
 
+# 267.palindrome-permutation-ii.cpp
+
+$(BUILD_DIR)/267.palindrome-permutation-ii: $(SRC_DIR)/267.palindrome-permutation-ii.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+267.palindrome-permutation-ii: $(BUILD_DIR)/267.palindrome-permutation-ii
+	$<
+
+.PHONY: 267.palindrome-permutation-ii
+
+
 # 266.palindrome-permutation.cpp
 
 $(BUILD_DIR)/266.palindrome-permutation: $(SRC_DIR)/266.palindrome-permutation.cpp | $(BUILD_DIR)
@@ -7159,6 +7167,7 @@ all: \
     $(BUILD_DIR)/1649.super-lollipop_lintcode \
     $(BUILD_DIR)/1642.furthest-building-you-can-reach \
     $(BUILD_DIR)/1588.sum-of-all-odd-length-subarrays \
+    $(BUILD_DIR)/1584.min-cost-to-connect-all-points \
     $(BUILD_DIR)/1579.alphabetic-string-calculation_lintcode \
     $(BUILD_DIR)/1578.number-of-a_lintcode \
     $(BUILD_DIR)/1577.sum-of-leaf-nodes_lintcode \
@@ -7334,7 +7343,6 @@ all: \
     $(BUILD_DIR)/926.flip-string-to-monotone-increasing \
     $(BUILD_DIR)/921.minimum-add-to-make-parentheses-valid \
     $(BUILD_DIR)/918.maximum-sum-circular-array \
-    $(BUILD_DIR)/917.palindrome-permutation-ii \
     $(BUILD_DIR)/916.word-subsets \
     $(BUILD_DIR)/914.x-of-a-kind-in-a-deck-of-cards \
     $(BUILD_DIR)/907.sum-of-subarray-minimums \
@@ -7597,6 +7605,7 @@ all: \
     $(BUILD_DIR)/270.closest-binary-search-tree-value \
     $(BUILD_DIR)/269.alien-dictionary \
     $(BUILD_DIR)/268.missing-number \
+    $(BUILD_DIR)/267.palindrome-permutation-ii \
     $(BUILD_DIR)/266.palindrome-permutation \
     $(BUILD_DIR)/264.ugly-number-ii \
     $(BUILD_DIR)/261.graph-valid-tree \
@@ -7803,7 +7812,8 @@ all: \
     $(BUILD_DIR)/4.median-of-two-sorted-arrays \
     $(BUILD_DIR)/3.longest-substring-without-repeating-characters \
     $(BUILD_DIR)/2.add-two-numbers \
-    $(BUILD_DIR)/1.two-sum
+    $(BUILD_DIR)/1.two-sum \
+    $(BUILD_DIR)/none
 
 
 clean:

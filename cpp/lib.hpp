@@ -291,14 +291,14 @@ namespace vectors {
 
   /* Prints vector of integers. */
   template <typename T>
-  void print_vector(vector<T> &vec) {
+  void print_vector(vector<T> vec) {
     for (auto i : vec)
       cout << i << " ";
     cout << endl;
   }
 
   template <typename T>
-  void print_vector(vector<vector<T>> &vec) {
+  void print_vector(vector<vector<T>> vec) {
     for (auto &row : vec) {
       print_vector(row);
       cout << endl;

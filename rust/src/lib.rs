@@ -15,6 +15,7 @@ mod lowest_common_ancestor_of_a_binary_search_tree;
 mod majority_element;
 mod merge_two_sorted_lists;
 mod middle_of_the_linked_list;
+mod min_cost_to_connect_all_points;
 mod ransom_note;
 mod removing_stars_from_a_string;
 mod reverse_linked_list;
