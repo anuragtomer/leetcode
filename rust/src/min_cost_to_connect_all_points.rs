@@ -2,7 +2,9 @@ use std::cmp::{Ordering, Reverse};
 use std::collections::{BinaryHeap, HashSet};
 
 impl Solution {
+    #[allow(dead_code)]
     pub fn min_cost_connect_points(points: Vec<Vec<i32>>) -> i32 {
+        #[allow(dead_code)]
         #[derive(Eq)]
         struct DistanceMap {
             cost: usize,
@@ -31,7 +33,6 @@ impl Solution {
             // If there are no points or there is just 1 point, the cost is 0.
             return 0;
         }
-        let mut cost: i32 = 0;
         let mut edge_cost: Vec<Vec<usize>> = vec![vec![<usize>::MAX; points.len()]; points.len()];
         for i in 0..points.len() {
             for j in i + 1..points.len() {
@@ -65,7 +66,6 @@ impl Solution {
                 new_vertex = tp.destination;
                 chosen_vertices.insert(tp.destination);
             } else {
-                new_vertex = tp.source;
                 chosen_vertices.insert(tp.source);
             }
 
@@ -81,10 +81,10 @@ impl Solution {
         if chosen_vertices.len() == n {
             return cost as i32;
         }
-        return -1;
+        -1
     }
 }
-
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

@@ -1,4 +1,5 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn is_valid(s: String) -> bool {
         let mut st = vec![];
         for ch in s.chars() {
@@ -22,9 +23,10 @@ impl Solution {
                 _ => return false,
             }
         }
-        return st.len() == 0;
+        st.is_empty()
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

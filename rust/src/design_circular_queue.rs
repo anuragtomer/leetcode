@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 #[derive(Default)]
 struct MyCircularQueue {
     queue: Vec<i32>,
@@ -10,13 +11,14 @@ struct MyCircularQueue {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl MyCircularQueue {
+    #[allow(dead_code)]
     fn new(k: i32) -> Self {
         Self {
             queue: vec![0; k as _],
             ..Default::default()
         }
     }
-
+    #[allow(dead_code)]
     fn en_queue(&mut self, value: i32) -> bool {
         if self.is_full() {
             false
@@ -27,7 +29,7 @@ impl MyCircularQueue {
             true
         }
     }
-
+    #[allow(dead_code)]
     fn de_queue(&mut self) -> bool {
         if self.is_empty() {
             false
@@ -38,6 +40,7 @@ impl MyCircularQueue {
         }
     }
 
+    #[allow(dead_code)]
     fn front(&self) -> i32 {
         if self.is_empty() {
             -1
@@ -45,7 +48,7 @@ impl MyCircularQueue {
             self.queue[self.front]
         }
     }
-
+    #[allow(dead_code)]
     fn rear(&self) -> i32 {
         if self.is_empty() {
             -1
@@ -53,11 +56,11 @@ impl MyCircularQueue {
             self.queue[(self.front + self.len - 1) % self.queue.len()]
         }
     }
-
+    #[allow(dead_code)]
     fn is_empty(&self) -> bool {
         self.len == 0
     }
-
+    #[allow(dead_code)]
     fn is_full(&self) -> bool {
         self.len == self.queue.len()
     }

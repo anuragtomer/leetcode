@@ -8,6 +8,7 @@ struct ListNode {
 }
 
 impl ListNode {
+    #[allow(dead_code)]
     fn new(val: i32) -> Self {
         ListNode { val, next: None }
     }
@@ -15,6 +16,7 @@ impl ListNode {
 
 struct Solution;
 impl Solution {
+    #[allow(dead_code)]
     pub fn has_cycle(head: Option<Rc<RefCell<ListNode>>>) -> bool {
         let mut cache = HashSet::new();
         let mut next = head;

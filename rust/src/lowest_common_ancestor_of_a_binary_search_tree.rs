@@ -5,6 +5,7 @@ use std::rc::Rc;
 use crate::util::tree::TreeNode;
 
 impl Solution {
+    #[allow(dead_code)]
     pub fn lowest_common_ancestor(
         mut root: Option<Rc<RefCell<TreeNode>>>,
         p: Option<Rc<RefCell<TreeNode>>>,
@@ -27,6 +28,7 @@ impl Solution {
         }
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

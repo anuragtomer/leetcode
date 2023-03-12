@@ -1,4 +1,5 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn is_palindrome(s: String) -> bool {
         let refined = s
             .chars()
@@ -7,6 +8,7 @@ impl Solution {
         refined.clone().eq(refined.rev())
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

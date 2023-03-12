@@ -1,4 +1,5 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn diagonal_sort(mat: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
         let h = mat.len();
         let w = mat[0].len();
@@ -9,8 +10,12 @@ impl Solution {
         }
         let mut diag = Vec::with_capacity(diag_len);
         for col in 0..w {
-            for offset in 0..std::cmp::min(diag_len, w - col) {
-                diag.push(mat[offset][col + offset]);
+            for (offset, value) in mat
+                .iter()
+                .enumerate()
+                .take(std::cmp::min(diag_len, w - col))
+            {
+                diag.push(value[col + offset]);
             }
             diag.sort();
             for (offset, elem) in diag.iter().enumerate() {
@@ -31,6 +36,7 @@ impl Solution {
         result
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

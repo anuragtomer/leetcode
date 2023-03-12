@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
 impl Solution {
+    #[allow(dead_code)]
     pub fn can_construct(ransom_note: String, magazine: String) -> bool {
         let mut seen = HashMap::new();
         for chars in magazine.chars() {
@@ -19,6 +20,7 @@ impl Solution {
         true
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

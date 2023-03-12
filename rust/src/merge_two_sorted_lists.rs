@@ -1,6 +1,7 @@
 use crate::util::linked_list::ListNode;
 
 impl Solution {
+    #[allow(dead_code)]
     pub fn merge_two_lists(
         list1: Option<Box<ListNode>>,
         list2: Option<Box<ListNode>>,
@@ -11,11 +12,11 @@ impl Solution {
                     if list1_head.val < list2_head.val {
                         list1_head.next =
                             Solution::merge_two_lists(list1_head.next, Some(list2_head));
-                        return Some(list1_head);
+                        Some(list1_head)
                     } else {
                         list2_head.next =
                             Solution::merge_two_lists(Some(list1_head), list2_head.next);
-                        return Some(list2_head);
+                        Some(list2_head)
                     }
                 }
                 None => Some(list1_head),
@@ -24,7 +25,7 @@ impl Solution {
         }
     }
 }
-
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

@@ -1,4 +1,5 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn add_binary(a: String, b: String) -> String {
         let (mut carry, mut i, mut j): (i32, i32, i32) =
             (0, a.len() as i32 - 1, b.len() as i32 - 1);
@@ -27,6 +28,7 @@ impl Solution {
         result.chars().rev().collect::<String>()
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

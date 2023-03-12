@@ -1,10 +1,13 @@
 impl Solution {
+    #[allow(dead_code)]
     fn new(n: i32) -> Self {
         Self { bad_version: n }
     }
+    #[allow(dead_code)]
     pub fn is_bad_version(&self, n: i32) -> bool {
         n >= self.bad_version
     }
+    #[allow(dead_code)]
     pub fn first_bad_version(&self, n: i32) -> i32 {
         let (mut lb, mut ub) = (0, n);
         loop {

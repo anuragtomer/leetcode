@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 
 impl Solution {
+    #[allow(dead_code)]
     pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
         let mut hash = HashMap::with_capacity(nums.len());
         for (i, &num) in nums.iter().enumerate() {
@@ -14,6 +15,7 @@ impl Solution {
         vec![]
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

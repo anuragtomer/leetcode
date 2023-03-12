@@ -1,6 +1,7 @@
 use std::collections::VecDeque;
 
 impl Solution {
+    #[allow(dead_code)]
     pub fn shortest_path(grid: Vec<Vec<i32>>, k: i32) -> i32 {
         let (rows, cols) = (grid.len(), grid[0].len());
         let mut visited = vec![vec![None; cols]; rows];
@@ -29,6 +30,7 @@ impl Solution {
     }
 }
 
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

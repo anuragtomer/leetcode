@@ -1,4 +1,5 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn max_profit(prices: Vec<i32>) -> i32 {
         prices
             .iter()
@@ -27,6 +28,7 @@ impl Solution {
     }
     */
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

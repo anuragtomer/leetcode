@@ -1,4 +1,5 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn remove_stars(s: String) -> String {
         let mut result: String = "".to_string();
         for ch in s.chars() {
@@ -11,6 +12,7 @@ impl Solution {
         result
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

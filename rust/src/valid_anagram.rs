@@ -1,4 +1,5 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn is_anagram(s: String, t: String) -> bool {
         let mut map = std::collections::HashMap::new();
         s.chars().for_each(|c| *map.entry(c).or_insert(0) += 1);
@@ -6,6 +7,7 @@ impl Solution {
         map.into_values().all(|v| v == 0)
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

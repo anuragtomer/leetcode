@@ -1,10 +1,11 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn maximum_wealth(accounts: Vec<Vec<i32>>) -> i32 {
         let mut max_wealth: i32 = 0;
-        for i in 0..accounts.len() {
+        for account in &accounts {
             let mut curr_wealth: i32 = 0;
-            for j in 0..accounts[i].len() {
-                curr_wealth += accounts[i][j];
+            for wealth in account.iter() {
+                curr_wealth += wealth;
             }
             if max_wealth < curr_wealth {
                 max_wealth = curr_wealth;
@@ -13,6 +14,7 @@ impl Solution {
         max_wealth
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

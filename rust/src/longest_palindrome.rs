@@ -1,4 +1,5 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn longest_palindrome(s: String) -> i32 {
         let mut length: i32 = 0;
         let mut count_vec: Vec<i32> = vec![0; 128];
@@ -16,6 +17,7 @@ impl Solution {
         length
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

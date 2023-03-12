@@ -1,4 +1,5 @@
 impl Solution {
+    #[allow(dead_code)]
     pub fn search(nums: Vec<i32>, target: i32) -> i32 {
         use std::cmp::Ordering;
         let (mut low, mut high) = (0, nums.len());
@@ -13,6 +14,7 @@ impl Solution {
         -1
     }
 }
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]

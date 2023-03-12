@@ -12,13 +12,18 @@ impl TreeNodeSwap for TreeNode {
         std::mem::swap(&mut self.left, &mut self.right);
     }
     fn swap_all(&mut self) {
-        self.left.as_mut().map(|node| node.borrow_mut().swap_all());
-        self.right.as_mut().map(|node| node.borrow_mut().swap_all());
+        if let Some(node) = self.left.as_mut() {
+            node.borrow_mut().swap_all()
+        }
+        if let Some(node) = self.right.as_mut() {
+            node.borrow_mut().swap_all()
+        }
         self.swap();
     }
 }
 
 impl Solution {
+    #[allow(dead_code)]
     pub fn invert_tree(root: Option<Rc<RefCell<TreeNode>>>) -> Option<Rc<RefCell<TreeNode>>> {
         root.map(|node| {
             node.borrow_mut().swap_all();
@@ -26,7 +31,7 @@ impl Solution {
         })
     }
 }
-
+#[allow(dead_code)]
 struct Solution {}
 
 #[cfg(test)]
