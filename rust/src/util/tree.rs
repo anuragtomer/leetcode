@@ -1,3 +1,4 @@
+use log::info;
 use std::cell::RefCell;
 use std::rc::Rc;
 
@@ -39,6 +40,17 @@ pub fn to_tree(vec: Vec<Option<i32>>) -> Option<Rc<RefCell<TreeNode>>> {
         }
     }
     head
+}
+
+pub fn print_tree(root: Option<Rc<RefCell<TreeNode>>>) {
+    match root {
+        None => info!(" "),
+        Some(node) => {
+            info!("{}", node.borrow().val);
+            print_tree(node.borrow().left.clone());
+            print_tree(node.borrow().right.clone());
+        }
+    };
 }
 
 #[macro_export]
