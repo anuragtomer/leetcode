@@ -2224,6 +2224,16 @@ $(BUILD_DIR)/967.numbers-with-same-consecutive-differences: $(SRC_DIR)/967.numbe
 .PHONY: 967.numbers-with-same-consecutive-differences
 
 
+# 958.check-completeness-of-a-binary-tree.cpp
+
+$(BUILD_DIR)/958.check-completeness-of-a-binary-tree: $(SRC_DIR)/958.check-completeness-of-a-binary-tree.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+958.check-completeness-of-a-binary-tree: $(BUILD_DIR)/958.check-completeness-of-a-binary-tree
+	$<
+
+.PHONY: 958.check-completeness-of-a-binary-tree
+
+
 # 957.prison-cells-after-n-days.cpp
 
 $(BUILD_DIR)/957.prison-cells-after-n-days: $(SRC_DIR)/957.prison-cells-after-n-days.cpp | $(BUILD_DIR)
@@ -7325,6 +7335,7 @@ all: \
     $(BUILD_DIR)/970.powerful-integers \
     $(BUILD_DIR)/969.pancake-sorting \
     $(BUILD_DIR)/967.numbers-with-same-consecutive-differences \
+	$(BUILD_DIR)/958.check-completeness-of-a-binary-tree \
     $(BUILD_DIR)/957.prison-cells-after-n-days \
     $(BUILD_DIR)/953.verifying-an-alien-dictionary \
     $(BUILD_DIR)/952.largest-component-size-by-common-factor \
