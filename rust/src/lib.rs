@@ -4,6 +4,7 @@ pub mod util;
 mod add_binary;
 mod best_time_to_buy_and_sell_stock;
 mod binary_search;
+pub mod cheapest_flights_within_k_stops;
 mod design_circular_queue;
 mod first_bad_version;
 mod flood_fill;
