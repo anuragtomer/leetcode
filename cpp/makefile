@@ -6234,6 +6234,16 @@ $(BUILD_DIR)/107.binary-tree-level-order-traversal-ii: $(SRC_DIR)/107.binary-tre
 .PHONY: 107.binary-tree-level-order-traversal-ii
 
 
+# 106.construct-binary-tree-from-inorder-and-postorder-traversal.cpp
+
+$(BUILD_DIR)/106.construct-binary-tree-from-inorder-and-postorder-traversal: $(SRC_DIR)/106.construct-binary-tree-from-inorder-and-postorder-traversal.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+106.construct-binary-tree-from-inorder-and-postorder-traversal: $(BUILD_DIR)/106.construct-binary-tree-from-inorder-and-postorder-traversal
+	$<
+
+.PHONY: 106.construct-binary-tree-from-inorder-and-postorder-traversal
+
+
 # 105.construct-binary-tree-from-preorder-and-inorder-traversal.cpp
 
 $(BUILD_DIR)/105.construct-binary-tree-from-preorder-and-inorder-traversal: $(SRC_DIR)/105.construct-binary-tree-from-preorder-and-inorder-traversal.cpp | $(BUILD_DIR)
@@ -7736,6 +7746,7 @@ all: \
     $(BUILD_DIR)/110.balanced-binary-tree \
     $(BUILD_DIR)/108.convert-sorted-array-to-binary-search-tree \
     $(BUILD_DIR)/107.binary-tree-level-order-traversal-ii \
+    $(BUILD_DIR)/106.construct-binary-tree-from-inorder-and-postorder-traversal \
     $(BUILD_DIR)/105.construct-binary-tree-from-preorder-and-inorder-traversal \
     $(BUILD_DIR)/104.maximum-depth-of-binary-tree \
     $(BUILD_DIR)/103.binary-tree-zigzag-level-order-traversal \

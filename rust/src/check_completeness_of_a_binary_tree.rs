@@ -8,23 +8,23 @@ impl Solution {
         if root.is_none() {
             return true;
         }
-        let mut current = vec![root];
+        let mut all_nodes = vec![root];
         let mut i: usize = 0;
-        while i < current.len() {
-            let node = current[i].clone();
+        while i < all_nodes.len() {
+            let node = all_nodes[i].as_ref();
             i += 1;
             if node.is_none() {
-                while i < current.len() {
-                    let node = current[i].clone();
-                    i += 1;
-                    if !node.is_none() {
+                while i < all_nodes.len() {
+                    if !all_nodes[i].is_none() {
                         return false;
                     }
+                    i += 1;
                 }
+                return true;
             } else {
                 if let Some(n) = node {
                     let mut tmp = vec![n.borrow().left.clone(), n.borrow().right.clone()];
-                    current.append(&mut tmp);
+                    all_nodes.append(&mut tmp);
                 }
             }
         }
