@@ -19,9 +19,7 @@ impl Solution {
                 break;
             }
         }
-        if found_at.is_none() {
-            return None;
-        }
+        found_at?;
         let mut root = TreeNode {
             val: *root_val,
             left: None,
@@ -30,7 +28,7 @@ impl Solution {
         postorder.pop();
         root.right = Self::build_tree_2(inorder[found_at.unwrap() + 1..].to_vec(), postorder);
         root.left = Self::build_tree_2(inorder[0..found_at.unwrap()].to_vec(), postorder);
-        return Some(Rc::new(RefCell::new(root)));
+        Some(Rc::new(RefCell::new(root)))
     }
     #[allow(dead_code)]
     pub fn build_tree(inorder: Vec<i32>, postorder: Vec<i32>) -> Option<Rc<RefCell<TreeNode>>> {
@@ -39,7 +37,7 @@ impl Solution {
     #[allow(dead_code)]
     fn builder(inorder: &[i32], postorder: &[i32]) -> Option<Rc<RefCell<TreeNode>>> {
         if inorder.is_empty() || postorder.is_empty() {
-            return None;
+            None
         } else {
             let i = inorder.len();
             let n = postorder.len() - 1;

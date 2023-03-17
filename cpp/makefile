@@ -2434,6 +2434,16 @@ $(BUILD_DIR)/914.x-of-a-kind-in-a-deck-of-cards: $(SRC_DIR)/914.x-of-a-kind-in-a
 .PHONY: 914.x-of-a-kind-in-a-deck-of-cards
 
 
+# 909.snakes-and-ladders.cpp
+
+$(BUILD_DIR)/909.snakes-and-ladders: $(SRC_DIR)/909.snakes-and-ladders.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+909.snakes-and-ladders: $(BUILD_DIR)/909.snakes-and-ladders
+	$<
+
+.PHONY: 909.snakes-and-ladders
+
+
 # 907.sum-of-subarray-minimums.cpp
 
 $(BUILD_DIR)/907.sum-of-subarray-minimums: $(SRC_DIR)/907.sum-of-subarray-minimums.cpp | $(BUILD_DIR)
@@ -7366,7 +7376,8 @@ all: \
     $(BUILD_DIR)/918.maximum-sum-circular-array \
     $(BUILD_DIR)/916.word-subsets \
     $(BUILD_DIR)/914.x-of-a-kind-in-a-deck-of-cards \
-    $(BUILD_DIR)/907.sum-of-subarray-minimums \
+    $(BUILD_DIR)/909.snakes-and-ladders \
+	$(BUILD_DIR)/907.sum-of-subarray-minimums \
     $(BUILD_DIR)/905.sort-array-by-parity \
     $(BUILD_DIR)/904.fruit-into-baskets \
     $(BUILD_DIR)/901.online-stock-span \

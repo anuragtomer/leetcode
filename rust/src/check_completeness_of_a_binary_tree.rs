@@ -15,17 +15,15 @@ impl Solution {
             i += 1;
             if node.is_none() {
                 while i < all_nodes.len() {
-                    if !all_nodes[i].is_none() {
+                    if all_nodes[i].is_some() {
                         return false;
                     }
                     i += 1;
                 }
                 return true;
-            } else {
-                if let Some(n) = node {
-                    let mut tmp = vec![n.borrow().left.clone(), n.borrow().right.clone()];
-                    all_nodes.append(&mut tmp);
-                }
+            } else if let Some(n) = node {
+                let mut tmp = vec![n.borrow().left.clone(), n.borrow().right.clone()];
+                all_nodes.append(&mut tmp);
             }
         }
         true

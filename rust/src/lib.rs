@@ -24,6 +24,7 @@ mod removing_stars_from_a_string;
 mod reverse_linked_list;
 mod richest_customer_wealth;
 mod shortest_path_in_a_grid_with_obstacles_elimination;
+mod snakes_and_ladders;
 mod sort_the_matrix_diagonally;
 mod symmetric_tree;
 mod two_sum;
