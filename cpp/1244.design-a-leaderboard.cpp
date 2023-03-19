@@ -61,7 +61,9 @@ class Leaderboard {
       playerIDs.push_back(playerId);
       scores.push_back(score);
     } else {
-      int idIndex = distance(playerIDs.begin(), lower_bound(playerIDs.begin(), playerIDs.end(), playerId));
+      int idIndex =
+        distance(playerIDs.begin(),
+                 lower_bound(playerIDs.begin(), playerIDs.end(), playerId));
       if (idIndex >= 0) {
         int newScore = scores[idIndex] + score;
         playerIDs.erase(idIndex);
@@ -91,7 +93,9 @@ class Leaderboard {
   }
 
   void reset(int playerId) {
-    int index = distance(playerIDs.begin(), lower_bound(playerIDs.begin(), playerIDs.end(), playerId));
+    int index =
+      distance(playerIDs.begin(),
+               lower_bound(playerIDs.begin(), playerIDs.end(), playerId));
     playerIDs.erase(playerIDs.begin() + index);
     scores.erase(scores.begin() + index);
     size--;
@@ -117,9 +121,9 @@ int main() {
   Leaderboard leader;
   leader.addScore(1, 73);
   leader.addScore(2, 56);
-  leader.addScore(3, 39);       // leaderboard = [[1,73],[2,56],[3,39]];
-  leader.addScore(4, 51);       // leaderboard = [[1,73],[2,56],[3,39],[4,51]];
-  leader.addScore(5, 4);        // leaderboard = [[1,73],[2,56],[3,39],[4,51],[5,4]];
+  leader.addScore(3, 39); // leaderboard = [[1,73],[2,56],[3,39]];
+  leader.addScore(4, 51); // leaderboard = [[1,73],[2,56],[3,39],[4,51]];
+  leader.addScore(5, 4);  // leaderboard = [[1,73],[2,56],[3,39],[4,51],[5,4]];
   assert(73 == leader.top(1));  // returns 73;
   leader.reset(1);              // leaderboard = [[2,56],[3,39],[4,51],[5,4]];
   leader.reset(2);              // leaderboard = [[3,39],[4,51],[5,4]];
@@ -128,4 +132,3 @@ int main() {
 
   return 0;
 }
-

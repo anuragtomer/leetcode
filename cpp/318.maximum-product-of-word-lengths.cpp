@@ -35,30 +35,29 @@ public:
   }
 };*/
 class Solution {
-   public:
-    int maxProduct(vector<string> &words) {
-        unordered_map<int, int> bitMaps;
-        for (auto word : words) {
-            int bitmap = 0;
-            for (auto ch : word) {
-                bitmap = bitmap | (1 << (ch - 'a'));
-            }
-            bitMaps[bitmap] = max(bitMaps[bitmap], static_cast<int>(word.size()));
-        }
-        int maxLen = 0;
-        for (auto it : bitMaps) {
-            for (auto it2 : bitMaps) {
-                if (!(it.first & it2.first)) {
-                    maxLen = max(maxLen, it.second * it2.second);
-                }
-            }
-        }
-        return maxLen;
+ public:
+  int maxProduct(vector<string> &words) {
+    unordered_map<int, int> bitMaps;
+    for (auto word : words) {
+      int bitmap = 0;
+      for (auto ch : word) {
+        bitmap = bitmap | (1 << (ch - 'a'));
+      }
+      bitMaps[bitmap] = max(bitMaps[bitmap], static_cast<int>(word.size()));
     }
+    int maxLen = 0;
+    for (auto it : bitMaps) {
+      for (auto it2 : bitMaps) {
+        if (!(it.first & it2.first)) {
+          maxLen = max(maxLen, it.second * it2.second);
+        }
+      }
+    }
+    return maxLen;
+  }
 };
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-

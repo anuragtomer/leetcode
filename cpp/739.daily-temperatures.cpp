@@ -43,4 +43,3 @@ int main() {
   assert(lmatch(expected, sol.dailyTemperatures(T)));
   return 0;
 }
-

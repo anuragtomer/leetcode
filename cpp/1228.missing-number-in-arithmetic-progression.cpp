@@ -14,9 +14,9 @@ class Solution {
     for (int i = 2; i < arr.size(); ++i) {
       if (diff != arr[i] - arr[i - 1]) {
         if (diff < 0)
-          return arr[i-1] - (max(diff, (arr[i] - arr[i - 1])));
-        else 
-          return arr[i-1] + (min(diff, (arr[i] - arr[i - 1])));
+          return arr[i - 1] - (max(diff, (arr[i] - arr[i - 1])));
+        else
+          return arr[i - 1] + (min(diff, (arr[i] - arr[i - 1])));
       }
     }
     return arr.back() + diff;
@@ -31,4 +31,3 @@ int main() {
   cout << "Pass 2" << endl;
   return 0;
 }
-

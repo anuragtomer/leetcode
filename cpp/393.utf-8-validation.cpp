@@ -73,4 +73,3 @@ int main() {
   assert(sol.validUtf8(data));
   return 0;
 }
-

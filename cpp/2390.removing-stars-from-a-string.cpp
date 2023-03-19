@@ -27,4 +27,3 @@ int main() {
   assert(out == sol.removeStars(s));
   return 0;
 }
-

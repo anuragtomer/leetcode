@@ -25,7 +25,9 @@ class FizzBuzz {
     while (current <= n) {
       unique_lock<mutex> l(m);
       //cout << "Waiting for multiple of 3\n";
-      cv.wait(l, [=]() { return (current % 3 == 0 && current % 5 != 0) || (current > n); });
+      cv.wait(l, [=]() {
+        return (current % 3 == 0 && current % 5 != 0) || (current > n);
+      });
       //cout << "Done waiting for multiple of 3\n";
       if (current <= n)
         printFizz();
@@ -39,7 +41,9 @@ class FizzBuzz {
     while (current <= n) {
       unique_lock<mutex> l(m);
       //cout << "Waiting for multiple of 5\n";
-      cv.wait(l, [=]() { return (current % 3 != 0 && current % 5 == 0) || (current > n); });
+      cv.wait(l, [=]() {
+        return (current % 3 != 0 && current % 5 == 0) || (current > n);
+      });
       //cout << "Done for multiple of 5\n";
       if (current <= n)
         printBuzz();
@@ -53,7 +57,9 @@ class FizzBuzz {
     while (current <= n) {
       unique_lock<mutex> l(m);
       //cout << "Waiting for multiple of both 3 and 5\n";
-      cv.wait(l, [=]() { return (current % 3 == 0 && current % 5 == 0) || (current > n); });
+      cv.wait(l, [=]() {
+        return (current % 3 == 0 && current % 5 == 0) || (current > n);
+      });
       //cout << "Done waiting for multiple of both\n";
       if (current <= n)
         printFizzBuzz();
@@ -67,7 +73,9 @@ class FizzBuzz {
     while (current <= n) {
       unique_lock<mutex> l(m);
       //cout << "waiting for number \n";
-      cv.wait(l, [=]() { return (current % 3 != 0 && current % 5 != 0) || (current > n); });
+      cv.wait(l, [=]() {
+        return (current % 3 != 0 && current % 5 != 0) || (current > n);
+      });
       //cout << "Done waiting for number \n";
       if (current <= n)
         printNumber(current);
@@ -106,4 +114,3 @@ int main() {
   }
   return 0;
 }
-

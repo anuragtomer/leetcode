@@ -7,9 +7,9 @@ using namespace std;
 
 class Solution {
 
-   public:
-    /* Slower code */
-    /*
+ public:
+  /* Slower code */
+  /*
  int findMaxForm(vector<string> &strs, int m, int n) {
      vector<pair<int, int>> counts;
      for (auto str : strs) {
@@ -37,34 +37,33 @@ class Solution {
      return dp[l][m][n];
  }
  */
-    // A bit faster code.
-    int findMaxForm(vector<string> &strs, int m, int n) {
-        vector<vector<int>> dp = vector<vector<int>>(m + 1, vector<int>(n + 1, 0));
-        for (auto &s : strs) {
-            int ones = count(s.begin(), s.end(), '1');
-            int zeros = s.size() - ones;
-            for (int i = m; i >= zeros; --i) {
-                for (int j = n; j >= ones; --j) {
-                    dp[i][j] = max(dp[i][j], dp[i - zeros][j - ones] + 1);
-                }
-            }
+  // A bit faster code.
+  int findMaxForm(vector<string> &strs, int m, int n) {
+    vector<vector<int>> dp = vector<vector<int>>(m + 1, vector<int>(n + 1, 0));
+    for (auto &s : strs) {
+      int ones = count(s.begin(), s.end(), '1');
+      int zeros = s.size() - ones;
+      for (int i = m; i >= zeros; --i) {
+        for (int j = n; j >= ones; --j) {
+          dp[i][j] = max(dp[i][j], dp[i - zeros][j - ones] + 1);
         }
-
-        return dp[m][n];
+      }
     }
+
+    return dp[m][n];
+  }
 };
 
 int main() {
-    Solution sol;
-    vector<string> strs = {"10", "0", "1"};
-    int m = 1, n = 1;
-    if (2 != sol.findMaxForm(strs, m, n)) {
-        cout << sol.findMaxForm(strs, m, n) << endl;
-    }
-    strs = {"10", "0001", "111001", "1", "0"}, m = 5, n = 3;
-    if (4 != sol.findMaxForm(strs, m, n)) {
-        cout << sol.findMaxForm(strs, m, n) << endl;
-    }
-    return 0;
+  Solution sol;
+  vector<string> strs = {"10", "0", "1"};
+  int m = 1, n = 1;
+  if (2 != sol.findMaxForm(strs, m, n)) {
+    cout << sol.findMaxForm(strs, m, n) << endl;
+  }
+  strs = {"10", "0001", "111001", "1", "0"}, m = 5, n = 3;
+  if (4 != sol.findMaxForm(strs, m, n)) {
+    cout << sol.findMaxForm(strs, m, n) << endl;
+  }
+  return 0;
 }
-

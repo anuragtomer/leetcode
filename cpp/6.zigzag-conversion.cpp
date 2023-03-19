@@ -5,8 +5,8 @@
 using namespace std;
 
 class Solution {
-   public:
-    /*string convert(string s, int numRows) {
+ public:
+  /*string convert(string s, int numRows) {
       if (numRows == 1)
         return s;
       vector<string> rows(numRows);
@@ -33,28 +33,27 @@ class Solution {
         result.append(word);
       return result;
     }*/
-    string convert(string s, int numRows) {
-        int n = s.size();
-        string a;
-        a.reserve(s.size());
-        if (numRows == 1 || n <= numRows)
-            return s;
-        for (int i = 0; i < numRows; i++) {
-            for (int j = i; j < n; j += 2 * (numRows - 1)) {
-                a.push_back(s[j]);
-                if (i != 0 && i != numRows - 1) {
-                    int t = j + 2 * (numRows - 1) - 2 * i;
-                    if (t < n)
-                        a.push_back(s[t]);
-                }
-            }
+  string convert(string s, int numRows) {
+    int n = s.size();
+    string a;
+    a.reserve(s.size());
+    if (numRows == 1 || n <= numRows)
+      return s;
+    for (int i = 0; i < numRows; i++) {
+      for (int j = i; j < n; j += 2 * (numRows - 1)) {
+        a.push_back(s[j]);
+        if (i != 0 && i != numRows - 1) {
+          int t = j + 2 * (numRows - 1) - 2 * i;
+          if (t < n)
+            a.push_back(s[t]);
         }
-        return a;
+      }
     }
+    return a;
+  }
 };
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-

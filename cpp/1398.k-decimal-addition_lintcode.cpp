@@ -11,7 +11,8 @@ class Solution {
     string result;
     int i = a.size() - 1, j = b.size() - 1;
     while (carry || i >= 0 || j >= 0) {
-      carry = carry + ((i >= 0) ? (a[i] - '0') : 0) + ((j >= 0) ? (b[j] - '0') : 0);
+      carry =
+        carry + ((i >= 0) ? (a[i] - '0') : 0) + ((j >= 0) ? (b[j] - '0') : 0);
       --i;
       --j;
       result.push_back('0' + (carry % k));
@@ -28,4 +29,3 @@ int main() {
 
   return 0;
 }
-

@@ -22,7 +22,9 @@ class Solution {
     for (auto prereq : prerequisites)
       cout << prereq << " ";
     cout << endl;
-    vector<int> dp(1 << n, n + 1); // start with dp of 2^n elements, each initialized with INT_MAX.
+    vector<int> dp(
+      1 << n,
+      n + 1); // start with dp of 2^n elements, each initialized with INT_MAX.
     dp[0] = 0;
     for (int i = 1; i < (1 << n); ++i) {
       for (int j = i; j != 0; j = (j - 1) & i) {

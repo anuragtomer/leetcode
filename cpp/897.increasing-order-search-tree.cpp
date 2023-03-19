@@ -55,4 +55,3 @@ int main() {
   (void)sol;
   return 0;
 }
-

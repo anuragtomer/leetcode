@@ -34,4 +34,3 @@ int main() {
   assert(not sol.canVisitAllRooms(rooms));
   return 0;
 }
-

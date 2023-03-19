@@ -57,7 +57,8 @@ int main() {
   assert(sol.toGoatLatin(S).compare(expected) == 0);
   S = "The quick brown fox jumped over the lazy dog";
   expected =
-    "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa";
+    "heTmaa uickqmaaa rownbmaaaa oxfmaaaaa umpedjmaaaaaa overmaaaaaaa "
+    "hetmaaaaaaaa azylmaaaaaaaaa ogdmaaaaaaaaaa";
   assert(expected == sol.toGoatLatin(S));
   return 0;
 }

@@ -46,7 +46,8 @@ class Solution {
     * @param pairs: the similar words pair
     * @return: the similarity of the two papers
     */
-  float getSimilarity(vector<string> &words1, vector<string> &words2, vector<vector<string>> &pairs) {
+  float getSimilarity(vector<string> &words1, vector<string> &words2,
+                      vector<vector<string>> &pairs) {
     unordered_map<string, int> hash;
     int i = 0;
     for (auto word : words1) {
@@ -92,4 +93,3 @@ int main() {
 
   return 0;
 }
-

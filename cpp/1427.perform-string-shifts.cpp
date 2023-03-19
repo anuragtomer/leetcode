@@ -32,4 +32,3 @@ int main() {
   cout << "Pass 2" << endl;
   return 0;
 }
-

@@ -91,4 +91,3 @@ int main() {
   assert(5 == sol.lastStoneWeightII(stones));
   return 0;
 }
-

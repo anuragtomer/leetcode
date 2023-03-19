@@ -25,7 +25,8 @@ class Solution {
   int minEatingSpeed(vector<int> &piles, int H) {
     if (piles.empty())
       return 0;
-    int low = 1, high = *max_element(piles.begin(), piles.end()), result = INT_MAX;
+    int low = 1, high = *max_element(piles.begin(), piles.end()),
+        result = INT_MAX;
     while (low <= high) {
       int mid = low + (high - low) / 2;
       if (possible(piles, mid, H)) {
@@ -42,4 +43,3 @@ int main() {
 
   return 0;
 }
-

@@ -16,7 +16,8 @@ class Bank {
     account = saveOperation(account, amount);
     m.unlock();
   }
-  void withdrawMoney(int amount, int withdrawOperation(int account, int amount)) {
+  void withdrawMoney(int amount,
+                     int withdrawOperation(int account, int amount)) {
     // write your code
     m.lock();
     account = withdrawOperation(account, amount);
@@ -30,7 +31,8 @@ vector<int> saveMoneyList;
 vector<int> withdrawMoneyList;
 int static saveOperation(int account, int amount) {
   if (bankMoney != account) {
-    cout << "Don't cheat!\nYour money is " << account << ". The real money is " << bankMoney << "." << endl;
+    cout << "Don't cheat!\nYour money is " << account << ". The real money is "
+         << bankMoney << "." << endl;
     return bankMoney;
   }
   bankMoney += amount;
@@ -38,11 +40,14 @@ int static saveOperation(int account, int amount) {
 }
 int static withdrawOperation(int account, int amount) {
   if (bankMoney != account) {
-    cout << "Don't cheat!\nYour money is " << account << ". The real money is " << bankMoney << "." << endl;
+    cout << "Don't cheat!\nYour money is " << account << ". The real money is "
+         << bankMoney << "." << endl;
     return bankMoney;
   }
   if (bankMoney < account) {
-    cout << "Money" << bankMoney << " in bank is lowwer than what you want to withdraw(" << account << ")." << endl;
+    cout << "Money" << bankMoney
+         << " in bank is lowwer than what you want to withdraw(" << account
+         << ")." << endl;
     return bankMoney;
   }
   bankMoney -= amount;
@@ -64,7 +69,8 @@ int main(int argc, char *argv[]) {
   char c[30];
   int incrCount = 0;
   int decrCount = 0;
-  vector<string> infile = {"Bank(0)", "save(50)", "withdraw(60)", "save(20)", "withdraw(10)"};
+  vector<string> infile = {"Bank(0)", "save(50)", "withdraw(60)", "save(20)",
+                           "withdraw(10)"};
   for (auto c : infile) {
     s = string(c);
     s = s.substr(0, s.length() - 1);

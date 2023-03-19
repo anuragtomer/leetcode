@@ -14,7 +14,7 @@ class Solution {
       int source;
       int destination;
       distance_map(int cost_, int source_, int destination_)
-          : cost(cost_), source(source_), destination(destination_) {}
+        : cost(cost_), source(source_), destination(destination_) {}
     };
     int N = points.size();
     if (N <= 1) {
@@ -31,7 +31,7 @@ class Solution {
     for (int i = 0; i < points.size(); ++i) {
       for (int j = i + 1; j < points.size(); ++j) {
         auto distance =
-            abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1]);
+          abs(points[i][0] - points[j][0]) + abs(points[i][1] - points[j][1]);
         edge_cost[i][j] = distance;
         edge_cost[j][i] = distance;
       }
@@ -54,7 +54,7 @@ class Solution {
       pq.push(distance_map(edge_cost[0][j], 0, j));
     }
     while (not pq.empty() && chosen_vertices.size() < points.size()) {
-      auto tp = pq.top();  // Take out the closest vertex
+      auto tp = pq.top(); // Take out the closest vertex
       pq.pop();
       // cout << "Choosing : " << tp.source << " -> " << tp.destination
       //      << " with cost: " << tp.cost << endl;

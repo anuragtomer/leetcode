@@ -19,7 +19,8 @@ class TreeNode {
 };
 class Solution {
   template <typename CompT>
-  void helper(TreeNode *root, int k, priority_queue<int, vector<int>, CompT> &maxHeap) {
+  void helper(TreeNode *root, int k,
+              priority_queue<int, vector<int>, CompT> &maxHeap) {
     if (!root)
       return;
     helper(root->left, k, maxHeap);
@@ -31,7 +32,9 @@ class Solution {
 
  public:
   vector<int> closestKValues(TreeNode *root, double target, int k) {
-    auto comp = [&](int a, int b) { return fabs(target - a) < fabs(target - b); };
+    auto comp = [&](int a, int b) {
+      return fabs(target - a) < fabs(target - b);
+    };
 
     priority_queue<int, vector<int>, decltype(comp)> maxHeap(comp);
     helper(root, k, maxHeap);
@@ -54,4 +57,3 @@ int main() {
     cout << res << endl;
   return 0;
 }
-

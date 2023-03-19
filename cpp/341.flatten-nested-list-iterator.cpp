@@ -55,4 +55,3 @@ class NestedIterator {
 };
 
 int main() { return 0; }
-

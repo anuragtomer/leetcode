@@ -21,8 +21,10 @@ class Solution {
         caps = false; // Next must not be caps
       if (s[i] == '.')
         caps = true; // Next must be caps
-      if (i > 0 && (s[i - 1] >= 'a' && s[i - 1] <= 'z' || s[i - 1] >= 'A' && s[i - 1] <= 'Z') && s[i] >= 'A' &&
-          s[i] <= 'Z') {
+      if (i > 0 &&
+          (s[i - 1] >= 'a' && s[i - 1] <= 'z' ||
+           s[i - 1] >= 'A' && s[i - 1] <= 'Z') &&
+          s[i] >= 'A' && s[i] <= 'Z') {
         ans++;
         // last was a character, current is Caps chars, Invalid.
       }
@@ -35,4 +37,3 @@ int main() {
 
   return 0;
 }
-

@@ -44,4 +44,3 @@ int main() {
   assert(4 == sol.minDays(bloomDay, m, k));
   return 0;
 }
-

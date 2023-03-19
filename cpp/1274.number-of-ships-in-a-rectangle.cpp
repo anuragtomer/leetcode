@@ -65,4 +65,3 @@ int main() {
   cout << sol.countShips(sea, topRight, bottomLeft);
   return 0;
 }
-

@@ -7,7 +7,8 @@ using namespace std;
 
 class Solution {
  public:
-  vector<vector<int>> multiply2(vector<vector<int>> &A, vector<vector<int>> &B) {
+  vector<vector<int>> multiply2(vector<vector<int>> &A,
+                                vector<vector<int>> &B) {
     int H1 = A.size(), W1 = A[0].size(), H2 = B.size(), W2 = B[0].size();
     if (W1 != H2)
       return {};

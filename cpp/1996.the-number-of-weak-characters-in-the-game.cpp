@@ -34,4 +34,3 @@ int main() {
   assert(6 == sol.numberOfWeakCharacters(properties));
   return 0;
 }
-

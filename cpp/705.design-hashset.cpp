@@ -23,11 +23,11 @@ int main() {
   MyHashSet hashSet = MyHashSet();
   hashSet.add(1);
   hashSet.add(2);
-  assert(true == hashSet.contains(1));   // returns true
-  assert(false == hashSet.contains(3));  // returns false (not found)
+  assert(true == hashSet.contains(1));  // returns true
+  assert(false == hashSet.contains(3)); // returns false (not found)
   hashSet.add(2);
-  assert(true == hashSet.contains(2));  // returns true
+  assert(true == hashSet.contains(2)); // returns true
   hashSet.remove(2);
-  assert(false == hashSet.contains(2));  // returns false (already removed)
+  assert(false == hashSet.contains(2)); // returns false (already removed)
   return 0;
 }

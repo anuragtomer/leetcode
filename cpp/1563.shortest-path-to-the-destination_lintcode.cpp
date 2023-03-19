@@ -26,7 +26,8 @@ class Solution {
         bfs.pop();
         for (auto dir : direction) {
           int x = i + dir[0], y = j + dir[1];
-          if (x < 0 || y < 0 || x >= targetMap.size() || y >= targetMap[x].size() || targetMap[x][y] == 1)
+          if (x < 0 || y < 0 || x >= targetMap.size() ||
+              y >= targetMap[x].size() || targetMap[x][y] == 1)
             continue;
           if (targetMap[x][y] == 2)
             return hops;
@@ -43,4 +44,3 @@ int main() {
 
   return 0;
 }
-

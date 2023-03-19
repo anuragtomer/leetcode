@@ -13,12 +13,14 @@ class Solution {
       for (int j = 0; j < W; ++j) {
         if (board[i][j] == 0)
           continue;
-        if (j + 2 < W && abs(board[i][j + 1]) == abs(board[i][j]) && abs(board[i][j + 2]) == abs(board[i][j])) {
+        if (j + 2 < W && abs(board[i][j + 1]) == abs(board[i][j]) &&
+            abs(board[i][j + 2]) == abs(board[i][j])) {
           found = true;
           for (int k = j; k < W && abs(board[i][k]) == abs(board[i][j]); ++k)
             board[i][k] = -abs(board[i][k]);
         }
-        if (i + 2 < H && abs(board[i][j]) == abs(board[i + 1][j]) && abs(board[i][j]) == abs(board[i + 2][j])) {
+        if (i + 2 < H && abs(board[i][j]) == abs(board[i + 1][j]) &&
+            abs(board[i][j]) == abs(board[i + 2][j])) {
           found = true;
           for (int k = i; k < H && abs(board[k][j]) == abs(board[i][j]); ++k)
             board[k][j] = -abs(board[k][j]);
@@ -62,4 +64,3 @@ int main() {
 
   return 0;
 }
-

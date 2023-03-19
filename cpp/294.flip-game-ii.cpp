@@ -6,29 +6,28 @@
 using namespace std;
 
 class Solution {
-   public:
-    unordered_map<string, bool> dp;
-    bool canWin(string &s) {
-        if (dp.count(s))
-            return dp[s];
-        for (int i = 0; i < s.size() - 1; ++i) {
-            if (s[i] == '+' && s[i + 1] == '+') {
-                s[i] = '-';
-                s[i + 1] = '-';
-                bool win = canWin(s);
-                s[i] = '-';
-                s[i + 1] = '-';
-                if (!win)
-                    dp[s] = !win;
-            }
-        }
-        return dp[s];
+ public:
+  unordered_map<string, bool> dp;
+  bool canWin(string &s) {
+    if (dp.count(s))
+      return dp[s];
+    for (int i = 0; i < s.size() - 1; ++i) {
+      if (s[i] == '+' && s[i + 1] == '+') {
+        s[i] = '-';
+        s[i + 1] = '-';
+        bool win = canWin(s);
+        s[i] = '-';
+        s[i + 1] = '-';
+        if (!win)
+          dp[s] = !win;
+      }
     }
+    return dp[s];
+  }
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-

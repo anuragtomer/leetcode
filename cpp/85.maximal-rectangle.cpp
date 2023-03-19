@@ -48,4 +48,3 @@ int main() {
   assert(6 == sol.maximalRectangle(matrix));
   return 0;
 }
-

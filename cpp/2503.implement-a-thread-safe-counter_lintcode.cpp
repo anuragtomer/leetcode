@@ -47,7 +47,8 @@ void static threaddecr(int counts, ThreadSafeCounter &counter) {
   }
 }
 int main(int argc, char *argv[]) {
-  vector<string> infile = {"ThreadSafeCounter()", "decr()", "incr()", "decr()", "incr()", "incr()"};
+  vector<string> infile = {
+    "ThreadSafeCounter()", "decr()", "incr()", "decr()", "incr()", "incr()"};
   string s;
   string list[2] = {};
   char c[30];

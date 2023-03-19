@@ -22,7 +22,8 @@ class Solution {
       ++count;
     if (x + 1 < board.size() && board[x + 1][y] == 'M')
       ++count;
-    if (x + 1 < board.size() && y + 1 < board[x + 1].size() && board[x + 1][y + 1] == 'M')
+    if (x + 1 < board.size() && y + 1 < board[x + 1].size() &&
+        board[x + 1][y + 1] == 'M')
       ++count;
     return count;
   }
@@ -30,14 +31,16 @@ class Solution {
     queue<pair<int, int>> q;
     q.push({x, y});
     board[x][y] = 'B';
-    vector<vector<int>> direction = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+    vector<vector<int>> direction = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1},
+                                     {0, 1},   {1, -1}, {1, 0},  {1, 1}};
     int H = board.size(), W = board[0].size();
     while (!q.empty()) {
       auto [i, j] = q.front();
       q.pop();
       for (auto dir : direction) {
         int x = i + dir[0], y = j + dir[1];
-        if (x < 0 || y < 0 || x >= H || y >= W || (board[x][y] != 'E' && board[x][y] != 'M'))
+        if (x < 0 || y < 0 || x >= H || y >= W ||
+            (board[x][y] != 'E' && board[x][y] != 'M'))
           continue;
         int count = countBombs(board, x, y);
         if (count == 0) {
@@ -50,7 +53,8 @@ class Solution {
   }
 
  public:
-  vector<vector<char>> updateBoard(vector<vector<char>> &board, vector<int> &click) {
+  vector<vector<char>> updateBoard(vector<vector<char>> &board,
+                                   vector<int> &click) {
     int x = click[0], y = click[1];
     if (board[x][y] == 'M') {
       board[x][y] = 'X';
@@ -71,4 +75,3 @@ int main() {
 
   return 0;
 }
-

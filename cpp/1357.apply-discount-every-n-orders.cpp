@@ -12,7 +12,8 @@ class Cashier {
   int current = 0;
 
  public:
-  Cashier(int n, int discount, vector<int> &products, vector<int> &prices) : _n(n), _discount(discount) {
+  Cashier(int n, int discount, vector<int> &products, vector<int> &prices)
+    : _n(n), _discount(discount) {
     for (int i = 0; i < products.size(); ++i) {
       productPrices[products[i]] = prices[i];
     }
@@ -54,4 +55,3 @@ int main() {
   assert(obj->getBill(product, amount) == 2500.0);
   return 0;
 }
-

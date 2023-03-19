@@ -38,4 +38,3 @@ int main() {
   assert(3 == sol.expressiveWords("zzzzzyyyyy", words));
   return 0;
 }
-

@@ -26,24 +26,23 @@ class Solution {
 };
 */
 class Solution {
-   public:
-    int findTargetSumWays(vector<int> &nums, int target) {
-        int sum = accumulate(nums.begin(), nums.end(), 0);
-        return (target + sum) % 2 == 1 ? 0 : subsetSum(nums, (target + sum) / 2);
-    }
+ public:
+  int findTargetSumWays(vector<int> &nums, int target) {
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    return (target + sum) % 2 == 1 ? 0 : subsetSum(nums, (target + sum) / 2);
+  }
 
-    int subsetSum(vector<int> &nums, int target) {
-        vector<int> dp(target + 1, 0);
-        dp[0] = 1;
-        for (int n : nums)
-            for (int i = target; i >= n; i--)
-                dp[i] += dp[i - n];
-        return dp[target];
-    }
+  int subsetSum(vector<int> &nums, int target) {
+    vector<int> dp(target + 1, 0);
+    dp[0] = 1;
+    for (int n : nums)
+      for (int i = target; i >= n; i--)
+        dp[i] += dp[i - n];
+    return dp[target];
+  }
 };
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-

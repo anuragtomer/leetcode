@@ -33,4 +33,3 @@ int main() {
   assert(logger->shouldPrintMessage(11, "foo"));
   return 0;
 }
-

@@ -10,7 +10,10 @@ class Solution {
     * @param s: A string
     * @return: Whether the string is a valid palindrome
     */
-  bool alpha(char ch) { return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9'); }
+  bool alpha(char ch) {
+    return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') ||
+           (ch >= '0' && ch <= '9');
+  }
   char toLower(char ch) {
     if (ch >= 'A' && ch <= 'Z')
       return ch + 32;
@@ -37,4 +40,3 @@ int main() {
 
   return 0;
 }
-

@@ -76,4 +76,3 @@ int main() {
   assert(3 == sol.maxSumSubmatrix(matrix, k));
   return 0;
 }
-

@@ -74,4 +74,3 @@ int main() {
   assert(lmatch(output, res));
   return 0;
 }
-

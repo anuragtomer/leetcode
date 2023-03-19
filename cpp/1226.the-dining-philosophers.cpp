@@ -78,8 +78,10 @@ class DiningPhilosophers {
   DiningPhilosophers() { available = vector<bool>(N, true); }
 
   void wantsToEat(int philosopher, function<void(int, mutex &)> pickLeftFork,
-                  function<void(int, mutex &)> pickRightFork, function<void(int, mutex &)> eat,
-                  function<void(int, mutex &)> putLeftFork, function<void(int, mutex &)> putRightFork) {
+                  function<void(int, mutex &)> pickRightFork,
+                  function<void(int, mutex &)> eat,
+                  function<void(int, mutex &)> putLeftFork,
+                  function<void(int, mutex &)> putRightFork) {
     int left = philosopher, right = (philosopher + 1) % N;
     unique_lock<mutex> l(m);
     cv.wait(l, [=]() { return available[left] && available[right]; });
@@ -125,12 +127,12 @@ int main() {
   vector<future<void>> threads;
   DiningPhilosophers dp;
   for (int i = 0; i < 5; ++i) {
-    threads.push_back(
-      async(&DiningPhilosophers::wantsToEat, ref(dp), i, pickLeftFork, pickRightFork, eat, putLeftFork, putRightFork));
+    threads.push_back(async(&DiningPhilosophers::wantsToEat, ref(dp), i,
+                            pickLeftFork, pickRightFork, eat, putLeftFork,
+                            putRightFork));
   }
   for (auto &t : threads) {
     t.get();
   }
   return 0;
 }
-

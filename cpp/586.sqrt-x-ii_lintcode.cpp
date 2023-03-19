@@ -27,4 +27,3 @@ int main() {
   cout << sol.sqrt(3);
   return 0;
 }
-

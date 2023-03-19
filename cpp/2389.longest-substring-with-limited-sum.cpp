@@ -39,4 +39,3 @@ int main() {
   assert(lmatch(result, output));
   return 0;
 }
-

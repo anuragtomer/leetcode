@@ -15,7 +15,7 @@ class Solution {
       for (auto flight : flights) {
         if (cost[flight[0]] < INT_MAX - flight[2]) {
           temp_cost[flight[1]] =
-              min(temp_cost[flight[1]], cost[flight[0]] + flight[2]);
+            min(temp_cost[flight[1]], cost[flight[0]] + flight[2]);
         }
       }
       cost = temp_cost;

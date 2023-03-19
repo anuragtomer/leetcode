@@ -77,7 +77,8 @@ void static threadsub2(int counts, VariableModification &vm) {
 }
 
 int main(int argc, char *argv[]) {
-  vector<string> infile = {"VariableModification()", "add_1()", "sub_1()", "add_2()", "sub_2() "};
+  vector<string> infile = {"VariableModification()", "add_1()", "sub_1()",
+                           "add_2()", "sub_2() "};
   string s;
   string list[2] = {};
   int add1Count = 0;

@@ -25,4 +25,3 @@ int main() {
   assert(sol.partitionString("hdklqkcssgxlvehva") == 4);
   return 0;
 }
-

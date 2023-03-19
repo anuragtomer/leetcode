@@ -46,7 +46,8 @@ class FindNumWithMostFactorsConcurrently {
         if (i % j == 0)
           factorsCount++;
       }
-      if (factorsCount > factors[0] || factorsCount == factors[0] && i > factors[1]) {
+      if (factorsCount > factors[0] ||
+          factorsCount == factors[0] && i > factors[1]) {
         factors[0] = factorsCount;
         factors[1] = i;
       }
@@ -54,16 +55,19 @@ class FindNumWithMostFactorsConcurrently {
     return factors;
   }
 };
-FindNumWithMostFactorsConcurrently *FindNumWithMostFactorsConcurrently::instance = NULL;
+FindNumWithMostFactorsConcurrently
+  *FindNumWithMostFactorsConcurrently::instance = NULL;
 class Solution {
  public:
   int findNumWithMostFactors(int n, int m) {
     int offset = m / n;
-    FindNumWithMostFactorsConcurrently *parallelWorker = FindNumWithMostFactorsConcurrently::getInstance();
+    FindNumWithMostFactorsConcurrently *parallelWorker =
+      FindNumWithMostFactorsConcurrently::getInstance();
     vector<future<vector<int>>> threads;
     for (int i = 0; i < m;) {
       int start = i, end = min(m, i + offset);
-      threads.push_back(async(&FindNumWithMostFactorsConcurrently::searchRange, parallelWorker, start, end));
+      threads.push_back(async(&FindNumWithMostFactorsConcurrently::searchRange,
+                              parallelWorker, start, end));
       i = i + offset;
       if (i > m)
         break;
@@ -85,12 +89,13 @@ class Solution {
 };
 
 int main() {
-  FindNumWithMostFactorsConcurrently *instance = FindNumWithMostFactorsConcurrently::getInstance();
+  FindNumWithMostFactorsConcurrently *instance =
+    FindNumWithMostFactorsConcurrently::getInstance();
   Solution solution;
   int n = 1, m = 3;
   int answer = solution.findNumWithMostFactors(n, m);
   cout << "Result: " << answer << " Expected: 3" << endl;
-  cout << "Result: " << solution.findNumWithMostFactors(2, 5) << " Expected: 4" << endl;
+  cout << "Result: " << solution.findNumWithMostFactors(2, 5) << " Expected: 4"
+       << endl;
   return 0;
 }
-

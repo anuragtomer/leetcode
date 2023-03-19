@@ -7,7 +7,8 @@ using namespace std;
 class Solution {
  public:
   bool floodFill(vector<vector<int>> &grid, int i, int j) {
-    if (i < 0 || j < 0 || i >= grid.size() || j >= grid[0].size() || grid[i][j] == 0)
+    if (i < 0 || j < 0 || i >= grid.size() || j >= grid[0].size() ||
+        grid[i][j] == 0)
       return false;
     bool returnVal = grid[i][j] == 2;
     grid[i][j] = 0;
@@ -42,4 +43,3 @@ int main() {
 
   return 0;
 }
-

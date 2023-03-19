@@ -65,7 +65,8 @@ int main() {
   unordered_set<int> nums;
   const int N = 100;
   for (int i = 0; i < N; ++i) {
-    threads.push_back(new thread(&ThreadSafeArrayList::append, ref(TSAL), i + 1));
+    threads.push_back(
+      new thread(&ThreadSafeArrayList::append, ref(TSAL), i + 1));
     nums.insert(i + 1);
   }
   for (auto &t : threads)

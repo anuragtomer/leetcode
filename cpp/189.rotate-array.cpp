@@ -5,8 +5,8 @@
 using namespace std;
 
 class Solution {
-   public:
-    /*
+ public:
+  /*
     void rotate(vector<int>& nums, int k) {
       k = k % nums.size();
       vector<int> temp;
@@ -19,7 +19,7 @@ class Solution {
         nums[temp.size() - 1 - i] = temp[i];
       }
     }*/
-    /*
+  /*
     void rotate(vector<int> &nums, int k) {
         int start = 0, elementsDone = 0;
         int n = nums.size();
@@ -37,17 +37,16 @@ class Solution {
         }
     }
     */
-    void rotate(vector<int> &nums, int k) {
-        int n = nums.size();
-        k = k % n;
-        reverse(nums.begin(), nums.begin() + n - k);
-        reverse(nums.begin() + n - k, nums.end());
-        reverse(nums.begin(), nums.end());
-    }
+  void rotate(vector<int> &nums, int k) {
+    int n = nums.size();
+    k = k % n;
+    reverse(nums.begin(), nums.begin() + n - k);
+    reverse(nums.begin() + n - k, nums.end());
+    reverse(nums.begin(), nums.end());
+  }
 };
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-

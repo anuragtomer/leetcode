@@ -18,8 +18,8 @@ class Solution {
   }
   int getIntBoard(vector<vector<int>> &board) {
     int num = 0;
-    num = board[1][2] + board[1][1] * 10 + board[1][0] * 100 + board[0][2] * 1000 + board[0][1] * 10000 +
-          board[0][0] * 100000;
+    num = board[1][2] + board[1][1] * 10 + board[1][0] * 100 +
+          board[0][2] * 1000 + board[0][1] * 10000 + board[0][0] * 100000;
     return num;
   }
   template <typename T>
@@ -90,4 +90,3 @@ int main() {
   assert(14 == sol.slidingPuzzle(board));
   return 0;
 }
-

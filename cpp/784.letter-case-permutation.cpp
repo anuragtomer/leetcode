@@ -54,4 +54,3 @@ int main() {
   assert(lmatch(output, expected));
   return 0;
 }
-

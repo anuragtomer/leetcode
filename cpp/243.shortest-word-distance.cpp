@@ -16,7 +16,8 @@ class Solution {
         i = k;
       else if (words[k] == word2)
         j = k;
-      if (i != -1 && j != -1) minDistance = min(minDistance, abs(i - j));
+      if (i != -1 && j != -1)
+        minDistance = min(minDistance, abs(i - j));
     }
     if (i == -1 || j == -1)
       return -1;
@@ -30,7 +31,8 @@ class Solution {
       position[*it].push_back(it);
     }
     queue<vector<string>::iterator> bfs;
-    for (auto its : position[word1]) bfs.push(its);
+    for (auto its : position[word1])
+      bfs.push(its);
     int len = 0;
     while (not bfs.empty()) {
       int n = bfs.size();
@@ -41,8 +43,10 @@ class Solution {
         if (*curr == word2) {
           return len;
         }
-        if (next(curr) != words.end()) bfs.push(next(curr));
-        if (curr != words.begin()) bfs.push(prev(curr));
+        if (next(curr) != words.end())
+          bfs.push(next(curr));
+        if (curr != words.begin())
+          bfs.push(prev(curr));
       }
       ++len;
     }

@@ -52,24 +52,26 @@ public:
 */
 // Genius Solution. O(n).
 class Solution {
-   public:
-    int maxSatisfaction(vector<int> &A) {
-        sort(A.begin(), A.end());
-        int res = 0, total = 0, n = A.size();
-        for (int i = n - 1; i >= 0 && A[i] > -total;
-             --i) { // We run this loop as long as I'm adding some value. 'A[i] - total > 0'.
-            total += A[i];
-            res += total; // This is basically multiplying previously chosen dishes (5) + (5 + 0) + (5 + 0 + -1) == 5*3
-                          // + 0*2 + -1*1
-        }
-        return res;
+ public:
+  int maxSatisfaction(vector<int> &A) {
+    sort(A.begin(), A.end());
+    int res = 0, total = 0, n = A.size();
+    for (
+      int i = n - 1; i >= 0 && A[i] > -total;
+      --i) { // We run this loop as long as I'm adding some value. 'A[i] - total > 0'.
+      total += A[i];
+      res +=
+        total; // This is basically multiplying previously chosen dishes (5) + (5 + 0) + (5 + 0 + -1) == 5*3
+               // + 0*2 + -1*1
     }
+    return res;
+  }
 };
 int main() {
-    Solution sol;
-    vector<int> s = {-1, -8, 0, 5, -9};
-    assert(14 == sol.maxSatisfaction(s));
-    return 0;
+  Solution sol;
+  vector<int> s = {-1, -8, 0, 5, -9};
+  assert(14 == sol.maxSatisfaction(s));
+  return 0;
 }
 /*
  * Some Notes:

@@ -5,27 +5,26 @@
 using namespace std;
 
 class Solution {
-   public:
-    /**
+ public:
+  /**
      * @param s: the given string
      * @return: the number of A
      */
-    int countA(string &s) {
-        int i = 0;
-        while (i < s.size() && s[i] != 'A')
-            ++i;
-        int count = 0;
-        while (i < s.size() && s[i] == 'A') {
-            ++count;
-            ++i;
-        }
-        return count;
+  int countA(string &s) {
+    int i = 0;
+    while (i < s.size() && s[i] != 'A')
+      ++i;
+    int count = 0;
+    while (i < s.size() && s[i] == 'A') {
+      ++count;
+      ++i;
     }
+    return count;
+  }
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-

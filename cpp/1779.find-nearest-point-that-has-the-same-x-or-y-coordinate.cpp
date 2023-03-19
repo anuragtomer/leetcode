@@ -5,8 +5,12 @@
 using namespace std;
 
 class Solution {
-  bool isValid(vector<int> &point, int x, int y) { return (point[0] == x) || (point[1] == y); }
-  int distance(vector<int> &point, int x, int y) { return abs(point[0] - x) + abs(point[1] - y); }
+  bool isValid(vector<int> &point, int x, int y) {
+    return (point[0] == x) || (point[1] == y);
+  }
+  int distance(vector<int> &point, int x, int y) {
+    return abs(point[0] - x) + abs(point[1] - y);
+  }
 
  public:
   int nearestValidPoint(int x, int y, vector<vector<int>> &points) {

@@ -32,7 +32,8 @@ class Node {
     bottomRight = nullptr;
   }
 
-  Node(bool _val, bool _isLeaf, Node *_topLeft, Node *_topRight, Node *_bottomLeft, Node *_bottomRight) {
+  Node(bool _val, bool _isLeaf, Node *_topLeft, Node *_topRight,
+       Node *_bottomLeft, Node *_bottomRight) {
     val = _val;
     isLeaf = _isLeaf;
     topLeft = _topLeft;
@@ -50,9 +51,11 @@ class Solution {
     Node *topLeft = constructHelper(grid, x, y, len / 2);
     Node *topRight = constructHelper(grid, x, y + len / 2, len / 2);
     Node *bottomLeft = constructHelper(grid, x + len / 2, y, len / 2);
-    Node *bottomRight = constructHelper(grid, x + len / 2, y + len / 2, len / 2);
-    if (topLeft->isLeaf && topRight->isLeaf && bottomLeft->isLeaf && bottomRight->isLeaf &&
-        topLeft->val == topRight->val && topLeft->val == bottomRight->val && topLeft->val == bottomLeft->val) {
+    Node *bottomRight =
+      constructHelper(grid, x + len / 2, y + len / 2, len / 2);
+    if (topLeft->isLeaf && topRight->isLeaf && bottomLeft->isLeaf &&
+        bottomRight->isLeaf && topLeft->val == topRight->val &&
+        topLeft->val == bottomRight->val && topLeft->val == bottomLeft->val) {
       root->val = topLeft->val;
       root->isLeaf = true;
       delete topLeft;
@@ -69,7 +72,9 @@ class Solution {
   }
 
  public:
-  Node *construct(vector<vector<int>> &grid) { return constructHelper(grid, 0, 0, grid.size()); }
+  Node *construct(vector<vector<int>> &grid) {
+    return constructHelper(grid, 0, 0, grid.size());
+  }
 };
 
 int main() {
@@ -77,4 +82,3 @@ int main() {
 
   return 0;
 }
-

@@ -3,8 +3,8 @@
 
 using namespace std;
 class Solution {
-   public:
-    /* Too many no of lines.
+ public:
+  /* Too many no of lines.
      int maximalSquare(vector<vector<char>> &matrix) {
          if (matrix.size() == 0)
              return 0;
@@ -30,32 +30,35 @@ class Solution {
          }
          return maxsquare * maxsquare;
      }*/
-    // Lesser no of lines. Credit: Errichto
-    int maximalSquare(vector<vector<char>> &matrix) {
-        int H = matrix.size();
-        if (H == 0 || matrix[0].size() == 0)
-            return 0;
-        int W = matrix[0].size();
-        vector<vector<int>> dp(H, vector<int>(W));
-        int answer = 0;
-        for (int row = 0; row < H; row++) {
-            for (int col = 0; col < W; col++) {
-                if (matrix[row][col] == '1') {
-                    dp[row][col] = 1;
-                    if (row > 0 && col > 0)
-                        dp[row][col] += min({dp[row - 1][col - 1], dp[row][col - 1], dp[row - 1][col]});
-                    answer = max(answer, dp[row][col]);
-                }
-            }
+  // Lesser no of lines. Credit: Errichto
+  int maximalSquare(vector<vector<char>> &matrix) {
+    int H = matrix.size();
+    if (H == 0 || matrix[0].size() == 0)
+      return 0;
+    int W = matrix[0].size();
+    vector<vector<int>> dp(H, vector<int>(W));
+    int answer = 0;
+    for (int row = 0; row < H; row++) {
+      for (int col = 0; col < W; col++) {
+        if (matrix[row][col] == '1') {
+          dp[row][col] = 1;
+          if (row > 0 && col > 0)
+            dp[row][col] +=
+              min({dp[row - 1][col - 1], dp[row][col - 1], dp[row - 1][col]});
+          answer = max(answer, dp[row][col]);
         }
-        return answer * answer;
+      }
     }
+    return answer * answer;
+  }
 };
 int main() {
-    Solution sol;
-    vector<vector<char>> matrix;
-    matrix = {
-        {'1', '0', '1', '0', '0'}, {'1', '0', '1', '1', '1'}, {'1', '1', '1', '1', '1'}, {'1', '0', '0', '1', '0'}};
-    assert(4 == sol.maximalSquare(matrix));
-    return 0;
+  Solution sol;
+  vector<vector<char>> matrix;
+  matrix = {{'1', '0', '1', '0', '0'},
+            {'1', '0', '1', '1', '1'},
+            {'1', '1', '1', '1', '1'},
+            {'1', '0', '0', '1', '0'}};
+  assert(4 == sol.maximalSquare(matrix));
+  return 0;
 }

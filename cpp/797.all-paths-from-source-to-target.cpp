@@ -40,8 +40,8 @@ using namespace std;
 };*/
 // Another solution. No need of visited, since graph is acyclic.
 class Solution {
-  void dfs(int source, int target, vector<vector<int>> &graph, vector<int> &currentPath,
-           vector<vector<int>> &allPaths) {
+  void dfs(int source, int target, vector<vector<int>> &graph,
+           vector<int> &currentPath, vector<vector<int>> &allPaths) {
     currentPath.push_back(source);
     if (source == target) {
       allPaths.push_back(currentPath);
@@ -79,4 +79,3 @@ int main() {
   }
   return 0;
 }
-

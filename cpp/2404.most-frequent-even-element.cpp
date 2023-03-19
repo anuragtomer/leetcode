@@ -31,4 +31,3 @@ int main() {
   assert(-1 == sol.mostFrequentEven(nums));
   return 0;
 }
-

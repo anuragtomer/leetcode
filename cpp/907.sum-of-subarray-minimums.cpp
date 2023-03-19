@@ -46,4 +46,3 @@ int main() {
   assert(sol.sumSubarrayMins(arr) == 593);
   return 0;
 }
-

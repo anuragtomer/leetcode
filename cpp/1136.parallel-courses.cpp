@@ -48,4 +48,3 @@ int main() {
   assert(-1 == sol.minimumSemesters(n, relations));
   return 0;
 }
-

@@ -64,32 +64,31 @@ class Solution {
 */
 // Solution using prefix array
 class Solution {
-   public:
-    bool carPooling(vector<vector<int>> &trips, int capacity) {
-        int minLocation = INT_MAX, maxLocation = INT_MIN;
-        for (auto trip : trips) {
-            minLocation = min(trip[1], minLocation);
-            maxLocation = max(trip[2], maxLocation);
-        }
-        if (minLocation == INT_MAX)
-            return true;
-        vector<int> result(maxLocation - minLocation + 2, 0);
-        for (auto trip : trips) {
-            result[trip[1] - minLocation] += trip[0];
-            result[trip[2] - minLocation] -= trip[0];
-        }
-        for (int i = 1; i < result.size(); ++i) {
-            result[i] += result[i - 1];
-            if (result[i] > capacity) {
-                return false;
-            }
-        }
-        return true;
+ public:
+  bool carPooling(vector<vector<int>> &trips, int capacity) {
+    int minLocation = INT_MAX, maxLocation = INT_MIN;
+    for (auto trip : trips) {
+      minLocation = min(trip[1], minLocation);
+      maxLocation = max(trip[2], maxLocation);
     }
+    if (minLocation == INT_MAX)
+      return true;
+    vector<int> result(maxLocation - minLocation + 2, 0);
+    for (auto trip : trips) {
+      result[trip[1] - minLocation] += trip[0];
+      result[trip[2] - minLocation] -= trip[0];
+    }
+    for (int i = 1; i < result.size(); ++i) {
+      result[i] += result[i - 1];
+      if (result[i] > capacity) {
+        return false;
+      }
+    }
+    return true;
+  }
 };
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-

@@ -9,11 +9,9 @@ using namespace std;
 
 // @lc code=start
 class Solution {
-public:
-    bool isPowerOfTwo(int n) {
-        return (n > 0 && ((n & n-1) == 0));
-    }
-    /* Alternate way: 
+ public:
+  bool isPowerOfTwo(int n) { return (n > 0 && ((n & n - 1) == 0)); }
+  /* Alternate way: 
     bool isPowerOfTwo(int n) {
         if (n < 0)
             return false;
@@ -30,9 +28,9 @@ public:
 // @lc code=end
 
 int main() {
-    Solution sol;
-    int n;
-    cin >> n;
-    cout << boolalpha << sol.isPowerOfTwo(n);
-    return 0;
+  Solution sol;
+  int n;
+  cin >> n;
+  cout << boolalpha << sol.isPowerOfTwo(n);
+  return 0;
 }

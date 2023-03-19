@@ -41,4 +41,3 @@ int main() {
   assert(lmatch(exp, sol.sortedSquares(nums)));
   return 0;
 }
-

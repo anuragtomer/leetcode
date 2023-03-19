@@ -5,7 +5,8 @@
 using namespace std;
 
 class Solution {
-  void helper(int n, int k, int i, vector<int> &current, vector<vector<int>> &result) {
+  void helper(int n, int k, int i, vector<int> &current,
+              vector<vector<int>> &result) {
     if (k == 0) {
       result.push_back(current);
       return;
@@ -31,4 +32,3 @@ int main() {
 
   return 0;
 }
-

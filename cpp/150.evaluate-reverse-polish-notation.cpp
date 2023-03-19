@@ -44,4 +44,3 @@ int main() {
   assert(1 == sol.evalRPN(tokens));
   return 0;
 }
-

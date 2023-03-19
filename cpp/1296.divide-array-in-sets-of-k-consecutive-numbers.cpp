@@ -37,4 +37,3 @@ int main() {
   assert(not sol.isPossibleDivide(nums, 3));
   return 0;
 }
-

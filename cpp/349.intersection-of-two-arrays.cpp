@@ -6,38 +6,37 @@
 using namespace std;
 
 class Solution {
-   public:
-    vector<int> intersection(vector<int> &nums1, vector<int> &nums2) {
-        unordered_set<int> set;
-        for (auto num : nums1) {
-            set.insert(num);
-        }
-        vector<int> result;
-        for (auto num : nums2) {
-            if (set.count(num)) {
-                result.insert(num);
-		set.erase(num);
-	    }
-        }
-        return result;
+ public:
+  vector<int> intersection(vector<int> &nums1, vector<int> &nums2) {
+    unordered_set<int> set;
+    for (auto num : nums1) {
+      set.insert(num);
     }
-    vector<int> intersection(vector<int> &nums1, vector<int> &nums2) {
-        unordered_set<int> set;
-        for (auto num : nums1) {
-            set.insert(num);
-        }
-        unordered_set<int> result;
-        for (auto num : nums2) {
-            if (set.count(num))
-                result.insert(num);
-        }
-        return vector<int>(result.begin(), result.end());
+    vector<int> result;
+    for (auto num : nums2) {
+      if (set.count(num)) {
+        result.insert(num);
+        set.erase(num);
+      }
     }
+    return result;
+  }
+  vector<int> intersection(vector<int> &nums1, vector<int> &nums2) {
+    unordered_set<int> set;
+    for (auto num : nums1) {
+      set.insert(num);
+    }
+    unordered_set<int> result;
+    for (auto num : nums2) {
+      if (set.count(num))
+        result.insert(num);
+    }
+    return vector<int>(result.begin(), result.end());
+  }
 };
 
 int main() {
-    Solution sol;
+  Solution sol;
 
-    return 0;
+  return 0;
 }
-
