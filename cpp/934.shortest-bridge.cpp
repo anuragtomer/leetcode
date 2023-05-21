@@ -24,14 +24,6 @@ class Solution {
   int shortestBridge(vector<vector<int>> &grid) {
     int m = grid.size(), n = grid[0].size();
     vector<vector<bool>> visited(m, vector<bool>(n, false));
-    auto print = [&]() {
-      for (auto row : visited) {
-        for (auto val : row) {
-          cout << val << " ";
-        }
-        cout << endl;
-      }
-    };
     bool done = false;
     queue<pair<int, int>> q;
     for (int i = 0; i < m && !done; ++i) {

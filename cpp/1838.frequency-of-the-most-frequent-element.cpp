@@ -6,9 +6,8 @@ using namespace std;
 
 class Solution {
  public:
-  // Non intuitive
   /*
- int maxFrequency(vector<int> &nums, long k) {
+  int maxFrequency(vector<int> &nums, long k) {
      int i = 0, j;
      sort(nums.begin(), nums.end());
      for (j = 0; j < nums.size(); ++j) {
@@ -17,24 +16,23 @@ class Solution {
              k -= nums[i++];
      }
      return j - i;
- }*/
-  /*
-     * A little more intuitive solution.*/
+  }*/
   int maxFrequency(vector<int> &nums, int k) {
-    int result = 1, i = 0, j;
-    long sum = 0; // Just running sum in window i to j.
+    int longest = 1, left = 0, right;
+    long curr_sum = 0;
     sort(nums.begin(), nums.end());
-    for (j = 0; j < nums.size(); ++j) {
-      sum += nums[j];
-      while (sum + k < (long)nums[j] * (j - i + 1)) {
-        // If we were to set all numbers in range i to j to nums[j] (their sum would be nums[j] * no of times
-        // nums[j]), do we have enough buffer (sum + k) to bring them equal?
-        sum -= nums[i];
-        i += 1;
+    for (right = 0; right < nums.size(); ++right) {
+      curr_sum += nums[right];
+      while (left <= right &&
+             (long)nums[right] * (right - left + 1) - curr_sum > k) {
+        // nums[right] * (right - left + 1) - (nums[left] + nums[left + 1] + .. + nums[right]) > k
+        // i.e. cost to make them all same > k, then time to reduce the window.
+        curr_sum -= nums[left];
+        ++left;
       }
-      result = max(result, j - i + 1);
+      longest = max(longest, right - left + 1);
     }
-    return result;
+    return longest;
   }
 };
 

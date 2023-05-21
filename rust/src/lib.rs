@@ -7,6 +7,7 @@ mod binary_search;
 pub mod cheapest_flights_within_k_stops;
 mod check_completeness_of_a_binary_tree;
 mod construct_binary_tree_from_inorder_and_postorder_traversal;
+mod design_add_and_search_words_data_structure;
 mod design_circular_queue;
 mod first_bad_version;
 mod flood_fill;

@@ -27,63 +27,76 @@
 
 #include <cassert>
 #include <iostream>
+#include <queue>
 #include <vector>
 using namespace std;
 
 // @lc code=start
-struct Node {
-  bool finished;
-  Node *next[26];
-  Node() {
-    finished = false;
-    for (int i = 0; i < 26; i++)
-      next[i] = nullptr;
-  }
-};
-
 class WordDictionary {
-  Node *root;
-  bool searchDot(string word, int idx, Node *_root) {
-    Node *temp = _root;
-    for (int i = 0; i < 26; ++i) {
-      if (temp->next[i] != nullptr &&
-          searchNormal(word, idx, temp->next[i]) == true)
-        return true;
-    }
-    return false;
-  }
-
-  bool searchNormal(string word, int idx, Node *_root) {
-    Node *temp = _root;
-    for (int i = idx; i < word.size(); i++) {
-      if (word[i] == '.') {
-        return searchDot(word, i + 1, temp);
-      } else {
-        if (temp->next[word[i] - 'a'] == nullptr)
-          return false;
-        temp = temp->next[word[i] - 'a'];
+  struct Node {
+    Node *children[26];
+    bool is_end;
+    Node() {
+      is_end = false;
+      for (int i = 0; i < 26; ++i) {
+        children[i] = nullptr;
       }
     }
-    return temp->finished;
+  };
+  Node *root;
+  bool search(string word, Node *node) {
+    if (root == nullptr)
+      return false;
+    for (int i = 0; i < word.size(); ++i) {
+      char ch = word[i];
+      if (ch == '.') {
+        for (auto child : node->children) {
+          if (child &&
+              search(string(word.begin() + i + 1, word.end()), child)) {
+            return true;
+          }
+        }
+        return false;
+      } else if (!node->children[ch - 'a'])
+        return false;
+      node = node->children[ch - 'a'];
+    }
+    return node->is_end;
   }
 
  public:
   /** Initialize your data structure here. */
   WordDictionary() { root = new Node(); }
-
+  ~WordDictionary() {
+    queue<Node *> all_nodes;
+    all_nodes.push(root);
+    while (not all_nodes.empty()) {
+      Node *node = all_nodes.front();
+      all_nodes.pop();
+      for (int i = 0; i < 26; ++i) {
+        if (node->children[i] != nullptr) {
+          all_nodes.push(node->children[i]);
+        }
+      }
+      delete node;
+    }
+  }
   /** Adds a word into the data structure. */
   void addWord(string word) {
-    Node *temp = root;
-    for (auto c : word) {
-      if (temp->next[c - 'a'] == nullptr)
-        temp->next[c - 'a'] = new Node();
-      temp = temp->next[c - 'a'];
+    if (root == nullptr)
+      return;
+    Node *curr = root;
+    for (auto ch : word) {
+      if (!curr->children[ch - 'a']) {
+        curr->children[ch - 'a'] = new Node();
+      }
+      curr = curr->children[ch - 'a'];
     }
-    temp->finished = true;
+    curr->is_end = true;
   }
 
   /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
-  bool search(string word) { return searchNormal(word, 0, root); }
+  bool search(string word) { return search(word, root); }
 };
 
 // @lc code=end
