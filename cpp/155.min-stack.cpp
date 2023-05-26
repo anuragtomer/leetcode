@@ -7,7 +7,6 @@ class MinStack {
   stack<int> min;
 
  public:
-  /** initialize your data structure here. */
   MinStack() {
     st = stack<int>();
     min = stack<int>();

@@ -1,3 +1,7 @@
+#include <cassert>
+#include <iostream>
+using namespace std;
+
 class Solution {
  public:
   string longestCommonPrefix(vector<string> &strs) {
@@ -17,3 +21,12 @@ class Solution {
     return result;
   }
 };
+int main() {
+  Solution sol;
+  vector<string> strs = {"flower", "flow", "flight"};
+  assert(sol.longestCommonPrefix(strs) == "fl");
+  cout << "Pass\n";
+  strs = {"dog", "racecar", "car"};
+  assert(sol.longestCommonPrefix(strs) == "");
+  cout << "Pass\n";
+}

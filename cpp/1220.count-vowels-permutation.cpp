@@ -1,5 +1,10 @@
+#include <cassert>
+#include <iostream>
+using namespace std;
+
 class Solution {
  public:
+  /*
   int countVowelPermutation(int n) {
     int MOD = 1e9 + 7;
     vector<vector<int>> dp(2, vector<int>(5, 0));
@@ -19,8 +24,33 @@ class Solution {
              dp[(n - 1) % 2][4]) %
               MOD) %
            MOD;
+  }*/
+  int countVowelPermutation(int n) {
+    int MOD = 1e9 + 7;
+    long a = 1, e = 1, i = 1, o = 1, u = 1;
+    long a_, e_, i_, o_, u_;
+    for (int j = 2; j <= n; ++j) {
+      a_ = (e + i + u) % MOD;
+      e_ = (a + i) % MOD;
+      i_ = (e + o) % MOD;
+      o_ = i % MOD;
+      u_ = (i + o) % MOD;
+      a = a_, e = e_, i = i_, o = o_, u = u_;
+    }
+    return ((((a + e) % MOD + i) % MOD + o) % MOD + u) % MOD;
   }
 };
+int main() {
+  Solution sol;
+  assert(sol.countVowelPermutation(1) == 5);
+  cout << "Pass\n";
+  assert(sol.countVowelPermutation(2) == 10);
+  cout << "Pass\n";
+  assert(sol.countVowelPermutation(3) == 19);
+  cout << "Pass\n";
+  assert(sol.countVowelPermutation(5) == 68);
+  cout << "Pass\n";
+}
 /*
 1:  5
 2: 10
