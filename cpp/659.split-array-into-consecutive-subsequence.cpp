@@ -24,23 +24,26 @@ public:
 };*/
 class Solution {
  public:
-  bool isPossible(vector<int> &A) {
-    unordered_map<int, int> left, end;
-    for (int i : A) {
-      left[i]++;
+  bool isPossible(vector<int> &nums) {
+    unordered_map<int, int> remaining, end;
+    for (int num : nums) {
+      remaining[num]++;
     }
-    for (int i : A) {
-      if (left[i] == 0)
+    for (int num : nums) {
+      if (remaining[num] == 0) // I have consumed all occurrances of num.
         continue;
-      left[i]--;
-      if (end[i - 1] > 0) {
-        end[i - 1]--;
-        end[i]++;
-      } else if (left[i + 1] > 0 && left[i + 2] > 0) {
-        left[i + 1]--;
-        left[i + 2]--;
-        end[i + 2]++;
+      remaining[num]--; // Consuming this occurance
+      if (end[num - 1] > 0) {
+        // If there is something ending at previous location, end it here.
+        end[num - 1]--;
+        end[num]++;
+      } else if (remaining[num + 1] > 0 && remaining[num + 2] > 0) {
+        // If there are 2 more consecutive nums, consume them too.
+        remaining[num + 1]--;
+        remaining[num + 2]--;
+        end[num + 2]++;
       } else {
+        // Can't increase an earlier sequence, neither can I make a sequence with next nums
         return false;
       }
     }
