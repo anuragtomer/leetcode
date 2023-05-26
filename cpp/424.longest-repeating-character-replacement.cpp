@@ -6,23 +6,23 @@ using namespace std;
 class Solution {
  public:
   int characterReplacement(string s, int k) {
-    int len = 0, n = s.size(), j = 0, mostFrequent = 0;
-    vector<int> count(26, 0);
-    for (int i = 0; i < n + 1; ++i) {
-      count[s[i] - 'A']++;
-      mostFrequent = max(mostFrequent, count[s[i] - 'A']);
-      while (i - j + 1 - mostFrequent > k) {
-        /** 
+    int longest = 0, most_frequent = 0;
+    vector<int> count(256, 0);
+    for (int i = 0, n = s.size(), j = 0; i < n; ++i) {
+      count[s[i]]++;
+      most_frequent = max(most_frequent, count[s[i]]);
+      while (i - j + 1 - most_frequent > k) {
+        /**
          * This means that if the difference between 'Length of the current
          * substring' and 'Most occurred char' is greater than 'Max chars we
          * can replace', then we need to start excluding the chars in our
          * substring from beginning. */
-        count[s[j] - 'A']--;
+        count[s[j]]--;
         j++;
       }
-      len = max(len, i - j + 1);
+      longest = max(longest, i - j + 1);
     }
-    return len;
+    return longest;
   }
 };
 
