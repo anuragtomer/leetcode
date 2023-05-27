@@ -5,25 +5,31 @@
 using namespace std;
 
 class Solution {
-  int longestPalindrome(string &s, int left, int right) {
-    while (left >= 0 && right < s.size() && s[left] == s[right])
-      left--, right++;
-    return right - left - 1;
+  pair<int, int> helper(string &s, int left, int right, int n) {
+    while (left >= 0 && right < n && s[left] == s[right]) {
+      --left;
+      ++right;
+    }
+    ++left;
+    --right;
+    return {left /*start of palindrom*/,
+            right - left + 1 /* Length of palindrom */};
   }
 
  public:
   string longestPalindrome(string s) {
-    int start = 0, end = 0, n = s.size();
-    for (int i = 0; i < n; ++i) {
-      int l1 = longestPalindrome(s, i, i);
-      int l2 = longestPalindrome(s, i, i + 1);
-      int len = max(l1, l2);
-      if (len > end - start + 1) {
-        start = i - (len - 1) / 2;
-        end = i + len / 2;
-      }
+    if (s.empty())
+      return s;
+    pair<int, int> longest = {0, 1};
+    for (int i = 0, n = s.size(); i < n; ++i) {
+      auto odd = helper(s, i, i, n);
+      auto even = helper(s, i, i + 1, n);
+      if (longest.second < odd.second)
+        longest = odd;
+      if (longest.second < even.second)
+        longest = even;
     }
-    return s.substr(start, end - start + 1);
+    return s.substr(longest.first, longest.second);
   }
 };
 

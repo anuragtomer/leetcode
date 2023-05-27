@@ -41,8 +41,38 @@ class Solution {
     return result;
   }
 };
+
+void deleteTree(TreeNode *root) {
+  if (!root)
+    return;
+  deleteTree(root->left);
+  deleteTree(root->right);
+  delete root;
+  return;
+}
+
 int main() {
   Solution sol;
-
+  TreeNode *root = new TreeNode(5);
+  root->left = new TreeNode(4);
+  root->right = new TreeNode(8);
+  root->left->left = new TreeNode(11);
+  root->right->left = new TreeNode(13);
+  root->right->right = new TreeNode(4);
+  root->left->left->left = new TreeNode(7);
+  root->left->left->right = new TreeNode(2);
+  root->right->right->left = new TreeNode(5);
+  root->right->right->right = new TreeNode(1);
+  vector<vector<int>> output = sol.pathSum(root, 22);
+  vector<vector<int>> expected = {{5, 4, 11, 2}, {5, 8, 4, 5}};
+  assert(output.size() == expected.size());
+  for (int i = 0; i < expected.size(); ++i) {
+    assert(output[i].size() == expected[i].size());
+    for (int j = 0; j < expected[i].size(); ++j) {
+      assert(output[i][j] == expected[i][j]);
+    }
+  }
+  deleteTree(root);
+  cout << "Testcase passed";
   return 0;
 }
