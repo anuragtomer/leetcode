@@ -1,3 +1,8 @@
+#include <iostream>
+#include <queue>
+#include <unordered_map>
+
+using namespace std;
 class Solution {
  public:
   string frequencySort(string s) {
@@ -25,3 +30,14 @@ class Solution {
     return result;
   }
 };
+
+int main() {
+  Solution sol;
+  assert(sol.frequencySort("tree") == "eert");
+  cout << "Pass 1";
+  assert(sol.frequencySort("cccaaa") == "aaaccc");
+  cout << "Pass 2";
+  assert(sol.frequencySort("Aabb") == "bbAa");
+  cout << "Pass 3";
+  return 0;
+}
