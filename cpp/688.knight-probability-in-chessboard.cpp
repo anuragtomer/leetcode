@@ -31,9 +31,37 @@ class Solution {
 
     return result;
   }
+  double knightProbabilityBFS(int n, int k, int row, int column) {
+    vector<vector<double>> board(n, vector<double>(n, 0.0)),
+      next_board(n, vector<double>(n, 0.0));
+    board[row][column] = 1.0;
+    vector<vector<int>> next_positions = {{-2, -1}, {-2, 1}, {-1, -2}, {-1, 2},
+                                          {1, -2},  {1, 2},  {2, -1},  {2, 1}};
+    while (k) {
+      --k;
+      for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < n; ++j) {
+          for (int l = 0; l < 8; ++l) {
+            int x = i + next_positions[l][0], y = j + next_positions[l][1];
+            if (x < 0 || y < 0 || x >= n || y >= n)
+              continue;
+            next_board[x][y] += 0.125 * board[i][j];
+          }
+        }
+      }
+      board = next_board;
+      next_board = vector<vector<double>>(n, vector<double>(n, 0.0));
+    }
+    double sum = 0.0;
+    for (auto row : board)
+      for (auto val : row)
+        sum += val;
+    return sum;
+  }
 };
 int main() {
   Solution sol;
-  cout << sol.knightProbability(3, 2, 0, 0);
+  assert(sol.knightProbability(3, 2, 0, 0) == 0.0625);
+  assert(sol.knightProbability(1, 0, 0, 0) == 1);
   return 0;
 }

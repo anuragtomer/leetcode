@@ -5714,6 +5714,16 @@ $(BUILD_DIR)/186.reverse-words-in-a-string-ii: $(SRC_DIR)/186.reverse-words-in-a
 .PHONY: 186.reverse-words-in-a-string-ii
 
 
+# 179.largest-number.cpp
+
+$(BUILD_DIR)/179.largest-number: $(SRC_DIR)/179.largest-number.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+179.largest-number: $(BUILD_DIR)/179.largest-number
+	$<
+
+.PHONY: 179.largest-number
+
+
 # 174.dungeon-game.cpp
 
 $(BUILD_DIR)/174.dungeon-game: $(SRC_DIR)/174.dungeon-game.cpp | $(BUILD_DIR)
@@ -7704,6 +7714,7 @@ all: \
     $(BUILD_DIR)/188.best-time-to-buy-and-sell-stock-iv \
     $(BUILD_DIR)/187.repeated-dna-sequences \
     $(BUILD_DIR)/186.reverse-words-in-a-string-ii \
+    $(BUILD_DIR)/179.largest-number \
     $(BUILD_DIR)/174.dungeon-game \
     $(BUILD_DIR)/173.binary-search-tree-iterator \
     $(BUILD_DIR)/170.two-sum-iii-data-structure-design \

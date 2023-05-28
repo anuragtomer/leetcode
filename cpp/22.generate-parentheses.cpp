@@ -38,11 +38,15 @@ class Solution {
 
 int main() {
   int n;
-  cin >> n;
   Solution sol;
-  vector<string> parentheses = sol.generateParenthesis(n);
-  for (auto &parenthesis : parentheses)
-    cout << parenthesis << "\t";
-
+  vector<string> expected = {"((()))", "(()())", "(())()", "()(())", "()()()"};
+  vector<string> output = sol.generateParenthesis(3);
+  assert(expected.size() == output.size());
+  sort(expected.begin(), expected.end());
+  sort(output.begin(), output.end());
+  for (int i = 0; i < expected.size(); ++i) {
+    assert(expected[i] == output[i]);
+  }
+  cout << "Pass 1 \n";
   return 0;
 }
