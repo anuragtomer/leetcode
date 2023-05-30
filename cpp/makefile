@@ -2624,6 +2624,16 @@ $(BUILD_DIR)/858.mirror-reflection: $(SRC_DIR)/858.mirror-reflection.cpp | $(BUI
 .PHONY: 858.mirror-reflection
 
 
+# 855.exam-room.cpp
+
+$(BUILD_DIR)/855.exam-room: $(SRC_DIR)/855.exam-room.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+855.exam-room: $(BUILD_DIR)/855.exam-room
+	$<
+
+.PHONY: 855.exam-room
+
+
 # 856.score-of-parentheses.cpp
 
 $(BUILD_DIR)/856.score-of-parentheses: $(SRC_DIR)/856.score-of-parentheses.cpp | $(BUILD_DIR)
@@ -7365,7 +7375,7 @@ all: \
     $(BUILD_DIR)/970.powerful-integers \
     $(BUILD_DIR)/969.pancake-sorting \
     $(BUILD_DIR)/967.numbers-with-same-consecutive-differences \
-	$(BUILD_DIR)/958.check-completeness-of-a-binary-tree \
+		$(BUILD_DIR)/958.check-completeness-of-a-binary-tree \
     $(BUILD_DIR)/957.prison-cells-after-n-days \
     $(BUILD_DIR)/953.verifying-an-alien-dictionary \
     $(BUILD_DIR)/952.largest-component-size-by-common-factor \
@@ -7387,7 +7397,7 @@ all: \
     $(BUILD_DIR)/916.word-subsets \
     $(BUILD_DIR)/914.x-of-a-kind-in-a-deck-of-cards \
     $(BUILD_DIR)/909.snakes-and-ladders \
-	$(BUILD_DIR)/907.sum-of-subarray-minimums \
+		$(BUILD_DIR)/907.sum-of-subarray-minimums \
     $(BUILD_DIR)/905.sort-array-by-parity \
     $(BUILD_DIR)/904.fruit-into-baskets \
     $(BUILD_DIR)/901.online-stock-span \
@@ -7406,6 +7416,7 @@ all: \
     $(BUILD_DIR)/859.buddy-strings \
     $(BUILD_DIR)/858.mirror-reflection \
     $(BUILD_DIR)/856.score-of-parentheses \
+    $(BUILD_DIR)/855.exam-room \
     $(BUILD_DIR)/846.multi-keyword-sort_lintcode \
     $(BUILD_DIR)/845.longest-mountain-in-array \
     $(BUILD_DIR)/844.backspace-string-compare \

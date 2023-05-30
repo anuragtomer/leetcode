@@ -13,6 +13,7 @@ def main():
         print('5. Total number of questions')
         print('6. Search question')
         print('7. Questions done today')
+        print('8. Total questions past due')
         val = int(input("Your choice: ") or "2")
         if val == 0:
             os.system("git add questions.db")
@@ -32,10 +33,25 @@ def main():
         elif val == 7:
             questionsDoneToday()
         elif val == 8:
+            questionsPastDue()
+        elif val == 42:
             print("Oh.. You know secret option. Fine, go ahead and change due.")
             changeDueDate()
         else:
             print('Choose wisely!!')
+
+def questionsPastDue():
+    dueQuestions = []
+    con = sqlite3.connect(DBFILE)
+    cur = con.cursor()
+    for row in cur.execute('''SELECT * FROM questions WHERE duedate < datetime('now')'''):
+        dueQuestions.append(row)
+    if len(dueQuestions) == 0:
+        print('No questions due for today. Enjoy')
+        con.close()
+        return
+    print("Number of questions past due: " + str(len(dueQuestions)))
+    con.close()
 
 def pickQuestionPastDue():
     dueQuestions = []
