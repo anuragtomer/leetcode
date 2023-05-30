@@ -6,6 +6,31 @@ using namespace std;
 
 class Solution {
  public:
+  /* Easier to understand */
+  /*
+    int minDistance(string word1, string word2) {
+      int N = word1.size(), M = word2.size();
+      vector<vector<int>> distance(N + 1, vector<int>(M + 1, 0));
+      for (int i = 0; i < N; ++i) {
+        // If second word is empty, we would need i operations
+        distance[i + 1][0] = i + 1;
+      }
+      for (int j = 0; j < M; ++j) {
+        distance[0][j + 1] = j + 1;
+      }
+      for (int i = 0; i < N; ++i) {
+        for (int j = 0; j < M; ++j) {
+          if (word1[i] != word2[j])
+            distance[i + 1][j + 1] =
+              1 + min({distance[i][j + 1], distance[i + 1][j], distance[i][j]});
+          else
+            distance[i + 1][j + 1] = distance[i][j];
+        }
+      }
+      return distance.back().back();
+    }
+  */
+  // We just need last state. Optimizing space away.
   int minDistance(string word1, string word2) {
     int n = word1.size(), m = word2.size();
     vector<int> pre = vector<int>(n + 1, 0);
@@ -22,10 +47,10 @@ class Solution {
         if (w1 == w2)
           cur.push_back(pre[j - 1]);
         else
-          cur.push_back(1 + min(pre[j], min(pre[j - 1], cur.back())));
+          cur.push_back(1 + min({pre[j], pre[j - 1], cur.back()}));
       }
       pre.swap(cur);
-      cur = vector<int>();
+      cur.clear();
     }
     return pre.back();
   }
