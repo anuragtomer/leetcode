@@ -97,6 +97,25 @@ class Solution {
 };
 int main() {
   Solution sol;
-
+  string beginWord = "hit";
+  string endWord = "cog";
+  vector<string> wordList = {"hot", "dot", "dog", "lot", "log", "cog"};
+  assert(sol.ladderLength(beginWord, endWord, wordList) == 5);
+  beginWord = "hit";
+  endWord = "cog";
+  wordList = {"hot", "dot", "dog", "lot", "log"};
+  assert(sol.ladderLength(beginWord, endWord, wordList) == 0);
+  beginWord = "a";
+  endWord = "c";
+  wordList = {"a", "b", "c"};
+  assert(sol.ladderLength(beginWord, endWord, wordList) == 2);
+  beginWord = "hot";
+  endWord = "dog";
+  wordList = {"hot", "dog"};
+  assert(sol.ladderLength(beginWord, endWord, wordList) == 0);
+  beginWord = "hit";
+  endWord = "dog";
+  wordList = {"hot", "dog", "dot"};
+  assert(sol.ladderLength(beginWord, endWord, wordList) == 4);
   return 0;
 }
