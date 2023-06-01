@@ -1,3 +1,5 @@
+# Ignore contents of this README. Look for individual language folders for leetcode questions.
+
 <h1> Problems from Leetcode </h1>
 
 
