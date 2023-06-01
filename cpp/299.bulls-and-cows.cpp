@@ -50,6 +50,8 @@ class Solution {
 
 int main() {
   Solution sol;
-
+  assert(sol.getHint("1807", "7810") == "1A3B");
+  assert(sol.getHint("1123", "0111") == "1A1B");
+  cout << "Tests passed.";
   return 0;
 }
