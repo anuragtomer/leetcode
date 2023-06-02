@@ -58,6 +58,13 @@ class Solution {
 };
 int main() {
   Solution sol;
+  vector<string> words = {"abcw", "baz", "foo", "bar", "xtfn", "abcdef"};
+  assert(sol.maxProduct(words) == 16);
+  words = {"a", "ab", "abc", "d", "cd", "bcd", "abcd"};
+  assert(sol.maxProduct(words) == 4);
+  words = {"a", "aa", "aaa", "aaaa"};
+  assert(sol.maxProduct(words) == 0);
+  cout << "All test cases passed.";
 
   return 0;
 }
