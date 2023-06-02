@@ -4364,6 +4364,16 @@ $(BUILD_DIR)/389.find-the-difference: $(SRC_DIR)/389.find-the-difference.cpp | $
 .PHONY: 389.find-the-difference
 
 
+# 388.longest-absolute-file-path.cpp
+
+$(BUILD_DIR)/388.longest-absolute-file-path: $(SRC_DIR)/388.longest-absolute-file-path.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+388.longest-absolute-file-path: $(BUILD_DIR)/388.longest-absolute-file-path
+	$<
+
+.PHONY: 388.longest-absolute-file-path
+
+
 # 387.first-unique-character-in-a-string.cpp
 
 $(BUILD_DIR)/387.first-unique-character-in-a-string: $(SRC_DIR)/387.first-unique-character-in-a-string.cpp | $(BUILD_DIR)
@@ -7599,6 +7609,7 @@ all: \
     $(BUILD_DIR)/392.is-subsequence \
     $(BUILD_DIR)/391.number-of-airplanes-in-the-sky_lintcode \
     $(BUILD_DIR)/389.find-the-difference \
+    $(BUILD_DIR)/388.longest-absolute-file-path \
     $(BUILD_DIR)/387.first-unique-character-in-a-string \
     $(BUILD_DIR)/383.ransom-note \
     $(BUILD_DIR)/381.insert-delete-getrandom-o1-duplicates-allowed \
