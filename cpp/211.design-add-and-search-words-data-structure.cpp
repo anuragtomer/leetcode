@@ -1,37 +1,9 @@
-/*
- * @lc app=leetcode id=211 lang=cpp
- *
- * [211] Add and Search Word - Data structure design
- *
- * https://leetcode.com/problems/add-and-search-word-data-structure-design/description/
- * Design a data structure that supports the following two operations:
- * void addWord(word)
- * bool search(word)
- *
- * search(word) can search a literal word or a regular expression string
- * containing only letters a-z or (.).
- * A (.) means it can represent any one letter.
- *
- * Example:
- * addWord("bad")
- * addWord("dad")
- * addWord("mad")
- * search("pad") -> false
- * search("bad") -> true
- * search(".ad") -> true
- * search("b..") -> true
- *
- * Note:
- * You may assume that all words are consist of lowercase letters a-z.
- */
-
 #include <cassert>
 #include <iostream>
 #include <queue>
 #include <vector>
 using namespace std;
 
-// @lc code=start
 class WordDictionary {
   struct Node {
     Node *children[26];
@@ -44,15 +16,14 @@ class WordDictionary {
     }
   };
   Node *root;
-  bool search(string word, Node *node) {
+  bool searchHelper(string &word, Node *node, int idx) {
     if (root == nullptr)
       return false;
-    for (int i = 0; i < word.size(); ++i) {
-      char ch = word[i];
+    for (; idx < word.size(); ++idx) {
+      char ch = word[idx];
       if (ch == '.') {
         for (auto child : node->children) {
-          if (child &&
-              search(string(word.begin() + i + 1, word.end()), child)) {
+          if (child && searchHelper(word, child, idx + 1)) {
             return true;
           }
         }
@@ -65,7 +36,6 @@ class WordDictionary {
   }
 
  public:
-  /** Initialize your data structure here. */
   WordDictionary() { root = new Node(); }
   ~WordDictionary() {
     queue<Node *> all_nodes;
@@ -81,7 +51,6 @@ class WordDictionary {
       delete node;
     }
   }
-  /** Adds a word into the data structure. */
   void addWord(string word) {
     if (root == nullptr)
       return;
@@ -95,11 +64,8 @@ class WordDictionary {
     curr->is_end = true;
   }
 
-  /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
-  bool search(string word) { return search(word, root); }
+  bool search(string word) { return searchHelper(word, root, 0); }
 };
-
-// @lc code=end
 
 int main() {
   WordDictionary dictionary = WordDictionary();
@@ -112,6 +78,6 @@ int main() {
   assert(dictionary.search("b..") == true);
   assert(dictionary.search("b.p") == false);
   assert(dictionary.search("d..d") == false);
-  cout << "all test cases passed.\n";
+  cout << "All test cases passed.\n";
   return 0;
 }
