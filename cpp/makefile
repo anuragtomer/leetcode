@@ -4624,6 +4624,16 @@ $(BUILD_DIR)/332.reconstruct-itinerary: $(SRC_DIR)/332.reconstruct-itinerary.cpp
 .PHONY: 332.reconstruct-itinerary
 
 
+# 331.verify-preorder-serialization-of-a-binary-tree.cpp
+
+$(BUILD_DIR)/331.verify-preorder-serialization-of-a-binary-tree: $(SRC_DIR)/331.verify-preorder-serialization-of-a-binary-tree.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+331.verify-preorder-serialization-of-a-binary-tree: $(BUILD_DIR)/331.verify-preorder-serialization-of-a-binary-tree
+	$<
+
+.PHONY: 331.verify-preorder-serialization-of-a-binary-tree
+
+
 # 331.confusing-number_lintcode.cpp
 
 $(BUILD_DIR)/331.confusing-number_lintcode: $(SRC_DIR)/331.confusing-number_lintcode.cpp | $(BUILD_DIR)
@@ -7615,6 +7625,7 @@ all: \
     $(BUILD_DIR)/337.house-robber-iii \
     $(BUILD_DIR)/334.increasing-triplet-subsequence \
     $(BUILD_DIR)/332.reconstruct-itinerary \
+    $(BUILD_DIR)/331.verify-preorder-serialization-of-a-binary-tree \
     $(BUILD_DIR)/331.confusing-number_lintcode \
     $(BUILD_DIR)/329.longest-increasing-path-in-a-matrix \
     $(BUILD_DIR)/328.odd-even-linked-list \
