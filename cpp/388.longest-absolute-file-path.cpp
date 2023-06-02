@@ -7,13 +7,9 @@ using namespace std;
 class Solution {
  public:
   struct Node {
-    bool is_dir;
     bool is_file;
     string name;
-    Node() {
-      is_dir = false;
-      is_file = false;
-    }
+    Node() { is_file = false; }
   };
   int countTabs(string &input, int &i) {
     int count = 0;
@@ -57,7 +53,6 @@ class Solution {
           node = new Node();
         } else {
           node = new Node();
-          st.back()->is_dir = true;
         }
         tabs = tab_count;
       } else if (i < n) {
