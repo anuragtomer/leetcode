@@ -3384,14 +3384,14 @@ $(BUILD_DIR)/652.find-duplicate-subtrees: $(SRC_DIR)/652.find-duplicate-subtrees
 .PHONY: 652.find-duplicate-subtrees
 
 
-# 641.hamming-distance.cpp
+# 642.design-search-autocomplete-system.cpp
 
-$(BUILD_DIR)/641.hamming-distance: $(SRC_DIR)/641.hamming-distance.cpp | $(BUILD_DIR)
+$(BUILD_DIR)/642.design-search-autocomplete-system: $(SRC_DIR)/642.design-search-autocomplete-system.cpp | $(BUILD_DIR)
 	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
-641.hamming-distance: $(BUILD_DIR)/641.hamming-distance
+642.design-search-autocomplete-system: $(BUILD_DIR)/642.design-search-autocomplete-system
 	$<
 
-.PHONY: 641.hamming-distance
+.PHONY: 642.design-search-autocomplete-system
 
 
 # 637.average-of-levels-in-binary-tree.cpp
@@ -7511,7 +7511,7 @@ all: \
     $(BUILD_DIR)/654.maximum-binary-tree \
     $(BUILD_DIR)/653.two-sum-iv-input-is-a-bst \
     $(BUILD_DIR)/652.find-duplicate-subtrees \
-    $(BUILD_DIR)/641.hamming-distance \
+    $(BUILD_DIR)/642.design-search-autocomplete-system \
     $(BUILD_DIR)/637.average-of-levels-in-binary-tree \
     $(BUILD_DIR)/636.exclusive-time-of-functions \
     $(BUILD_DIR)/629.k-inverse-pairs-array \
