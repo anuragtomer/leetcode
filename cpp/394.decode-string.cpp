@@ -8,9 +8,9 @@ using namespace std;
 class Solution {
   bool isNum(char ch) { return ch >= '0' && ch <= '9'; }
   bool isChar(char ch) { return ch >= 'a' && ch <= 'z'; }
-  int getInt(string s, int &i) {
+  int getInt(string s, int &i, const int &n) {
     int num = 0;
-    while (i < s.size() && isNum(s[i])) {
+    while (i < n && isNum(s[i])) {
       num = num * 10 + (s[i] - '0');
       ++i;
     }
@@ -23,10 +23,10 @@ class Solution {
     stack<string> str_stack;
     stack<int> num_stack;
     string decoded;
-    int i = 0;
-    while (i < s.size()) {
+    int i = 0, n = s.size();
+    while (i < n) {
       if (isNum(s[i])) {
-        num_stack.push(getInt(s, i));
+        num_stack.push(getInt(s, i, n));
       } else if (isChar(s[i])) {
         decoded.push_back(s[i]);
       } else if (s[i] == '[') {
@@ -52,6 +52,8 @@ class Solution {
 
 int main() {
   Solution sol;
-
+  assert(sol.decodeString("3[a]2[bc]") == "aaabcbc");
+  assert(sol.decodeString("3[a2[c]]") == "accaccacc");
+  assert(sol.decodeString("2[abc]3[cd]ef") == "abcabccdcdcdef");
   return 0;
 }
