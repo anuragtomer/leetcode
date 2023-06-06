@@ -39,7 +39,7 @@ public:
     vector<vector<int>> result;
     int i = 0, n = intervals.size();
     while (i < n && intervals[i][0] < newInterval[0]) {
-      result.push_back(intervals[i]); 
+      result.push_back(intervals[i]);
       ++i;
     }
     if (not result.empty() && result.back()[1] >= newInterval[0]) {
@@ -62,6 +62,33 @@ public:
 */
 int main() {
   Solution sol;
-
+  auto lMatchOutExp = [](vector<vector<int>> &out,
+                         vector<vector<int>> &exp) -> bool {
+    if (out.size() != exp.size())
+      return false;
+    for (int i = 0; i < out.size(); ++i) {
+      if (out[i].size() != exp[i].size()) {
+        return false;
+      }
+      for (int j = 0; j < out[i].size(); ++j) {
+        if (out[i][j] != exp[i][j])
+          return false;
+      }
+    }
+    return true;
+  };
+  vector<vector<int>> intervals;
+  vector<int> newInterval;
+  vector<vector<int>> output;
+  vector<vector<int>> expected;
+  intervals = {{1, 3}, {6, 9}}, newInterval = {2, 5},
+  expected = {{1, 5}, {6, 9}};
+  output = sol.insert(intervals, newInterval);
+  assert(lMatchOutExp(output, expected));
+  intervals = {{1, 2}, {3, 5}, {6, 7}, {8, 10}, {12, 16}}, newInterval = {4, 8};
+  expected = {{1, 2}, {3, 10}, {12, 16}};
+  output = sol.insert(intervals, newInterval);
+  assert(lMatchOutExp(output, expected));
+  cout << "All test cases passed.";
   return 0;
 }
