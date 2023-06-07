@@ -54,10 +54,16 @@ def questionsPastDue():
     con.close()
 
 def pickQuestionPastDue():
+    print('1. Medium')
+    print('2. Hard')
+    val = int(input("Choice? ") or "2")
+    difficulty = 'HARD'
+    if val == 1:
+        difficulty = 'MEDIUM'
     dueQuestions = []
     con = sqlite3.connect(DBFILE)
     cur = con.cursor()
-    for row in cur.execute('''SELECT * FROM questions WHERE duedate < datetime('now')'''):
+    for row in cur.execute('''SELECT * FROM questions WHERE duedate < datetime('now') AND DIFFICULTY IN ("'''+difficulty+'''")'''):
         dueQuestions.append(row)
     if len(dueQuestions) == 0:
         print('No questions due for today. Enjoy')
