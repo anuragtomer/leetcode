@@ -28,13 +28,8 @@ class Solution {
 int main() {
   Solution sol;
   string word1 = "sea", word2 = "eat";
-  if (2 != sol.minDistance(word1, word2)) {
-    cout << sol.minDistance(word1, word2) << endl;
-  }
+  assert(2 == sol.minDistance(word1, word2));
   word1 = "leetcode", word2 = "etco";
-  if (4 != sol.minDistance(word1, word2)) {
-    cout << sol.minDistance(word1, word2) << endl;
-  }
-
+  assert(4 == sol.minDistance(word1, word2));
   return 0;
 }
