@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <stack>
 #include <vector>
 
 using namespace std;
@@ -12,78 +13,64 @@ struct TreeNode {
   TreeNode(int x, TreeNode *left, TreeNode *right)
     : val(x), left(left), right(right) {}
 };
+
 class Solution {
  public:
   vector<vector<int>> zigzagLevelOrder(TreeNode *root) {
-    if (!root)
-      return vector<vector<int>>();
-    vector<TreeNode *> level = {root};
-    vector<vector<int>> result;
-    bool rev = false;
-    int i = 0;
-    while (i < level.size()) {
-      int n = level.size();
-      vector<int> row;
-      while (i < n) {
-        row.push_back(level[i]->val);
-        if (level[i]->left)
-          level.push_back(level[i]->left);
-        if (level[i]->right)
-          level.push_back(level[i]->right);
-        ++i;
-      }
-      if (!row.empty()) {
-        if (rev) {
-          reverse(row.begin(), row.end());
-          result.push_back(row);
-        } else {
-          result.push_back(row);
-        }
-        rev = !rev;
-      }
-    }
-    return result;
-  }
-};
-// Another solution
-class Solution {
- public:
-  vector<vector<int>> zigzagLevelOrder(TreeNode *root) {
-    deque<TreeNode *> current, next;
+    stack<TreeNode *> current, next;
     bool left_to_right = true;
     if (root)
-      current.push_front(root);
+      current.push(root);
     vector<vector<int>> result;
     vector<int> level;
     TreeNode *node = nullptr;
     while (not current.empty()) {
-      node = current.front();
-      current.pop_front();
+      node = current.top();
+      current.pop();
       if (left_to_right) {
         if (node->left)
-          next.push_front(node->left);
+          next.push(node->left);
         if (node->right)
-          next.push_front(node->right);
+          next.push(node->right);
       } else {
         if (node->right)
-          next.push_front(node->right);
+          next.push(node->right);
         if (node->left)
-          next.push_front(node->left);
+          next.push(node->left);
       }
       level.push_back(node->val);
       if (current.empty()) {
         result.push_back(level);
         level.clear();
-        current = next;
-        next.clear();
+        swap(current, next);
         left_to_right = !left_to_right;
       }
     }
     return result;
   }
 };
-int main() {
-  Solution sol;
 
+int main() {
+  auto lMatch = [](vector<vector<int>> out, vector<vector<int>> &exp) -> bool {
+    if (out.size() != exp.size())
+      return false;
+    for (int i = 0; i < out.size(); ++i) {
+      if (out[i].size() != exp[i].size())
+        return false;
+      for (int j = 0; j < out[i].size(); ++j)
+        if (out[i][j] != exp[i][j])
+          return false;
+    }
+    return true;
+  };
+  Solution sol;
+  TreeNode *root = new TreeNode(3);
+  root->left = new TreeNode(9);
+  root->right = new TreeNode(20);
+  root->right->left = new TreeNode(15);
+  root->right->right = new TreeNode(7);
+  vector<vector<int>> expected = {{3}, {20, 9}, {15, 7}};
+  assert(lMatch(sol.zigzagLevelOrder(root), expected));
+  cout << "Passed.";
   return 0;
 }
