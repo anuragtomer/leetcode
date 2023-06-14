@@ -7,38 +7,29 @@ using namespace std;
 class Solution {
  public:
   string removeKdigits(string num, int k) {
-    // Base cases
-    if (num.size() <= k)
-      // Not enough digits.
+    if (num.size() <= k) {
       return "0";
-    if (k == 0)
-      // Nothing to be removed.
+    }
+    if (k == 0) {
       return num;
+    }
 
     string stackOfDigits;
     for (char ch : num) {
-      // Push element in stack such that stack has decreasing elements.
-      while (k && !stackOfDigits.empty() && ch < stackOfDigits.back()) {
-        k--;
+      while (k && not stackOfDigits.empty() && ch < stackOfDigits.back()) {
+        --k;
         stackOfDigits.pop_back();
       }
-      if (!stackOfDigits.empty())
-        stackOfDigits.push_back(ch);
-      else if (ch != '0')
-        stackOfDigits.push_back(ch);
-    }
-    while (k && !stackOfDigits.empty()) {
-      stackOfDigits.pop_back();
-      k--;
-    }
-    // Check if num consists of only zeros.
-    bool allZeros = true;
-    for (auto ch : stackOfDigits)
-      if (ch != '0') {
-        allZeros = false;
-        break;
+      stackOfDigits.push_back(ch);
+      if (stackOfDigits.size() == 1 && stackOfDigits.back() == '0') {
+        stackOfDigits.pop_back();
       }
-    return (stackOfDigits.empty() || allZeros) ? "0" : stackOfDigits;
+    }
+    while (k > 0 && not stackOfDigits.empty()) {
+      stackOfDigits.pop_back();
+      --k;
+    }
+    return stackOfDigits.empty() ? "0" : stackOfDigits;
   }
 };
 

@@ -3984,6 +3984,16 @@ $(BUILD_DIR)/450.delete-node-in-a-bst: $(SRC_DIR)/450.delete-node-in-a-bst.cpp |
 .PHONY: 450.delete-node-in-a-bst
 
 
+# 449.serialize-and-deserialize-bst.cpp
+
+$(BUILD_DIR)/449.serialize-and-deserialize-bst: $(SRC_DIR)/449.serialize-and-deserialize-bst.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+449.serialize-and-deserialize-bst: $(BUILD_DIR)/449.serialize-and-deserialize-bst
+	$<
+
+.PHONY: 449.serialize-and-deserialize-bst
+
+
 # 448.find-all-numbers-disappeared-in-an-array.cpp
 
 $(BUILD_DIR)/448.find-all-numbers-disappeared-in-an-array: $(SRC_DIR)/448.find-all-numbers-disappeared-in-an-array.cpp | $(BUILD_DIR)
@@ -4312,6 +4322,16 @@ $(BUILD_DIR)/397.longest-continuous-increasing-subsquence_lintcode: $(SRC_DIR)/3
 	$<
 
 .PHONY: 397.longest-continuous-increasing-subsquence_lintcode
+
+
+# 395.longest-substring-with-at-least-k-repeating-characters.cpp
+
+$(BUILD_DIR)/395.longest-substring-with-at-least-k-repeating-characters: $(SRC_DIR)/395.longest-substring-with-at-least-k-repeating-characters.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+395.longest-substring-with-at-least-k-repeating-characters: $(BUILD_DIR)/395.longest-substring-with-at-least-k-repeating-characters
+	$<
+
+.PHONY: 395.longest-substring-with-at-least-k-repeating-characters
 
 
 # 394.decode-string.cpp
@@ -7571,6 +7591,7 @@ all: \
     $(BUILD_DIR)/458.poor-pigs \
     $(BUILD_DIR)/451.sort-characters-by-frequency \
     $(BUILD_DIR)/450.delete-node-in-a-bst \
+    $(BUILD_DIR)/449.serialize-and-deserialize-bst \
     $(BUILD_DIR)/448.find-all-numbers-disappeared-in-an-array \
     $(BUILD_DIR)/447.number-of-boomerangs \
     $(BUILD_DIR)/445.add-two-numbers-ii \
@@ -7604,6 +7625,7 @@ all: \
     $(BUILD_DIR)/402.continuous-subarray-sum_lintcode \
     $(BUILD_DIR)/399.evaluate-division \
     $(BUILD_DIR)/397.longest-continuous-increasing-subsquence_lintcode \
+    $(BUILD_DIR)/395.longest-substring-with-at-least-k-repeating-characters \
     $(BUILD_DIR)/394.decode-string \
     $(BUILD_DIR)/393.utf-8-validation \
     $(BUILD_DIR)/392.is-subsequence \
