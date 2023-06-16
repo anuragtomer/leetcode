@@ -1,23 +1,44 @@
+#include <algorithm>
+#include <cassert>
+#include <string>
+#include <vector>
+
+using namespace std;
+
 class Solution {
  public:
   vector<string> findRepeatedDnaSequences(string s) {
-    int BASE = 5;
-    int POW = pow(BASE, 9);
-    unordered_map<int, int> seen;
-    unordered_map<char, int> nums = {
-      {'A', BASE - 4}, {'C', BASE - 3}, {'G', BASE - 2}, {'T', BASE - 1}};
     vector<string> result;
-    int val = 0;
-    for (int i = 0; i < 10 && i < s.size(); ++i)
-      val = val * BASE + nums[s[i]];
-    seen[val]++;
-    for (int i = 10; i < s.size(); ++i) {
-      val = (val - (POW * nums[s[i - 10]])) * BASE + nums[s[i]];
-      if (seen.find(val) != seen.end() && seen[val] == 1) {
-        result.push_back(string(s.begin() + i - 10 + 1, s.begin() + i + 1));
+    unordered_map<string, int> hash;
+
+    for (int i = 0, n = s.size(); i <= n - 10; ++i) {
+      string ten_letter_long = s.substr(i, 10);
+      hash[ten_letter_long]++;
+      if (hash[ten_letter_long] == 2) {
+        result.push_back(ten_letter_long);
       }
-      seen[val]++;
     }
     return result;
   }
 };
+
+int main() {
+  auto lMatch = [](vector<string> out, vector<string> &exp) -> bool {
+    if (out.size() != exp.size())
+      return false;
+    for (int i = 0; i < out.size(); ++i) {
+      if (out[i] != exp[i])
+        return false;
+    }
+    return true;
+  };
+
+  Solution sol;
+  string s = "AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT";
+  vector<string> expected = {"AAAAACCCCC", "CCCCCAAAAA"};
+  assert(lMatch(sol.findRepeatedDnaSequences(s), expected));
+  s = "AAAAAAAAAAAAA";
+  expected = {"AAAAAAAAAA"};
+  assert(lMatch(sol.findRepeatedDnaSequences(s), expected));
+  return 0;
+}
