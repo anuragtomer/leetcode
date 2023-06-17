@@ -2644,6 +2644,16 @@ $(BUILD_DIR)/856.score-of-parentheses: $(SRC_DIR)/856.score-of-parentheses.cpp |
 .PHONY: 856.score-of-parentheses
 
 
+# 849.maximize-distance-to-closest-person.cpp
+
+$(BUILD_DIR)/849.maximize-distance-to-closest-person: $(SRC_DIR)/849.maximize-distance-to-closest-person.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+849.maximize-distance-to-closest-person: $(BUILD_DIR)/849.maximize-distance-to-closest-person
+	$<
+
+.PHONY: 849.maximize-distance-to-closest-person
+
+
 # 846.multi-keyword-sort_lintcode.cpp
 
 $(BUILD_DIR)/846.multi-keyword-sort_lintcode: $(SRC_DIR)/846.multi-keyword-sort_lintcode.cpp | $(BUILD_DIR)
@@ -7457,6 +7467,7 @@ all: \
     $(BUILD_DIR)/858.mirror-reflection \
     $(BUILD_DIR)/856.score-of-parentheses \
     $(BUILD_DIR)/855.exam-room \
+    $(BUILD_DIR)/849.maximize-distance-to-closest-person \
     $(BUILD_DIR)/846.multi-keyword-sort_lintcode \
     $(BUILD_DIR)/845.longest-mountain-in-array \
     $(BUILD_DIR)/844.backspace-string-compare \
