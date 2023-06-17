@@ -37,19 +37,19 @@ public:
 class Solution {
  public:
   int maxProduct(vector<string> &words) {
-    unordered_map<int, int> bitMaps;
+    unordered_map<bitset<26>, int> bitMaps;
     for (auto word : words) {
-      int bitmap = 0;
+      bitset<26> bitmap;
       for (auto ch : word) {
-        bitmap = bitmap | (1 << (ch - 'a'));
+        bitmap.set(ch - 'a');
       }
       bitMaps[bitmap] = max(bitMaps[bitmap], static_cast<int>(word.size()));
     }
     int maxLen = 0;
-    for (auto it : bitMaps) {
-      for (auto it2 : bitMaps) {
-        if (!(it.first & it2.first)) {
-          maxLen = max(maxLen, it.second * it2.second);
+    for (auto [bit1, len1] : bitMaps) {
+      for (auto [bit2, len2] : bitMaps) {
+        if ((bit1 & bit2) == 0) {
+          maxLen = max(maxLen, len1 * len2);
         }
       }
     }
