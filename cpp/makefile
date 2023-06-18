@@ -3564,6 +3564,16 @@ $(BUILD_DIR)/583.delete-operation-for-two-strings: $(SRC_DIR)/583.delete-operati
 .PHONY: 583.delete-operation-for-two-strings
 
 
+# 581.shortest-unsorted-continuous-subarray.cpp
+
+$(BUILD_DIR)/581.shortest-unsorted-continuous-subarray: $(SRC_DIR)/581.shortest-unsorted-continuous-subarray.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+581.shortest-unsorted-continuous-subarray: $(BUILD_DIR)/581.shortest-unsorted-continuous-subarray
+	$<
+
+.PHONY: 581.shortest-unsorted-continuous-subarray
+
+
 # 576.out-of-boundary-paths.cpp
 
 $(BUILD_DIR)/576.out-of-boundary-paths: $(SRC_DIR)/576.out-of-boundary-paths.cpp | $(BUILD_DIR)
@@ -7559,6 +7569,7 @@ all: \
     $(BUILD_DIR)/589.n-ary-tree-preorder-traversal \
     $(BUILD_DIR)/586.sqrt-x-ii_lintcode \
     $(BUILD_DIR)/583.delete-operation-for-two-strings \
+    $(BUILD_DIR)/581.shortest-unsorted-continous-subarray \
     $(BUILD_DIR)/576.out-of-boundary-paths \
     $(BUILD_DIR)/572.subtree-of-another-tree \
     $(BUILD_DIR)/567.permutation-in-string \

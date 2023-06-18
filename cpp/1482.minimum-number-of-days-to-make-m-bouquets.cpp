@@ -8,26 +8,28 @@ class Solution {
 
  public:
   int minDays(vector<int> &bloomDays, int m, int k) {
-    int n = bloomDays.size(), left = 1, right = 1e9;
-    if (m * k > n)
-      return -1;
-    while (left < right) {
-      int mid = (left + right) / 2, flow = 0, bouq = 0;
+    int n = bloomDays.size();
+    int min_days = *min_element(bloomDays.begin(), bloomDays.end());
+    int max_days = *max_element(bloomDays.begin(), bloomDays.end());
+    int result = -1;
+    while (min_days <= max_days) {
+      int mid = (min_days + max_days) / 2, flowers = 0, bouquets = 0;
       for (int j = 0; j < n; ++j) {
         if (bloomDays[j] > mid) {
-          flow = 0;
-        } else if (++flow >= k) {
-          bouq++;
-          flow = 0;
+          flowers = 0;
+        } else if (++flowers >= k) {
+          bouquets++;
+          flowers = 0;
         }
       }
-      if (bouq < m) {
-        left = mid + 1;
+      if (bouquets < m) {
+        min_days = mid + 1;
       } else {
-        right = mid;
+        result = mid;
+        max_days = mid - 1;
       }
     }
-    return left;
+    return result;
   }
 };
 
