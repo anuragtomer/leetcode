@@ -33,6 +33,14 @@ class Solution {
 
 int main() {
   Solution sol;
-
+  vector<int> nums;
+  int firstLen, secondLen;
+  nums = {0, 6, 5, 2, 2, 5, 1, 9, 4}, firstLen = 1, secondLen = 2;
+  assert(sol.maxSumTwoNoOverlap(nums, firstLen, secondLen) == 20);
+  nums = {3, 8, 1, 3, 2, 1, 8, 9, 0}, firstLen = 3, secondLen = 2;
+  assert(sol.maxSumTwoNoOverlap(nums, firstLen, secondLen) == 29);
+  nums = {2, 1, 5, 6, 0, 9, 5, 0, 3, 8}, firstLen = 4, secondLen = 3;
+  assert(sol.maxSumTwoNoOverlap(nums, firstLen, secondLen) == 31);
+  cout << "All test cases passed.";
   return 0;
 }
