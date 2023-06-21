@@ -40,6 +40,18 @@ class Solution {
 
 int main() {
   Solution sol;
+  vector<vector<char>> board;
+  string word;
+  board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}},
+  word = "ABCCED";
+  assert(sol.exist(board, word) == true);
 
+  board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}},
+  word = "SEE";
+  assert(sol.exist(board, word) == true);
+
+  board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}},
+  word = "ABCB";
+  assert(sol.exist(board, word) == false);
   return 0;
 }

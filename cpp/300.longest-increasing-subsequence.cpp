@@ -6,37 +6,18 @@ using namespace std;
 class Solution {
  public:
   // O(n^2) Solution
-  class Solution {
-   public:
-    int lengthOfLIS(vector<int> &nums) {
-      vector<int> longest(nums.size(), 1);
-      int longestLen = 1;
-      for (int n = nums.size(), i = n - 1; i >= 0; --i) {
-        for (int j = i + 1; j < n; ++j) {
-          if (nums[j] > nums[i]) {
-            longest[i] = max(longest[i], 1 + longest[j]);
-          }
+  int lengthOfLIS1(vector<int> &nums) {
+    vector<int> longest(nums.size(), 1);
+    int longestLen = 1;
+    for (int n = nums.size(), i = n - 1; i >= 0; --i) {
+      for (int j = i + 1; j < n; ++j) {
+        if (nums[j] > nums[i]) {
+          longest[i] = max(longest[i], 1 + longest[j]);
         }
-        longestLen = max(longestLen, longest[i]);
       }
-      return longestLen;
+      longestLen = max(longestLen, longest[i]);
     }
-  };
-  int lengthOfLIS(vector<int> &nums) {
-    int n = nums.size();
-    if (n <= 1)
-      return n;
-    vector<int> longest(n, 1);
-    for (int i = 1; i < n; ++i)
-      for (int j = 0; j < i; ++j)
-        if (nums[j] < nums[i])
-          if (longest[i] < 1 + longest[i])
-            longest[i] = 1 + longest[j];
-    int mx = 0;
-    for (auto c : longest) {
-      mx = max(mx, c);
-    }
-    return mx;
+    return longestLen;
   }
   int lengthOfLIS(vector<int> &nums) {
     // https://leetcode.com/problems/longest-increasing-subsequence/discuss/74848/9-lines-C%2B%2B-code-with-O(NlogN)-complexity
