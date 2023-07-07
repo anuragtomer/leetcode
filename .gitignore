@@ -5,3 +5,4 @@ rust/target/**
 *.swp
 *.dSYM
 cpp/cpp_build/**
+*.DS_Store

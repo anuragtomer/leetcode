@@ -9,21 +9,20 @@ class Solution {
     vector<bool> unlocked(rooms.size(), false);
     queue<int> hasKeys;
     unlocked[0] = true;
-    for (auto &keys : rooms[0])
-      hasKeys.push(keys);
+    hasKeys.push(0);
+    int rooms_unlocked = 1;
     while (not hasKeys.empty()) {
       int key = hasKeys.front();
       hasKeys.pop();
-      if (not unlocked[key]) {
-        for (auto &keys : rooms[key])
+      for (auto keys : rooms[key]) {
+        if (not unlocked[keys]) {
+          ++rooms_unlocked;
           hasKeys.push(keys);
-        unlocked[key] = true;
+          unlocked[keys] = true;
+        }
       }
     }
-    for (auto unlock : unlocked)
-      if (unlock == false)
-        return unlock;
-    return true;
+    return rooms_unlocked == rooms.size();
   }
 };
 int main() {

@@ -7,7 +7,6 @@ using namespace std;
 class Solution {
  public:
   string reorganizeString(string s) {
-
     vector<int> hash(26, 0);
     char mostFrequent = 'a';
     for (auto ch : s) {

@@ -97,18 +97,18 @@ class Solution {
     if (s1.empty())
       return true;
     int pendingMatches = s1.size();
-    vector<int> counts1(128, 0), counts2(128, 0);
+    vector<int> needle(128, 0), haystack(128, 0);
     for (auto &ch : s1)
-      counts1[ch]++;
+      needle[ch]++;
     for (int i = 0, n = s1.size(); i < s2.size(); ++i) {
-      if (i >= n && counts1[s2[i - n]] > 0) {
-        --counts2[s2[i - n]];
-        if (counts2[s2[i - n]] < counts1[s2[i - n]])
+      if (i >= n && needle[s2[i - n]] > 0) {
+        --haystack[s2[i - n]];
+        if (haystack[s2[i - n]] < needle[s2[i - n]])
           ++pendingMatches;
       }
-      if (counts1[s2[i]] > 0) {
-        counts2[s2[i]]++;
-        if (counts2[s2[i]] <= counts1[s2[i]])
+      if (needle[s2[i]] > 0) {
+        haystack[s2[i]]++;
+        if (haystack[s2[i]] <= needle[s2[i]])
           --pendingMatches;
       }
       if (pendingMatches == 0)
@@ -125,5 +125,7 @@ int main() {
   assert(sol.checkInclusion(s1, s2));
   s1 = "ab", s2 = "eidboaoo";
   assert(not sol.checkInclusion(s1, s2));
+  s1 = "ab", s2 = "eidbbaoo";
+  assert(sol.checkInclusion(s1, s2));
   return 0;
 }
