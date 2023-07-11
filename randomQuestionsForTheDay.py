@@ -18,34 +18,39 @@ def main():
         print('7. Questions done today')
         print('8. Questions done in last 7 days')
         print('9. Total questions past due')
-        val = int(input("Your choice: ") or "2")
-        if val == 0:
+        try:
+            val = int(input("Your choice: ") or "2")
+            if val == 0:
+                os.system("git add questions.db")
+                exit(0)
+            elif val == 1:
+                pickQuestionPastDue()
+            elif val == 2:
+                addQuestion()
+            elif val == 3:
+                deleteQuestion()
+            elif val == 4:
+                printQuestions()
+            elif val == 5:
+                printQuestionCounts()
+            elif val == 6:
+                searchQuestion()
+            elif val == 7:
+                questionsDoneToday()
+            elif val == 8:
+                questionsDoneInLastSevenDays()
+            elif val == 9:
+                questionsPastDue()
+            elif val == 42:
+                print(
+                    "Oh.. You know secret option. Fine, go ahead and change due.")
+                changeDueDate()
+            else:
+                print('Choose wisely!!')
+        except:
+            print('Invalid input. Quitting')
             os.system("git add questions.db")
             exit(0)
-        elif val == 1:
-            pickQuestionPastDue()
-        elif val == 2:
-            addQuestion()
-        elif val == 3:
-            deleteQuestion()
-        elif val == 4:
-            printQuestions()
-        elif val == 5:
-            printQuestionCounts()
-        elif val == 6:
-            searchQuestion()
-        elif val == 7:
-            questionsDoneToday()
-        elif val == 8:
-            questionsDoneInLastSevenDays()
-        elif val == 9:
-            questionsPastDue()
-        elif val == 42:
-            print(
-                "Oh.. You know secret option. Fine, go ahead and change due.")
-            changeDueDate()
-        else:
-            print('Choose wisely!!')
 
 
 def questionsPastDue():
@@ -86,9 +91,9 @@ def pickQuestionPastDue():
     print("Question: " + line[1])
     days = input('When should this be reminded again? ')
     updatequery = "UPDATE questions SET duedate = datetime('now', '+" + str(
-        days) + " days', 'start of day'), practice_count = '" + str(
+        days) + " days', 'start of day'), practice_count = " + str(
             int(line[6]) + 1
-        ) + "', last_revision = datetime('now', 'start of day') WHERE link='" + line[1] + "'"
+        ) + ", last_revision = datetime('now', 'start of day') WHERE link='" + line[1] + "'"
     try:
         cur.execute(updatequery)
         con.commit()
@@ -115,16 +120,17 @@ def addQuestion():
     if found:
         days = int(input('When should this be reminded next? ') or '0')
         update_query = "UPDATE questions SET DUEDATE = datetime('now', '+" + str(
-            days) + " days', 'start of day'), PRACTICE_COUNT = '" + str(
+            days) + " days', 'start of day'), PRACTICE_COUNT = " + str(
                 int(question_row[6]) + 1
-            ) + "', LAST_REVISION = datetime('now', 'start of day') WHERE link='" + link + "'"
+            ) + ", LAST_REVISION = datetime('now', 'start of day') WHERE link='" + link + "'"
 
     else:
         name = input('Name: ')
         difficulty = input('Difficulty: ')
         company = input('Company: ') or 'NA'
-        update_query = "INSERT INTO questions(NAME, LINK, DUEDATE, TODAY, DIFFICULTY, COMPANY, PRACTICE_COUNT, LAST_REVISION) VALUES ("+name+", "+link+", datetime('now', '+3 days', 'start of day'), datetime('now', 'start of day'), "+difficulty.upper()+", "+company.upper()+", 1, datetime('now', 'start of day'))"
+        update_query = "INSERT INTO questions(NAME, LINK, DUEDATE, TODAY, DIFFICULTY, COMPANY, PRACTICE_COUNT, LAST_REVISION) VALUES ('"+name+"', '"+link+"', datetime('now', '+3 days', 'start of day'), datetime('now', 'start of day'), '"+difficulty.upper()+"', '"+company.upper()+"', 1, datetime('now', 'start of day'))"
     try:
+        print(update_query)
         cur.execute(update_query)
         con.commit()
     except sqlite3.IntegrityError:
