@@ -5844,6 +5844,16 @@ $(BUILD_DIR)/168.excel-sheet-column-title: $(SRC_DIR)/168.excel-sheet-column-tit
 .PHONY: 168.excel-sheet-column-title
 
 
+# 166.fraction-to-recurring-decimal.cpp
+
+$(BUILD_DIR)/166.fraction-to-recurring-decimal: $(SRC_DIR)/166.fraction-to-recurring-decimal.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+166.fraction-to-recurring-decimal: $(BUILD_DIR)/166.fraction-to-recurring-decimal
+	$<
+
+.PHONY: 166.fraction-to-recurring-decimal
+
+
 # 163.missing-ranges.cpp
 
 $(BUILD_DIR)/163.missing-ranges: $(SRC_DIR)/163.missing-ranges.cpp | $(BUILD_DIR)
@@ -6752,6 +6762,16 @@ $(BUILD_DIR)/53.maximum-subarray: $(SRC_DIR)/53.maximum-subarray.cpp | $(BUILD_D
 	$<
 
 .PHONY: 53.maximum-subarray
+
+
+# 51.n-queen.cpp
+
+$(BUILD_DIR)/51.n-queen: $(SRC_DIR)/51.n-queen.cpp | $(BUILD_DIR)
+	$(CXX_COMPILER) $(CXX_FLAGS_DEBUG) -o $@ $<
+51.n-queen: $(BUILD_DIR)/51.n-queen
+	$<
+
+.PHONY: 51.n-queen
 
 
 # 50.powx-n.cpp
@@ -7797,6 +7817,7 @@ all: \
     $(BUILD_DIR)/170.two-sum-iii-data-structure-design \
     $(BUILD_DIR)/169.majority-element \
     $(BUILD_DIR)/168.excel-sheet-column-title \
+    $(BUILD_DIR)/166.fraction-to-recurring-decimal \
     $(BUILD_DIR)/163.missing-ranges \
     $(BUILD_DIR)/162.find-peak-element \
     $(BUILD_DIR)/161.one-edit-distance \
@@ -7888,6 +7909,7 @@ all: \
     $(BUILD_DIR)/55.jump-game \
     $(BUILD_DIR)/54.spiral-matrix \
     $(BUILD_DIR)/53.maximum-subarray \
+    $(BUILD_DIR)/51.n-queen \
     $(BUILD_DIR)/50.powx-n \
     $(BUILD_DIR)/49.group-anagrams \
     $(BUILD_DIR)/48.rotate-image \
