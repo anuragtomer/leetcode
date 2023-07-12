@@ -1,68 +1,57 @@
-/*
- * @lc app=leetcode id=31 lang=cpp
- *
- * [31] Next Permutation
- */
-
 #include <iostream>
 #include <vector>
 using namespace std;
 
-// @lc code=start
 class Solution {
  public:
-  void swap(int &a, int &b) {
-    int temp = a;
-    a = b;
-    b = temp;
-  }
-
-  void reverse(vector<int> &nums, int beg, int end) {
-    for (int i = beg; i < end; i++, end--)
-      swap(nums[i], nums[end]);
-  }
-
   void nextPermutation(vector<int> &nums) {
-    int nusz = nums.size();
-    int i = nusz - 2;
-    /* 
-         * Start from end and find the first increasing sequence.
-         */
-    for (i = nusz - 2; (i >= 0) && (nums[i] >= nums[i + 1]); --i)
-      ;
-    int leastGreaterIndex = i + 1;
-    /* 
-         * Find the smallest element greater than num[i]. That should be the next greater 
-         * element in lexographical order.
-         */
-    for (int j = i + 2; j < nusz && i >= 0; j++) {
-      if ((nums[j] <= nums[leastGreaterIndex]) && (nums[j] > nums[i]))
-        leastGreaterIndex = j;
+    int dip = -1, n = nums.size();
+    for (int i = n - 2; i >= 0; --i) {
+      if (nums[i] < nums[i + 1]) {
+        dip = i;
+        break;
+      }
     }
-    /*
-         * Swap the next greater element with nums[i].
-         */
-    if (i >= 0 && i < nusz && leastGreaterIndex >= 0 &&
-        leastGreaterIndex < nusz)
-      swap(nums[i], nums[leastGreaterIndex]);
-    /*
-         * Reverse the elements because now they would be in decreasing sequence. The next 
-         * smallest number in lexo order should have smallest in front.
-         */
-    reverse(nums, i + 1, nusz - 1);
+    if (dip == -1) {
+      reverse(nums.begin(), nums.end());
+      return;
+    }
+    int just_greater = dip + 1;
+    for (int i = dip + 2; i < n; ++i) {
+      if (nums[i] > nums[dip] && nums[i] <= nums[just_greater]) {
+        just_greater = i;
+      }
+    }
+    swap(nums[dip], nums[just_greater]);
+    reverse(nums.begin() + dip + 1, nums.end());
+    return;
   }
 };
-// @lc code=end
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> nums(n);
-  for (int i = 0; i < n; ++i)
-    cin >> nums[i];
+  auto lMatch = [](vector<int> out, vector<int> &exp) -> bool {
+    if (out.size() != exp.size())
+      return false;
+    for (int i = 0; i < out.size(); ++i) {
+      if (out[i] != exp[i])
+        return false;
+    }
+    return true;
+  };
+
   Solution sol;
+  vector<int> nums, expected, output;
+  nums = {1, 2, 3};
+  expected = {1, 3, 2};
   sol.nextPermutation(nums);
-  for (int num : nums)
-    cout << num << " ";
+  assert(lMatch(nums, expected));
+  nums = {3, 2, 1};
+  expected = {1, 2, 3};
+  sol.nextPermutation(nums);
+  assert(lMatch(nums, expected));
+  nums = {1, 1, 5};
+  expected = {1, 5, 1};
+  sol.nextPermutation(nums);
+  assert(lMatch(nums, expected));
   return 0;
 }

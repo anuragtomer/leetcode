@@ -6,7 +6,7 @@ DBFILE = '/Users/anurag/leetcode/questions.db'
 
 
 def main():
-    val = 1
+    val: int = 1
     while val != 0:
         print('\n0. Exit')
         print('1. Next due question for today')
@@ -130,7 +130,6 @@ def addQuestion():
         company = input('Company: ') or 'NA'
         update_query = "INSERT INTO questions(NAME, LINK, DUEDATE, TODAY, DIFFICULTY, COMPANY, PRACTICE_COUNT, LAST_REVISION) VALUES ('"+name+"', '"+link+"', datetime('now', '+3 days', 'start of day'), datetime('now', 'start of day'), '"+difficulty.upper()+"', '"+company.upper()+"', 1, datetime('now', 'start of day'))"
     try:
-        print(update_query)
         cur.execute(update_query)
         con.commit()
     except sqlite3.IntegrityError:
