@@ -6,7 +6,40 @@
 using namespace std;
 
 class Solution {
- public:
+  bool isValidSerialization2(std::string preorder) {
+    std::stringstream ss(preorder);
+    std::string word;
+    int hashes = -1;
+    bool last_found = false;
+    while (getline(ss, word, ',')) {
+        if (last_found) {
+            return false;
+        }
+        if (word == "#") {
+            if (hashes == -1) {
+                hashes = 0;
+                last_found = true;
+            } else {
+                if (hashes == 0) {
+                    return false;
+                }
+                --hashes;
+                if (hashes == 0) {
+                    last_found = true;
+                }
+            }
+        } else {
+            if (hashes == -1) {
+                // I'm expecting atleast 2 hashes below root.
+                hashes = 2;
+            } else {
+                // Reduced 1 because I found a value at this point. And I expect 2 child below me. (+2, -1)
+                hashes += 1;
+            }
+        }
+    }
+    return hashes == 0;
+  }
   bool root_null = false;
   bool pruneTree(vector<string> &tree) {
     if (tree.empty())
