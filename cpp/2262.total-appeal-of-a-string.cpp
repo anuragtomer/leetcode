@@ -37,6 +37,7 @@ s consists of lowercase English letters.
 class Solution {
 public:
     /* Not accepted but correct */
+    /*
     long long appealSum(string s) {
         vector<bitset<26>> current_level(s.size());
         long long total = 0;
@@ -57,5 +58,31 @@ public:
             current_level = next_level;
         }
         return total;
+    } */
+    // https://leetcode.com/problems/total-appeal-of-a-string/solutions/1996390/java-c-python-easy-and-concise-with-explanation
+    // Solution 1. O(26n)
+    /*
+    long long appealSum(string s) {
+        vector<int> last(26);
+        long res = 0, n = s.size();
+        for (int i = 0; i < n; ++i) {
+            last[s[i] - 'a'] = i + 1;
+            for (int j: last)
+                res += j;
+        }
+        return res;
+    }*/
+    
+    // Solution 2. O(n)
+    
+    long long appealSum(string s) {
+        long long result = 0, current = 0;
+        vector<long long> prev(26, 0);
+        for (size_t i = 0; i < s.size(); ++i) {
+            current += i + 1 - prev[s[i] - 'a'];
+            prev[s[i] - 'a'] = i + 1;
+            result += current;
+        }
+        return result;
     }
 };
